@@ -8,35 +8,68 @@
 
 - [人工智能与机器学习智能制造路线图 2026](site/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/index.html) — arXiv:2605.00839
 
-## 站点结构
+## 仓库结构
+
+本仓库分为**公开站点**与**本地构建工作流**两部分：
 
 ```
-site/
-  index.html                       # 门户首页
-  papers.json
-  papers/
-    <文献英文名-kebab-case>/       # 以文献全名命名的文件夹
-      page-renders/                # 页面渲染产物
-        index.html
-        source/paper.pdf
-        sections/
-        css/
-        images/
-        full-translation.html
+industrial-ai-paper-collection/
+├── site/                          # 公开发布（提交到 GitHub，由 Actions 部署）
+│   ├── index.html                 # 门户首页
+│   ├── papers.json                # 文献元数据（门户用）
+│   ├── css/portal.css
+│   └── papers/
+│       └── <文献英文名-kebab-case>/
+│           └── page-renders/      # 单篇文献站点根目录
+│               ├── index.html     # 文献首页
+│               ├── full-translation.html
+│               ├── source/paper.pdf
+│               ├── sections/      # 分章 HTML
+│               ├── css/style.css
+│               └── images/        # 从 PDF 裁切的插图 PNG
+│
+├── workflow/                      # 本地构建（.gitignore，不提交）
+│   ├── build.py
+│   ├── registry.yaml
+│   ├── requirements.txt
+│   ├── paper_translation/
+│   ├── templates/
+│   └── projects/
+│       └── <文献目录名>/
+│           ├── project.yaml
+│           ├── content/*.md
+│           ├── index.html
+│           └── source/paper.pdf
+│
+└── .github/workflows/deploy-pages.yml
 ```
 
-每篇文献在 `site/papers/<文献文件夹名>/` 下拥有独立目录，文件夹名采用文献英文全名的 kebab-case 形式。
+**要点：**
+
+- 每篇文献独立文件夹，目录名采用文献英文全名的 kebab-case
+- 所有页面渲染产物统一输出到 `site/papers/<folder>/page-renders/`
+- `workflow/` 含译文、PDF 与构建脚本，仅保留在本地
+
+## 本地维护者：构建与预览
+
+```bash
+pip install -r workflow/requirements.txt
+python workflow/build.py 2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing --portal
+python -m http.server 8080 -d site
+```
+
+构建说明详见本地 `workflow/README.md`（该目录不进入公开仓库）。
 
 ## GitHub Pages 部署
 
-1. 将本仓库推送到 GitHub
-2. 进入 **Settings → Pages → Build and deployment**
-3. 选择 **GitHub Actions** 作为 Source
-4. 推送 `site/` 目录变更后自动部署
+1. 本地构建后，仅提交 `site/` 目录变更
+2. 推送到 GitHub 的 `main` / `master` 分支
+3. **Settings → Pages → Build and deployment** 选择 **GitHub Actions**
+4. 工作流 `.github/workflows/deploy-pages.yml` 自动发布 `site/` 目录
 
 站点地址：`https://<用户名>.github.io/<仓库名>/`
 
-## 本地预览
+## 本地预览（只读站点）
 
 ```bash
 python -m http.server 8080 -d site

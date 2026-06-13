@@ -55,7 +55,8 @@
 <p>尽管多模态传感技术在智能制造领域展现出巨大潜力，其发展仍面临诸多挑战。</p>
 <p>在硬件层面，最突出的障碍在于不同传感器物理特性的显著差异，这极大地增加了硬件组件无缝集成与校准的复杂性。例如，在智能物流应用中，LiDAR（光检测与测距）传感器的高功耗与相机的低功耗需求形成鲜明对比，亟需设计复杂的电路与精密的冷却方案。此外，昂贵的生产成本构成另一 formidable 障碍。在预测性维护场景中，单个传感器的部署成本可超过200万货币单位，且在分析后续数据时还需投入大量资源用于AI模型训练与维护。</p>
 <p>转向数据与算法领域，跨模态数据融合面临重重困难。这些挑战包括不同传感器间的语义对齐问题——例如，在自动化焊接过程中，弧焊传感器、高速相机、红外测温仪与声发射传感器的数据在数据类型与物理意义上差异巨大[7]——以及多协议异构网络的整合。例如，在工业物联网背景下，5G网络与现有工业总线的有效融合仍是难以实现的目标[8]。此外，计算复杂度与实时性要求极为严苛。以自动上料任务为例，LiDAR点云数据（每帧点数）与4K分辨率相机图像的融合必须在严格的100毫秒时间窗口内完成[9]，给计算资源带来巨大压力。</p>
-<p><strong>图1.</strong> 以传统单模态技术为中心的制造范式与现代先进制造的发展日益不兼容。相应地，多模态传感技术通过利用多维信息协调与互补数据融合，常产生超越孤立模态累积性能的协同效应（即实现"1+1&gt;2"效果）。这些技术正在复杂工业场景中逐步取代单模态方法，并已成为当代先进制造系统的显著特征。</p>
+<figure class="paper-figure"><img src="../images/sensing-fig1.png" alt="图1. 以传统单模态技术为中心的制造范式与现代先进制造的发展日益不兼容。相应地，多模态传感技术通过利用多维信息协调与互补数据融合，常产生超越孤立模态累积性能的协同效应（即实现&quot;1+1&gt;2&quot;效果）。这些技术正在复杂工业场景中逐步取代单模态方法，并已成为当代先进制造系统的显著特征。" loading="lazy"><figcaption>图1. 以传统单模态技术为中心的制造范式与现代先进制造的发展日益不兼容。相应地，多模态传感技术通过利用多维信息协调与互补数据融合，常产生超越孤立模态累积性能的协同效应（即实现&quot;1+1&gt;2&quot;效果）。这些技术正在复杂工业场景中逐步取代单模态方法，并已成为当代先进制造系统的显著特征。</figcaption></figure>
+
 <h2>应对挑战的科学技术进展</h2>
 <p>为应对上述挑战，多模态传感技术必须在多个前沿实现突破。数字孪生技术的集成为高昂的硬件成本提供了可行解决方案。通过利用多模态传感器数据驱动虚拟工厂仿真，该技术实现了生产策略优化，最终达到降低成本与提升效率的目标[10]。</p>
 <p>边缘智能与自学习系统的持续发展为缓解跨模态数据融合复杂度与计算需求提供了有效解决方案。边缘智能通过集成AI芯片，在终端设备层面实现多模态数据的实时融合。这不仅满足了严格的实时性要求，还确保了数据的有效整合[11]。另一方面，自学习系统采用强化学习动态优化多传感器间的权重分配，从而降低计算复杂度、增强数据可靠性、减少冗余数据——最终减轻计算负担[12]。</p>
@@ -81,7 +82,6 @@
 <p>[12] Guo J, Liu Q, Chen E. A deep reinforcement learning method for multimodal data fusion in action recognition[J]. IEEE Signal Processing Letters, 2021, 29: 120-124.</p>
 <p>[13] Dani A P, Salehi I, Rotithor G, Trombetta D, Ravichandar H. Human-in-the-loop robot control for human-robot collaboration: Human intention estimation and safe trajectory tracking control for collaborative tasks[J]. IEEE Control Systems Magazine, 2020, 40(6): 29-56.</p>
 <hr />
-<figure class="paper-figure"><img src="../images/sensing-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
 <h1>AI赋能自主制造</h1>
 <p><strong>Sungjong Kim¹, Chan Hee Park², Byeng D. Youn¹,³</strong><em><br />
 ¹ 首尔大学机械工程系，大韩民国首尔08826<br />
@@ -104,7 +104,8 @@
 <p>在推理阶段，可解释性通过可解释AI技术推进，包括建模前策略（如领域知情的特征提取）与建模后工具（如注意力机制分析、SHAP[10]）。为改善领域迁移下的泛化能力，引入生命周期感知学习策略以支持数据漂移检测与持续学习[11]。此外，将物理约束集成到AI架构中的努力——通过物理启发的组件（如小波核）与基于控制方程的正则化技术（如微分约束）——有助于确保跨不同操作设置的物理一致性与可靠性[12,13]。</p>
 <p>在动作阶段，主要目标是使AI输出转化为可操作的制造决策。由大语言模型（LLM）驱动的自然语言接口使输出摘要与结构化成为人类可读的格式，从而增强可解释性与操作就绪性[14]。这需要将语言表示与制造数据对齐以确保上下文相关性，并通过指令微调与基于代理的LLM促进领域专业知识整合[15,16]。基于强化学习（RL）的优化方法，包括近端策略优化（PPO）与深度Q网络（DQN），被用于从推理输出推导自适应控制策略，使系统能有效响应动态操作条件[17,18]。此外，机器学习运营（MLOps）框架通过版本控制、性能监控与基于反馈的再训练支持AI驱动动作的连续性与可靠性，确保系统生命周期内的持续稳健性[19]。</p>
 <p>在此基础上，去中心化自主制造（DAM）平台架构被引入以实现自主决策、去中心化控制与自组织生产能力[20]。通过利用多代理系统与安全通信协议，该平台允许分布式制造节点有效协作、响应中断并在无集中协调的情况下执行制造任务。</p>
-<p><strong>图1.</strong> AI赋能自主制造三个基础组件——感知、推理与动作——以及集成自主制造平台的最新研究景观。</p>
+<figure class="paper-figure"><img src="../images/autonomous-fig1.png" alt="图1. AI赋能自主制造三个基础组件——感知、推理与动作——以及集成自主制造平台的最新研究景观。" loading="lazy"><figcaption>图1. AI赋能自主制造三个基础组件——感知、推理与动作——以及集成自主制造平台的最新研究景观。</figcaption></figure>
+
 <h2>结语</h2>
 <p>AI赋能自主制造将通过在生产系统的感知、推理与动作层嵌入分布式智能，重新定义工业运营。超越传统基于规则的自动化，自主系统利用先进AI模型进行上下文感知决策、适应动态环境，并以最少人工介入自优化工艺。鉴于全球性挑战——如熟练专家减少、运营成本上升与对敏捷多品种生产的需求不断增长——这一范式转变日益关键。</p>
 <p>近期技术进步共同使机器与软件代理能够在复杂制造环境中自主感知、解读与行动。此外，去中心化自主制造平台的出现为自组织生产系统提供了韧性与可扩展的基础设施。通过将多代理系统与安全、可扩展通信集成，这些平台允许分布式制造节点有效协作、实时响应中断并在无集中控制的情况下自主执行任务。</p>
@@ -132,7 +133,6 @@
 <p>[18] Zhang Y, Zhu H, Tang D, Zhou T, Gui Y. Dynamic job shop scheduling based on deep reinforcement learning for multi-agent manufacturing systems. Robot Comput Integr Manuf. 2022 Dec 1;78.</p>
 <p>[19] Bayram F, Ahmed BS. Towards Trustworthy Machine Learning in Production: An Overview of the Robustness in MLOps Approach. ACM Comput Surv. 2025 Jan 22;57(5).</p>
 <p>[20] Leng J, Zhong Y, Lin Z, Xu K, Mourtzis D, Zhou X, Zheng P, Liu Q, Zhao JL, Shen W. Towards resilience in Industry 5.0: A decentralized autonomous manufacturing paradigm. Vol. 71, Journal of Manufacturing Systems. Elsevier B.V.; 2023. p. 95–114.</p>
-<figure class="paper-figure"><img src="../images/autonomous-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
         <nav class="section-nav"><a href="02-bigdata.html">← 上一章</a><a href="04-additive-laser.html">下一章 →</a></nav>
     </main>
 </body>

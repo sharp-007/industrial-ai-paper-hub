@@ -72,10 +72,14 @@
 <p>为应对这些挑战，一个新的框架必须将内涵作为第一公民（first-class citizens），使模型具有上下文性、组合性、语义透明性，并且对AI友好。</p>
 <p><strong>应对挑战的科学与技术进展</strong></p>
 <p>弥合工程建模需求与形式化本体能力之间的差距，需要一种新型框架——将系统工程的表达能力与形式化逻辑的精确性相结合。信息建模框架（Information Modelling Framework, IMF）[7, 2]正是为满足这一需求而设计。它提供了一个简洁而全面、可扩展的核心语言，使工程师能够以形式化可解释、可递增构建且可验证的方式表达系统元素的内涵定义。</p>
-<p>IMF的基础在于内涵与外延之间清晰的分离。一个IMF元素表达的是一个结构规格——即系统元素"应为何"的参数化定义，而非"当前存在什么"。每个这样的规格都附带一个切面（aspect）：一种结构化的上下文，捕捉信息域（如功能、实现）、模态（如预期的、实际的）以及生命周期视角（如产品、项目），见图1。这种框架使得 alternative designs（替代设计方案）、需求与实现的对比，以及不同利益相关方的视图——都能够在统一的形式化体系中得到连贯的建模。</p>
+<p>IMF的基础在于内涵与外延之间清晰的分离。一个IMF元素表达的是一个结构规格——即系统元素"应为何"的参数化定义，而非"当前存在什么"。每个这样的规格都附带一个切面（aspect）：一种结构化的上下文，捕捉信息域（如功能、实现）、模态（如预期的、实际的）以及生命周期视角（如产品、项目），见图1</p>
+<figure class="paper-figure"><img src="../images/semantic-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+<p>。这种框架使得 alternative designs（替代设计方案）、需求与实现的对比，以及不同利益相关方的视图——都能够在统一的形式化体系中得到连贯的建模。</p>
 <p><strong>形式上</strong>，IMF使用来自类型λ演算的构造来定义结构规格。诸如hasPart、connectedTo和hasTerminal等关系被解释为函数应用，其语义建立在内涵逻辑的基础上。由此产生的模型可以被翻译为外延公理集（例如在描述逻辑中），使形式化推理工具能够验证性质、检测不一致性并支持模型补全。</p>
 <p>由于IMF模型建立在形式化语义的基础上并可序列化为知识图谱（RDF），它们成为工业知识图谱的自然基础。这些图谱在语义上丰富，按照系统工程逻辑构建，且机器可读。此外，IMF模型的RDF表示可以被先进的ML管道直接消费，为AI模型提供格式良好、经语义验证的工程结构。</p>
-<p>IMF在一个公开可访问的规范中定义 [7]，并得到资产信息建模推荐实践 [2] 的支持。此外，IMF项目还发布了其语义技术资源，包括其OWL本体和SHACL形状模式 [3]。IMF不是一个固定的标准，而是一个结构化、形式化、开放式的模型开发平台。它已在欧盟资助的项目RE4DY [4]、SM4RTENANCE [5]和Tec4MaaSEs [6]中得到探索——见图2的示例。</p>
+<p>IMF在一个公开可访问的规范中定义 [7]，并得到资产信息建模推荐实践 [2] 的支持。此外，IMF项目还发布了其语义技术资源，包括其OWL本体和SHACL形状模式 [3]。IMF不是一个固定的标准，而是一个结构化、形式化、开放式的模型开发平台。它已在欧盟资助的项目RE4DY [4]、SM4RTENANCE [5]和Tec4MaaSEs [6]中得到探索——见图2</p>
+<figure class="paper-figure"><img src="../images/semantic-fig2.png" alt="图2" loading="lazy"><figcaption>图2</figcaption></figure>
+<p>的示例。</p>
 <p><strong>结论性 remarks</strong></p>
 <p>信息建模框架（IMF）为构建工程知识提供了一个有原则的基础，既支持人类理解、AI驱动的自动化和形式化验证。通过弥合系统建模实践与基于逻辑的本体之间的鸿沟，IMF使新一代模块化、语义精确且跨上下文适应的工程工具成为可能。</p>
 <p>关键在于，IMF为可扩展的工业知识图谱提供了基础。其RDF序列化格式既支持语义集成，也支持直接输入机器学习工作流——这是工程AI的关键使能器。</p>
@@ -93,9 +97,6 @@
 <p>[8] W3C. RDF 1.1 Primer. 2014. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
 <p>[9] W3C. OWL 2 Web Ontology Language Document Overview (Second Edition). 2012. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
 <p>[10] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler, An Introduction to Description Logic. Cambridge University Press. 2017.</p>
-<figure class="paper-figure"><img src="../images/semantic-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
-
-<figure class="paper-figure"><img src="../images/semantic-fig2.png" alt="图2" loading="lazy"><figcaption>图2</figcaption></figure>
         <nav class="section-nav"><a href="09-generative.html">← 上一章</a><a href="11-physics-control.html">下一章 →</a></nav>
     </main>
 </body>

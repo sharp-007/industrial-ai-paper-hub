@@ -58,7 +58,15 @@ python workflow/build.py 2026-roadmap-on-artificial-intelligence-and-machine-lea
 python -m http.server 8080 -d site
 ```
 
-构建说明详见本地 `workflow/README.md`（该目录不进入公开仓库）。
+**插图裁切（通用，支持所有文献）：**
+
+```bash
+python workflow/tools/crop_server.py
+```
+
+浏览器打开 `http://127.0.0.1:8765/`，顶部切换文献 → 自动从 PDF 导入默认裁切框 → 拖动微调 → 保存后 `build.py --figures-only`。
+
+详见 `workflow/README.md`。
 
 ## GitHub Pages 部署
 

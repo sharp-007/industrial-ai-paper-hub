@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI赋能可持续制造 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第12章</div>
+        <nav class="section-nav"><a href="06-robotics.html">← 上一章</a><a href="08-ml-dl.html">下一章 →</a></nav>
+        <h3>12. AI赋能可持续制造</h3>
+<p>Byung Gun Joung, Albin John, John W. Sutherland<br />
+普渡大学可持续工程与环境工程学院，美国印第安纳州西拉法叶</p>
+<p>联系邮箱：bjoung@purdue.edu</p>
+<h2>现状</h2>
+<p>人工智能（AI）正在深刻变革制造业，而其中一个极具潜力的应用方向是可持续制造领域的AI，即通过AI改善环境绩效。随着全球对气候变化、资源枯竭和环境影响的关注日益加剧，制造商们正开始利用AI技术来优化资源效率、减少废弃物并降低碳排放。AI在制造业中的应用是推进国际可持续发展目标的关键助力——包括实现净零排放目标以及达成联合国可持续发展目标（SDGs）所规定的各项指标——同时也可与替代能源采用[1]、能效提升[2]、可持续产品设计[3]等其他途径形成互补。AI赋能制造或许是数字化制造之后的下一个根本性飞跃，而数字化制造的目标是实现制造过程的计算机化。现有的制造技术虽然目前在应对环境影响和生产变异性方面仍有局限，但通过AI的超优化可以实现环境智能嵌入、增强灵活性并扩展规模，以应对不断变化的世界需求。随着物联网技术的发展和计算能力的提升，人工智能和机器学习正越来越多地被应用于制造业。除了其他潜在的性能提升之外，我们相信AI/ML能够加速"更绿色"制造的追求，例如脱碳[1]。例如，AI正被用于通过嵌入实时环境智能、预测适应性和可扩展优化来提升设施级能效，从而降低峰值需求和碳强度。</p>
+<p>AI在重塑 industries 管理资源、减少浪费和最小化环境影响方面发挥着越来越重要的作用。关于AI用于可持续发展的研究不仅推动了数据驱动的分析和学习，还呼唤着新指标和新指标体系的开发，以有效评估可持续绩效[4]。目前，AI在可持续制造中的应用主要集中在以下几个关键领域：<br />
+i）工艺优化[5]：优化（实时）资源利用和工艺效率（例如，高度变化的需求）；<br />
+ii）工艺控制与质量保证[6]：由深度学习模型驱动的视觉系统用于检测缺陷、监测排放并确保工艺精度——减少返工和材料浪费；<br />
+iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路线，间接减少排放和资源使用。</p>
+<p>尽管取得了这些成功，但AI在制造业中的广泛采用仍然有限。许多制造商——尤其是中小型企业（SMEs）——面临实施障碍，例如员工专业知识不足、基础设施和培训前期成本高昂、数据隐私担忧以及投资回报率问题。此外，许多AI实施仍然专注于经济绩效。AI成果与环境关键绩效指标（如碳足迹、水资源利用、材料效率）的对齐仍处于发展之中。与此同时，数字孪生正成为管理可扩展性和适应性的关键组成部分，以应对工艺设计和优化中的复杂性和变异性。这些虚拟模型可以模拟各种操作条件、材料流、设备配置以及与现实世界部署相关的不确定因素——如资源可用性波动、设备退化以及工艺变异性——使工程师能够在物理实施之前识别低碳和低废路径。例如，它们被用于评估不同的生产场景，以最小化劣质产品、能源使用和化学废弃物。AI可以通过先进机器学习算法增强实时数据分析、预测建模和决策，显著提升数字孪生的能力。</p>
+<p>AI还可用于加速生命周期评估（LCA）工作流程，用基于历史数据[9]、产品规格[10]和生产日志[11]的自动估计替代手动清单分析。AI驱动的LCA工具现在可以使用在先前评估产品上训练的替代模型来预测新复杂设计的从摇篮到坟墓的环境影响，这些工具可以轻松集成到设计和开发过程中以提供环境足迹信息。在材料工程领域，生成式模型（如变分自编码器和强化学习）正被应用于发现可持续替代品——如生物基聚合物或可回收合金——以满足性能约束同时最小化环境负担。这些工具显著缩短了研发时间和成本，开发出环境影响更小的材料。然而，当前大多数生命周期指标严重依赖预定义的排放因子，存在各种不确定性[12]，这些因子汇总了每单位活动的环境影响（例如，每千瓦时多少千克CO₂）。虽然这些因子有用，但它们通常缺乏在可持续制造领域预测现实世界行为所需的空间、时间和社会背景粒度。因此，它们忽略了与某些原材料相关的场地特异性环境和健康危害——如毒性、颗粒物排放、重金属暴露、内分泌干扰特性以及水污染风险——这些可能未反映在传统以温室气体为中心的指标中。</p>
+<p>目前，AI在可持续制造方面展现出巨大前景，但实际实施仍是零散的。早期采用者正在引领方向，但需要更广泛、更系统的转变才能充分发挥AI在可持续制造中的潜力。本章探讨了当前和未来可能阻碍/延迟AI在可持续驱动型制造中广泛采用的挑战，同时也识别了为实现长期影响必须解决的差距。随后重点介绍了可以弥合这些差距的科学和技术进步，为透明、适应性强且对环境负责的AI赋能绿色制造系统铺平道路。</p>
+<h2>当前和未来的挑战</h2>
+<p>尽管具有巨大潜力，AI和ML仍面临结构、技术和文化障碍，限制了其在水循环制造中的全面实施。与可持续制造相关的AI应用的一个主要问题是获取有意义、相关且准确的数据。清洁、有标签且可访问的数据集对于有效模型训练至关重要，但许多设施运营的是孤岛式、不一致或不完整的数据。遗留系统通常缺乏互操作性，使数据整合成本高昂且耗时。此外，对知识产权和网络安全的担忧造成了跨供应链开放数据共享的阻力。</p>
+<p>AI模型的透明度、可解释性和可信度也是确保其在各种制造应用中有效和负责任部署的关键问题[13]。许多最先进的AI模型（如深度神经网络）作为"黑箱"运作，使工程师和决策者难以完全理解或信任其输出。这限制了跨领域和多模态AI在问责制和可追溯性至关重要的任务（如遵守环境法规或安全标准）中的采用。此外，数据异构性和计算成本及基础设施限制需要得到解决，以充分释放AI在可持续制造中的潜力。</p>
+<p>关于AI采用的另一个挑战是劳动力就绪性，因为员工需要有效使用该技术的技能[14]。AI的成功实施不仅需要数据科学家和工程师，还需要能够理解如何解释模型输出并据此采取行动的熟练操作员。迄今为止，为AI集成环境中的劳动力提升技能仅在少数情况下出现，或许是由于培训/教育成本。最近大型语言模型（LLM）的进展可以支持在职培训。这些模型最适合用于通用场景，但在更详细/高度专业化的场景中可能会遇到困难。</p>
+<p>跨领域和多模态AI代表了在制造业内部推进可持续性的一个有前景的前沿。通过整合不同数据类型——如传感器读数、文本文档、视觉检查图像和环境指标——AI系统可以形成对复杂制造生态系统的更全面理解。此外，集中式数据平台可以在协调整个可持续发展工作不同阶段的领域特定知识方面发挥关键作用。例如，将机器传感器数据与维护日志和供应链记录相结合，可以改进故障诊断、减少材料浪费并优化整个产品生命周期的能源使用。表1显示了当前应用领域以及相关技术和基础设施需求，这些对于实现AI如何用于可持续制造至关重要。</p>
+<h2>应对挑战的科学和技术进步</h2>
+<p>最近的科学和技术进步对于克服AI在可持续制造中采用的挑战至关重要，涉及能源、材料和工艺等领域。这些进展提高了效率，优化了资源使用，并在整个产品生命周期中实现了更好的环境影响监测和减少。</p>
+<p>一个主要进展领域是AI辅助能源优化。机器学习模型现在可以分析大量传感器和操作数据，以动态控制制造系统中的能源消耗[15]。先进算法实现实时决策以减少能源浪费、在非高峰时段安排机器运转，并将可再生能源整合到生产线中。此外，预测模型增强了需求预测和能源存储管理，使工业能源使用更加可持续和具有韧性。</p>
+<p><strong>表1. 制造应用领域及相关基础设施/技术需求</strong></p>
+<table>
+<thead>
+<tr>
+<th>成熟度</th>
+<th>应用领域</th>
+<th>基础设施需求</th>
+<th>技术需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新兴</td>
+<td>循环经济优化</td>
+<td>可持续性数据中心（用于可扩展性、互操作性和_____）</td>
+<td>跨领域和多模态AI</td>
+</tr>
+<tr>
+<td>新兴</td>
+<td>绿色材料发现</td>
+<td></td>
+<td>基于智能体的自主AI</td>
+</tr>
+<tr>
+<td>低</td>
+<td>质量保证</td>
+<td>传感与执行系统</td>
+<td>实时LCA和技术经济分析（TEA）</td>
+</tr>
+<tr>
+<td>低</td>
+<td>产品设计</td>
+<td></td>
+<td>AI可解释性和可信度</td>
+</tr>
+<tr>
+<td>低</td>
+<td>生命周期评估</td>
+<td></td>
+<td>AI赋能自适应制造</td>
+</tr>
+<tr>
+<td>低</td>
+<td>数字孪生</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>中</td>
+<td>工艺控制</td>
+<td>标准化的LCA数据库</td>
+<td>现有技术在 workforce 中的更广泛传播</td>
+</tr>
+<tr>
+<td>中</td>
+<td>工艺优化</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>中</td>
+<td>能源优化</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>中</td>
+<td>供应链优化</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>中</td>
+<td>预测性维护</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>与此同时，AI驱动的数字孪生和仿真技术的进步彻底改变了制造商以可持续性为出发点设计、构建、运营和评估系统的方式[16]。数字孪生——即物理资产的虚拟表示——使工程师能够在实施之前模拟各种场景以最小化排放、水资源使用和材料浪费。当与AI结合时，这些模型可以适应变化的条件并在产品整个生命周期中持续优化性能。</p>
+<p>另一个关键发展在于使用AI进行可持续材料发现。机器学习算法正在加速识别低碳材料[17]、可回收聚合物[18]和环保复合材料[19]，通过从大量实验数据中预测材料特性和行为。这显著减少了对与传统材料创新相关的试错方法的依赖，加速了向更绿色替代品的转型。</p>
+<p>此外，AI可解释性和领域特定建模的进展正在弥合数据科学与工业实践之间的差距。可解释AI和物理信息机器学习的新方法使从业者能够更好地理解AI模型如何做出决策，并确保其与工程原理和可持续性目标的对齐[20]。这些进展对于赢得信任、提高透明度、效率和支持在复杂制造环境中与人类互动相协调的负责任AI采用至关重要。</p>
+<p>最后，将实时AI与能源系统、材料研究、工艺仿真和可解释性方面的突破相结合，正在推动绿色制造的变革性改进。这些科学和技术进步对于克服当前挑战并确保AI成为可持续工业发展的核心驱动力至关重要。</p>
+<h2>结语</h2>
+<p>人工智能（AI）已成为追求可持续性和绿色制造的变革性推动者。其分析复杂数据集、优化资源使用和支持智能决策的能力，为减少制造系统环境影响提供了重大机遇。从预测性维护到能效调度，从可持续产品设计到供应链透明度，AI技术正在推动与长期可持续性目标一致的操作改进。</p>
+<p>然而，要在这一背景下充分发挥AI的潜力，不仅仅需要技术就绪。它需要一种结合数据科学、领域专业知识和可持续性科学的多学科方法——当然，还需要制造科学和工程。AI成功整合到制造中必须不仅考虑技术性能，还要考虑可解释性、数据治理和伦理影响。此外，确保AI解决方案可访问和可扩展至关重要，特别是对于通常缺乏采用先进技术资源的中小型企业（SMEs）。</p>
+<p>随着各行业加速向净零排放转型，AI将在实现适应性、透明和弹性的制造系统方面发挥越来越重要的作用。在制造多个层级和层面设计高度互联的系统可以加速AI的大规模集成并释放其最大潜力。未来的研究应专注于推进可解释和集中式AI系统、将实时LCA与可持续性指标整合到决策过程中、以及跨部门合作共享知识和最佳实践。通过持续创新和负责任的实施，AI可以为将制造系统重塑为可持续发展引擎做出重大贡献。</p>
+<h2>参考文献</h2>
+<p>[1] Solomon BD, Krishna K. The coming sustainable energy transition: History, strategies, and outlook. Energy policy. 2011 Nov 1;39(11):7422-31, doi: https://doi.org/10.1016/j.enpol.2011.09.009.<br />
+[2] Pimenov DY, Mia M, Gupta MK, Machado ÁR, Pintaude G, Unune DR, Khanna N, Khan AM, Tomaz Í, Wojciechowski S, Kuntoğlu M. Resource saving by optimization and machining environments for sustainable manufacturing: A review and future prospects. Renewable and Sustainable Energy Reviews. 2022 Sep 1;166:112660, doi: https://doi.org/10.1016/j.rser.2022.112660.<br />
+[3] Chiu MC, Chu CH. Review of sustainable product design from life cycle perspectives. International Journal of Precision Engineering and Manufacturing. 2012 Jul;13:1259-72, doi: 10.1007/s12541-012-0169-1.<br />
+[4] Bachmann N, Tripathi S, Brunner M, Jodlbauer H. The contribution of data-driven technologies in achieving the sustainable development goals. Sustainability. 2022 Feb 22;14(5):2497, doi: 10.3390/su14052497.<br />
+[5] Aldoseri A, Al-Khalifa K, Hamouda A. A roadmap for integrating automation with process optimization for AI-powered digital transformation. Preprints. 2023 Oct 17;1055:v1, doi: https://doi.org/10.20944/preprints202310<br />
+[6] Aragani VM. The Future of Automation: Integrating AI and Quality Assurance for Unparalleled Performance. International Journal of Innovations in Applied Sciences &amp; Engineering. 2024;10(S1):19-27.<br />
+[7] Abaku EA, Edunjobi TE, Odimarha AC. Theoretical approaches to AI in supply chain optimization: Pathways to efficiency and resilience. International Journal of Science and Technology Research Archive. 2024 Mar;6(1):092-107. doi: 10.53771/ijstra.2024.6.1.0033<br />
+[8] Alomar MA. Performance optimization of industrial supply chain using artificial intelligence. Computational Intelligence and Neuroscience. 2022;2022(1):9306265. doi: https://doi.org/10.1155/2022/9306265<br />
+[9] Akhshik M, Bilton A, Tjong J, Singh CV, Faruk O, Sain M. Prediction of greenhouse gas emissions reductions via machine learning algorithms: Toward an artificial intelligence-based life cycle assessment for automotive lightweighting. Sustainable Materials and Technologies. 2022 Apr 1;31:e00370. doi: https://doi.org/10.1016/j.susmat.2021.e00370<br />
+[10] Kwong CK, Jiang H, Luo XG. AI-based methodology of integrating affective design, engineering, and marketing for defining design specifications of new products. Engineering Applications of Artificial Intelligence. 2016 Jan 1;47:49-60. doi: https://doi.org/10.1016/j.engappai.2015.04.001<br />
+[11] Akbar BH, Al-Aradi HJ, Achmad PR, Khan WU. Achieving Productivity and Operational Efficiency, and High-Quality Data Through Automation in Well Log Data Quality Control and Acceptance Process Using AI/ML Techniques. In Abu Dhabi International Petroleum Exhibition and Conference 2022 Oct 31 (p. D021S068R004). SPE. doi: https://doi.org/10.2118/211173-MS<br />
+[12] Finnveden G. On the limitations of life cycle assessment and environmental systems analysis tools in general. The International Journal of Life Cycle Assessment. 2000 Jul;5:229-38. doi: https://doi.org/10.1007/BF02979365<br />
+[13] Soldatos J, Kyriazis D. Trusted Artificial Intelligence in Manufacturing. Boston, MA, USA: Now Publishers; 2021. doi: 10.1561/9781680838770<br />
+[14] Leesakul N, Oostveen AM, Eimontaite I, Wilson ML, Hyde R. Workplace 4.0: Exploring the implications of technology adoption in digital manufacturing on a sustainable workforce. Sustainability. 2022 Mar 11;14(6):3311. doi: https://doi.org/10.3390/su14063311<br />
+[15] Guo Y, Zhang W, Qin Q, Chen K, Wei Y. Intelligent manufacturing management system based on data mining in artificial intelligence energy-saving resources. Soft Computing. 2023 Apr;27(7):4061-76. doi: https://doi.org/10.1007/s00500-021-06593-5<br />
+[16] He B, Bai KJ. Digital twin-based sustainable intelligent manufacturing: a review. Advances in Manufacturing. 2021 Mar;9(1):1-21. doi: https://doi.org/10.1007/s40436-020-00302-5<br />
+[17] Mahjoubi S, Barhemat R, Meng W, Bao Y. AI-guided auto-discovery of low-carbon cost-effective ultra-high performance concrete (UHPC). Resources, Conservation and Recycling. 2023 Feb 1;189:106741. doi: https://doi.org/10.1016/j.resconrec.2022.106741<br />
+[18] Wilson AN, St John PC, Marin DH, Hoyt CB, Rognerud EG, Nimlos MR, Cywar RM, Rorrer NA, Shebek KM, Broadbelt LJ, Beckham GT. PolyID: Artificial intelligence for discovering performance-advantaged and sustainable polymers. Macromolecules. 2023 Oct 19;56(21):8547-57. doi: 10.1021/acs.macromol.3c00994<br />
+[19] Kuppusamy Y, Jayaseelan R, Pandulu G, Sathish Kumar V, Murali G, Dixit S, Vatin NI. Artificial neural network with a cross-validation technique to predict the material design of eco-friendly engineered geopolymer composites. Materials. 2022 May 10;15(10):3443. doi: https://doi.org/10.3390/ma15103443<br />
+[20] Srivastava PR, Mangla SK, Eachempati P, Tiwari AK. An explainable artificial intelligence approach to understanding drivers of economic energy consumption and sustainability. Energy Economics. 2023 Sep 1;125:106868. doi: https://doi.org/10.1016/j.eneco.2023.106868.</p>
+        <nav class="section-nav"><a href="06-robotics.html">← 上一章</a><a href="08-ml-dl.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

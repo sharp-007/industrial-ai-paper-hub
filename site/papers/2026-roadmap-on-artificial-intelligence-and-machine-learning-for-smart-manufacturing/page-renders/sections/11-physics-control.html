@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字孪生赋能自主制造的物理预测控制 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第17章</div>
+        <nav class="section-nav"><a href="10-semantic.html">← 上一章</a><a href="12-trustworthy.html">下一章 →</a></nav>
+        <h3>17. 数字孪生赋能自主制造的物理预测控制与实时决策</h3>
+<p>建模与仿真构建了机器学习代理模型，用于模型预测控制（MPC），实现与物理系统的双向反馈；该方法已在定向能沉积（DED）中得到验证，采用时间序列密集编码器（TiDE）预测熔池特征并优化激光功率，从而提高质量并减少缺陷[4]。</p>
+<p>尽管取得了上述最新进展，当前制造业中部署的大多数数字孪生仍远未实现完全自主，仍需人类专家参与循环，以验证模型更新并处理边缘情况决策——即超出正常工况的罕见或异常情景[5]。展望未来，制造业数字孪生必须从"数字阴影"演进为自优化智能体，不仅能够预测故障、优化工艺，还能学习不断演变的工艺动态、适应新产品，并在多个制造工艺之间协同作业，从而为下一代数字孪生奠定基础——驱动精益化、弹性化和可持续的制造生态系统[6]。</p>
+<p><strong>当前及未来面临的挑战</strong></p>
+<p>现代制造工艺（如增材制造和精密焊接）涉及复杂的时空物理特性，难以在实时条件下进行建模。尽管有限元法或计算流体力学等高保真方法能够捕捉这些动态，但其计算成本过高，无法应用于闭环控制，因此快速机器学习代理模型至关重要[7]。通过从传感器和仿真数据中提取模式，这些代理模型能够在边缘设备上实现毫秒级预测，从而支持超低延迟推理。然而，大多数数字孪生仅孤立地建模时间或空间动态，且许多系统将工艺视为黑箱而非学习其底层物理规律，这在从稀疏数据中发现物理规律和泛化至新工况方面均构成挑战[8]。在高成本工艺中数据稀缺的状况进一步加剧了上述困难，尤其是针对罕见缺陷的情形，限制了标定和自适应能力。尽管离线再训练可以恢复精度，但在不中断生产的情况下实现连续的在线更新仍然困难重重；Koopman算子和降阶模型等方法虽具潜力，但仍需进一步研究[9]。</p>
+<p>在数字孪生范式中，从代理建模过渡到实时决策需要贯穿系统全生命周期的不确定性感知机器学习与决策，这通常涉及模型保真度与计算效率之间的权衡。例如，当使用离散事件仿真[10]实现MPC时，模型与优化方法的选择（如使用简化线性近似的二次规划，或使用详细物理模型进行数值优化）会极大地影响精度、决策频率和整体控制质量。此外，由于系统行为在不同工况或生命周期不同阶段可能发生变化，有效且数据高效的连续模型自适应方法仍然是未解决的难题。</p>
+<p>上述挑战凸显了持续验证、确认和不确定性量化（VVUQ）的重要性，这仍是制造业数字孪生部署中的一大障碍[3,6]。尽管ISO 23247（制造业数字孪生框架）等标准提供了结构性指导，但并未涉及可信度评估或VVUQ。数字孪生本身具有复杂性，面临认知不确定性 aleatory不确定性和未知不确定性，需要稳健的VVUQ来确保可靠性。数字孪生的动态特性要求在条件演变过程中持续进行验证以保持准确性，这也引发了对更新频率和计算可行性的思考。</p>
+<p>微观组织在制造中起着关键作用，其演化取决于几何结构和工艺条件，并最终决定决定构件性能的力学、热学和化学性能。理解工艺—微观组织—性能之间的关系对于优化至关重要[11]，然而预测零件尺度的演化仍然具有挑战性，原因包括仿真成本高、物理现象的随机性以及高速或高温工艺中原位监测的局限性。例如，在增材制造中，快速热循环产生非线性的、路径相关的晶粒结构，难以建模[12]。这些复杂性也影响了几何、材料和工艺的协同设计，其中微观组织非均匀性使优化变得更加复杂。应对这一挑战需要在早期设计决策中纳入与微观组织相关的目标，并通过自适应工艺优化加以细化。</p>
+<p><strong>应对挑战的科学和技术进展</strong></p>
+<p>为建模跨时空演化的动态制造工艺，机器学习方法（如时空神经算子、图神经网络和Transformer编码器）已被用于从传感器数据、仿真数据和历史日志中提取模式。异构数据融合已通过潜变量高斯过程（LVGP）和时间融合Transformer等方法得到解决[13]，而自适应采样、多保真度建模、迁移学习和合成数据预训练有助于缓解数据稀缺问题。不确定性通过高斯过程、贝叶斯神经网络或深度集成模型来处理，这些模型提供经过校准的置信区间，以支持风险感知决策。为满足性能需求，轻量化架构和优化的边缘部署实现了快速、成本高效的推理。在这些进展的基础上，预训练神经网络现在作为代理模型用于快速评估，支持高效策略学习以将状态映射到动作，并生成概率预测以指导不确定性感知的实时决策[15]。</p>
+<p>为确保代理模型在整个系统生命周期中保持可靠性，近期研究聚焦于连续模型验证[16]和自适应。这不仅涉及检测模型何时与物理系统不再对齐，还涉及以最少性能损失的方式高效更新模型。概念漂移检测的新兴方法提高了实时监控的稳健性，尤其对于神经网络和多变量预测框架[17]。同时，轻量化自适应方法（如低秩微调）能够以最小数据实现快速更新，在适应不断演化的制造条件的同时保持保真度。这些进展对于赋能可信的自改进数字孪生系统至关重要，使其能够在动态操作环境中支持弹性化和自适应的决策。</p>
+<p>人工智能与机器学习领域的最新进展正在改变制造业中微观组织的预测和优化方式，以应对广泛实验的不切实际性和基于物理建模的高计算成本[18]。多尺度建模方法现在将宏观加工条件与微观和介观尺度的材料行为相结合，从而更准确地预测微观组织演化及其对材料性能的影响。这些模型正越来越多地通过数据驱动技术加以增强，例如生成对抗网络（GANs）生成逼真的微观组织用于虚拟设计[19]，卷积神经网络（CNNs）从微观组织图像预测应力-应变曲线和材料性能，递归神经网络（RNNs）通过学习路径敏感的塑性响应来捕捉历史依赖性塑性[12]。这些能力被嵌入到集成优化框架中，利用贝叶斯优化、进化算法和迁移学习来发现能够产生最佳微观组织和性能目标的工艺条件。通过将这些方法扩展到几何、材料和工艺的协同设计，深度学习和逆优化能够考虑非均匀微观组织演化[20]。尽管协同设计是高维问题，但JAX-FEM等可微分物理建模方法支持基于梯度的优化，直接将设计变量与微观组织结果关联起来，在保持物理保真度的同时加速最优解的搜索。</p>
+<p><strong>结语</strong></p>
+<p>总之，推进制造业数字孪生需要解决以下关键需求：时空建模、基于代理模型的实时控制、不确定性量化和微观组织感知协同设计。最前沿的物理信息机器学习方法（包括时空神经算子、图神经网络和Transformer编码器）提供了统一的工艺建模能力。可靠部署还依赖于通过快速代理模型、多模态数据融合、自适应采样、迁移学习、概念漂移检测和多尺度预测框架实现的连续模型更新。展望未来，下一代自主数字孪生将整合网络安全联邦学习、可扩展数据基础设施、可信人工智能以及边缘到云的集成，从而实现自学习和自适应决策。这些进展将支持具备工艺、材料和设计并发优化能力的弹性化、可持续和敏捷制造。</p>
+<p><strong>参考文献</strong></p>
+<p>[1] Karkaria, V., Goeckner, A., Zha, R., Chen, J., Zhang, J., Zhu, Q., Cao, J., Gao, R. X., and Chen, W., 2024, "Towards a Digital Twin Framework in Additive Manufacturing: Machine Learning and Bayesian Optimization for Time Series Process Optimization," J. Manuf. Syst.</p>
+<p>[2] van Beek, A., Nevile Karkaria, V., and Chen, W., 2023, "Digital Twins for the Designs of Systems: A Perspective," Struct. Multidiscip. Optim., 66(3), p. 49.</p>
+<p>[3] 2024, Foundational Research Gaps and Future Directions for Digital Twins, National Academies Press, Washington, D.C.</p>
+<p>[4] Chen, Y.-P., Tsai, Y.-K., Karkaria, V., and Chen, W., 2025, "Uncertainty-Aware Digital Twins: Robust Model Predictive Control Using Time-Series Deep Quantile Learning," J. Mech. Des., 148(021702).</p>
+<p>[5] Zemskov, A. D., Fu, Y., Li, R., Wang, X., Karkaria, V., Tsai, Y.-K., Chen, W., Zhang, J., Gao, R., Cao, J., Loparo, K. A., and Li, P., 2024, "Security and Privacy of Digital Twins for Advanced Manufacturing: A Survey."</p>
+<p>[6] Shao, G., Hightower, J., and Schindel, W., 2023, "Credibility Consideration for Digital Twins in Manufacturing," Manuf. Lett., 35, pp. 24–28.</p>
+<p>[7] Karkaria, V., Tsai, Y.-K., Chen, Y.-P., and Chen, W., "An Optimization-Centric Review on Integrating Artificial Intelligence and Digital Twin Technologies in Manufacturing," Eng. Optim., 0(0), pp. 1–47.</p>
+<p>[8] Böttjer, T., Tola, D., Kakavandi, F., Wewer, C. R., Ramanujan, D., Gomes, C., Larsen, P. G., and Iosifidis, A., 2023, "A Review of Unit Level Digital Twin Applications in the Manufacturing Industry," CIRP J. Manuf. Sci. Technol., 45, pp. 162–189.</p>
+<p>[9] Kabashkin, I., 2024, "Digital Twin Framework for Aircraft Lifecycle Management Based on Data-Driven Models," Mathematics, 12(19), p. 2979.</p>
+<p>[10] Thelen, A., Zhang, X., Fink, O., Lu, Y., Ghosh, S., Youn, B. D., Todd, M. D., Mahadevan, S., Hu, C., and Hu, Z., 2022, "A Comprehensive Review of Digital Twin — Part 1: Modeling and Twinning Enabling Technologies," Struct. Multidiscip. Optim., 65(12), p. 354.</p>
+<p>[11] Kalia, K., and Ameli, A., 2023, "Understanding the Process-Microstructure-Property Relationships in Material Extrusion Additive Manufacturing of Polylactic Acid Microcellular Foams," Addit. Manuf., 72, p. 103636.</p>
+<p>[12] Mozaffar, M., Bostanabad, R., Chen, W., Ehmann, K., Cao, J., and Bessa, M. A., 2019, "Deep Learning Predicts Path-Dependent Plasticity," Proc. Natl. Acad. Sci., 116(52), pp. 26414–26420.</p>
+<p>[13] Comlek, Y., Ravi, S. K., Pandita, P., Ghosh, S., Wang, L., and Chen, W., "Heterogeneous Multi-Source Data Fusion Through Input Mapping and Latent Variable Gaussian Process."</p>
+<p>[14] Karkaria, V., Chen, J., Luey, C., Siuta, C., Lim, D., Radulescu, R., and Chen, W., 2024, "A Digital Twin Framework Utilizing Machine Learning for Robust Predictive Maintenance: Enhancing Tire Health Monitoring."</p>
+<p>[15] Chen, Y.-P., Karkaria, V., Tsai, Y.-K., Rolark, F., Quispe, D., Gao, R. X., Cao, J., and Chen, W., 2025, "Real-Time Decision-Making for Digital Twin in Additive Manufacturing with Model Predictive Control Using Time-Series Deep Neural Networks," J. Manuf. Syst., 80, pp. 412–424.</p>
+<p>[16] Bitencourt, J., Wooley, A., and Harris, G., 2025, "Verification and Validation of Digital Twins: A Systematic Literature Review for Manufacturing Applications," Int. J. Prod. Res., 63(1), pp. 342–370.</p>
+<p>[17] Zhang, K., Bui, A. T., and Apley, D. W., 2023, "Concept Drift Monitoring and Diagnostics of Supervised Learning Models via Score Vectors," Technometrics, 65(2), pp. 137–149.</p>
+<p>[18] Papadimitriou, I., Gialampoukidis, I., Vrochidis, S., and Kompatsiaris, I., 2024, "AI Methods in Materials Design, Discovery and Manufacturing: A Review," Comput. Mater. Sci., 235, p. 112793.</p>
+<p>[19] Hsu, T., Epting, W. K., Kim, H., Abernathy, H. W., Hackett, G. A., Rollett, A. D., Salvador, P. A., and Holm, E. A., 2020, "Microstructure Generation via Generative Adversarial Network for Heterogeneous, Topologically Complex 3D Materials," JOM, 73(1), pp. 90–102.</p>
+<p>[20] Shang, X., Liu, Z., Zhang, J., Lyu, T., and Zou, Y., 2023, "Tailoring the Mechanical Properties of 3D Microstructures: A Deep Learning and Genetic Algorithm Inverse Optimization Framework," Mater. Today, 70, pp. 71–81.</p>
+<figure class="paper-figure"><img src="../images/physics-control-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+        <nav class="section-nav"><a href="10-semantic.html">← 上一章</a><a href="12-trustworthy.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

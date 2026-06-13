@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赋能机器学习的语义框架 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第16章</div>
+        <nav class="section-nav"><a href="09-generative.html">← 上一章</a><a href="11-physics-control.html">下一章 →</a></nav>
+        <h3>15. 生成式AI与制造设计</h3>
+<p><em>（此节内容未包含于本次翻译的原文件中。）</em></p>
+<hr />
+<h3>16. 赋能机器学习的语义框架</h3>
+<p><strong>Arild Waaler<sup>1</sup>, Martin G. Skjæveland<sup>1</sup> and Dimitris Kyritsis<sup>1</sup></strong></p>
+<p><sup>1</sup> Department of Informatics, University of Oslo, Norway</p>
+<p>E-mail: arild@uio.no</p>
+<p><strong>现状</strong></p>
+<p>当今工程实践在根本上依赖于技术信息，而这些信息以文档为基础，散布于各种工具与领域之中，并与孤立的组织结构相绑定。尽管各学科在不同程度上采用了本体（ontology）等形式化模型，但在整个工程生命周期中，却缺乏一个共享的基础来构建系统级知识。因此，所谓的数字线程——即从需求出发，经由设计、实现直至运营的可追溯连接——常常断裂或模糊不清。</p>
+<p>与此同时，人工智能，特别是机器学习和生成式模型，正在迅速被整合到工程工作流程中。然而，在缺乏明确定义的对象和关系的情况下，这些方法难以产生可信的结果。当结构隐含或缺失时，AI模型变得不可靠，工程师们也无从验证或解释AI模型的输出。这造成了AI的承诺与高风险工程实践的现实之间的巨大鸿沟——在这些场景中，精确性、安全性、可信性和可追溯性是不可妥协的。</p>
+<p><strong>当前与未来的挑战</strong></p>
+<p>为解决这一问题，亟需建立既可验证又易于理解的结构化工程知识表示。这需要使跨工程学科的专家用户能够验证、复用并完善支撑AI和自动化的信息模型及数据模型。关键在于，此类验证应以既定的系统工程原理为基础：抽象用于信息隐藏，层次分解用于模块化，拓扑用于管理流，接口用于封装，以及分类用于复用。</p>
+<p>形式化验证的要求更为严格：需要一种支持可判定推理的逻辑基础。这包括定义和检查类公理、检测不一致性，以及在可判定的逻辑子集中推导出后果的能力。缺乏这样的基础，技术信息模型就无法被可靠地查询、复用或在规模上集成。</p>
+<p>技术信息的结构缺失同样削弱了可扩展工业知识图谱的建设努力。尽管RDF [8]和OWL [9]等知识图谱和本体标准已被广泛使用，但它们往往缺乏与工程实践的连接，无法捕捉系统的结构逻辑。我们需要一个有原则的基础——将工程语义与基于语义的表示相连接，既作为建模框架，又作为机器可读的AI管道输入 [1]。</p>
+<p>要在工程中实现数字化转型，我们需要允许工程师以人类可读且机器可执行的方式描述系统的语言。这类语言必须支持抽象、模块化、接口封装和复用——这些都是系统工程的核心原则。它们还必须允许工程师表达部分的、不断演化的结构，反映系统模型在任何时刻都不可能完整的现实。</p>
+<p>与此同时，为支持自动化、AI和形式化推理，这些语言必须具有定义良好的逻辑基础。OWL等本体语言提供基于描述逻辑的精确语义 [10]，支持分类、一致性检查和推理。然而，它们往往不适合捕捉工程系统的丰富结构和上下文：它们缺乏对系统级构造（如分解层次结构、连接关系）、模态（如预期配置与实际配置）以及生命周期特定视图的原生支持。</p>
+<p>这揭示了一个根本性的概念鸿沟。工程需要表达内涵结构（intensional structure）的建模语言——即系统元素的角色、约束和关系定义——而基于本体的方法通常侧重于外延分类和静态分类体系。现有的工具和语言很少支持以一种可递增开发、复用和验证的方式一致地表达内涵。</p>
+<p>这一鸿沟也体现在知识图谱的构建中：现有的本体语言提供了语义严谨性，却缺乏工程师建模真实系统所需的结构表现力。因此，可扩展的工业知识图谱仍然难以构建和维护。此外，许多先进的ML算法依赖于结构化的、语义丰富的图输入——这一需求在工程领域尚未得到充分满足 [1]。</p>
+<p>弥合这些鸿沟需要重新思考工程知识的表示方式：从工程实践的需求出发，同时将模型建立在逻辑语义的基础上，并使能自动化。以下是关键挑战：</p>
+<ul>
+<li>如何定义既可读又逻辑精确的结构规格？</li>
+<li>如何在部分模型和不断演化的设计中保持可追溯性？</li>
+<li>如何将特定领域的工程实践与共享的本体基础相协调？</li>
+<li>如何将人类驱动的设计与机器生成的模型结构相结合？</li>
+</ul>
+<p>为应对这些挑战，一个新的框架必须将内涵作为第一公民（first-class citizens），使模型具有上下文性、组合性、语义透明性，并且对AI友好。</p>
+<p><strong>应对挑战的科学与技术进展</strong></p>
+<p>弥合工程建模需求与形式化本体能力之间的差距，需要一种新型框架——将系统工程的表达能力与形式化逻辑的精确性相结合。信息建模框架（Information Modelling Framework, IMF）[7, 2]正是为满足这一需求而设计。它提供了一个简洁而全面、可扩展的核心语言，使工程师能够以形式化可解释、可递增构建且可验证的方式表达系统元素的内涵定义。</p>
+<p>IMF的基础在于内涵与外延之间清晰的分离。一个IMF元素表达的是一个结构规格——即系统元素"应为何"的参数化定义，而非"当前存在什么"。每个这样的规格都附带一个切面（aspect）：一种结构化的上下文，捕捉信息域（如功能、实现）、模态（如预期的、实际的）以及生命周期视角（如产品、项目），见图1。这种框架使得 alternative designs（替代设计方案）、需求与实现的对比，以及不同利益相关方的视图——都能够在统一的形式化体系中得到连贯的建模。</p>
+<p><strong>形式上</strong>，IMF使用来自类型λ演算的构造来定义结构规格。诸如hasPart、connectedTo和hasTerminal等关系被解释为函数应用，其语义建立在内涵逻辑的基础上。由此产生的模型可以被翻译为外延公理集（例如在描述逻辑中），使形式化推理工具能够验证性质、检测不一致性并支持模型补全。</p>
+<p>由于IMF模型建立在形式化语义的基础上并可序列化为知识图谱（RDF），它们成为工业知识图谱的自然基础。这些图谱在语义上丰富，按照系统工程逻辑构建，且机器可读。此外，IMF模型的RDF表示可以被先进的ML管道直接消费，为AI模型提供格式良好、经语义验证的工程结构。</p>
+<p>IMF在一个公开可访问的规范中定义 [7]，并得到资产信息建模推荐实践 [2] 的支持。此外，IMF项目还发布了其语义技术资源，包括其OWL本体和SHACL形状模式 [3]。IMF不是一个固定的标准，而是一个结构化、形式化、开放式的模型开发平台。它已在欧盟资助的项目RE4DY [4]、SM4RTENANCE [5]和Tec4MaaSEs [6]中得到探索——见图2的示例。</p>
+<p><strong>结论性 remarks</strong></p>
+<p>信息建模框架（IMF）为构建工程知识提供了一个有原则的基础，既支持人类理解、AI驱动的自动化和形式化验证。通过弥合系统建模实践与基于逻辑的本体之间的鸿沟，IMF使新一代模块化、语义精确且跨上下文适应的工程工具成为可能。</p>
+<p>关键在于，IMF为可扩展的工业知识图谱提供了基础。其RDF序列化格式既支持语义集成，也支持直接输入机器学习工作流——这是工程AI的关键使能器。</p>
+<p>IMF不仅是一种静态语言，更是一个研究和创新计划。它邀请工程师、逻辑学家、数据科学家和工具开发者共同合作，扩展其能力并将其应用于现实世界的挑战。通过将系统原理与形式化语义相结合，IMF支持可信、可解释且可扩展的数字工程基础设施的建设。</p>
+<p><strong>致谢</strong></p>
+<p>本研究得到欧洲委员会在Horizon Europe项目RE4DY（资助号101058384）、SM4RTENANCE（资助号101123490）和Tec4MaaSEs（资助号101138517）中的部分支持。</p>
+<p><strong>参考文献</strong></p>
+<p>[1] Waaler A and Kiritsis D 2025 Information Modelling Framework for Digital Engineering Digital Engineering 4 100042 doi:10.1016/j.dte.2025.100042</p>
+<p>[2] DNV 2024 Asset Information Modelling Framework: Structuring Digital Assets DNV-RP-0670 Online: https://www.dnv.com/digital-trust/recommended-practices/asset-information-modelling-dnv-rp-0670/ (accessed June 2025)</p>
+<p>[3] IMF Programme IMF Semantic Technology Resources. 2025. Online: http://ns.imfid.org (accessed June 2025)</p>
+<p>[4] RE4DY Project 2025. Online: https://re4dy.eu (accessed June 2025)</p>
+<p>[5] SM4RTENANCE Project 2025. Online: https://sm4rtenance.eu (accessed June 2025)</p>
+<p>[6] Tec4MaaSEs Project 2025. Online: https://tec4maases.eu (accessed June 2025)</p>
+<p>[7] IMF Programme 2025 IMF Overview and Manual Online: https://www.imfid.org/ (accessed June 2025)</p>
+<p>[8] W3C. RDF 1.1 Primer. 2014. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
+<p>[9] W3C. OWL 2 Web Ontology Language Document Overview (Second Edition). 2012. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
+<p>[10] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler, An Introduction to Description Logic. Cambridge University Press. 2017.</p>
+<figure class="paper-figure"><img src="../images/semantic-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+
+<figure class="paper-figure"><img src="../images/semantic-fig2.png" alt="图2" loading="lazy"><figcaption>图2</figcaption></figure>
+        <nav class="section-nav"><a href="09-generative.html">← 上一章</a><a href="11-physics-control.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来制造中的数据驱动计量 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第20章</div>
+        <nav class="section-nav"><a href="13-rams.html">← 上一章</a><a href="15-complex.html">下一章 →</a></nav>
+        <h3>20. 未来制造中的数据驱动计量</h3>
+<p>（2）虚拟计量用于估算那些无法在现场直接测量的零件质量特征或工艺参数。这一过程借助数字孪生和模型来实现——模型整合可用的工艺数据和计量数据，以估算缺失的参数[5]。</p>
+<p>（3）数据管理系统收集所有可用的计量信息，用于追踪零件质量、提供测量值和系统行为的实时不确定度估计，并提出改进测量性能的建议，例如当虚拟计量不确定度过高时安排额外的测量周期，或标记不可靠的传感器进行维护[6]。</p>
+<p>上述三个领域通过基于人工智能（AI）的模型进行统一，以帮助解析和处理所采集的海量数据。半导体行业或许为数据驱动计量（DCM）的未来潜力提供了最佳视角。工艺数据被用于生成实时缺陷估计，并筛选晶圆以进行进一步检测[6]。随后，机器学习（ML）工具对工艺数据进行收集和分析，以帮助操作人员理解和改进工艺。然而，向智能制造的转型并非均匀推进：许多行业落后于时代，尚未做好实施DCM的准备[7]。要使DCM得到广泛应用并赢得信任，仍有许多关键技术缺口亟需填补。</p>
+<p><strong>当前与未来的挑战</strong></p>
+<p>计量对于生产至关重要——它是工艺控制和质量控制的关键，新技术必须经过充分验证，才能提高制造商对数据驱动计量的信心并推动其应用。以下挑战目前制约着DCM的可行性：</p>
+<p><strong>（1）集成计量</strong></p>
+<p>集成计量和原位测量难以实施。在工艺过程中进行的测量不能干扰制造流程，但与此同时，由于测量发生在相同的工作区域内，测量结果可能受到工艺过程的影响[1]，并可能遭遇各种不可控的变化[8]。测量还必须跟上制造工艺的节奏，这进一步限制了哪些测量可以在现场进行。因此，在一项调查中仅有38%的企业进行了原位测量[1]。亟需新的发展来开发能够在各种环境条件下以可接受的节奏提供低不确定度结果的传感器。</p>
+<p><strong>（2）虚拟计量</strong></p>
+<p>人工操作员提供专业知识并保持对系统健康状况的可见性至关重要，但随着传感器数据流和自动化决策数量的增加，这变得日益困难。因此，必须开发新方法帮助用户快速消化、评估和处理大量工艺数据[9]。一个可能的发展路径是利用AI进行自动化、虚拟计量和计量数据的动态采样。实际虚拟计量面临的挑战包括：利用历史数据创建有效的初始模型，以及使用在线数据进行模型的自我学习更新[10]。</p>
+<p><strong>（3）带不确定度量化的数据管理</strong></p>
+<p>制造业的未来取决于安全、可检索、可扩展和标准化的数据架构——来自生产各层面的数字化信息将使实时调整成为可能，例如使用语言无关的标识符和标准化的机器可读SI格式[11]。此外，数据系统必须抵御网络攻击，因为互联性的提高已导致网络攻击数量的大幅增加[12]。在整个产品生命周期中应用AI驱动洞见所面临的挑战包括：大数据的整理、AI驱动结果的解释和信任[13]、AI模型的自动更新、隐私保护方法，以及对类别不平衡[14]和可变数据质量[15]的鲁棒性。AI技术通常难以泛化部署，因为大多数AI/ML方法需要大量训练数据，且在不同场景中可能无法按预期工作[13]。为赢得用户信心因此必须为AI模型提供可量化的不确定度估计[13]。</p>
+<p><strong>应对挑战的科技进步</strong></p>
+<p>图1展示了一条基于DCM三大支柱的数据驱动计量发展路线图：（1）集成计量、（2）虚拟计量、（3）带不确定度量化的数据管理：</p>
+<p><strong>（1）集成计量</strong></p>
+<p>由于无法轻易拆卸的集成传感器的溯源性难以实现，应开发新方法用于原位验证和校准，并可追溯至国际标准。为便于对性能不佳的传感器进行“热插拔”，仪器可以向集中式测量管理系统传达实时性能估计，以触发验证周期并标记待维修或更换的传感器。智能传感器——即带有定制ML推理功能的传感器——也可集成到芯片中，用于芯片健康的实时测量[16]。溯源性和校准方法可通过校准工件、自校准方法和计量专用数据的标准化处理加以实现[17]，例如用于机器人辅助计量及全自动化数据处理。</p>
+<p><strong>（2）虚拟计量</strong></p>
+<p>数字孪生内的数据采样率应以AI驱动的智能为基础，测量“适量”数据，在保持产品质量的同时最大限度地降低数据采集和存储成本。例如，当实时AI估计的不确定度超过阈值时，可以触发一次测量以获取一个数据点，在降低该时刻不确定度的同时添加额外数据用于模型更新。DCM利用AI的模式学习特性与计量的可信性相结合，创建可信的、同时具有机器独特性的工艺控制模型[18]。定期将实时可溯源测量与模型估计进行对比，将有助于量化AI模型的不确定度。此外，初始模型的挑战可以通过迁移学习[10]得到帮助——最初严重依赖集成计量，随着机器特异性模型随时间学习而逐渐减轻。</p>
+<p><strong>（3）带不确定度量化的数据管理</strong></p>
+<p>需要为所有制造数据建立普遍适用的标准化数据架构，以验证数据质量和溯源性，例如基于OPC-UA并通过数字校准证书实现校准报告的数字化[19]。应开发并在国际上标准化AI算法总输出不确定度的量化方法，包括学习模型的固有不确定度和输入数据的不确定度，类似于GUM[20]的方法。不确定度应被估计出来，以支持动态采样[6]和不确定度的传播，例如使用基于Shapley加性解释（SHAP）的可解释AI框架[15]。具有低计算延迟的全自动化数据流处理是DCM面临的另一重大挑战，需要物联网（IoT）硬件和软硬件优化方面的创新。</p>
+<figure class="paper-figure"><img src="../images/metrology-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+        <nav class="section-nav"><a href="13-rams.html">← 上一章</a><a href="15-complex.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

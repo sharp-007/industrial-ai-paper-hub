@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "工业AI文献速递",
+    "subtitle": "Industrial AI Literature Express",
+    "description": "精选工业人工智能领域重要文献的中文翻译，快速阅读，持续更新。",
+    "author_line": "中译整理"
+  },
+  "papers": [
+    {
+      "folder": "2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing",
+      "title": "人工智能与机器学习智能制造路线图 2026",
+      "title_en": "2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing",
+      "description": "来自马里兰大学、帝国理工学院、米兰理工大学、香港理工大学等全球 50 余位作者共同撰写，已被 Machine Learning: Engineering 接收。",
+      "arxiv_id": "2605.00839",
+      "arxiv_url": "https://arxiv.org/abs/2605.00839",
+      "doi_url": "https://doi.org/10.1088/3049-4761/ae5967",
+      "journal": "Machine Learning: Engineering",
+      "chapters": 21,
+      "pages": 99,
+      "year": 2026,
+      "tags": [
+        "智能制造",
+        "路线图",
+        "机器学习"
+      ],
+      "url": "papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/index.html"
+    }
+  ]
+}

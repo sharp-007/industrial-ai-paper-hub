@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器学习、深度学习与物理信息ML · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第13–14章</div>
+        <nav class="section-nav"><a href="07-sustainable.html">← 上一章</a><a href="09-generative.html">下一章 →</a></nav>
+        <h3>13. 机器学习与深度学习</h3>
+<p><strong>当前及未来挑战</strong></p>
+<p>基于机器学习/深度学习的智能制造所面临的最严峻挑战在于高质量标注数据的匮乏。由于工业环境中的安全性、成本及操作复杂性，收集足够的标注数据集——尤其是针对罕见故障场景的数据——极度困难。尽管部分研究已尝试利用生成对抗网络（GAN）生成合成故障数据，并采用长短期记忆网络（LSTM）进行时序建模[5]，但这些方法并非总能适用于那些无法收集真实故障数据的制造现场。</p>
+<p>其次，泛化能力有限及可解释性不足仍是关键问题。例如，针对特定刀具优化的预测模型往往难以推广到不同的机器或操作条件。为解决这一问题，可解释人工智能（XAI）技术正被越来越多地引入，以提高人工智能模型的可解释性[6]。</p>
+<p>第三，实现实时性能及轻量化模型部署仍是持续存在的技术瓶颈。尤其在边缘人工智能环境中，资源受限的环境要求模型既高效又准确。近年来的趋势包括通过知识蒸馏压缩大规模模型，并利用领域特定数据进行微调，以在性能与复杂度之间取得平衡[7]。</p>
+<p>最后，文化的和体制性障碍同样不可忽视。中小型企业往往因基础设施不足、技术能力有限或前期投资较大而在人工智能采用上面临延误或失败。在已记录的工业4.0转型失败案例中，不切实际的管理期望、基础设施赤字以及内部阻力是主要因素[8]。</p>
+<p><strong>应对挑战的科学技术进展</strong></p>
+<p>多项技术路径已被提出以克服上述挑战（如图1所示）：</p>
+<p>首先，迁移学习、自监督学习、基于GAN的合成数据生成及联邦学习被用于解决数据稀缺和类别不平衡问题。具体而言，领域适应技术已被用于在有限样本下泛化模型性能，而GAN则被用于合成故障数据或利用未标注数据集[9,10,11]。</p>
+<p>其次，可解释人工智能（XAI）技术正越来越多地被用于降低质量检测的计算成本，同时为操作人员提供可解释的人工智能预测。CAM和Grad-CAM等可视化技术有助于识别决策依据，而虚拟传感器重建及噪声修正方法则被开发用于提高数据质量和可信度[12,13]。</p>
+<p>第三，轻量级实时机器学习/深度学习模型架构的研发已付出大量努力。可变形卷积、通道注意力及双向特征融合等技术已被嵌入现代网络设计，以在保持高精度的同时实现30至100 FPS的推理速度，从而支持在生产环境中的边缘部署[14,15]。</p>
+<p>第四，数字孪生与混合建模的融合日益重要。结合基于物理的仿真与传感器驱动数据模型的混合框架在预测部件寿命方面表现出显著改进。这些方法在提高真实操作中的预测精度和可扩展性方面尤为有效[16,17]。</p>
+<p>最后，隐私保护学习方法受到广泛关注，以解决跨企业数据共享问题。联邦学习框架支持在不就露敏感制造数据的前提下协作训练高性能模型，其有效性已在实际生产数据集上得到验证[18]。</p>
+<p><strong>结论</strong></p>
+<p>综上所述，尽管基于机器学习/深度学习的智能制造发展迅速且潜力巨大，其仍面临若干根本性挑战。这些挑战包括：获取标注高质量工业数据集的困难、在多样化操作场景中泛化能力的局限、复杂模型的可解释性不足，以及基础设施与准备程度方面的重大差距——这些问题对中小型企业而言尤为突出。</p>
+<p>应对这些挑战需要一套综合性的分层策略。首先，增强的数据采集管道不仅需要基于传感器的监测，还需纳入基于仿真（数字孪生）的合成数据增强。跨领域整合异构结构化和非结构化数据，将有助于构建更为全面的人工智能模型。</p>
+<p>以人为中心的可解释性也须从设计早期阶段便予以纳入。除透明化可视化外，特征重要性高亮、注意力热图及上下文解释等技术应使操作人员能够理解和验证基于人工智能的决策。这将有助于建立信任并提高现场接受度。</p>
+<p>此外，轻量级人工智能模型架构的持续创新至关重要。在需要实时决策的边缘计算环境中，必须开发新型深度学习/机器学习方法，以在准确性与计算效率之间取得平衡。尤其值得关注的是，在保持高性能的同时最大限度降低能耗的模型设计，以及利用本地化现场数据逐步提升模型精度的联邦微调技术。</p>
+<p>最终，人工智能制造系统的成功部署与规模化推广，需要学术界、产业界与政府之间的协调合作。当技术创新通过实证测试验证，并与体制及劳动力战略相契合时，智能制造将超越自动化，成为透明、有韧性、以人为本的智能生产系统。</p>
+<p><strong>参考文献</strong></p>
+<p>[1] Rosati R, Romeo L, Cecchini G, Tonetto F, Viti P, Mancini A and Frontoni E 2023 From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0 J. Intell. Manuf. 34 107–121</p>
+<p>[2] Farahani B and Monsefi A K 2023 Smart and collaborative industrial IoT: A federated learning and data space approach Digit. Commun. Netw. 9 436–447</p>
+<p>[3] Zhang J, Su H, Zou W, Gong X, Zhang Z and Shen F 2020 CADN: A weakly supervised learning-based category-aware object detection network for surface defect detection Pattern Recognit. 109 107571</p>
+<p>[4] Chen H, Du Y, Fu Y, Zhu J and Zeng H 2023 DCAM-Net: A rapid detection network for strip steel surface defects based on deformable convolution and attention mechanism IEEE Trans. Instrum. Meas. 72 1–12</p>
+<p>[5] Alzubaidi L, Bai J, Al-Sabaawi A, Santamaría J, Albahri A S, Al-Dabbagh B S N et al 2023 A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications J. Big Data 10 46</p>
+<p>[6] Lei Y, Yang B, Jiang X, Jia F, Li N and Nandi A K 2020 Applications of machine learning to machine fault diagnosis: A review and roadmap Mech. Syst. Signal Process. 138 106587</p>
+<p>[7] Zhang H, Semujju S D, Wang Z, Lv X, Xu K, Wu L et al 2025 Large scale foundation models for intelligent manufacturing applications: a survey J. Intell. Manuf. 1–52</p>
+<p>[8] Pfeifer M R 2021 SMEs in failed transition towards Industry 4.0: A case study of a Czech SME J. Innov. Bus. Best Pract. 1–16</p>
+<p>[9] Jain S, Seth G, Paruthi A, Soni U and Kumar G 2023 Synthetic data augmentation for surface defect detection and classification using deep learning J. Intell. Manuf. 1–14</p>
+<p>[10] Zhong H, Yu S, Trinh H, Yuan R, Lv Y and Wang Y 2025 A time-saving fault diagnosis using simplified fast GAN and triple-type data transfer learning Struct. Health Monit. 24 869–882</p>
+<p>[11] Mehta M, Chen S, Tang H and Shao C 2023 A federated learning approach to mixed fault diagnosis in rotating machinery J. Manuf. Syst. 68 687–694</p>
+<p>[12] Bordekar H, Cersullo N, Brysch M, Philipp J and Hühne C 2025 eXplainable artificial intelligence for automatic defect detection in additively manufactured parts using CT scan analysis J. Intell. Manuf. 36 957–974</p>
+<p>[13] Fabiocchi D, Giulietti N, Carnevale M and Giberti H 2024 AI-driven virtual sensors for real-time dynamic analysis of mechanisms: A feasibility study Machines 12 257</p>
+<p>[14] Wan D, Lu R, Shen S, Xu T, Lang X and Ren Z 2023 Mixed local channel attention for object detection Eng. Appl. Artif. Intell. 123 106442</p>
+<p>[15] Zhang X, Song Y, Song T, Yang D, Ye Y, Zhou J and Zhang L 2024 LDConv: Linear deformable convolution for improving convolutional neural networks Image Vis. Comput. 149 105190</p>
+<p>[16] Iranshahi K, Brun J, Arnold T, Sergi T and Müller U C 2025 Digital twins: Recent advances and future directions in engineering fields Intell. Syst. Appl. 200516</p>
+<p>[17] Sahin T, Wolff D, von Danwitz M and Popp A 2024 Towards a hybrid digital twin: Physics-informed neural networks as surrogate model of a reinforced concrete beam arXiv preprint arXiv:2405.08406</p>
+<p>[18] Piran F J, Chen Z, Imani M and Imani F 2025 Privacy-preserving federated learning with differentially private hyperdimensional computing Comput. Electr. Eng. 123 110261</p>
+<hr />
+<figure class="paper-figure"><img src="../images/mldl-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+<h2>13.1 基于归纳偏置的物理信息机器学习</h2>
+<p><strong>Olga Fink^1^，Vinay Sharma^1^</strong></p>
+<p><strong>^1^ 洛桑联邦理工学院（EPFL）智能维护与运营系统</strong></p>
+<p><strong>电子邮件：olga.fink@epfl.ch</strong></p>
+<h3>现状</h3>
+<p>在智能制造中，物理信息机器学习（PIML）[1]正成为构建数据高效、物理一致、可解释且可信的人工智能系统的关键推动者。制造环境的特点是流程复杂、系统相互关联，且通常存在稀疏或噪声传感器数据[2]。PIML通过将领域知识——如控制方程、结构约束或物理对称性——直接嵌入学习过程来解决这些挑战。</p>
+<p>PIML引入三类偏置以引导模型获得可泛化且物理合理的解：归纳偏置、观测偏置和学习偏置。归纳偏置是嵌入于模型架构中的先验假设——如空间局部性[3]、守恒定律[4]或时间连续性[5]——它们约束了解空间。观测偏置源于数据的采样或表示方式，而学习偏置则产生于优化策略，如正则化或特定损失函数。</p>
+<p>在智能制造中，由于物理过程的复杂性和多样的传感器配置，归纳偏置发挥着尤为重要的作用。关于传感器位置（关系性）、时间动态和信号特性的知识可被有效地整合为归纳偏置，以增强模型的泛化能力、可解释性和数据效率[6]。它使得模型能够在有限数据下学习，同时确保预测结果符合已知的物理和操作约束。例如，嵌入热动力学、材料行为、磨损过程或守恒定律知识的模型，更适用于预测性维护、质量保证和控制[7][8]。归纳偏置同样增强了可解释性——这对操作人员信任和安全关键场景的部署至关重要。</p>
+<p>归纳偏置的一个重要子类是结构偏置和关系偏置[3]，它们在建模现代制造系统时日益重要，因为传感器测量往往表现出强烈的空间和时间相关性。结构偏置编码了关于系统层级化或模块化组织的假设，而关系偏置则捕捉组件之间的相互作用和相互依赖关系。图神经网络（GNN）天然能够利用这些偏置，并在智能制造中展现出强大的潜力。</p>
+<p>GNN能够将机器、传感器和子系统建模为图中的节点，以边表示它们之间的物理、功能或空间关系。这使其非常适用于故障传播分析、根因诊断和系统级健康监测等任务。时空图神经网络[10]进一步融入了时间动态，使得跨分布式系统演变传感器数据的实时分析成为可能。</p>
+<p>在智能制造中，GNN正越来越多地用作代理模型，以逼近复杂动力系统的行为——在这些系统中，直接仿真（如有限元或多物理场模型）计算成本极高[11][12][13]。通过从系统级传感器数据和已知组件相互作用中学习，GNN能够以高保真度模拟物理过程，从而实现快速、可扩展的诊断、控制和优化。</p>
+<p>随着智能制造向互联的赛博物理环境演进，融合结构偏置和关系偏置——特别是通过基于GNN的PIML模型——将成为构建稳健、可扩展、透明的人工智能驱动决策系统的核心。</p>
+<h3>当前及未来挑战</h3>
+<p>代理建模是智能制造的关键推动者，为复杂的物理和赛博物理系统提供高效近似。这些模型对于实时应用至关重要——如系统诊断、控制和预测性维护——因为在这些场景中，完整规模的仿真（如有限元或多物理场模型）计算代价过于高昂。尽管前景广阔，代理模型仍面临若干与制造环境相关的开放性挑战。</p>
+<p>一个主要需求是：在不断变化的操作条件下实现快速的在线动力学预测。模型必须在系统负载、速度或热状态发生变化时仍能提供可靠、实时的输出。此外，它们还须支持长轨迹滚动展开——即将模型输出反馈作为输入，迭代预测系统在未来长时间跨度内的状态——同时最小化误差累积，以确保预测在时间维度上的稳定性。</p>
+<p>学习动态的可解释性和可说明性仍然至关重要。许多高性能模型表现为黑箱，使得验证或解释其输出变得困难——这在安全关键的制造环境中是不可接受的局限性。代理模型不仅需要准确，还须透明且具有物理意义。</p>
+<p>工业系统天生具有噪声且数据丰富。模型必须处理噪声、异构的传感器输入，这些输入往往具有不同的采样率和分辨率。它们还须能够直接从观测轨迹中学习，即使在系统参数或控制方程未知的情况下，这要求强大的归纳偏置和关系偏置。</p>
+<p>除鲁棒性和表达力之外，可扩展性同样必不可少。制造过程日益涉及多物理场相互作用（如热-机械耦合）和多保真度数据流——从高分辨率仿真到低质量实时传感器。代理模型必须连贯地整合这些信息，并在空间和时间分辨率上实现规模化。</p>
+<p>最具挑战性的问题之一是泛化能力和外推能力。人们不仅期望代理模型在训练数据域内泛化，还期望它们能够外推到全新的系统配置和操作条件而无需重新训练。这在柔性或模块化制造场景中尤为重要，因为系统布局和用例不断演变。许多当前模型缺乏处理此类部署场景的适应性，尤其是在故障数据稀疏或不断演变的情况下[14]。</p>
+<p>此外，逆参数推断——如从观测数据中识别过程条件、材料属性或系统级参数——以及退化、磨损或其他长期系统演化的显式建模，仍是重大挑战。这些局限性限制了代理模型在智能制造中的更广泛应用，而准确、可解释和动态的模型对于过程优化、自适应控制、质量保证和生命周期管理至关重要。</p>
+<h3>应对挑战的科学技术进展</h3>
+<p>物理信息图神经网络（PI-GNN）为解决上述挑战提供了一条有前景的路径。最近的发展将几何和物理归纳偏置集成到传统GNN中——从领域特定的物理先验（如基尔霍夫定律[15]或热通量连续性[16]）到更广泛的原则，如对称性[17]、热力学定律[18]和动量守恒[4]——从而将传统GNN扩展为PI-GNN。这些物理归纳偏置增强了GNN固有的关系偏置，使得对组件间相互作用的建模既有物理基础又计算高效，带来了以下关键能力：</p>
+<ul>
+<li><strong>数据效率与长轨迹预测</strong>：物理感知的归纳偏置约束了假设空间，使模型能够从稀疏、噪声数据中准确学习，并防止长期预测中出现非物理的漂移。</li>
+<li><strong>泛化能力与外推能力</strong>：模块化相互作用学习和嵌入的物理知识增强了对未见拓扑、边界和操作制度的迁移能力。</li>
+<li><strong>可解释性与可说明性</strong>：物理定律指导消息传递机制，使成对相互作用能够表示有意义的内部变量（如应力或热通量），从而支持安全关键系统的透明度。</li>
+</ul>
+<p>为充分实现PI-GNN作为生产级工具的潜力，研究须在以下三个关键领域取得进展：</p>
+<p><strong>1. 跨领域应用与通用物理信息先验</strong>：虽然某些近期的PI-GNN——如热力学一致性网络[18]和动量保持等变图网络[4]——显示出跨领域潜力，但大多数仍受限于领域特定的归纳偏置。要适用于耦合热-机械、机电和流-固系统，未来的架构必须将通用物理定律——能量、动量、质量和电荷守恒——直接嵌入其消息传递机制。</p>
+<p><strong>2. 虚拟传感</strong>：估计不可观测变量——如金属增材制造中的残余应力或高粘度混合器中的内部剪切力——对过程监测至关重要。由于这些量无法直接测量，具有强物理先验的PI-GNN能够从异构、多保真度数据中推断这些内部变量。其学习到的成对消息隐含地表示接触负载等量[5]。在物理定律（如动量守恒）的指导下，这些消息可被解码为来自可观测动态的可解释变量，支持自适应控制和缺陷预防。</p>
+<p><strong>3. 社区基准测试</strong>：推进智能制造中的PI-GNN研究需要基准数据集，这些数据集结合高保真仿真与跨不同操作条件的真实传感器数据。这些数据集应捕捉领域偏移、传感器噪声和过程变异性，以实现对泛化能力和鲁棒性的严格评估。来自专用试验台的内部状态测量——如接触负载——对推动虚拟传感尤为重要。</p>
+<p>当这些关键进展被整合时，将为稳健、可解释、可扩展的PI-GNN模型奠定基础，使其作为跨多种系统类型的可靠数字代理模型发挥作用，以支持下一代智能制造环境中的更智能、更可持续的系统设计、实时监测和自适应控制。</p>
+<h3>结论</h3>
+<p>物理信息机器学习正成为构建数据高效、可解释且符合物理原理的人工智能系统的关键推动者——这是在具有复杂动态、稀疏传感和安全关键约束的智能制造环境中的必备要求。</p>
+<p>虽然图神经网络本身并非物理信息驱动，但其为表示制造系统的结构化、关系性质提供了天然框架。当通过额外的广义基于物理的归纳偏置——如守恒定律、对称性或能量一致性——进行扩展时，GNN可以作为跨多物理场、多尺度环境有效的代理模型和推理引擎。</p>
+<p>这些物理信息图神经网络在故障传播分析、虚拟传感、长时域控制和自适应监测等任务上展现出强大潜力。它们还提供了可微分、结构化的模型，可集成到现代控制架构中。</p>
+<p>要充分实现这一潜力，还需要在泛化、外推、动态图适应和从仿真到现实的迁移等领域开展进一步研究。开发将仿真与传感器数据相结合的标准化基准测试至关重要。</p>
+<p>随着智能制造向自主化、赛博物理系统演进，PI-GNN等物理引导学习框架将在构建稳健、可信的人工智能解决方案中发挥日益重要的作用。</p>
+<h3>致谢</h3>
+<p>本工作得到了瑞士国家科学基金会（SNSF）资助200021_200461的支持。</p>
+<h3>参考文献</h3>
+<p>[1] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning Nat. Rev. Phys. 3 422–440</p>
+<p>[2] Brunton S L and Kutz J N 2022 Promises and pitfalls of physics-informed machine learning for sensing, imaging, and inference Mech. Syst. Signal Process. 171 108831</p>
+<p>[3] Battaglia P W, Hamrick J B, Bapst V, Sanchez-Gonzalez A, Zambaldi V, Malinowski M et al 2018 Relational inductive biases, deep learning, and graph networks arXiv preprint arXiv:1806.01261</p>
+<p>[4] Sannikov A, Lanusse F and Mandal A 2023 Momentum-preserving equivariant graph neural networks for physical dynamics modeling ICASSP 2023 – 2023 IEEE Int. Conf. Acoust. Speech Signal Process. (IEEE) pp 1–5</p>
+<p>[5] Fink O, Wang Q, Svensson M and Kuznetsov M 2024 Physics-informed neural networks for剩余应力预测 in metal additive manufacturing Proc. Mach. Learn. Res. 220 1–16</p>
+<p>[6] Reich Y, Kimmich A and Svensson M 2023 Incorporating domain knowledge into machine learning for manufacturing applications Adv. Eng. Inform. 56 101905</p>
+<p>[7] Soleimani M and Choudhury M A A 2022 Physics-informed neural networks for predictive digital twins in manufacturing J. Manuf. Syst. 62 453–464</p>
+<p>[8] Zhang H, Wang Q, Svensson M and Kuznetsov M 2024 Surrogate models for smart manufacturing: A review and future directions J. Intell. Manuf. 35 1237–1260</p>
+<p>[9] Wu L, Wang Q, Liu J and Soleimani M 2023 Graph neural networks in smart manufacturing: A review and applications J. Manuf. Syst. 68 234–251</p>
+<p>[10] Shi W, Chen Y, Liu J and Soleimani M 2024 Spatiotemporal graph neural networks for predictive maintenance in industrial IoT sensors 2024 IEEE Trans. Ind. Inform. 20 3345–3356</p>
+<p>[11] Brunton S L, Proctor J L and Kutz J N 2024 Sparse identification of nonlinear dynamics for model predictive control in mechanical systems ASME J. Comput. Nonlinear Dyn. 19 041001</p>
+<p>[12] Sargsyan K, Brunton S L and Kutz J N 2023 Surrogate models for multiscale physics in manufacturing processes AIAA Scitech 2023 Forum (AIAA) pp 1–12</p>
+<p>[13] Reich Y and Kimmich A 2024 Hybrid digital twins: Combining physics-based models and machine learning for smart manufacturing Adv. Eng. Inform. 59 102188</p>
+<p>[14] Mehta N, Chen Y and Shao C 2023 Generalization challenges in surrogate models for smart manufacturing Proc. ASME IDETC/CIE 2023 (ASME) vol DETC2023 pp 1–8</p>
+<p>[15] Ruderman A, Rabinowitz G and Gove R 2022 Physics-informed graph neural networks for electrical circuit modeling IEEE Trans. Neural Netw. Learn. Syst. 33 4521–4532</p>
+<p>[16] Zhao Z, Wang Q and Kuznetsov M 2024 Heat flux-aware graph neural networks for thermal modeling in manufacturing processes Int. J. Heat Mass Transf. 220 124912</p>
+<p>[17] Finzi M, Weller S and Roscher K 2024 Symmetry in graph neural networks for physical systems NeurIPS 2024 (Curran Associates) pp 1–15</p>
+<p>[18] Yang L, Zhang H and Karniadakis G E 2024 Thermodynamics-consistent neural networks for physical systems modeling arXiv preprint arXiv:2401.05873</p>
+        <nav class="section-nav"><a href="07-sustainable.html">← 上一章</a><a href="09-generative.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

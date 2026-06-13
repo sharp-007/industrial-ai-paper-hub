@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字孪生与智能供应链 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第9–10章</div>
+        <nav class="section-nav"><a href="04-additive-laser.html">← 上一章</a><a href="06-robotics.html">下一章 →</a></nav>
+        <h3>9. 智能制造数字孪生</h3>
+<p>He Zhang<sup>1</sup>, Zitong Wang<sup>1</sup>, Fei Tao<sup>1,2</sup>*</p>
+<p><sup>1</sup> Digital Twin International Research Center, International Institute for Interdisciplinary and Frontiers, Beihang University, Beijing, China</p>
+<p><sup>2</sup> School of Automation Science and Electrical Engineering, Beihang University, Beijing, China</p>
+<p>* E-mail: ftao@buaa.edu.cn</p>
+<p><strong>现状</strong></p>
+<p>数字孪生的理念可追溯至二十世纪六十年代的阿波罗13号任务，当时采用了多个仿真器来评估故障，并训练宇航员和任务控制人员应对氧气罐爆炸事件。经一段沉寂期后，数字孪生于二十一世纪重新崛起并引发广泛关注。Grieves教授提出了数字孪生的三维模型，阐述了其对产品全生命周期管理的价值与意义[1]。美国国家航空航天局（NASA）将其列为未来发展蓝图的关键路径之一[2]。陶飞教授提出了五维数字孪生模型，包含物理实体、虚拟模型、数据、连接和服务，以进一步推动数字孪生的实践应用[3]。迄今为止，数字孪生已被应用于多个领域，智能制造是最具活力的应用领域之一，因其契合工业4.0的核心宗旨——通过数字技术实现供应链与价值链中垂直与水平信息流的无缝整合，构建高度智能化的生产系统<sup>[4,5]</sup>。此外，数字孪生已被应用于智能制造的诸多方面，革新了传统制造模式。</p>
+<p>尽管部分企业或研究人员已在智能制造领域开展数字孪生实践，但由于认知理解与技术水平的局限，数字孪生应用的整体成熟度尚不足以充分发挥其优势与价值。此外，近年来强调以人为中心、可持续性与韧性的工业5.0已被提出，对数字孪生的发展提出了新的要求[6]。而大语言模型（Large Language Model, LLM）等先进技术的飞速发展，也为数字孪生带来了新的机遇[7]。在此背景下，数字孪生仍需进一步发展，以提升其智能化水平、成熟度与应用规模。</p>
+<p><strong>当前及未来挑战</strong></p>
+<p>智能制造中数字孪生所面临的当前及未来挑战涵盖多个层面，包括应用场景、关键技术及安全性等。当前数字孪生的工业应用场景主要集中在汽车、飞机、船舶等领域的实时状态监测、质量预测与智能控制。然而，极端制造（如微细加工、超精密制造、大型系统制造）领域的数字孪生研究仍处于相对空白阶段。此外，现有数字孪生水平亦难以应对极度复杂系统或工程。</p>
+<p>数据是制造业数字孪生的关键驱动力[8]。随着传感器与通信技术的发展，越来越多的制造过程数据得以采集[9]。然而，一方面，制造过程中可能产生的瞬态异常仍难以捕捉；另一方面，极端环境下的制造数据仍难以采集。此外，传感器与控制器所采集的海量数据，连同数字孪生模型所产生的数据，受限于计算能力，对快速分析与处理构成重大挑战。</p>
+<p>模型是实现智能制造数字孪生的重要基础之一。然而，当前数字孪生模型仍以一次性定制方案的形式构建，针对特定用例量身打造，限制了其泛化能力[10]。对相关领域知识的需求进一步限制了其应用与发展。部分学者已探索纯数据驱动的数字孪生方法，但基于黑箱算法的此类方法存在可解释性挑战。一旦出现问题，难以有效界定责任。</p>
+<p>智能制造中数字孪生的实现离不开相关软件或平台的支持。目前，部分企业已开发了相关工具，如Ansys Twin Builder、Azure Digital Twins及3DEXPERIENCE。然而，不同软件之间的兼容性不足，各软件的功能亦不足以支持跨领域多场景的完整数字孪生链条[11]。</p>
+<p><strong>应对挑战的科技进展</strong></p>
+<p>为应对这些挑战，多个领域正涌现重要的科技创新。这些进展旨在提升模型的准确性、数据的互操作性、计算效率与安全性，以进一步推动可扩展的工业应用。</p>
+<p>系统工程思维与复杂性理论相结合，是将数字孪生应用于更复杂对象与场景的有效途径。基于模型的系统工程（Model-Based Systems Engineering, MBSE）等系统工程框架有助于统一多域模型与数字线程，从而实现协同智能制造。此外，复杂性科学可通过对大规模工业系统固有的非线性动力学进行多尺度分析与复杂网络研究，有助于增强系统韧性[12]。</p>
+<p>为解决延迟与计算瓶颈问题，混合边缘-云架构正在被部署。边缘端智能芯片的处理能力不断增强，有助于实现低延迟与高实时性数据传输、增强数据隐私与安全性、降低带宽消耗与成本[13]。此外，随着量子计算技术的发展与成熟，其可形成集群协同处理更大规模的数据集[14]。</p>
+<p>人工智能（AI）的进步正在改变数字孪生建模的方式。当前，物理学信息神经网络（Physics Informed Neural Networks, PINNs）等先进算法正更深入地整合领域知识，以提升可解释性<sup>[15,16]</sup>。此外，生成式AI将进一步支持合成数据生成，以弥补训练数据集的不足，提升预测性维护的准确率。未来，在生成式AI的支持下，基于用户需求自动生成复杂数字孪生模型也将成为可能[17]。基于区块链的可追溯解决方案正在被实施，以降低安全风险[18]。</p>
+<p>ISO 23247等标准化框架——自动化系统与集成·制造业数字孪生框架——正在解决数据孤岛问题[19]。Amazon IoT TwinMaker和Eclipse Ditto等工具通过模块化API和通用资产模型实现跨平台集成。此外，makeTwin——一种数字孪生软件平台的统一参考架构——已被提出[11]。然而，相关国际标准仍需进一步发展以提高兼容性。所有相关利益方的协作对形成数字孪生工业软件生态系统同样至关重要。</p>
+<p>AI、边缘-云协作、区块链与标准化等技术进步正共同应对智能制造数字孪生的核心挑战。量子计算、可解释AI与跨行业协作等方面的持续创新将进一步加速数字孪生应用。</p>
+<p><strong>结论</strong></p>
+<p>数字孪生已成为工业4.0与工业5.0的基石，促进了智能制造中物理系统与虚拟系统的融合。尽管数字孪生在实时监测、预测性分析与智能控制方面具有显著优势，但在极端制造环境等复杂场景中的应用、确保数据完整性以及克服计算与互操作性局限等挑战依然存在。跨行业协作创新配合稳健的政策框架，将释放数字孪生的全部潜力，使其从被动工具转变为主动赋能下一代工业智能的核心引擎。</p>
+<p><strong>致谢</strong></p>
+<p>本工作受北京市自然科学基金资助（Grant No. L243009）、国家自然科学基金资助（Grant No. 52120105008）及中国博士后科学基金资助（Grant No. 2024M754054）。</p>
+<p><strong>参考文献</strong></p>
+<p>[1] Grieves M 2014 Digital Twin: Manufacturing Excellence Through Virtual Factory Replication (White Paper) 1–7</p>
+<p>[2] Glaessgen E and Stargel D 2012 The digital twin paradigm for future NASA and US Air Force vehicles 53rd AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics and Materials Conference 20th AIAA/ASME/AHS Adaptive Structures Conference 14th AIAA 1818 (doi:10.2514/6.2012-1818)</p>
+<p>[3] Tao F, Zhang M, Liu Y et al 2018 Digital twin driven prognostics and health management for complex equipment CIRP Ann. 67 169–172 (doi:10.1016/j.cirp.2018.04.055)</p>
+<p>[4] Tao F and Qi Q 2019 Make more digital twins Nature 573 490–491 (doi:10.1038/d41586-019-02849-1)</p>
+<p>[5] Tao F, Zhang H and Zhang C 2024 Advancements and challenges of digital twins in industry Nat. Comput. Sci. 4 169–177 (doi:10.1038/s43588-024-00603-w)</p>
+<p>[6] Zhang H, Li Y, Zhang S et al 2025 Artificial Intelligence-Enhanced Digital Twin Systems Engineering Towards the Industrial Metaverse in the Era of Industry 5.0 Chin. J. Mech. Eng. 38 40 (doi:10.1186/s10033-025-01210-0)</p>
+<p>[7] Gautam A, Aryal M R, Deshpande S et al 2025 IIoT-enabled digital twin for legacy and smart factory machines with LLM integration J. Manuf. Syst. 80 511–523 (doi:10.1016/j.jmsy.2025.03.022)</p>
+<p>[8] Friederich J, Francis D P, Lazarova-Molnar S et al 2022 A framework for data-driven digital twins of smart manufacturing systems Comput. Ind. 136 103586</p>
+<p>[9] Zhang M, Tao F, Huang B et al 2024 Digital twin data: methods and key technologies Digit. Twin 1 2 (doi:10.12688/digitaltwin.17467.2)</p>
+<p>[10] Kapteyn M G, Pretorius J V R and Willcox K E 2021 A probabilistic graphical model foundation for enabling predictive digital twins at scale Nat. Comput. Sci. 1 337–347 (doi:10.1038/s43588-021-00069-0)</p>
+<p>[11] Tao F, Sun X, Cheng J et al 2024 makeTwin: A reference architecture for digital twin software platform Chin. J. Aeronaut. 37 1–18 (doi:10.1016/j.cja.2023.05.002)</p>
+<p>[12] Grieves M 2024 Intelligent digital twins and the development and management of complex systems Digit. Twin 1 8 (doi:10.12688/digitaltwin.17574.1)</p>
+<p>[13] Alcaraz C and Lopez J 2022 Digital twin: A comprehensive survey of security threats IEEE Commun. Surv. Tutor. 24 1475–1503 (doi:10.1109/COMST.2022.3171465)</p>
+<p>[14] Gyongyosi L and Imre S 2019 A survey on quantum computing technology Comput. Sci. Rev. 31 51–71 (doi:10.1016/cosrev.2018.11.002)</p>
+<p>[15] Kobayashi K and Alam S B 2024 Explainable, interpretable, and trustworthy AI for an intelligent digital twin: A case study on remaining useful life Eng. Appl. Artif. Intell. 129 107620 (doi:10.1016/j.engappai.2023.107620)</p>
+<p>[16] Kim S, Choi J H and Kim N H 2022 Data-driven prognostics with low-fidelity physical information for digital twin: physics-informed neural network Struct. Multidiscip. Optim. 65 255 (doi:10.1007/s00158-022-03348-0)</p>
+<p>[17] Mata O, Ponce P, Perez C et al 2025 Digital twin designs with generative AI: crafting a comprehensive framework for manufacturing systems J. Intell. Manuf. 1 1–24 (doi:10.1007/s10845-025-02583-8)</p>
+<p>[18] Putz B, Dietz M, Empl P et al 2021 Ethertwin: Blockchain-based secure digital twin information management Inf. Process. Manag. 58 102425 (doi:10.1016/j.ipm.2020.102425)</p>
+<p>[19] Yoo S K, Sun K J and Kim S H 2024 Digital Twin Standardization: Trends and Future Prospects Electron. Telecommun. Trends 39 79–86 (doi: 10.22648/ETRI.2024.J.390308)</p>
+<hr />
+<h3>10. 智能供应链与物流</h3>
+<p>Jagjit Singh Srai<sup>1</sup></p>
+<p><sup>1</sup> Department of Engineering, University of Cambridge, UK</p>
+<p>E-mail: jss46@cam.ac.uk</p>
+<p><strong>现状</strong></p>
+<p>人工智能（AI）作为一套知识体系而非单一技术，已历经数十年的发展。尽管目前供应链与物流（Supply Chain &amp; Logistics, SC&amp;L）中AI技术的应用仍处于起步阶段，但其有望成为"工业6.0"转型的下一次重大变革，推动认知自动化的发展[1]。当前，需求预测、供应规划领域正经历快速发展，支撑近实时物流优化的新型物理与数字基础设施[2]不断涌现，同时促进新的商业模式[3]，实现自主运营与超个性化服务。这些早期应用与试点开发正处于更广泛的数字化供应链转型进程中，整合贯穿"端到端"供应链的离散运营。表1列出了当前智能供应链与物流中的AI应用示例。这些应用可归类为供应链特定领域的"点解决方案"，如工厂单元操作与最后一公里物流[4]，也可作为支撑AI跨企业扩展的"基础设施"，而最值得关注的或许是支持自主"运营/商业模式"[5]的多连接AI与数字应用——例如通过代理型AI（Agentic-AI）实现分布式决策。</p>
+<p><strong>当前及未来挑战</strong></p>
+<p>与数字化供应链与物流转型中部署的其他技术类似，AI具有巨大的潜在收益，技术干预可同时提升生产率和供应链对需求变化的响应能力。然而，在供应链中采用AI技术仍面临巨大挑战，包括：劳动力技能不足、对可能影响工作安全的技术之抵触、数据质量与数据整合挑战、AI模型的可解释性、潜在的系统偏差，以及高度分布式系统的治理安排。图1总结了AI在供应链中的应用、涌现的挑战及应对这些挑战的未来技术。就技能而言，世界经济论坛2025年就业报告[6]指出，到2030年，三分之一的工作岗位将涉及人机协作的增强系统，另有三分之一将实现完全自动化，与当前水平相比仅需手动操作的活动将减少50%。这将改变供需规划岗位的性质，劳动密集型入门岗位将大幅减少。</p>
+<p><strong>表1. 当前状态——供应链与物流中AI应用示例</strong></p>
+<table>
+<thead>
+<tr>
+<th>AI应用领域</th>
+<th>部署的AI技术</th>
+<th>增强的供应链产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求预测</td>
+<td>机器学习、时间序列</td>
+<td>预测准确率提升</td>
+</tr>
+<tr>
+<td>最后一公里配送</td>
+<td>路线优化</td>
+<td>服务增强/缺货减少</td>
+</tr>
+<tr>
+<td>仓库自动化</td>
+<td>机器人-视觉系统-机器人</td>
+<td>速度、生产率、拣选准确率提升</td>
+</tr>
+<tr>
+<td>库存管理</td>
+<td>预测性分析</td>
+<td>库存降低</td>
+</tr>
+<tr>
+<td>工厂单元操作</td>
+<td>机器学习/数字孪生</td>
+<td>工艺与良率优化</td>
+</tr>
+<tr>
+<td>供应商管理</td>
+<td>AI赋能数字平台</td>
+<td>采购灵活性与可靠性提升</td>
+</tr>
+</tbody>
+</table>
+<p><strong>图1. AI在供应链与物流中的应用、挑战与未来技术进展</strong>（改编自Srai等[5]）</p>
+<p>供应链与物流中AI应用的另一关键挑战在于，当决策代理分布在多个AI智能体与人类行为者之间时，责任归属与问责问题变得尤为突出。这需要在数字技术采用[7]上开展多方行为者协作，并建立治理机制，以遏制偏差的放大——需考虑相互依存性、隐私及系统层面风险，而非仅关注个体/智能体的决策。</p>
+<p><strong>应对挑战的科技进展</strong></p>
+<p>对于运筹管理[8]和运筹学[9]供应链与物流领域的研究者而言，AI既带来了许多研究挑战，也提供了塑造其未来发展的机遇。随着企业超越单一功能特定AI投资，规模化挑战将需要重大的基础设施开发，运营技术（OT）与信息技术（IT）专业人员需在数据整合活动中协作。主要挑战在于：组织如何跨企业规模化AI应用，以及与分布式自动化决策相关的问责、数据管理与隐私问题。为应对后者，需要新的监管框架与治理模式，而供应链与物流跨越多个司法管辖区的特性将使这一任务更为复杂。被标榜为工业5的技术发展将带来更多的人机交互，以进一步提升生产率，同时解决材料与能源使用效率问题，以应对范围三净零排放可持续性挑战。将支撑智能自编排供应生态系统的工业6技术[1]，包括由IT-OT-市场平台数据整合所支持的代理型AI编排，以及减少云数据传输与相关网络风险的本地边缘计算。</p>
+<p><strong>结论</strong></p>
+<figure class="paper-figure"><img src="../images/supply-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+        <nav class="section-nav"><a href="04-additive-laser.html">← 上一章</a><a href="06-robotics.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

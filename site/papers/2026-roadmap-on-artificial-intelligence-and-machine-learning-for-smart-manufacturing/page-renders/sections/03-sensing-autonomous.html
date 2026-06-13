@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>先进传感、感知与自主制造 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
+            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
+            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
+            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
+            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
+            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
+            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
+            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/paper.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第5–6章</div>
+        <nav class="section-nav"><a href="02-bigdata.html">← 上一章</a><a href="04-additive-laser.html">下一章 →</a></nav>
+        <h1>先进传感、感知与分析</h1>
+<p><strong>Lingbao Kong*, Qiyuan Wang, Xinlan Tang</strong><br />
+复旦大学未来信息创新学院，中国上海<br />
+<em>电子邮件：LKong@fudan.edu.cn</em></p>
+<h2>现状</h2>
+<p>在工业5.0持续推进的背景下，智能制造已成为工业制造领域的前沿焦点。在此语境下，传感技术作为连接物理世界与数字信号系统的关键桥梁，正经历从传统范式向智能范式的深刻变革。在当前多域制造主导的时代，传统的单模态传感技术因其单一信息维度、抗干扰能力弱、校准与维护成本高等局限而面临严峻挑战。相应地，如图1所示，多模态传感技术凭借信息丰富、抗干扰冗余度高、校准与维护成本低等优势，正在各类复杂或动态场景中逐步取代单模态传感技术。这一转变有效规避了单模态传感在新工业环境中遭遇的挑战，同时更好地契合了现代先进制造的迫切需求。</p>
+<p>与单模态传感相比，多模态传感技术已在三个关键方面取得重大突破。其一在于感知能力的全面提升。通过利用多元传感探测器，多模态传感实现了跨模态信息互补。例如，如图1所示，在汽车零部件表面划痕或涂层缺陷检测中，整合工业相机、三维激光扫描仪、红外热成像仪等多种传感模态，可将缺陷检出率从90%提升至99.5%，同时将误报率降低60%[3]。其二是鲁棒性与抗干扰能力的显著改善。在机器人抓取场景中，即使发生视觉遮挡或盲区，机器人仍可通过触觉与力反馈动态调整动作[4]。这种适应性确保了任务连续性与准确性不受环境扰动影响。其三聚焦于智能与系统集成创新。一方面，通过多模态深度学习实现跨模态语义对齐，引入自监督机制以降低对标注数据的依赖。例如，在视频数据处理中，视觉、听觉与运动信息被自动关联，从而增强模型的泛化能力[5]。另一方面，采用边缘计算实现系统集成中的实时处理，减轻了对云端基础设施的依赖。在智能物流中，借助AGV（自动导引车）导航与避障技术，障碍响应时间可缩短至仅100毫秒[6]。</p>
+<h2>当前及未来挑战</h2>
+<p>尽管多模态传感技术在智能制造领域展现出巨大潜力，其发展仍面临诸多挑战。</p>
+<p>在硬件层面，最突出的障碍在于不同传感器物理特性的显著差异，这极大地增加了硬件组件无缝集成与校准的复杂性。例如，在智能物流应用中，LiDAR（光检测与测距）传感器的高功耗与相机的低功耗需求形成鲜明对比，亟需设计复杂的电路与精密的冷却方案。此外，昂贵的生产成本构成另一 formidable 障碍。在预测性维护场景中，单个传感器的部署成本可超过200万货币单位，且在分析后续数据时还需投入大量资源用于AI模型训练与维护。</p>
+<p>转向数据与算法领域，跨模态数据融合面临重重困难。这些挑战包括不同传感器间的语义对齐问题——例如，在自动化焊接过程中，弧焊传感器、高速相机、红外测温仪与声发射传感器的数据在数据类型与物理意义上差异巨大[7]——以及多协议异构网络的整合。例如，在工业物联网背景下，5G网络与现有工业总线的有效融合仍是难以实现的目标[8]。此外，计算复杂度与实时性要求极为严苛。以自动上料任务为例，LiDAR点云数据（每帧点数）与4K分辨率相机图像的融合必须在严格的100毫秒时间窗口内完成[9]，给计算资源带来巨大压力。</p>
+<p><strong>图1.</strong> 以传统单模态技术为中心的制造范式与现代先进制造的发展日益不兼容。相应地，多模态传感技术通过利用多维信息协调与互补数据融合，常产生超越孤立模态累积性能的协同效应（即实现"1+1&gt;2"效果）。这些技术正在复杂工业场景中逐步取代单模态方法，并已成为当代先进制造系统的显著特征。</p>
+<h2>应对挑战的科学技术进展</h2>
+<p>为应对上述挑战，多模态传感技术必须在多个前沿实现突破。数字孪生技术的集成为高昂的硬件成本提供了可行解决方案。通过利用多模态传感器数据驱动虚拟工厂仿真，该技术实现了生产策略优化，最终达到降低成本与提升效率的目标[10]。</p>
+<p>边缘智能与自学习系统的持续发展为缓解跨模态数据融合复杂度与计算需求提供了有效解决方案。边缘智能通过集成AI芯片，在终端设备层面实现多模态数据的实时融合。这不仅满足了严格的实时性要求，还确保了数据的有效整合[11]。另一方面，自学习系统采用强化学习动态优化多传感器间的权重分配，从而降低计算复杂度、增强数据可靠性、减少冗余数据——最终减轻计算负担[12]。</p>
+<p>此外，人机协作监测技术体现了新工业范式以人为中心的理念。该技术利用卡尔曼滤波进行空间对齐，构建动态安全区域实时追踪工人手部位置。由此降低了人机协作事故发生率并提升了生产效率。这些技术的发展不仅弥补了多模态传感在实际应用中的当前缺陷，更推动了机械制造技术向更高效率、智能化与和谐化方向发展[13]。</p>
+<p>展望未来，智能制造技术将与数字孪生、边缘智能、自学习系统及人机协作监测实现更深层次融合。这一融合将推动制造系统向"零缺陷"、"自我感知"与"以人为本"的目标迈进，标志着制造范式演进的重要飞跃。</p>
+<h2>结语</h2>
+<p>多模态传感技术推动了传统单模态传感方法向更高效率与智能化的演进。通过整合多元信息获取模态、增强抗干扰能力、开创新型智能化集成系统，该技术有效突破了制造环境中的鲁棒性壁垒。它不仅强化了制造工艺标准化与缺陷检测精度，还为制造系统提供了高保真度、高可靠性的数据基础。因此，多模态传感技术已成为智能制造生态系统中智能感知的基石。</p>
+<p>同时，数字孪生技术、边缘集成架构与自学习系统的融入进一步加速了多模态传感技术的智能化与小型化轨迹，为当代工业奠定了不可或缺的基础设施。除这些技术进步外，以人为本原则的深度融合仍是多模态传感技术发展中的关键里程碑。通过将以人为本置于智能制造的核心，这一范式转变巩固了智能制造与时代精神无缝契合的基础，确保技术进步与人类需求及愿景内在关联。</p>
+<h2>致谢</h2>
+<p>作者谨对国家自然科学基金（52375414）与上海市科委创新专项（23ZR1404200）的支持表示衷心感谢。</p>
+<h2>参考文献</h2>
+<p>[1] AlMahasneh R, Hollósi G, Ficzere D, Bancsics M, Lukovszki C, Varga P. Uncovering Common AI Challenges Across Industrial Domains in the Transition to Industry 5.0[C]//2024 20th International Conference on Network and Service Management (CNSM). IEEE, 2024: 1-7.</p>
+<p>[2] Liang P P, Zadeh A, Morency L P. Foundations &amp; trends in multimodal machine learning: Principles, challenges, and open questions[J]. ACM Computing Surveys, 2024, 56(10): 1-42.</p>
+<p>[3] Guclu E, Akin E. Enhanced defect detection on steel surfaces using integrated residual refinement module with synthetic data augmentation[J]. Measurement, 2025, 250: 117136.</p>
+<p>[4] Li Y, Zheng L, Wang Y, Dong E, Zhang S. Impedance Learning-based Adaptive Force Tracking for Robot on Unknown Terrains[J]. IEEE Transactions on Robotics, 2025.</p>
+<p>[5] Radford A, Kim J W, Hallacy C, Ramesh A, Goh G, Agarwal S, sastry G, Askell A, Mishkin P, Clark J, Krueger G, Sutskever I. Learning transferable visual models from natural language supervision[C]//International conference on machine learning. PmLR, 2021: 8748-8763.</p>
+<p>[6] Chang Y H, Wu F C, Lin H W. Design and implementation of esp32-based edge computing for object detection[J]. Sensors, 2025, 25(6): 1656.</p>
+<p>[7] Deng F, Huang Y, Lu S, Chen Y, Feng H, Zhang J, Yang Y, Hu J, Lam TL, Xia F. A multi-sensor data fusion system for laser welding process monitoring[J]. IEEE Access, 2020, 8: 147349-147357.</p>
+<p>[8] Harmatos J, Maliosz M. Architecture integration of 5G networks and time-sensitive networking with edge computing for smart manufacturing[J]. Electronics, 2021, 10(24): 3085.</p>
+<p>[9] Sochaniwsky A. A Lightweight Camera-LiDAR Fusion Framework for Traffic Monitoring Applications[D]. 2024.</p>
+<p>[10] Durana P, Krastev V, Buckner K. Digital twin modeling, multi-sensor fusion technology, and data mining algorithms in cloud and edge computing-based smart city environments[J]. Geopolitics, History, and International Relations, 2022, 14(1): 91-106.</p>
+<p>[11] Wang M, Zhang X, Chen S, Li X, Zhang Y. A bidirectional separated distillation-based cross-modal interactive fusion network for skeleton-based action recognition[J]. IEEE Sensors Journal, 2024.</p>
+<p>[12] Guo J, Liu Q, Chen E. A deep reinforcement learning method for multimodal data fusion in action recognition[J]. IEEE Signal Processing Letters, 2021, 29: 120-124.</p>
+<p>[13] Dani A P, Salehi I, Rotithor G, Trombetta D, Ravichandar H. Human-in-the-loop robot control for human-robot collaboration: Human intention estimation and safe trajectory tracking control for collaborative tasks[J]. IEEE Control Systems Magazine, 2020, 40(6): 29-56.</p>
+<hr />
+<figure class="paper-figure"><img src="../images/sensing-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+<h1>AI赋能自主制造</h1>
+<p><strong>Sungjong Kim¹, Chan Hee Park², Byeng D. Youn¹,³</strong><em><br />
+¹ 首尔大学机械工程系，大韩民国首尔08826<br />
+² 首尔市立大学机械与信息工程系，大韩民国首尔02556<br />
+³ Onepredict Corp.，大韩民国首尔06105<br />
+</em> 通讯作者<br />
+<strong>电子邮件：bdyoun@snu.ac.kr</strong></p>
+<h2>现状</h2>
+<p>自动化制造是指利用控制系统、机械与信息技术执行预定义生产任务，且仅需最少人工介入。尽管此类系统对生产力提升贡献显著，其仍高度依赖基于规则的逻辑或专家知识，这限制了其对动态环境与复杂制造任务的适应性。近年来，熟练专家数量下降、工资与能源成本上升以及市场对多品种小批量生产需求的不断增长，凸显了制造系统变革性创新的迫切需求。</p>
+<p>自主制造代表了进一步演进的步骤。它是指信息物理生产系统，其中机器、软件代理与嵌入式系统通过分布式智能独立执行感知、推理与动作，无需人类在常规及非结构化场景中的监督[1]。通过数字化领域专业知识并利用大规模工艺数据，自主系统提供了可扩展且适应性强的替代方案。人工智能（AI）的最新进展使这些系统能够自主整合实时反馈，实现预测性质量保证、异常检测与工艺参数自优化。</p>
+<p>AI驱动的自主性的实施已被证明能显著提升运营效率、降低管理成本并改善系统韧性——尤其是在专家知识获取受限的全球分布式制造环境中。实证证据凸显了此类技术的有效性；例如，汽车制造业中自主质量管理系统的实施带来了52%的生产成本降低与78%的检测费用减少[2]。此外，自主制造技术预计将在质量控制、物流、能源管理、设备维护与综合工艺优化等多元运营领域展现广泛适用性。</p>
+<h2>当前及未来挑战</h2>
+<p>实现真正的AI赋能自主制造需要无缝整合三个基础组件——感知、推理与动作——同时建立稳健的平台以管理集成的自主制造系统。</p>
+<p>在感知阶段，制造系统必须建立稳健且可扩展的数据管道，能够可靠地提取、预处理、存储与管理多样的多模态传感器数据。尽管可用数据丰富，当前管道架构相对于生产系统的整体成熟度往往发育不足。这些管道的设计常未充分考虑下游推理与控制任务。因此，获取的数据存在数据可用性问题——如噪声、低分辨率、不一致采样、数据过量及与系统上下文同步不良——阻碍系统仅传输实时决策与自主操作所需的相关、高质量数据[3]。</p>
+<p>推理阶段涉及推导支持工艺级决策的可操作洞察。此阶段面临两个核心挑战：确保AI模型的可解释性与泛化能力。对于AI系统有效服务于制造运营，其必须跨关键类别提供结构化信息，包括当前及预测系统状态（系统评估）、识别的操作任务（问题定义）、因果因素（根因诊断）与规范性建议（决策制定）。然而，许多AI模型作为"黑箱"运作，阻碍工程师验证或信任推理输出。泛化同样存在问题，因为模型在领域迁移（如操作条件、产品配置或工厂环境变化）时往往难以维持稳健性能，导致物理上不一致或无代表性的结果[4]。</p>
+<p>动作阶段需要将推理输出转化为可执行操作，如控制命令、最优设定点选择或人类可读的决策报告。尽管AI近期取得进展，当前AI模型常以缺乏语义清晰度的抽象或模型中心形式输出，阻碍了在制造系统中的有效解读与实施。若无额外的上下文化处理，这些输出难以直接操作，需工程师手动解释推理结果并确定适当干预措施，从而增加认知负担并延迟运营响应[5]。</p>
+<p>最后，当前平台如制造执行系统（MES）与可编程逻辑控制器（PLC）呈层级结构，缺乏支持自主制造操作的灵活性。主要挑战包括分布式制造组件间的互操作性差、对实时自组织与制造生命周期整合的支持有限。</p>
+<h2>应对挑战的科学技术进展</h2>
+<p>在感知阶段，集成了抽取-转换-加载（ETL）机制的数据管道被用于将原始信号转换为结构化、分析就绪格式[6]。虚拟传感技术被用于通过利用制造过程获取的数据估计难以测量的变量[7]。为提升数据质量与上下文保真度，噪声去除、采样率对齐与异构数据源同步等预处理方法被应用[8]。此外，基于本体的技术被开发用于定义收集数据的标识并建立关联信息间的上下文关系[9]。通过启用上下文感知的数据链接与语义解释，其促进了后续阶段的数据筛选与选择，尽管制造数据丰富且异构。</p>
+<p>在推理阶段，可解释性通过可解释AI技术推进，包括建模前策略（如领域知情的特征提取）与建模后工具（如注意力机制分析、SHAP[10]）。为改善领域迁移下的泛化能力，引入生命周期感知学习策略以支持数据漂移检测与持续学习[11]。此外，将物理约束集成到AI架构中的努力——通过物理启发的组件（如小波核）与基于控制方程的正则化技术（如微分约束）——有助于确保跨不同操作设置的物理一致性与可靠性[12,13]。</p>
+<p>在动作阶段，主要目标是使AI输出转化为可操作的制造决策。由大语言模型（LLM）驱动的自然语言接口使输出摘要与结构化成为人类可读的格式，从而增强可解释性与操作就绪性[14]。这需要将语言表示与制造数据对齐以确保上下文相关性，并通过指令微调与基于代理的LLM促进领域专业知识整合[15,16]。基于强化学习（RL）的优化方法，包括近端策略优化（PPO）与深度Q网络（DQN），被用于从推理输出推导自适应控制策略，使系统能有效响应动态操作条件[17,18]。此外，机器学习运营（MLOps）框架通过版本控制、性能监控与基于反馈的再训练支持AI驱动动作的连续性与可靠性，确保系统生命周期内的持续稳健性[19]。</p>
+<p>在此基础上，去中心化自主制造（DAM）平台架构被引入以实现自主决策、去中心化控制与自组织生产能力[20]。通过利用多代理系统与安全通信协议，该平台允许分布式制造节点有效协作、响应中断并在无集中协调的情况下执行制造任务。</p>
+<p><strong>图1.</strong> AI赋能自主制造三个基础组件——感知、推理与动作——以及集成自主制造平台的最新研究景观。</p>
+<h2>结语</h2>
+<p>AI赋能自主制造将通过在生产系统的感知、推理与动作层嵌入分布式智能，重新定义工业运营。超越传统基于规则的自动化，自主系统利用先进AI模型进行上下文感知决策、适应动态环境，并以最少人工介入自优化工艺。鉴于全球性挑战——如熟练专家减少、运营成本上升与对敏捷多品种生产的需求不断增长——这一范式转变日益关键。</p>
+<p>近期技术进步共同使机器与软件代理能够在复杂制造环境中自主感知、解读与行动。此外，去中心化自主制造平台的出现为自组织生产系统提供了韧性与可扩展的基础设施。通过将多代理系统与安全、可扩展通信集成，这些平台允许分布式制造节点有效协作、实时响应中断并在无集中控制的情况下自主执行任务。</p>
+<p>预期收益广泛，涵盖预测性质量控制、智能维护、能源优化与物流协调。随着AI模型变得越来越可解释、稳健且具有上下文感知能力，自主制造系统预计将成为下一代智能工厂的支柱——能够在工业条件下高效运行、适应响应并持续改进。</p>
+<h2>致谢</h2>
+<p>本研究部分受韩国国家科学与信息通信技术部（NRF）资助的国际研究与开发项目（No. 2022K1A4A7A04096329），以及贸易、工业与能源部（MOTIE，韩国）资助的技术创新计划（或工业战略技术开发计划——汽车产业技术开发——绿色汽车）（RS-2024-00444961，基于设计平台开发和演示专用电动汽车）支持。</p>
+<h2>参考文献</h2>
+<p>[1] Mo F, Monetti FM, Torayev A, Rehman HU, Mulet Alberola JA, Rea Minango N, Nguyen HN, Maffei A, Chaplin JC. A maturity model for the autonomy of manufacturing systems. International Journal of Advanced Manufacturing Technology. 2023 May 1;126(1–2):405–28.</p>
+<p>[2] Singh J, Ahuja IPS, Singh H, Singh A. Development and Implementation of Autonomous Quality Management System (AQMS) in an Automotive Manufacturing using Quality 4.0 Concept– A Case Study. Comput Ind Eng. 2022 Jun 1;168.</p>
+<p>[3] Goknil A, Nguyen P, Sen S, Politaki D, Niavis H, Pedersen KJ, Suyuthi A, Anand A, Ziegenbein A. A Systematic Review of Data Quality in CPS and IoT for Industry 4.0. ACM Comput Surv. 2023 Dec 31;55(14 S).</p>
+<p>[4] Li D, Yang Y, Song YZ, Hospedales TM. Deeper, Broader and Artier Domain Generalization. 2017.</p>
+<p>[5] Naqvi MR, Elmhadhbi L, Sarkar A, Archimede B, Karray MH. Survey on ontology-based explainable AI in manufacturing. Journal of Intelligent Manufacturing. Springer; 2024.</p>
+<p>[6] Walha A, Ghozzi F, Gargouri F. Data integration from traditional to big data: main features and comparisons of ETL approaches. Journal of Supercomputing. 2024 Dec 1.</p>
+<p>[7] Pal A, Kant K. Exploiting Proxy Sensing for Efficient Monitoring of Large-Scale Sensor Networks. ACM Trans Internet Technol. 2020 May 1;20(2).</p>
+<p>[8] Tawakuli A, Havers B, Gulisano V, Kaiser D, Engel T. Survey: Time-series data preprocessing: A survey and an empirical analysis. Journal of Engineering Research (Kuwait). 2024.</p>
+<p>[9] Sapel P, Molinas Comet L, Dimitriadis I, Hopmann C, Decker S. A review and classification of manufacturing ontologies. J Intell Manuf. 2024.</p>
+<p>[10] Kim S, Lee S, Lee J, Kim M, Kim SJ, Yoon H, Youn BD. Fault-relevance-based, multi-sensor information integration framework for fault diagnosis of rotating machineries. Mech Syst Signal Process. 2025 Jun 1;232.</p>
+<p>[11] Tercan H, Deibert P, Meisen T. Continual learning of neural networks for quality prediction in production using memory aware synapses and weight transfer. J Intell Manuf. 2022 Jan 1;33(1):283–92.</p>
+<p>[12] Würth T, Krauß C, Zimmerling C, Kärger L. Physics-informed neural networks for data-free surrogate modelling and engineering optimization – An example from composite manufacturing. Mater Des. 2023 Jul 1;231.</p>
+<p>[13] Li T, Zhao Z, Sun C, Cheng L, Chen X, Yan R, Gao RX. WaveletKernelNet: An Interpretable Deep Neural Network for Industrial Intelligent Diagnosis. IEEE Trans Syst Man Cybern Syst. 2022 Apr 1;52(4):2302–12.</p>
+<p>[14] Zhang Q, Xu C, Li J, Sun Y, Bao J, Zhang D. LLM-TSFD: An industrial time series human-in-the-loop fault diagnosis method based on a large language model. Expert Syst Appl. 2025 Mar 10;264.</p>
+<p>[15] Sun Y, Zhang Q, Bao J, Lu Y, Liu S. Empowering digital twins with large language models for global temporal feature learning. J Manuf Syst. 2024 Jun 1;74:83–99.</p>
+<p>[16] Zheng S, Pan K, Liu J, Chen Y. Empirical study on fine-tuning pre-trained large language models for fault diagnosis of complex systems. Reliab Eng Syst Saf. 2024 Dec 1;252.</p>
+<p>[17] He Z, Tran KP, Thomassey S, Zeng X, Xu J, Yi C. Multi-objective optimization of the textile manufacturing process using deep-Q-network based multi-agent reinforcement learning. J Manuf Syst. 2022 Jan 1;62:939–49.</p>
+<p>[18] Zhang Y, Zhu H, Tang D, Zhou T, Gui Y. Dynamic job shop scheduling based on deep reinforcement learning for multi-agent manufacturing systems. Robot Comput Integr Manuf. 2022 Dec 1;78.</p>
+<p>[19] Bayram F, Ahmed BS. Towards Trustworthy Machine Learning in Production: An Overview of the Robustness in MLOps Approach. ACM Comput Surv. 2025 Jan 22;57(5).</p>
+<p>[20] Leng J, Zhong Y, Lin Z, Xu K, Mourtzis D, Zhou X, Zheng P, Liu Q, Zhao JL, Shen W. Towards resilience in Industry 5.0: A decentralized autonomous manufacturing paradigm. Vol. 71, Journal of Manufacturing Systems. Elsevier B.V.; 2023. p. 95–114.</p>
+<figure class="paper-figure"><img src="../images/autonomous-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
+        <nav class="section-nav"><a href="02-bigdata.html">← 上一章</a><a href="04-additive-laser.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

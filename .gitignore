@@ -1,0 +1,21 @@
+# =============================================================================
+# 私有工作流（本地保留，不提交到公开仓库）
+# =============================================================================
+workflow/
+.venv/
+
+# PDF 原文（工作流内，体积大）
+workflow/projects/*/source/paper.pdf
+workflow/projects/*/source/debug-*.png
+
+# Python
+__pycache__/
+*.pyc
+
+# 构建元数据（插图清单，由 extract_figures 生成）
+site/papers/*/page-renders/images/figures.json
+
+# 编辑器与系统
+.DS_Store
+Thumbs.db
+*.swp

@@ -157,10 +157,64 @@
         var here = location.pathname.split("/").pop() || "index.html";
         sidebar.querySelectorAll(".toc a").forEach(function (link) {
             var href = link.getAttribute("href");
-            if (!href) return;
-            if (href.split("/").pop() === here) link.classList.add("is-current");
+            if (!href || href.split("/").pop() !== here) return;
+            link.classList.add("is-current");
+            var target = link.offsetTop - sidebar.clientHeight / 2;
+            if (target > 0) sidebar.scrollTop = target;
         });
     })();
+})();
+
+/* Reading enhancements: progress bar, back-to-top, references grouping */
+(function () {
+    var article = document.querySelector(".content.article");
+
+    var bar = document.createElement("div");
+    bar.className = "read-progress";
+    document.body.appendChild(bar);
+
+    var top = document.createElement("button");
+    top.className = "back-to-top";
+    top.type = "button";
+    top.setAttribute("aria-label", "返回顶部");
+    top.innerHTML = "\u2191";
+    document.body.appendChild(top);
+
+    var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
+    function metrics() {
+        if (scroller === window) {
+            var d = document.documentElement;
+            return { y: d.scrollTop || document.body.scrollTop, max: d.scrollHeight - d.clientHeight };
+        }
+        return { y: scroller.scrollTop, max: scroller.scrollHeight - scroller.clientHeight };
+    }
+    function onScroll() {
+        var m = metrics();
+        var pct = m.max > 0 ? (m.y / m.max) * 100 : 0;
+        bar.style.width = pct + "%";
+        top.classList.toggle("is-visible", m.y > 320);
+    }
+    (scroller === window ? window : scroller).addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    top.addEventListener("click", function () {
+        (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    if (article) {
+        var heads = article.querySelectorAll("h2");
+        heads.forEach(function (h) {
+            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
+            var wrap = document.createElement("div");
+            wrap.className = "references";
+            var node = h.nextElementSibling;
+            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
+                var next = node.nextElementSibling;
+                wrap.appendChild(node);
+                node = next;
+            }
+            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
+        });
+    }
 })();
 </script>
 </body>

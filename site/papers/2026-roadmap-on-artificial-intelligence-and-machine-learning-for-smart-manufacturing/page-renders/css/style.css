@@ -35,11 +35,17 @@
     --radius: 10px;
     --radius-sm: 7px;
 
+    --shadow-sm: 0 1px 3px rgba(14, 58, 92, 0.05);
+    --shadow-md: 0 6px 20px rgba(14, 58, 92, 0.08);
+
     --font-ui: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-serif: 'Noto Serif SC', 'Songti SC', serif;
     --font-mono: 'JetBrains Mono', 'Consolas', monospace;
 
-    --reading-width: 40rem;
+    /* Reading comfort */
+    --reading-width: 38rem;
+    --reading-font: 1.075rem;
+    --reading-leading: 1.9;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -47,6 +53,8 @@ html {
     font-size: 15px;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 body {
@@ -56,6 +64,67 @@ body {
     line-height: 1.55;
     display: flex;
     min-height: 100vh;
+}
+
+::selection {
+    background: rgba(13, 148, 136, 0.18);
+    color: var(--accent-dark);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Reading progress bar */
+.read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    z-index: 1300;
+    background: var(--gradient-accent);
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+/* Back to top */
+.back-to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1200;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.9);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 24px rgba(2, 132, 199, 0.4);
 }
 
 /* ── Sidebar ── */
@@ -179,7 +248,8 @@ body {
 }
 
 .content.article {
-    max-width: calc(var(--reading-width) + 80px);
+    max-width: calc(var(--reading-width) + 88px);
+    margin: 0 auto;
 }
 
 /* ── Mobile nav ── */
@@ -352,18 +422,19 @@ body.nav-open .sidebar-overlay { display: block; }
 /* ── Article typography ── */
 .article {
     font-family: var(--font-serif);
-    font-size: 0.94rem;
-    line-height: 1.75;
-    color: var(--ink);
+    font-size: var(--reading-font);
+    line-height: var(--reading-leading);
+    color: #273449;
+    letter-spacing: 0.012em;
 }
 
 .article h1 {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 6px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
-    line-height: 1.35;
+    line-height: 1.4;
 }
 
 .article .article-meta {
@@ -403,14 +474,15 @@ body.nav-open .sidebar-overlay { display: block; }
 }
 
 .article h2 {
-    font-size: 1.1rem;
+    font-size: 1.16rem;
     font-weight: 600;
-    margin: 24px 0 10px;
+    margin: 2em 0 0.7em;
     padding: 0 0 6px;
     color: var(--ink);
     border-bottom: 2px solid var(--accent-soft);
     position: relative;
-    line-height: 1.4;
+    line-height: 1.45;
+    scroll-margin-top: 64px;
 }
 
 .article h2::after {
@@ -418,53 +490,60 @@ body.nav-open .sidebar-overlay { display: block; }
     position: absolute;
     bottom: -2px;
     left: 0;
-    width: 36px;
+    width: 38px;
     height: 2px;
     background: var(--gradient-accent);
 }
 
 .article h3 {
-    font-size: 0.98rem;
+    font-size: 1.04rem;
     font-weight: 600;
-    margin: 18px 0 8px;
+    margin: 1.7em 0 0.6em;
     color: var(--accent-dark);
     border-left: 3px solid var(--cyan);
-    padding-left: 10px;
-    line-height: 1.4;
+    padding-left: 11px;
+    line-height: 1.5;
+    scroll-margin-top: 64px;
 }
 
 .article h4 {
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     font-weight: 600;
-    margin: 14px 0 6px;
+    margin: 1.4em 0 0.5em;
     color: var(--ink);
 }
 
 .article p {
-    margin-bottom: 0.85em;
+    margin-bottom: 1em;
     text-align: justify;
+    text-justify: inter-character;
 }
 
 .article ul, .article ol {
-    margin: 8px 0 12px;
-    padding-left: 1.4em;
+    margin: 0.8em 0 1.1em;
+    padding-left: 1.5em;
 }
 
 .article li {
-    margin-bottom: 0.35em;
-    line-height: 1.7;
+    margin-bottom: 0.45em;
+    line-height: var(--reading-leading);
+    padding-left: 0.2em;
 }
 
-.article li::marker { color: var(--cyan); }
+.article li::marker {
+    color: var(--teal);
+    font-weight: 600;
+}
 
 .article blockquote {
     border-left: 3px solid var(--cyan);
-    padding: 10px 14px;
-    margin: 14px 0;
-    background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 100%);
+    padding: 12px 18px;
+    margin: 1.4em 0;
+    background: linear-gradient(90deg, var(--accent-soft) 0%, rgba(236, 254, 255, 0) 100%);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     color: var(--ink-muted);
-    line-height: 1.65;
+    line-height: 1.75;
+    font-size: 0.96em;
 }
 
 .article table {
@@ -535,6 +614,33 @@ body.nav-open .sidebar-overlay { display: block; }
     line-height: 1.5;
 }
 
+/* References block (enhanced via JS after the "参考文献" heading) */
+.references {
+    margin-top: 1.4em;
+    padding: 16px 20px;
+    background: linear-gradient(180deg, #fbfdff 0%, var(--surface) 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius);
+    counter-reset: ref;
+}
+
+.references p {
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    margin: 0 0 0.5em;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+    text-align: left;
+    max-width: none;
+    word-break: break-word;
+}
+
+.references p:last-child { margin-bottom: 0; }
+
+.references p:hover { color: var(--ink); }
+
 .article hr {
     border: none;
     height: 1px;
@@ -544,27 +650,36 @@ body.nav-open .sidebar-overlay { display: block; }
 
 .article a {
     color: var(--blue);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(2, 132, 199, 0.25);
-    transition: border-color 0.15s;
+    text-decoration: underline;
+    text-decoration-color: rgba(2, 132, 199, 0.3);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 0.15s, text-decoration-color 0.15s;
 }
 
 .article a:hover {
     color: var(--accent-dark);
-    border-bottom-color: var(--teal);
+    text-decoration-color: var(--teal);
 }
 
-.article strong { font-weight: 600; }
+.article strong { font-weight: 600; color: #1a2433; }
 .article em { font-style: italic; color: var(--ink-muted); }
 
 /* ── Figures ── */
 .paper-figure {
-    margin: 18px 0;
-    padding: 10px;
+    margin: 1.8em 0;
+    padding: 12px;
     background: var(--surface);
     border: 1px solid var(--border-soft);
     border-radius: var(--radius);
     text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.paper-figure:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .paper-figure img {
@@ -575,11 +690,13 @@ body.nav-open .sidebar-overlay { display: block; }
 
 .paper-figure figcaption {
     font-family: var(--font-ui);
-    margin-top: 8px;
-    font-size: 0.76rem;
+    margin-top: 10px;
+    padding-left: 12px;
+    font-size: 0.78rem;
     color: var(--ink-muted);
-    line-height: 1.5;
+    line-height: 1.55;
     text-align: left;
+    border-left: 2px solid var(--accent-light);
 }
 
 .figure-missing {

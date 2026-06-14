@@ -17,23 +17,29 @@
             <li class="part">前言</li>
             <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
             <li class="part">第一部分：基础与发展趋势</li>
-            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li><a href="../sections/01-evolution.html">1. 人工智能与机器学习的演进</a></li>
+            <li><a href="../sections/02-efficiency.html">2. AI驱动的效率、适应性与自动化</a></li>
+            <li><a href="../sections/03-valuechain.html">3. AI在制造价值链中的展望</a></li>
             <li class="part">第二部分：关键技术主题</li>
-            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
-            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
-            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
-            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
-            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
-            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li><a href="../sections/04-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/05-sensing.html">5. 先进传感、感知与分析</a></li>
+            <li><a href="../sections/06-autonomous.html">6. AI赋能自主制造</a></li>
+            <li><a href="../sections/07-additive.html">7. 增材制造</a></li>
+            <li><a href="../sections/08-laser.html">8. 激光制造中的机器学习</a></li>
+            <li><a href="../sections/09-digitaltwin.html">9. 智能制造数字孪生</a></li>
+            <li><a href="../sections/10-supply.html">10. 智能供应链与物流</a></li>
+            <li><a href="../sections/11-robotics.html">11. AI增强机器人与自主系统</a></li>
+            <li><a href="../sections/12-sustainable.html">12. AI赋能可持续制造</a></li>
             <li class="part">第三部分：非传统机器学习技术</li>
-            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
-            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
-            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
-            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
-            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
-            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
-            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
-            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+            <li><a href="../sections/13-ml-dl.html">13. 机器学习与深度学习</a></li>
+            <li><a href="../sections/14-physics-ml.html">14. 物理信息机器学习</a></li>
+            <li><a href="../sections/15-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/16-semantic.html">16. 赋能机器学习的语义框架</a></li>
+            <li><a href="../sections/17-physics-control.html">17. 物理预测控制与实时决策</a></li>
+            <li><a href="../sections/18-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/19-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/20-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/21-complex.html">21. 高度互联复杂制造系统的非传统ML</a></li>
         </ul>
         <div class="sidebar-footer">
             <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
@@ -43,7 +49,7 @@
     </nav>
     <main class="content article">
         <div class="article-meta">第15章</div>
-        <nav class="section-nav"><a href="08-ml-dl.html">← 上一章</a><a href="10-semantic.html">下一章 →</a></nav>
+        <nav class="section-nav"><a href="14-physics-ml.html">← 上一章</a><a href="16-semantic.html">下一章 →</a></nav>
         <h3>15. 生成式AI与制造设计</h3>
 <p>Faez Ahmed¹, Wei "Wayne" Chen², Mark Fuge³</p>
 <p>¹ 马萨诸塞理工学院机械工程系，美国剑桥<br />
@@ -52,9 +58,9 @@
 <p>E-mail: faez@mit.edu</p>
 <p><strong>现状</strong></p>
 <p><strong>机器为何尚不能设计其他机器（yet）？</strong> 工程师们长期想象着一个机器能够设计其他机器的世界 [1,2]，而生成式AI系统（如扩散模型和大语言模型）的最新进展使这一梦想重新焕发生机。这些系统已经能够起草代码、总结文档，甚至提出初步的工程概念。那么，为何航空航天公司没有利用它们从头开始设计和认证整个无人机呢？</p>
-<p>本文认为，问题不在于想象力的匮乏，而在于一系列科学和组织层面的障碍。为了描绘这一图景，我们沿两个轴来划分问题（图1</p>
-<figure class="paper-figure"><img src="../images/generative-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
-<p>）。其中一个轴是设计深度：即AI在建模三维几何、模拟代理模型、设计优化或不确定性量化等专门任务中的表现能力。另一个轴是设计广度：即AI在跨领域和整个产品生命周期中整合数据和知识的能力。</p>
+<p>本文认为，问题不在于想象力的匮乏，而在于一系列科学和组织层面的障碍。为了描绘这一图景，我们沿两个轴来划分问题（图1）。其中一个轴是设计深度：即AI在建模三维几何、模拟代理模型、设计优化或不确定性量化等专门任务中的表现能力。另一个轴是设计广度：即AI在跨领域和整个产品生命周期中整合数据和知识的能力。</p>
+<figure class="paper-figure"><img src="../images/generative-fig1.png" alt="图1. 将生成式人工智能当前的挑战与机遇划分为四个象限。" loading="lazy"><figcaption>图1. 将生成式人工智能当前的挑战与机遇划分为四个象限。</figcaption></figure>
+
 <p>每个轴都受到两种约束。首先是科学上的局限——现有方法本身尚不具备相应能力。其次是采纳障碍——涉及信任、数据、互操作性和组织惯性。这四个象限（图1）共同揭示了AI在现实工程设计中为何承诺多于实践的关键原因。本文首先综述其中部分障碍，然后提出一份简要的路线图以克服它们。</p>
 <p><strong>当前与未来挑战</strong></p>
 <p><strong>1.1 科学障碍</strong></p>
@@ -137,7 +143,7 @@
 [24] Donon B, Clément R, Donnot B, Marot A, Guyon I and Schoenauer M 2020 Neural networks for power flow: Graph neural solver Electr. Power Syst. Res. 189 106547<br />
 [25] Satorras V G, Hoogeboom E and Welling M 2021 E(n) equivariant graph neural networks Proc. ICML 9323–9332<br />
 [26] Tierz A, Alfaro I, González D, Chinesta F and Cueto E 2025 Graph neural networks informed locally by thermodynamics Eng. Appl. Artif. Intell. 144 110108</p>
-        <nav class="section-nav"><a href="08-ml-dl.html">← 上一章</a><a href="10-semantic.html">下一章 →</a></nav>
+        <nav class="section-nav"><a href="14-physics-ml.html">← 上一章</a><a href="16-semantic.html">下一章 →</a></nav>
     </main>
 </body>
 </html>

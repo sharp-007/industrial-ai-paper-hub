@@ -17,23 +17,29 @@
             <li class="part">前言</li>
             <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
             <li class="part">第一部分：基础与发展趋势</li>
-            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li><a href="../sections/01-evolution.html">1. 人工智能与机器学习的演进</a></li>
+            <li><a href="../sections/02-efficiency.html">2. AI驱动的效率、适应性与自动化</a></li>
+            <li><a href="../sections/03-valuechain.html">3. AI在制造价值链中的展望</a></li>
             <li class="part">第二部分：关键技术主题</li>
-            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
-            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
-            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
-            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
-            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
-            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li><a href="../sections/04-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/05-sensing.html">5. 先进传感、感知与分析</a></li>
+            <li><a href="../sections/06-autonomous.html">6. AI赋能自主制造</a></li>
+            <li><a href="../sections/07-additive.html">7. 增材制造</a></li>
+            <li><a href="../sections/08-laser.html">8. 激光制造中的机器学习</a></li>
+            <li><a href="../sections/09-digitaltwin.html">9. 智能制造数字孪生</a></li>
+            <li><a href="../sections/10-supply.html">10. 智能供应链与物流</a></li>
+            <li><a href="../sections/11-robotics.html">11. AI增强机器人与自主系统</a></li>
+            <li><a href="../sections/12-sustainable.html">12. AI赋能可持续制造</a></li>
             <li class="part">第三部分：非传统机器学习技术</li>
-            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
-            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
-            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
-            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
-            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
-            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
-            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
-            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+            <li><a href="../sections/13-ml-dl.html">13. 机器学习与深度学习</a></li>
+            <li><a href="../sections/14-physics-ml.html">14. 物理信息机器学习</a></li>
+            <li><a href="../sections/15-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/16-semantic.html">16. 赋能机器学习的语义框架</a></li>
+            <li><a href="../sections/17-physics-control.html">17. 物理预测控制与实时决策</a></li>
+            <li><a href="../sections/18-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/19-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/20-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/21-complex.html">21. 高度互联复杂制造系统的非传统ML</a></li>
         </ul>
         <div class="sidebar-footer">
             <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
@@ -43,11 +49,8 @@
     </nav>
     <main class="content article">
         <div class="article-meta">第16章</div>
-        <nav class="section-nav"><a href="09-generative.html">← 上一章</a><a href="11-physics-control.html">下一章 →</a></nav>
-        <h3>15. 生成式AI与制造设计</h3>
-<p><em>（此节内容未包含于本次翻译的原文件中。）</em></p>
-<hr />
-<h3>16. 赋能机器学习的语义框架</h3>
+        <nav class="section-nav"><a href="15-generative.html">← 上一章</a><a href="17-physics-control.html">下一章 →</a></nav>
+        <h3>16. 赋能机器学习的语义框架</h3>
 <p><strong>Arild Waaler<sup>1</sup>, Martin G. Skjæveland<sup>1</sup> and Dimitris Kyritsis<sup>1</sup></strong></p>
 <p><sup>1</sup> Department of Informatics, University of Oslo, Norway</p>
 <p>E-mail: arild@uio.no</p>
@@ -72,14 +75,14 @@
 <p>为应对这些挑战，一个新的框架必须将内涵作为第一公民（first-class citizens），使模型具有上下文性、组合性、语义透明性，并且对AI友好。</p>
 <p><strong>应对挑战的科学与技术进展</strong></p>
 <p>弥合工程建模需求与形式化本体能力之间的差距，需要一种新型框架——将系统工程的表达能力与形式化逻辑的精确性相结合。信息建模框架（Information Modelling Framework, IMF）[7, 2]正是为满足这一需求而设计。它提供了一个简洁而全面、可扩展的核心语言，使工程师能够以形式化可解释、可递增构建且可验证的方式表达系统元素的内涵定义。</p>
-<p>IMF的基础在于内涵与外延之间清晰的分离。一个IMF元素表达的是一个结构规格——即系统元素"应为何"的参数化定义，而非"当前存在什么"。每个这样的规格都附带一个切面（aspect）：一种结构化的上下文，捕捉信息域（如功能、实现）、模态（如预期的、实际的）以及生命周期视角（如产品、项目），见图1</p>
-<figure class="paper-figure"><img src="../images/semantic-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
-<p>。这种框架使得 alternative designs（替代设计方案）、需求与实现的对比，以及不同利益相关方的视图——都能够在统一的形式化体系中得到连贯的建模。</p>
+<p>IMF的基础在于内涵与外延之间清晰的分离。一个IMF元素表达的是一个结构规格——即系统元素"应为何"的参数化定义，而非"当前存在什么"。每个这样的规格都附带一个切面（aspect）：一种结构化的上下文，捕捉信息域（如功能、实现）、模态（如预期的、实际的）以及生命周期视角（如产品、项目），见图1。这种框架使得 alternative designs（替代设计方案）、需求与实现的对比，以及不同利益相关方的视图——都能够在统一的形式化体系中得到连贯的建模。</p>
+<figure class="paper-figure"><img src="../images/semantic-fig1.png" alt="图1. 信息建模框架（IMF）以彼此独立又相互关联的多个方面表示信息。图中展示了对一台泵的四个互补规格说明，它们共同构成完整描述：预期功能需求（1，黄色）、预期实现（产品）规格（2，青色）、预期空间需求（3，品红）以及实际安装描述（4，蓝色）。" loading="lazy"><figcaption>图1. 信息建模框架（IMF）以彼此独立又相互关联的多个方面表示信息。图中展示了对一台泵的四个互补规格说明，它们共同构成完整描述：预期功能需求（1，黄色）、预期实现（产品）规格（2，青色）、预期空间需求（3，品红）以及实际安装描述（4，蓝色）。</figcaption></figure>
+
 <p><strong>形式上</strong>，IMF使用来自类型λ演算的构造来定义结构规格。诸如hasPart、connectedTo和hasTerminal等关系被解释为函数应用，其语义建立在内涵逻辑的基础上。由此产生的模型可以被翻译为外延公理集（例如在描述逻辑中），使形式化推理工具能够验证性质、检测不一致性并支持模型补全。</p>
 <p>由于IMF模型建立在形式化语义的基础上并可序列化为知识图谱（RDF），它们成为工业知识图谱的自然基础。这些图谱在语义上丰富，按照系统工程逻辑构建，且机器可读。此外，IMF模型的RDF表示可以被先进的ML管道直接消费，为AI模型提供格式良好、经语义验证的工程结构。</p>
-<p>IMF在一个公开可访问的规范中定义 [7]，并得到资产信息建模推荐实践 [2] 的支持。此外，IMF项目还发布了其语义技术资源，包括其OWL本体和SHACL形状模式 [3]。IMF不是一个固定的标准，而是一个结构化、形式化、开放式的模型开发平台。它已在欧盟资助的项目RE4DY [4]、SM4RTENANCE [5]和Tec4MaaSEs [6]中得到探索——见图2</p>
-<figure class="paper-figure"><img src="../images/semantic-fig2.png" alt="图2" loading="lazy"><figcaption>图2</figcaption></figure>
-<p>的示例。</p>
+<p>IMF在一个公开可访问的规范中定义 [7]，并得到资产信息建模推荐实践 [2] 的支持。此外，IMF项目还发布了其语义技术资源，包括其OWL本体和SHACL形状模式 [3]。IMF不是一个固定的标准，而是一个结构化、形式化、开放式的模型开发平台。它已在欧盟资助的项目RE4DY [4]、SM4RTENANCE [5]和Tec4MaaSEs [6]中得到探索——见图2的示例。</p>
+<figure class="paper-figure"><img src="../images/semantic-fig2.png" alt="图2. 在欧盟资助的 Tec4MaaSEs 项目 [6] 中，信息建模框架（IMF）被用于捕获并表示复杂工程产物的需求，以及用于满足这些需求的设备规格。来自不同视角、不同格式的技术信息（左侧）被整合进一个结构化的 IMF 信息模型（右上）；该模型作为基础，进一步生成 RDF 知识图谱与 OWL 本体（右下），从而支持自动化的验证、推理与分析。" loading="lazy"><figcaption>图2. 在欧盟资助的 Tec4MaaSEs 项目 [6] 中，信息建模框架（IMF）被用于捕获并表示复杂工程产物的需求，以及用于满足这些需求的设备规格。来自不同视角、不同格式的技术信息（左侧）被整合进一个结构化的 IMF 信息模型（右上）；该模型作为基础，进一步生成 RDF 知识图谱与 OWL 本体（右下），从而支持自动化的验证、推理与分析。</figcaption></figure>
+
 <p><strong>结论性 remarks</strong></p>
 <p>信息建模框架（IMF）为构建工程知识提供了一个有原则的基础，既支持人类理解、AI驱动的自动化和形式化验证。通过弥合系统建模实践与基于逻辑的本体之间的鸿沟，IMF使新一代模块化、语义精确且跨上下文适应的工程工具成为可能。</p>
 <p>关键在于，IMF为可扩展的工业知识图谱提供了基础。其RDF序列化格式既支持语义集成，也支持直接输入机器学习工作流——这是工程AI的关键使能器。</p>
@@ -97,7 +100,7 @@
 <p>[8] W3C. RDF 1.1 Primer. 2014. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
 <p>[9] W3C. OWL 2 Web Ontology Language Document Overview (Second Edition). 2012. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
 <p>[10] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler, An Introduction to Description Logic. Cambridge University Press. 2017.</p>
-        <nav class="section-nav"><a href="09-generative.html">← 上一章</a><a href="11-physics-control.html">下一章 →</a></nav>
+        <nav class="section-nav"><a href="15-generative.html">← 上一章</a><a href="17-physics-control.html">下一章 →</a></nav>
     </main>
 </body>
 </html>

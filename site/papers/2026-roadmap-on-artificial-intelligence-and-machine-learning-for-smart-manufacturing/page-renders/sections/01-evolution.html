@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人工智能与机器学习在智能制造中的演进 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-evolution.html">1. 人工智能与机器学习的演进</a></li>
+            <li><a href="../sections/02-efficiency.html">2. AI驱动的效率、适应性与自动化</a></li>
+            <li><a href="../sections/03-valuechain.html">3. AI在制造价值链中的展望</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/04-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/05-sensing.html">5. 先进传感、感知与分析</a></li>
+            <li><a href="../sections/06-autonomous.html">6. AI赋能自主制造</a></li>
+            <li><a href="../sections/07-additive.html">7. 增材制造</a></li>
+            <li><a href="../sections/08-laser.html">8. 激光制造中的机器学习</a></li>
+            <li><a href="../sections/09-digitaltwin.html">9. 智能制造数字孪生</a></li>
+            <li><a href="../sections/10-supply.html">10. 智能供应链与物流</a></li>
+            <li><a href="../sections/11-robotics.html">11. AI增强机器人与自主系统</a></li>
+            <li><a href="../sections/12-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/13-ml-dl.html">13. 机器学习与深度学习</a></li>
+            <li><a href="../sections/14-physics-ml.html">14. 物理信息机器学习</a></li>
+            <li><a href="../sections/15-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/16-semantic.html">16. 赋能机器学习的语义框架</a></li>
+            <li><a href="../sections/17-physics-control.html">17. 物理预测控制与实时决策</a></li>
+            <li><a href="../sections/18-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/19-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/20-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/21-complex.html">21. 高度互联复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第1章</div>
+        <nav class="section-nav"><a href="00-intro.html">← 上一章</a><a href="02-efficiency.html">下一章 →</a></nav>
+        <h2>人工智能与机器学习在智能制造中的演进</h2>
+<p><strong>Marco Macchi¹, Adalberto Polenghi¹</strong></p>
+<p>¹ 米兰理工大学（Politecnico di Milano）管理、经济与工业工程系</p>
+<p>通讯作者：marco.macchi@polimi.it, adalberto.polenghi@polimi.it</p>
+<h3>现状</h3>
+<p>当前，各类前沿技术的进步以及工业环境中涌现的转型机遇，使得人工智能（AI）在工业过程中的应用已跃升至研究议程的首要位置。一个新术语——"工业人工智能"（Industrial AI）——近来被正式提出[1,2]，旨在强调以AI为技术基石、以数据和算法为支撑、以软件和硬件组件为依托，将AI引入工业系统、实现具有可持续性能的规模化应用，已成为当务之急[3]。</p>
+<p>众所周知，AI并非唯一的驱动力量。这一推进力量正在引领向智能制造所描绘的新范式转型[4,5]。这一转型由工业物联网（IIoT）、虚拟制造、工业人工智能及其他使能技术所支撑。云边融合架构最终为物理空间与虚拟空间在计算智能部署中的接近提供了支持[6]。</p>
+<p>从更广泛的视角来看，物理-数字融合是一项长期性发展，其推动力来自网络物理系统（CPS）的采用，但不止于此。它是多技术融合发展的结果——涉及计算机科学、信息与通信技术（ICT）、制造科学技术——最终促成了物理世界与虚拟世界的交汇[7,8]。作为聚合影响，网络物理融合问题需要被加以解决，而工业人工智能正是这一问题不可或缺的组成部分。</p>
+<p>就虚拟空间而言，在未来数年内甚至可以预见一种协同发展：AI将成为制造领域中实体与系统数字孪生（Digital Twins）的关键组成部分——凭借其挖掘隐藏模式、建立关联、并对未来行为进行预测与优化的能力[9,10]。由此，可以预见一个演进方向：在工业元宇宙（IM）中，借助IIoT、区块链及增强/虚拟现实（A/VR）等先进技术，将构建出一个能够与物理空间无缝交互的沉浸式虚拟空间，促进人类在高级协同制造[11,12]中的互动——其中人-X协作（Human-To-X collaboration）居于核心地位。</p>
+<p>在这一演进趋势中，AI将发挥关键作用——既作用于工业过程，也作用于决策循环中的人机关系[13]。它将支持知识表示、机器/深度学习、推理与最优化问题求解，从而整合数字孪生与工业元宇宙核心的高级建模与仿真技术。</p>
+<h3>当前与未来的挑战</h3>
+<p>当前AI/ML所面临的挑战需经过长期努力方能解决，以确保研发活动能够提供工业就绪的解决方案，实现AI与机器学习（ML）在智能制造中的大规模应用。AI在智能制造中的整合并非易事：需要技术和概念层面的同步发展，以使这些解决方案真正有效且可扩展，从而令企业能够加以利用，实现可持续的性能提升。</p>
+<p>经由研究与工业实践的有机融合所识别出的、适时且相关的挑战概括如下：</p>
+<ol>
+<li>
+<p><strong>数据驱动方法的采纳率在制造企业中较为有限。</strong> 工业过程知识的积累至关重要，必须对数据驱动方法形成补充。事实上，领域专业知识对于快速培育新产品、新工艺和新设备的制造过程及设备相关的全新任务能力不可或缺[14]。</p>
+</li>
+<li>
+<p><strong>AI与ML主要局限于对局部、有限范围内的漂移和异常做出反应[15]</strong>，但AI与ML需要扩展至处理复杂系统，在全局范围内预测和优化其行为，并应能应对更高的响应能力，以适应新产品、新设备、新技术和新工艺所带来的变化。</p>
+</li>
+<li>
+<p><strong>大多数AI研发聚焦于模型/解决方案的技术性能，却未触及解决方案如何嵌入复杂的社会技术环境这一核心问题</strong>——例如制造车间正是这样的环境，唯有跨学科方法才能发挥作用。然而，迄今为止的AI前沿表明，拥抱这一新研究范式的AI驱动解决方案案例极为稀少[16]。</p>
+</li>
+<li>
+<p><strong>制造系统的认知适应——即基于系统输入和触发信号进行自主执行的能力——在当前仍是前瞻性研究课题。</strong> 它要求收集并处理与系统及其上下文相关的数据，并进行恰当的处理，从而使数字孪生——以及更广泛地说——AI驱动的解决方案，能够充当代理者（agent），而非仅为人类决策和行动提供信息的系统[17]。</p>
+</li>
+</ol>
+<p>解决这些挑战，将开启与机器、人类和AI交互方式相关的新未来。物理-数字融合将催生"阴影车间"——其中"真实"融合了物理输入与虚拟输入——而工业元宇宙将成为制造企业从设计到制造系统管理所应采用的新方式。</p>
+<h3>应对挑战的科技进展</h3>
+<p>人工智能与机器学习有望增强制造系统的数字孪生。这将形成协同效应，使决策智能向更高层次的适应性、智能和认知特征演进[17]。为支持这一发展，由AI驱动的制造系统数字孪生将通过以下能力得到丰富：采用人类操作员行为模型；人类与AI/机器学习模型之间的持续双向学习；虚拟世界与现实世界之间的人类体验；以及物理系统与人类决策者之间日益增强的认知协作以实现决策的提升[17,18]。</p>
+<p>在这一路径上，技术进步正急剧提升制造运营的能力提升。关于AI与ML，当下的热潮聚焦于无代码AI和氛围编程（vibe-coding），它们使高级解决方案的开发变得更加便捷；然而有必要强调，工业级和企业级AI应用需要大量的计算机工程和ICT专业知识。AI本身在可解释性能力方面正在获得增强，以更好地与人互动——不仅提供结果，而且解释为何得出该结果。最后，大语言模型（LLM）及副驾驶系统，以及其底层的基础模型，正在彻底重塑人机交互的方式，带来全新形式的人机界面（HMI）和仪表板——对于人类决策者而言更为自然；倘若再辅以沉浸式XR（扩展现实）技术，这一交互模式将更为高效，向实现完整的工业元宇宙迈进。</p>
+<p>除了技术增长之外，新的进展还涉及框架与理论——首先要评估，然后在制造组织内引入和推广AI驱动的数字孪生，并将人类决策者视为核心参与者[19]。因此，系统工程和基于模型的系统工程（MBSE）等方法对于概念化AI驱动的数字孪生与其他技术以及人、非人代理之间的关系至关重要。此外，系统可用性理论（SUT）或技术接受与使用统一理论（UTAUT）等理论必须在AI工程和部署的范畴内加以考虑和管控。为此，建议研究者和实践者协同工作：首先在用例中定义解决方案，然后从业务/经济、运营绩效和人类行为的角度检验其适应性[20]。</p>
+<p>未来的愿景如图1所示。为实现这一愿景，制造企业遵循一条通向智能制造的路径，从现有的制造工厂和系统出发。AI是决策智能进步的关键支柱，被整合到一个由不同技术栈组合而成的演进平台中——这些技术栈既包括遗留IT系统和制造设备，也包括新设备和工具——也包括旨在支持人类在IT/OT系统中工作的那些工具。因此，物理-数字融合在工业元宇宙中被设想为一种自然趋势——源于IIoT，并经由机器、人类和制造系统及其XR扩展的数字孪生的发展而演进。在这一框架中，AI在感知、学习、预测、交互、适应、推理和创造力方面发挥着关键的智能作用。</p>
+<figure class="paper-figure"><img src="../images/foundations-fig1.png" alt="图1. 智能制造系统展望" loading="lazy"><figcaption>图1. 智能制造系统展望</figcaption></figure>
+<blockquote>
+<p>本图展示了智能制造系统的演进路径，从现有制造工厂出发，经由IIoT和数字孪生，最终实现工业元宇宙愿景。</p>
+</blockquote>
+<h3>结语</h3>
+<p>AI渗透制造企业的方式正在持续演进，尤其受到技术进步的推动。AI驱动的数字孪生现已成为制造领域可预见的现实，并将支持从操作员到工程师和管理者的各类人类主体，在产品和制造系统的设计、生产和维护中发挥作用。目前大多数开发是单向的——从AI到人——但要让AI成为制造中的关键组成部分，适应性是必要的关键能力——寻求能够管理和应对非平凡的、依赖上下文的事件的自主系统。因此，AI解决方案成为人类可以与之交互的关键资源——相互告知以增强和强化决策能力。可以预见的是，当前AI前沿必须向前推进——颠覆当前的人机AI通信方式，迈向物理世界与虚拟世界在工业元宇宙概念中的无缝融合为此，需要一系列技术的融合——从IIoT到XR。基于LLM的新型HMI将成为新的规范，而具有多样化能力的AI代理将成为基于CPS的智能工厂中的参与者——人类可以在其间与机器及具有自身学习能力的无形解决方案平等互动——形成多种形式的人-X协作。这将使协作达到工业工程的新前沿——但前提是必须以人类为中心的方法论进行最佳开发和编排，将人置于循环之中，并将传统工程绩效评估与习得性、可用性和人体工程学等方面相结合。</p>
+<p><strong>致谢</strong></p>
+<p>本研究为HumanTech项目的一部分，由意大利大学与研究部（MUR）于2023-2027年间资助，作为部级"卓越系所"倡议的一部分（L. 232/2016）。该倡议表彰在所产出的研究质量方面表现突出的系所，并资助特定的发展项目。</p>
+<hr />
+        <nav class="section-nav"><a href="00-intro.html">← 上一章</a><a href="02-efficiency.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

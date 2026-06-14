@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>机器学习、深度学习与物理信息ML · 人工智能与机器学习智能制造路线图 2026</title>
+    <title>基于归纳偏置的物理信息机器学习 · 人工智能与机器学习智能制造路线图 2026</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -17,23 +17,29 @@
             <li class="part">前言</li>
             <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
             <li class="part">第一部分：基础与发展趋势</li>
-            <li><a href="../sections/01-foundations.html">AI智能制造的基础与发展趋势</a></li>
+            <li><a href="../sections/01-evolution.html">1. 人工智能与机器学习的演进</a></li>
+            <li><a href="../sections/02-efficiency.html">2. AI驱动的效率、适应性与自动化</a></li>
+            <li><a href="../sections/03-valuechain.html">3. AI在制造价值链中的展望</a></li>
             <li class="part">第二部分：关键技术主题</li>
-            <li><a href="../sections/02-bigdata.html">4. 工业大数据分析</a></li>
-            <li><a href="../sections/03-sensing-autonomous.html">5-6. 传感感知与自主制造</a></li>
-            <li><a href="../sections/04-additive-laser.html">7-8. 增材制造与激光制造</a></li>
-            <li><a href="../sections/05-digitaltwin-supply.html">9-10. 数字孪生与供应链</a></li>
-            <li><a href="../sections/06-robotics.html">11. AI增强机器人</a></li>
-            <li><a href="../sections/07-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li><a href="../sections/04-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/05-sensing.html">5. 先进传感、感知与分析</a></li>
+            <li><a href="../sections/06-autonomous.html">6. AI赋能自主制造</a></li>
+            <li><a href="../sections/07-additive.html">7. 增材制造</a></li>
+            <li><a href="../sections/08-laser.html">8. 激光制造中的机器学习</a></li>
+            <li><a href="../sections/09-digitaltwin.html">9. 智能制造数字孪生</a></li>
+            <li><a href="../sections/10-supply.html">10. 智能供应链与物流</a></li>
+            <li><a href="../sections/11-robotics.html">11. AI增强机器人与自主系统</a></li>
+            <li><a href="../sections/12-sustainable.html">12. AI赋能可持续制造</a></li>
             <li class="part">第三部分：非传统机器学习技术</li>
-            <li><a href="../sections/08-ml-dl.html">13-14. 机器学习与物理信息ML</a></li>
-            <li><a href="../sections/09-generative.html">15. 生成式AI与制造设计</a></li>
-            <li><a href="../sections/10-semantic.html">16. 语义框架</a></li>
-            <li><a href="../sections/11-physics-control.html">17. 物理预测控制</a></li>
-            <li><a href="../sections/12-trustworthy.html">18. 制造可信AI</a></li>
-            <li><a href="../sections/13-rams.html">19. RAMS与AI/ML集成</a></li>
-            <li><a href="../sections/14-metrology.html">20. 数据驱动计量</a></li>
-            <li><a href="../sections/15-complex.html">21. 高度复杂制造系统的非传统ML</a></li>
+            <li><a href="../sections/13-ml-dl.html">13. 机器学习与深度学习</a></li>
+            <li><a href="../sections/14-physics-ml.html">14. 物理信息机器学习</a></li>
+            <li><a href="../sections/15-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/16-semantic.html">16. 赋能机器学习的语义框架</a></li>
+            <li><a href="../sections/17-physics-control.html">17. 物理预测控制与实时决策</a></li>
+            <li><a href="../sections/18-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/19-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/20-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/21-complex.html">21. 高度互联复杂制造系统的非传统ML</a></li>
         </ul>
         <div class="sidebar-footer">
             <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
@@ -42,50 +48,9 @@
         </div>
     </nav>
     <main class="content article">
-        <div class="article-meta">第13–14章</div>
-        <nav class="section-nav"><a href="07-sustainable.html">← 上一章</a><a href="09-generative.html">下一章 →</a></nav>
-        <h3>13. 机器学习与深度学习</h3>
-<p><strong>当前及未来挑战</strong></p>
-<p>基于机器学习/深度学习的智能制造所面临的最严峻挑战在于高质量标注数据的匮乏。由于工业环境中的安全性、成本及操作复杂性，收集足够的标注数据集——尤其是针对罕见故障场景的数据——极度困难。尽管部分研究已尝试利用生成对抗网络（GAN）生成合成故障数据，并采用长短期记忆网络（LSTM）进行时序建模[5]，但这些方法并非总能适用于那些无法收集真实故障数据的制造现场。</p>
-<p>其次，泛化能力有限及可解释性不足仍是关键问题。例如，针对特定刀具优化的预测模型往往难以推广到不同的机器或操作条件。为解决这一问题，可解释人工智能（XAI）技术正被越来越多地引入，以提高人工智能模型的可解释性[6]。</p>
-<p>第三，实现实时性能及轻量化模型部署仍是持续存在的技术瓶颈。尤其在边缘人工智能环境中，资源受限的环境要求模型既高效又准确。近年来的趋势包括通过知识蒸馏压缩大规模模型，并利用领域特定数据进行微调，以在性能与复杂度之间取得平衡[7]。</p>
-<p>最后，文化的和体制性障碍同样不可忽视。中小型企业往往因基础设施不足、技术能力有限或前期投资较大而在人工智能采用上面临延误或失败。在已记录的工业4.0转型失败案例中，不切实际的管理期望、基础设施赤字以及内部阻力是主要因素[8]。</p>
-<p><strong>应对挑战的科学技术进展</strong></p>
-<p>多项技术路径已被提出以克服上述挑战（如图1所示</p>
-<figure class="paper-figure"><img src="../images/mldl-fig1.png" alt="图1" loading="lazy"><figcaption>图1</figcaption></figure>
-<p>）：</p>
-<p>首先，迁移学习、自监督学习、基于GAN的合成数据生成及联邦学习被用于解决数据稀缺和类别不平衡问题。具体而言，领域适应技术已被用于在有限样本下泛化模型性能，而GAN则被用于合成故障数据或利用未标注数据集[9,10,11]。</p>
-<p>其次，可解释人工智能（XAI）技术正越来越多地被用于降低质量检测的计算成本，同时为操作人员提供可解释的人工智能预测。CAM和Grad-CAM等可视化技术有助于识别决策依据，而虚拟传感器重建及噪声修正方法则被开发用于提高数据质量和可信度[12,13]。</p>
-<p>第三，轻量级实时机器学习/深度学习模型架构的研发已付出大量努力。可变形卷积、通道注意力及双向特征融合等技术已被嵌入现代网络设计，以在保持高精度的同时实现30至100 FPS的推理速度，从而支持在生产环境中的边缘部署[14,15]。</p>
-<p>第四，数字孪生与混合建模的融合日益重要。结合基于物理的仿真与传感器驱动数据模型的混合框架在预测部件寿命方面表现出显著改进。这些方法在提高真实操作中的预测精度和可扩展性方面尤为有效[16,17]。</p>
-<p>最后，隐私保护学习方法受到广泛关注，以解决跨企业数据共享问题。联邦学习框架支持在不就露敏感制造数据的前提下协作训练高性能模型，其有效性已在实际生产数据集上得到验证[18]。</p>
-<p><strong>结论</strong></p>
-<p>综上所述，尽管基于机器学习/深度学习的智能制造发展迅速且潜力巨大，其仍面临若干根本性挑战。这些挑战包括：获取标注高质量工业数据集的困难、在多样化操作场景中泛化能力的局限、复杂模型的可解释性不足，以及基础设施与准备程度方面的重大差距——这些问题对中小型企业而言尤为突出。</p>
-<p>应对这些挑战需要一套综合性的分层策略。首先，增强的数据采集管道不仅需要基于传感器的监测，还需纳入基于仿真（数字孪生）的合成数据增强。跨领域整合异构结构化和非结构化数据，将有助于构建更为全面的人工智能模型。</p>
-<p>以人为中心的可解释性也须从设计早期阶段便予以纳入。除透明化可视化外，特征重要性高亮、注意力热图及上下文解释等技术应使操作人员能够理解和验证基于人工智能的决策。这将有助于建立信任并提高现场接受度。</p>
-<p>此外，轻量级人工智能模型架构的持续创新至关重要。在需要实时决策的边缘计算环境中，必须开发新型深度学习/机器学习方法，以在准确性与计算效率之间取得平衡。尤其值得关注的是，在保持高性能的同时最大限度降低能耗的模型设计，以及利用本地化现场数据逐步提升模型精度的联邦微调技术。</p>
-<p>最终，人工智能制造系统的成功部署与规模化推广，需要学术界、产业界与政府之间的协调合作。当技术创新通过实证测试验证，并与体制及劳动力战略相契合时，智能制造将超越自动化，成为透明、有韧性、以人为本的智能生产系统。</p>
-<p><strong>参考文献</strong></p>
-<p>[1] Rosati R, Romeo L, Cecchini G, Tonetto F, Viti P, Mancini A and Frontoni E 2023 From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0 J. Intell. Manuf. 34 107–121</p>
-<p>[2] Farahani B and Monsefi A K 2023 Smart and collaborative industrial IoT: A federated learning and data space approach Digit. Commun. Netw. 9 436–447</p>
-<p>[3] Zhang J, Su H, Zou W, Gong X, Zhang Z and Shen F 2020 CADN: A weakly supervised learning-based category-aware object detection network for surface defect detection Pattern Recognit. 109 107571</p>
-<p>[4] Chen H, Du Y, Fu Y, Zhu J and Zeng H 2023 DCAM-Net: A rapid detection network for strip steel surface defects based on deformable convolution and attention mechanism IEEE Trans. Instrum. Meas. 72 1–12</p>
-<p>[5] Alzubaidi L, Bai J, Al-Sabaawi A, Santamaría J, Albahri A S, Al-Dabbagh B S N et al 2023 A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications J. Big Data 10 46</p>
-<p>[6] Lei Y, Yang B, Jiang X, Jia F, Li N and Nandi A K 2020 Applications of machine learning to machine fault diagnosis: A review and roadmap Mech. Syst. Signal Process. 138 106587</p>
-<p>[7] Zhang H, Semujju S D, Wang Z, Lv X, Xu K, Wu L et al 2025 Large scale foundation models for intelligent manufacturing applications: a survey J. Intell. Manuf. 1–52</p>
-<p>[8] Pfeifer M R 2021 SMEs in failed transition towards Industry 4.0: A case study of a Czech SME J. Innov. Bus. Best Pract. 1–16</p>
-<p>[9] Jain S, Seth G, Paruthi A, Soni U and Kumar G 2023 Synthetic data augmentation for surface defect detection and classification using deep learning J. Intell. Manuf. 1–14</p>
-<p>[10] Zhong H, Yu S, Trinh H, Yuan R, Lv Y and Wang Y 2025 A time-saving fault diagnosis using simplified fast GAN and triple-type data transfer learning Struct. Health Monit. 24 869–882</p>
-<p>[11] Mehta M, Chen S, Tang H and Shao C 2023 A federated learning approach to mixed fault diagnosis in rotating machinery J. Manuf. Syst. 68 687–694</p>
-<p>[12] Bordekar H, Cersullo N, Brysch M, Philipp J and Hühne C 2025 eXplainable artificial intelligence for automatic defect detection in additively manufactured parts using CT scan analysis J. Intell. Manuf. 36 957–974</p>
-<p>[13] Fabiocchi D, Giulietti N, Carnevale M and Giberti H 2024 AI-driven virtual sensors for real-time dynamic analysis of mechanisms: A feasibility study Machines 12 257</p>
-<p>[14] Wan D, Lu R, Shen S, Xu T, Lang X and Ren Z 2023 Mixed local channel attention for object detection Eng. Appl. Artif. Intell. 123 106442</p>
-<p>[15] Zhang X, Song Y, Song T, Yang D, Ye Y, Zhou J and Zhang L 2024 LDConv: Linear deformable convolution for improving convolutional neural networks Image Vis. Comput. 149 105190</p>
-<p>[16] Iranshahi K, Brun J, Arnold T, Sergi T and Müller U C 2025 Digital twins: Recent advances and future directions in engineering fields Intell. Syst. Appl. 200516</p>
-<p>[17] Sahin T, Wolff D, von Danwitz M and Popp A 2024 Towards a hybrid digital twin: Physics-informed neural networks as surrogate model of a reinforced concrete beam arXiv preprint arXiv:2405.08406</p>
-<p>[18] Piran F J, Chen Z, Imani M and Imani F 2025 Privacy-preserving federated learning with differentially private hyperdimensional computing Comput. Electr. Eng. 123 110261</p>
-<hr />
-<h2>13.1 基于归纳偏置的物理信息机器学习</h2>
+        <div class="article-meta">第14章</div>
+        <nav class="section-nav"><a href="13-ml-dl.html">← 上一章</a><a href="15-generative.html">下一章 →</a></nav>
+        <h3>14. 基于归纳偏置的物理信息机器学习</h3>
 <p><strong>Olga Fink^1^，Vinay Sharma^1^</strong></p>
 <p><strong>^1^ 洛桑联邦理工学院（EPFL）智能维护与运营系统</strong></p>
 <p><strong>电子邮件：olga.fink@epfl.ch</strong></p>
@@ -144,7 +109,7 @@
 <p>[16] Zhao Z, Wang Q and Kuznetsov M 2024 Heat flux-aware graph neural networks for thermal modeling in manufacturing processes Int. J. Heat Mass Transf. 220 124912</p>
 <p>[17] Finzi M, Weller S and Roscher K 2024 Symmetry in graph neural networks for physical systems NeurIPS 2024 (Curran Associates) pp 1–15</p>
 <p>[18] Yang L, Zhang H and Karniadakis G E 2024 Thermodynamics-consistent neural networks for physical systems modeling arXiv preprint arXiv:2401.05873</p>
-        <nav class="section-nav"><a href="07-sustainable.html">← 上一章</a><a href="09-generative.html">下一章 →</a></nav>
+        <nav class="section-nav"><a href="13-ml-dl.html">← 上一章</a><a href="15-generative.html">下一章 →</a></nav>
     </main>
 </body>
 </html>

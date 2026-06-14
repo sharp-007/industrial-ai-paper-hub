@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>激光制造中的机器学习 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
+            <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
+            <p class="meta">arXiv:2605.00839 · Machine Learning: Engineering · 21章 · 99页</p>
+        </div>
+        <ul class="toc">
+            <li class="part">前言</li>
+            <li><a href="../sections/00-intro.html">前言、目录与引言</a></li>
+            <li class="part">第一部分：基础与发展趋势</li>
+            <li><a href="../sections/01-evolution.html">1. 人工智能与机器学习的演进</a></li>
+            <li><a href="../sections/02-efficiency.html">2. AI驱动的效率、适应性与自动化</a></li>
+            <li><a href="../sections/03-valuechain.html">3. AI在制造价值链中的展望</a></li>
+            <li class="part">第二部分：关键技术主题</li>
+            <li><a href="../sections/04-bigdata.html">4. 工业大数据分析</a></li>
+            <li><a href="../sections/05-sensing.html">5. 先进传感、感知与分析</a></li>
+            <li><a href="../sections/06-autonomous.html">6. AI赋能自主制造</a></li>
+            <li><a href="../sections/07-additive.html">7. 增材制造</a></li>
+            <li><a href="../sections/08-laser.html">8. 激光制造中的机器学习</a></li>
+            <li><a href="../sections/09-digitaltwin.html">9. 智能制造数字孪生</a></li>
+            <li><a href="../sections/10-supply.html">10. 智能供应链与物流</a></li>
+            <li><a href="../sections/11-robotics.html">11. AI增强机器人与自主系统</a></li>
+            <li><a href="../sections/12-sustainable.html">12. AI赋能可持续制造</a></li>
+            <li class="part">第三部分：非传统机器学习技术</li>
+            <li><a href="../sections/13-ml-dl.html">13. 机器学习与深度学习</a></li>
+            <li><a href="../sections/14-physics-ml.html">14. 物理信息机器学习</a></li>
+            <li><a href="../sections/15-generative.html">15. 生成式AI与制造设计</a></li>
+            <li><a href="../sections/16-semantic.html">16. 赋能机器学习的语义框架</a></li>
+            <li><a href="../sections/17-physics-control.html">17. 物理预测控制与实时决策</a></li>
+            <li><a href="../sections/18-trustworthy.html">18. 制造可信AI</a></li>
+            <li><a href="../sections/19-rams.html">19. RAMS与AI/ML集成</a></li>
+            <li><a href="../sections/20-metrology.html">20. 数据驱动计量</a></li>
+            <li><a href="../sections/21-complex.html">21. 高度互联复杂制造系统的非传统ML</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p><a href="../../../../index.html" style="color:var(--accent);">← 返回文献集</a></p>
+            <p>原文：<a href="../source/2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing.pdf" target="_blank" rel="noopener">PDF</a> · <a href="https://arxiv.org/abs/2605.00839" target="_blank" rel="noopener">arXiv:2605.00839</a></p>
+            <p>期刊：<a href="https://doi.org/10.1088/3049-4761/ae5967" target="_blank" rel="noopener">Machine Learning: Engineering</a></p>
+        </div>
+    </nav>
+    <main class="content article">
+        <div class="article-meta">第8章</div>
+        <nav class="section-nav"><a href="07-additive.html">← 上一章</a><a href="09-digitaltwin.html">下一章 →</a></nav>
+        <h1>8. 激光制造中的机器学习</h1>
+<p>Yung C Shin</p>
+<p>普渡大学机械工程系，美国印第安纳州西拉斐特</p>
+<h2>现状</h2>
+<p>机器学习（ML）在各种激光制造领域中的应用日益广泛，包括预测建模、工艺监测、工艺控制、缺陷检测、微观结构和力学性能预测，以及工艺参数优化。激光焊接、增材制造和激光切割等激光制造工艺涉及复杂的物理机制：包括但不限于激光能量吸收、热传递、熔化、流体流动、蒸发、凝固等。获得所需力学性能和微观结构的最佳工艺条件通常需要大量的参数变化实验或多物理场数值模拟——后者计算成本高昂且耗时较长。随着业界努力减少激光加工的实施时间和成本，机器学习已成为一种有前景的方法，用于建立数据驱动或代理模型——这些模型可以显著降低迭代寻找因果关系的高成本，或在某些情况下替代计算成本高得让人难以承受的基于物理的高保真建模。近年来，可以找到许多将机器学习用于工艺监测的例子，特别是使用视觉传感器检测熔池边界、表面缺陷、不完全焊缝和切割、匙孔深度等。一旦开发完成，它已成为自动工艺控制的有用工具，因为机器学习能够实时预测工艺条件。机器学习还可用于根据生成的数据调优工艺参数或优化工艺。它还被用于预测激光加工后的微观组织和硬度。此外，通过增材制造工艺利用机器学习合成新材料也取得了一些成功的尝试。例如，研究人员尝试预测高熵合金的热力学稳定相。正如这些例子所证明的，随着机器学习学科的进一步发展，机器学习的作用和应用只会不断增加。在某种意义上，机器学习可能是实现材料加工中许多激光工艺的优化、工艺控制和稳健实施预测科学的唯一途径，因为摩尔定律表明，即使采用大规模并行处理，计算能力也需要至少再过二十年才能赶上可用于实时设计、优化和控制的高保真建模的计算速度需求。</p>
+<h2>当前挑战与未来挑战</h2>
+<p>尽管机器学习在激光加工的各种应用中迅速普及，但当前大部分机器学习需要大量数据，而从物理系统实验生成这些数据的成本可能非常高昂。此外，数据驱动模型通常仅适用于开发该模型所用的特定设置或操作，因此缺乏像基于物理的预测模型那样的向广泛工艺条件范围推广的能力。例如，为特定类型的激光和工件材料开发的数据驱动模型可能无法直接扩展到另一组激光和材料组合。这将需要为每种激光和材料组合建立单独的数据驱动模型。为了扩大其适用性并降低生成大量数据的成本，需要更高效的方法来建立机器学习模型。例如，物理信息机器学习是将多年来通过大量科学研究建立的已知物理定律或控制方程整合起来的有前景方法，这将大幅减少建立数据驱动模型所需的数据量，并可能扩大机器学习模型的泛化能力。另一个问题在于如何利用现有数据——这些数据虽然丰富，却往往分散存放。对于许多常用激光-材料组合的激光工艺，多年来已经生成了大量数据，但由于数据以各种格式、大小、图像和分辨率存在，它们无法轻易用于构建数据驱动模型。因此，学术界可能需要致力于建立数据格式或数据存储库的标准，以便它们能够用于通过机器学习开发数据驱动模型。另一个挑战是如何组合不同类型的异构机器学习模型，以实现系统级监测、控制或优化。对于每种激光工艺，可能需要一个集成的工艺监测、量化和控制框架。图1展示了一种用于激光增材制造工艺的集成质量检验、工艺监测和反馈控制的可能方法。</p>
+<figure class="paper-figure"><img src="../images/laser-fig1.png" alt="图1. 面向激光增材制造系统的、基于机器学习的过程监测与控制系统示意图。" loading="lazy"><figcaption>图1. 面向激光增材制造系统的、基于机器学习的过程监测与控制系统示意图。</figcaption></figure>
+
+<h2>应对挑战的科学与技术进展</h2>
+<p>多年来已经开发了许多学习方法，可应用于材料激光加工的各个方面。在寻找最佳工艺参数方面，贝叶斯优化、随机森林和各种人工神经网络范式等机器学习技术已被采用。卷积神经网络、长短期记忆网络（LSTM）和带ML增强的卡尔曼滤波器通常是熔池监测和控制的选择。在激光加工过程中使用视觉系统、X射线扫描、超声扫描或扫描电子显微镜（SEM）图像进行缺陷检测时，各种卷积神经网络一直备受欢迎。人们已尝试通过各种神经模糊模型和物理信息神经网络为复杂物理问题开发代理模型。在此成功的基础上，研究人员需要对每种应用评估更广泛的机器学习模型，以便确定最佳方法。学术界还需要为系统级优化和控制开发集成的机器学习模型。激光加工界也可以利用人工智能（AI）和机器学习 rapid advances，在引入更先进的理论和方法时加以应用。他们还需要关注可扩展ML工艺监测和诊断的新类型传感器和传感技术。常用传感器包括相机、红外传感器、声发射传感器、光电二极管、光谱仪等，而原位X射线设备也已成功用于监测熔池、飞溅等。这些传感器必须能够轻松集成到商业激光加工设备中，并提供必要的速度和分辨率——因为某些激光工艺（如激光粉末床融合和激光焊接）是以非常高的速度进行的。</p>
+<h2>结语</h2>
+<p>如上所述，机器学习在各种激光制造工艺的工艺监测、控制、零件质量监测和优化方面有着非常广阔的前景。然而，必须克服本文所述的各种挑战，才能使机器学习在工业中得到广泛应用，而且必须有相应的传感技术和传感器的进一步发展。学术界需要共同努力建立数据格式和存储库的标准，以免工作分散化。</p>
+<hr />
+        <nav class="section-nav"><a href="07-additive.html">← 上一章</a><a href="09-digitaltwin.html">下一章 →</a></nav>
+    </main>
+</body>
+</html>

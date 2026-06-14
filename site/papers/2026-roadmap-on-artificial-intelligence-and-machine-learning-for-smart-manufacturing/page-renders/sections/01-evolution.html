@@ -112,8 +112,7 @@
 <p>AI渗透制造企业的方式正在持续演进，尤其受到技术进步的推动。AI驱动的数字孪生现已成为制造领域可预见的现实，并将支持从操作员到工程师和管理者的各类人类主体，在产品和制造系统的设计、生产和维护中发挥作用。目前大多数开发是单向的——从AI到人——但要让AI成为制造中的关键组成部分，适应性是必要的关键能力——寻求能够管理和应对非平凡的、依赖上下文的事件的自主系统。因此，AI解决方案成为人类可以与之交互的关键资源——相互告知以增强和强化决策能力。可以预见的是，当前AI前沿必须向前推进——颠覆当前的人机AI通信方式，迈向物理世界与虚拟世界在工业元宇宙概念中的无缝融合为此，需要一系列技术的融合——从IIoT到XR。基于LLM的新型HMI将成为新的规范，而具有多样化能力的AI代理将成为基于CPS的智能工厂中的参与者——人类可以在其间与机器及具有自身学习能力的无形解决方案平等互动——形成多种形式的人-X协作。这将使协作达到工业工程的新前沿——但前提是必须以人类为中心的方法论进行最佳开发和编排，将人置于循环之中，并将传统工程绩效评估与习得性、可用性和人体工程学等方面相结合。</p>
 <p><strong>致谢</strong></p>
 <p>本研究为HumanTech项目的一部分，由意大利大学与研究部（MUR）于2023-2027年间资助，作为部级"卓越系所"倡议的一部分（L. 232/2016）。该倡议表彰在所产出的研究质量方面表现突出的系所，并资助特定的发展项目。</p>
-<h2>参考文献</h2>
-<p>[1] Peres R S, Jia X, Lee J, Sun K, Colombo A W and Barata J 2020 Industrial Artificial Intelligence in Industry 4.0 - Systematic Review, Challenges and Outlook IEEE Access 8 220121–39</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Peres R S, Jia X, Lee J, Sun K, Colombo A W and Barata J 2020 Industrial Artificial Intelligence in Industry 4.0 - Systematic Review, Challenges and Outlook IEEE Access 8 220121–39</p>
 <p>[2] Lee J, Davari H, Singh J and Pandhare V 2018 Industrial Artificial Intelligence for industry 4.0-based manufacturing systems Manufacturing Letters 18 20–3</p>
 <p>[3] Lee J 2020 Industrial AI: Applications with Sustainable Performance (Singapore: Springer Singapore)</p>
 <p>[4] Kusiak A 2018 Smart manufacturing null 56 508–17</p>
@@ -132,7 +131,7 @@
 <p>[17] ElMaraghy H and ElMaraghy W 2022 Adaptive Cognitive Manufacturing System (ACMS) – a new paradigm International Journal of Production Research 60 7436–49</p>
 <p>[18] Huynh-The T, Pham Q-V, Pham X-Q, Nguyen T T, Han Z and Kim D-S 2023 Artificial intelligence for the metaverse: A survey Engineering Applications of Artificial Intelligence 117 105581</p>
 <p>[19] Reiman A, Kaivo-oja J, Parviainen E, Takala E-P and Lauraeus T 2021 Human factors and ergonomics in manufacturing in the industry 4.0 context – A scoping review Technology in Society 65 101572</p>
-<p>[20] Maghazei O, Lewis M A and Netland T H 2022 Emerging technologies and the use case: A multi-year study of drone adoption Journal of Operations Management 68 560–91</p>
+<p>[20] Maghazei O, Lewis M A and Netland T H 2022 Emerging technologies and the use case: A multi-year study of drone adoption Journal of Operations Management 68 560–91</p></div></details>
         <nav class="section-nav"><a href="00-intro.html">← 上一章</a><a href="02-efficiency.html">下一章 →</a></nav>
     </main>
     <script>
@@ -238,7 +237,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -260,22 +265,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

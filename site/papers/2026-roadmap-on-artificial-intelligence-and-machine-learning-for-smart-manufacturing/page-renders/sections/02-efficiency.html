@@ -95,8 +95,7 @@
 <p>总之，制造业的未来与AI的进步深度交织。AI是实现更高效率、适应性和自动化水平的基石——这是培育具有竞争力、可持续和以人为本的工业生态系统所不可或缺的。虽然在制造业中部署AI已取得重大进展，但若干关键挑战依然存在——包括数据质量、系统集成复杂性以及构建可信赖和可靠AI系统的迫切需求。数字孪生、分层计算和区块链等新兴技术为应对这些挑战提供了有前景的途径——通过增强网络物理可追溯性和可见性、模型可靠性、流程安全性和系统灵活性。充分利用这些创新提供了克服现有局限和充分实现AI在制造业中变革潜力的手段。此外，GAI和XAI有望进一步加速创新并重新定义制造范式。这一轨迹将为智能工厂铺平道路——不仅高度高效和富有韧性，而且能够实现大规模个性化定制——从而在全球市场中获得竞争优势，并推动下一波工业演进。</p>
 <p><strong>致谢</strong></p>
 <p>本研究部分受香港研究资助局策略主题研究项目（T32-707/22-N）、合作研究基金（C7076-22GF）、研究影响基金（R7036-22）和创新及科技基金（PRP/007/25LI）资助。</p>
-<h2>参考文献</h2>
-<p>[1] Xu X, Lu Y, Vogel-Heuser B and Wang L 2021 Industry 4.0 and Industry 5.0—Inception, conception and perception J. Manuf. Syst. 61 530-535</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Xu X, Lu Y, Vogel-Heuser B and Wang L 2021 Industry 4.0 and Industry 5.0—Inception, conception and perception J. Manuf. Syst. 61 530-535</p>
 <p>[2] Guo D, Li M, Lyu Z, Kang K, Wu W, Zhong R Y and Huang G Q 2021 Synchroperation in industry 4.0 manufacturing Int. J. Prod. Econ. 238 108171</p>
 <p>[3] Wu W, Zhao Z, Shen L, Kong X T, Guo D, Zhong R Y and Huang G Q 2022 Just Trolley: Implementation of industrial IoT and digital twin-enabled spatial-temporal traceability and visibility for finished goods logistics Adv. Eng. Inform. 52 101571</p>
 <p>[4] Sahoo S and Lo C Y 2022 Smart manufacturing powered by recent technological advancements: A review J. Manuf. Syst. 64 236- 250</p>
@@ -115,7 +114,7 @@
 <p>[17] Yang C, Wang Y, Lan S, Wang L, Shen W and Huang G Q 2022 Cloud-edge-device collaboration mechanisms of deep learning models for smart robots in mass personalization Robot. Comput.-Integr. Manuf. 77 102351</p>
 <p>[18] Leng J, Ye S, Zhou M, Zhao J L, Liu Q, Guo W, Cao W and Fu L 2020 Blockchain-secured smart manufacturing in industry 4.0: A survey IEEE Trans. Syst. Man Cybern. Syst. 51 237-252</p>
 <p>[19] Ghobakhloo M, Fathi M, Iranmanesh M, Vilkas M, Grybauskas A and Amran A 2024 Generative artificial intelligence in manufacturing: opportunities for actualizing Industry 5.0 sustainability goals J. Manuf. Technol. Manag. 35 94-121</p>
-<p>[20] Alexander Z, Chau D H and Saldaña C 2024 An interrogative survey of explainable AI in manufacturing IEEE Trans. Ind. Inform. 20 7069 - 7081 The Outlook of Artificial Intelligence in Manufacturing and Value Chains Kiva Allgood1, Devendra Jain1 and Benedikt Gieger1 1 Centre for Advanced Manufacturing &amp; Supply Chains, World Economic Forum, Cologny/Geneva, Switzerland E-mail: mailto:kiva.allgood@weforum.org Status AI has evolved from a promising technology to a transformative force, fundamentally reshaping global manufacturing and value chains. Over the past decade, AI and its applications have matured, driven by advances in data availability, algorithms, and compute power. As a result, manufacturers are increasingly recognizing AI’s potential to drive step-change improvements in efficiency, sustainability, and resilience when deployed at scale. The World Economic Forum’s Global Lighthouse Network1, a community of advanced manufacturing sites, serves as a compelling showcase of such AI-enabled improvements. The early use cases of AI focused on predictive maintenance and quality control. Today, AI’s integration spans the full value chain: demand sensing, supply planning, autonomous intralogistics, energy optimization, and dynamic scheduling. Notably, much of the current impact still stems from conventional AI models, which</p>
+<p>[20] Alexander Z, Chau D H and Saldaña C 2024 An interrogative survey of explainable AI in manufacturing IEEE Trans. Ind. Inform. 20 7069 - 7081 The Outlook of Artificial Intelligence in Manufacturing and Value Chains Kiva Allgood1, Devendra Jain1 and Benedikt Gieger1 1 Centre for Advanced Manufacturing &amp; Supply Chains, World Economic Forum, Cologny/Geneva, Switzerland E-mail: mailto:kiva.allgood@weforum.org Status AI has evolved from a promising technology to a transformative force, fundamentally reshaping global manufacturing and value chains. Over the past decade, AI and its applications have matured, driven by advances in data availability, algorithms, and compute power. As a result, manufacturers are increasingly recognizing AI’s potential to drive step-change improvements in efficiency, sustainability, and resilience when deployed at scale. The World Economic Forum’s Global Lighthouse Network1, a community of advanced manufacturing sites, serves as a compelling showcase of such AI-enabled improvements. The early use cases of AI focused on predictive maintenance and quality control. Today, AI’s integration spans the full value chain: demand sensing, supply planning, autonomous intralogistics, energy optimization, and dynamic scheduling. Notably, much of the current impact still stems from conventional AI models, which</p></div></details>
         <nav class="section-nav"><a href="01-evolution.html">← 上一章</a><a href="03-valuechain.html">下一章 →</a></nav>
     </main>
     <script>
@@ -221,7 +220,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -243,22 +248,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

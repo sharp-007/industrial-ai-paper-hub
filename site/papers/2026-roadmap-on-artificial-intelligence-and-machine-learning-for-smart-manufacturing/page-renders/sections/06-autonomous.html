@@ -101,8 +101,7 @@
 <p>预期收益广泛，涵盖预测性质量控制、智能维护、能源优化与物流协调。随着AI模型变得越来越可解释、稳健且具有上下文感知能力，自主制造系统预计将成为下一代智能工厂的支柱——能够在工业条件下高效运行、适应响应并持续改进。</p>
 <h2>致谢</h2>
 <p>本研究部分受韩国国家科学与信息通信技术部（NRF）资助的国际研究与开发项目（No. 2022K1A4A7A04096329），以及贸易、工业与能源部（MOTIE，韩国）资助的技术创新计划（或工业战略技术开发计划——汽车产业技术开发——绿色汽车）（RS-2024-00444961，基于设计平台开发和演示专用电动汽车）支持。</p>
-<h2>参考文献</h2>
-<p>[1] Mo F, Monetti FM, Torayev A, Rehman HU, Mulet Alberola JA, Rea Minango N, Nguyen HN, Maffei A, Chaplin JC. A maturity model for the autonomy of manufacturing systems. International Journal of Advanced Manufacturing Technology. 2023 May 1;126(1– 2):405–28.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Mo F, Monetti FM, Torayev A, Rehman HU, Mulet Alberola JA, Rea Minango N, Nguyen HN, Maffei A, Chaplin JC. A maturity model for the autonomy of manufacturing systems. International Journal of Advanced Manufacturing Technology. 2023 May 1;126(1– 2):405–28.</p>
 <p>[2] Singh J, Ahuja IPS, Singh H, Singh A. Development and Implementation of Autonomous Quality Management System (AQMS) in an Automotive Manufacturing using Quality 4.0 Concept– A Case Study. Comput Ind Eng. 2022 Jun 1;168.</p>
 <p>[3] Goknil A, Nguyen P, Sen S, Politaki D, Niavis H, Pedersen KJ, Suyuthi A, Anand A, Ziegenbein A. A Systematic Review of Data Quality in CPS and IoT for Industry 4.0. ACM Comput Surv. 2023 Dec 31;55(14 S).</p>
 <p>[4] Li D, Yang Y, Song YZ, Hospedales TM. Deeper, Broader and Artier Domain Generalization. 2017.</p>
@@ -121,7 +120,7 @@
 <p>[17] He Z, Tran KP, Thomassey S, Zeng X, Xu J, Yi C. Multi-objective optimization of the textile manufacturing process using deep-Q-network based multi-agent reinforcement learning. J Manuf Syst. 2022 Jan 1;62:939–49.</p>
 <p>[18] Zhang Y, Zhu H, Tang D, Zhou T, Gui Y. Dynamic job shop scheduling based on deep reinforcement learning for multi-agent manufacturing systems. Robot Comput Integr Manuf. 2022 Dec 1;78.</p>
 <p>[19] Bayram F, Ahmed BS. Towards Trustworthy Machine Learning in Production: An Overview of the Robustness in MLOps Approach. ACM Comput Surv. 2025 Jan 22;57(5).</p>
-<p>[20] Leng J, Zhong Y, Lin Z, Xu K, Mourtzis D, Zhou X, Zheng P, Liu Q, Zhao JL, Shen W. Towards resilience in Industry 5.0: A decentralized autonomous manufacturing paradigm. Vol. 71, Journal of Manufacturing Systems. Elsevier B.V.; 2023. p. 95–114.</p>
+<p>[20] Leng J, Zhong Y, Lin Z, Xu K, Mourtzis D, Zhou X, Zheng P, Liu Q, Zhao JL, Shen W. Towards resilience in Industry 5.0: A decentralized autonomous manufacturing paradigm. Vol. 71, Journal of Manufacturing Systems. Elsevier B.V.; 2023. p. 95–114.</p></div></details>
         <nav class="section-nav"><a href="05-sensing.html">← 上一章</a><a href="07-additive.html">下一章 →</a></nav>
     </main>
     <script>
@@ -227,7 +226,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -249,22 +254,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

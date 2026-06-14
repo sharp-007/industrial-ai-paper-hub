@@ -179,8 +179,7 @@ iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路
 <p>人工智能（AI）已成为追求可持续性和绿色制造的变革性推动者。其分析复杂数据集、优化资源使用和支持智能决策的能力，为减少制造系统环境影响提供了重大机遇。从预测性维护到能效调度，从可持续产品设计到供应链透明度，AI技术正在推动与长期可持续性目标一致的操作改进。</p>
 <p>然而，要在这一背景下充分发挥AI的潜力，不仅仅需要技术就绪。它需要一种结合数据科学、领域专业知识和可持续性科学的多学科方法——当然，还需要制造科学和工程。AI成功整合到制造中必须不仅考虑技术性能，还要考虑可解释性、数据治理和伦理影响。此外，确保AI解决方案可访问和可扩展至关重要，特别是对于通常缺乏采用先进技术资源的中小型企业（SMEs）。</p>
 <p>随着各行业加速向净零排放转型，AI将在实现适应性、透明和弹性的制造系统方面发挥越来越重要的作用。在制造多个层级和层面设计高度互联的系统可以加速AI的大规模集成并释放其最大潜力。未来的研究应专注于推进可解释和集中式AI系统、将实时LCA与可持续性指标整合到决策过程中、以及跨部门合作共享知识和最佳实践。通过持续创新和负责任的实施，AI可以为将制造系统重塑为可持续发展引擎做出重大贡献。</p>
-<h2>参考文献</h2>
-<p>[1] Solomon BD, Krishna K. The coming sustainable energy transition: History, strategies, and outlook. Energy policy. 2011 Nov 1;39(11):7422-31, doi: https://doi.org/10.1016/j.enpol.2011.09.009.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Solomon BD, Krishna K. The coming sustainable energy transition: History, strategies, and outlook. Energy policy. 2011 Nov 1;39(11):7422-31, doi: https://doi.org/10.1016/j.enpol.2011.09.009.</p>
 <p>[2] Pimenov DY, Mia M, Gupta MK, Machado ÁR, Pintaude G, Unune DR, Khanna N, Khan AM, Tomaz Í, Wojciechowski S, Kuntoğlu M. Resource saving by optimization and machining environments for sustainable manufacturing: A review and future prospects. Renewable and Sustainable Energy Reviews. 2022 Sep 1;166:112660, doi: https://doi.org/10.1016/j.rser.2022.112660.</p>
 <p>[3] Chiu MC, Chu CH. Review of sustainable product design from life cycle perspectives. International Journal of Precision Engineering and Manufacturing. 2012 Jul;13:1259-72, doi: 10.1007/s12541-012-0169-1.</p>
 <p>[4] Bachmann N, Tripathi S, Brunner M, Jodlbauer H. The contribution of data-driven technologies in achieving the sustainable development goals. Sustainability. 2022 Feb 22;14(5):2497, doi: 10.3390/su14052497.</p>
@@ -199,7 +198,7 @@ iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路
 <p>[17] Mahjoubi S, Barhemat R, Meng W, Bao Y. AI-guided auto-discovery of low-carbon cost-effective ultra-high performance concrete (UHPC). Resources, Conservation and Recycling. 2023 Feb 1;189:106741. doi: https://doi.org/10.1016/j.resconrec.2022.106741</p>
 <p>[18] Wilson AN, St John PC, Marin DH, Hoyt CB, Rognerud EG, Nimlos MR, Cywar RM, Rorrer NA, Shebek KM, Broadbelt LJ, Beckham GT. PolyID: Artificial intelligence for discovering performance-advantaged and sustainable polymers. Macromolecules. 2023 Oct 19;56(21):8547-57. doi: 10.1021/acs.macromol.3c00994</p>
 <p>[19] Kuppusamy Y, Jayaseelan R, Pandulu G, Sathish Kumar V, Murali G, Dixit S, Vatin NI. Artificial neural network with a cross- validation technique to predict the material design of eco-friendly engineered geopolymer composites. Materials. 2022 May 10;15(10):3443. doi: https://doi.org/10.3390/ma15103443</p>
-<p>[20] Srivastava PR, Mangla SK, Eachempati P, Tiwari AK. An explainable artificial intelligence approach to understanding drivers of economic energy consumption and sustainability. Energy Economics. 2023 Sep 1;125:106868. doi: https://doi.org/10.1016/j.eneco.2023.106868. Journal XX (XXXX) XXXXXX A Author et al 57</p>
+<p>[20] Srivastava PR, Mangla SK, Eachempati P, Tiwari AK. An explainable artificial intelligence approach to understanding drivers of economic energy consumption and sustainability. Energy Economics. 2023 Sep 1;125:106868. doi: https://doi.org/10.1016/j.eneco.2023.106868. Journal XX (XXXX) XXXXXX A Author et al 57</p></div></details>
         <nav class="section-nav"><a href="11-robotics.html">← 上一章</a><a href="13-ml-dl.html">下一章 →</a></nav>
     </main>
     <script>
@@ -305,7 +304,13 @@ iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -327,22 +332,6 @@ iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

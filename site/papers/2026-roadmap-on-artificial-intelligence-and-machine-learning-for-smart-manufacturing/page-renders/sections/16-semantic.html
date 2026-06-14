@@ -110,8 +110,7 @@
 <p>IMF不仅是一种静态语言，更是一个研究和创新计划。它邀请工程师、逻辑学家、数据科学家和工具开发者共同合作，扩展其能力并将其应用于现实世界的挑战。通过将系统原理与形式化语义相结合，IMF支持可信、可解释且可扩展的数字工程基础设施的建设。</p>
 <p><strong>致谢</strong></p>
 <p>本研究得到欧洲委员会在Horizon Europe项目RE4DY（资助号101058384）、SM4RTENANCE（资助号101123490）和Tec4MaaSEs（资助号101138517）中的部分支持。</p>
-<h2>参考文献</h2>
-<p>[1] Waaler A and Kiritsis D 2025 Information Modelling Framework for Digital Engineering Digital Engineering 4 100042 doi:10.1016/j.dte.2025.100042</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Waaler A and Kiritsis D 2025 Information Modelling Framework for Digital Engineering Digital Engineering 4 100042 doi:10.1016/j.dte.2025.100042</p>
 <p>[2] DNV 2024 Asset Information Modelling Framework: Structuring Digital Assets DNV-RP-0670 Online: https://www.dnv.com/digital-trust/recommended-practices/asset-information-modelling-dnv-rp-0670/ (accessed June 2025)</p>
 <p>[3] IMF Programme IMF Semantic Technology Resources. 2025. Online: http://ns.imfid.org (accessed June 2025)</p>
 <p>[4] RE4DY Project 2025. Online: https://re4dy.eu (accessed June 2025)</p>
@@ -120,7 +119,7 @@
 <p>[7] IMF Programme 2025 IMF Overview and Manual Online: https://www.imfid.org/ (accessed June 2025)</p>
 <p>[8] W3C. RDF 1.1 Primer. 2014. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
 <p>[9] W3C. OWL 2 Web Ontology Language Document Overview (Second Edition). 2012. https://www.w3.org/TR/rdf11-primer/ (accessed June 2025)</p>
-<p>[10] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler, An Introduction to Description Logic. Cambridge University Press. 2017.</p>
+<p>[10] Franz Baader, Ian Horrocks, Carsten Lutz, Uli Sattler, An Introduction to Description Logic. Cambridge University Press. 2017.</p></div></details>
         <nav class="section-nav"><a href="15-generative.html">← 上一章</a><a href="17-physics-control.html">下一章 →</a></nav>
     </main>
     <script>
@@ -226,7 +225,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -248,22 +253,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

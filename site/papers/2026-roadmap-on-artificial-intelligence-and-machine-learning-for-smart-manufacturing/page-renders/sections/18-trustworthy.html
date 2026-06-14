@@ -111,8 +111,7 @@
 <p><strong>结语</strong></p>
 <p>可信AI是下一代制造的基本要求。随着AI系统变得越来越强大和普及，其不透明性、错位和失效的风险也随着其潜在收益而一同增长。应对这些挑战需要在计算与建模以及人类与社会基础方面取得协调进展。</p>
 <p>AI的成熟过程与传统工程学科通过严格理论、可验证实践和赢得社区信任的发展历程相似。实现这一愿景需要数学家、计算机科学家、工程师、社会科学家、领域专家和最终用户的共同努力。成功的实现将使制造业中的AI系统不仅强大，而且可理解、可靠并值得信赖。</p>
-<h2>参考文献</h2>
-<p>[1] Ochella, Shafiee and Dinmohammadi 2022 Artificial intelligence in prognostics and health management of engineering systems Engineering Applications of Artificial Intelligence 108 104552</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Ochella, Shafiee and Dinmohammadi 2022 Artificial intelligence in prognostics and health management of engineering systems Engineering Applications of Artificial Intelligence 108 104552</p>
 <p>[2] Ucar Karakose and Kırımça 2024 Artificial intelligence for predictive maintenance applications: Key components, trustworthiness, and future trends Applied Sciences 14(2) 898</p>
 <p>[3] Prezas Michalos Arkouli Katsikarelis and Makris 2022 AI-enhanced vision system for dispensing process monitoring and quality control in manufacturing of large parts Procedia CIRP 107 1275–1280</p>
 <p>[4] Senoner Netland and Feuerriegel 2022 Using explainable artificial intelligence to improve process quality: Evidence from semiconductor manufacturing Management Science 68(8) 5704–5723</p>
@@ -131,7 +130,7 @@
 <p>[17] Raissi, Perdikaris and Karniadakis 2019 Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations Journal of Computational Physics 378 686–707</p>
 <p>[18] Nemani, Biggio, Huan, Hu, Fink, Tran, Wang, Zhang and Hu 2023 Uncertainty quantification in machine learning for engineering design and health prognostics: A tutorial Mechanical Systems and Signal Processing 205, 110796</p>
 <p>[19] Lu, Liu, Dong, Gu, Gama and Zhang 2018 Learning under concept drift: A review IEEE Transactions on Knowledge and Data Engineering 31(12) 2346–2363</p>
-<p>[20] Dhanda, Rogers, Hall, Dekoninck and Dhokia 2025 Reviewing human-robot collaboration in manufacturing: Opportunities and challenges in the context of industry 5.0 Robotics and Computer-Integrated Manufacturing 93 102937</p>
+<p>[20] Dhanda, Rogers, Hall, Dekoninck and Dhokia 2025 Reviewing human-robot collaboration in manufacturing: Opportunities and challenges in the context of industry 5.0 Robotics and Computer-Integrated Manufacturing 93 102937</p></div></details>
         <nav class="section-nav"><a href="17-physics-control.html">← 上一章</a><a href="19-rams.html">下一章 →</a></nav>
     </main>
     <script>
@@ -237,7 +236,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -259,22 +264,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

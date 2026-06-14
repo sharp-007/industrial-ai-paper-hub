@@ -102,8 +102,7 @@
 <p>机器人应用所需的物理AI无法作为运行在云端的单一整体系统来实现。机器人应用中的物理AI应被视为涉及多个AI组件交互的复杂系统。该系统应使用正确的功能分解，以确保能够实现性能和模块化之间的理想权衡。存在许多不同的AI方法，单一方法不太可能足以提供所需的性能。因此，每个功能块都应通过仔细考虑优缺点来选择正确的AI方法。因此，在物理AI系统中拥有正确的系统架构是在工业应用中取得成功的关键。在工业应用中，从时间和成本角度生成大量数据是不可能的。物理AI的设计应使其能够使用由物理实验生成的有限数据进行训练。需要一种结合基于模型和数据驱动方法的方法来成功地将物理AI部署到工业应用中。在复杂应用中部署机器人工作单元目前需要大量的人力工作。完成这项工作所需的人力资源往往成为瓶颈，并可能导致部署延迟。生成式AI正在提供新工具，以减少工业应用部署机器人所需的人类专业知识。AI驱动的数字孪生正在引领智能系统的新时代，通过降低成本、减少错误、提高质量、提升性能并减少环境足迹。人类是工业运营的重要组成部分，因此人机交互问题需要在系统设计过程中积极应对。AI可用于革新人机界面，通过促进更直观的交互来帮助工人。</p>
 <p><strong>致谢</strong></p>
 <p>本工作由南加州大学先进制造中心支持。感谢我的现在和 former学生们对本工作的贡献。作者已确认本研究中的任何可识别参与者均已给予出版同意。</p>
-<h2>参考文献</h2>
-<p>[1] Al-Hussaini, S.; Guan, Y.; Gregory, J. M.; Pollard, K.; Khooshabeh, P.; and Gupta, S. K. (2024). Assessing the Impact of Alerts on the Human Supervisor’s Decision-Making Performance in Multi-Robot Missions. ACM Transactions on Human-Robot Interaction, 14(1): 1–40.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Al-Hussaini, S.; Guan, Y.; Gregory, J. M.; Pollard, K.; Khooshabeh, P.; and Gupta, S. K. (2024). Assessing the Impact of Alerts on the Human Supervisor’s Decision-Making Performance in Multi-Robot Missions. ACM Transactions on Human-Robot Interaction, 14(1): 1–40.</p>
 <p>[2] Chi, C.; Xu, Z.; Feng, S.; Cousineau, E.; Du, Y.; Burchfiel, B.; Tedrake, R.; and Song, S. (2024). Diffusion Policy: Visuomotor Policy Learning via Action Diffusion. The International Journal of Robotics Research.</p>
 <p>[3] Gao J. et al. (2024) Physically Grounded Vision-Language Models for Robotic Manipulation. 2024 IEEE International Conference on Robotics and Automation (ICRA), Yokohama, Japan, pp. 12462-12469.</p>
 <p>[4] Gregory, J. M.; and Gupta, S. K., 2024. Opportunities for Generative Artificial Intelligence to Accelerate Deployment of Human- Supervised Autonomous Robots. Proceedings of the AAAI Symposium Series, 2(1): 177–181.</p>
@@ -122,7 +121,7 @@
 <p>[17] Suzuki, R.; Karim, A.; Xia, T.; Hedayati, H.; and Marquardt, N. (2022). Augmented Reality and Robotics: A Survey and Taxonomy for AR-enhanced Human-Robot Interaction and Robotic Interfaces. CHI '22: Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems.</p>
 <p>[18] Tellex, S.; Gopalan, N.; Kress-Gazit, H.; and Matuszek, C. (2020). Robots That Use Language. Annual Review of Control, Robotics, and Autonomous Systems Volume 3.</p>
 <p>[19] Wiemann, R.; Posniak, L.; Pregizer, C.; and Raatz A. (2018). Intuitive Robot Programming Using Augmented Reality. Procedia CIRP, Volume 76, Pages 155-160.</p>
-<p>[20] Zhang, J.; Zhang, J.; Pertsch, K.; Liu, Z.; Ren, X.; Chang, M.; Sun, S.-H.; and Lim, J. (2023). Bootstrap Your Own Skills: Learning to Solve New Tasks with Large Language Model Guidance. In 7th Annual Conference on Robot Learning.</p>
+<p>[20] Zhang, J.; Zhang, J.; Pertsch, K.; Liu, Z.; Ren, X.; Chang, M.; Sun, S.-H.; and Lim, J. (2023). Bootstrap Your Own Skills: Learning to Solve New Tasks with Large Language Model Guidance. In 7th Annual Conference on Robot Learning.</p></div></details>
         <nav class="section-nav"><a href="10-supply.html">← 上一章</a><a href="12-sustainable.html">下一章 →</a></nav>
     </main>
     <script>
@@ -228,7 +227,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -250,22 +255,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

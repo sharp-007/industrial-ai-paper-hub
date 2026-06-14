@@ -98,8 +98,7 @@ E-mail: ftao@buaa.edu.cn</li>
 <p>数字孪生已成为工业4.0与工业5.0的基石，促进了智能制造中物理系统与虚拟系统的融合。尽管数字孪生在实时监测、预测性分析与智能控制方面具有显著优势，但在极端制造环境等复杂场景中的应用、确保数据完整性以及克服计算与互操作性局限等挑战依然存在。跨行业协作创新配合稳健的政策框架，将释放数字孪生的全部潜力，使其从被动工具转变为主动赋能下一代工业智能的核心引擎。</p>
 <p><strong>致谢</strong></p>
 <p>本工作受北京市自然科学基金资助（Grant No. L243009）、国家自然科学基金资助（Grant No. 52120105008）及中国博士后科学基金资助（Grant No. 2024M754054）。</p>
-<h2>参考文献</h2>
-<p>[1] Grieves M 2014 Digital Twin: Manufacturing Excellence Through Virtual Factory Replication (White Paper) 1-7</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Grieves M 2014 Digital Twin: Manufacturing Excellence Through Virtual Factory Replication (White Paper) 1-7</p>
 <p>[2] Glaessgen E and Stargel D 2012 The digital twin paradigm for future NASA and US Air Force vehicles 53rd AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics and Materials Conference 20th AIAA/ASME/AHS Adaptive Structures Conference 14th AIAA 1818 (doi:10.2514/6.2012-1818)</p>
 <p>[3] Tao F, Zhang M, Liu Y et al 2018 Digital twin driven prognostics and health management for complex equipment CIRP Ann 67 169-172(doi:10.1016/j.cirp.2018.04.055)</p>
 <p>[4] Tao F and Qi Q 2019 Make more digital twins Nature 573 490-491(doi:10.1038/d41586-019-02849-1)</p>
@@ -117,7 +116,7 @@ E-mail: ftao@buaa.edu.cn</li>
 <p>[16] Kim S, Choi J H and Kim N H 2022 Data-driven prognostics with low-fidelity physical information for digital twin: physics- informed neural network Struct. Multidiscip. Optim. 65 255(doi:10.1007/s00158-022-03348-0)</p>
 <p>[17] Mata O, Ponce P, Perez C et al 2025 Digital twin designs with generative AI: crafting a comprehensive framework for manufacturing systems J. Intell. Manuf. 1 1-24(doi:10.1007/s10845-025-02583-8)</p>
 <p>[18] Putz B, Dietz M, Empl P et al 2021 Ethertwin: Blockchain-based secure digital twin information management Inf. Process. Manag. 58 102425(doi:10.1016/j.ipm.2020.102425)</p>
-<p>[19] Yoo S K, Sun K J and Kim S H 2024 Digital Twin Standardization: Trends and Future Prospects Electron. Telecommun. Trends 39 79-86(doi: 10.22648/ETRI.2024.J.390308)</p>
+<p>[19] Yoo S K, Sun K J and Kim S H 2024 Digital Twin Standardization: Trends and Future Prospects Electron. Telecommun. Trends 39 79-86(doi: 10.22648/ETRI.2024.J.390308)</p></div></details>
         <nav class="section-nav"><a href="08-laser.html">← 上一章</a><a href="10-supply.html">下一章 →</a></nav>
     </main>
     <script>
@@ -223,7 +222,13 @@ E-mail: ftao@buaa.edu.cn</li>
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -245,22 +250,6 @@ E-mail: ftao@buaa.edu.cn</li>
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

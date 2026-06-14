@@ -137,8 +137,7 @@
 <p>前进的道路清晰明确：建立与领域相关的基准和数据集；用物理、不确定性和组合推理强化模型；重新设计人机协作的工作流程；将信任和认证流程编纂成法。只有在广度和深度两个维度上同时解决科学和采纳问题，我们才能将AI设计从精巧的演示转化为经过认证的工程实践。</p>
 <p><strong>致谢</strong></p>
 <p>Ahmed PI感谢美国国家科学基金会 CAREER Award No. 2443429 的支持。</p>
-<h2>参考文献</h2>
-<p>[1] Finger S and Dixon J R 1989 A review of research in mechanical engineering design. Part I: Descriptive, prescriptive, and computer-based models of design processes. Research in engineering design 1 51–67</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Finger S and Dixon J R 1989 A review of research in mechanical engineering design. Part I: Descriptive, prescriptive, and computer-based models of design processes. Research in engineering design 1 51–67</p>
 <p>[2] Antonsson E K and Cagan J 2001 Formal engineering design synthesis. (Cambridge University Press)</p>
 <p>[3] Antonau I, Warnakulasuriya S, Baars S, Baimuratov I, Wittenborg T, Kreuzeberg L, Attravanam A and W¨uchner R 2025 Challenges in realizing 3rd generation multidisciplinary design optimization. Advances in Computational Science and Engineering 5 1–21</p>
 <p>[4] Bordas A, Le Masson P, Thomas M and Weil B 2024 What is generative in generative artificial intelligence? A design-based perspective. Research in Engineering Design 35 427–443</p>
@@ -157,7 +156,7 @@
 <p>[17] Edgecomb I M, Brisco R, Gunn K et al. 2025 Artificial Intelligence in engineering design: an industry perspective. Proceedings of the Design Society 5 641–650</p>
 <p>[18] Hoffman R R, Johnson M, Bradshaw J M and Underbrink A 2013 Trust in automation. IEEE Intelligent Systems 28 84–88</p>
 <p>[19] Felten F, Apaza G, Baunlich G, Diniz C, Dong X, Drake A, Habibi M, Hoffman N J, Keeler M, Massoudi S, VanGessel F G and Fuge M 2025 EngiBench: A Framework for Data-Driven Engineering Design Research URL http://arxiv.org/abs/2508.00831</p>
-<p>[20] Clark P, Cowhey I, Etzioni O, Khot T, Sabharwal A, Schoenick C and Tafjord O 2018 Think you have solved question answering? try arc, the ai2 reasoning challenge (Preprint 1803.05457) URL https://arxiv.org/abs/1803.05457 Semantic Framework Enabling Machine Learning in Manufacturing Arild Waaler1, Martin G. Skjæ veland1 and Dimitris Kyritsis1 1 Department of Informatics, University of Oslo, Norway E-mail: arild@uio.no Status Engineering practice today is fundamentally dependent on technical information, information that is document-based, fragmented across tools and domains, and tied to siloed organizational structures. While individual disciplines to varying degrees employ formal models like ontologies, there is no shared foundation for structuring system-level knowledge across the engineering lifecycle. As a result, the so- called digital thread — the traceable connection from requirements through design, implementation, and operation — is frequently broken or opaque. At the same time, artificial intelligence, particularly in the form of machine learning and generative models, is rapidly being integrated into engineering workflows. However, these approaches struggle to deliver trustworthy results in the absence of clearly defined objects and relations. Where structure is implicit or missing, AI models become unreliable, and engineers are left without the means to validate or interpret the outputs of AI models. This creates a gap between the promise of AI and the reality of high-stakes engineering practice, where precision, safety, trust, and traceability are imperative.</p>
+<p>[20] Clark P, Cowhey I, Etzioni O, Khot T, Sabharwal A, Schoenick C and Tafjord O 2018 Think you have solved question answering? try arc, the ai2 reasoning challenge (Preprint 1803.05457) URL https://arxiv.org/abs/1803.05457 Semantic Framework Enabling Machine Learning in Manufacturing Arild Waaler1, Martin G. Skjæ veland1 and Dimitris Kyritsis1 1 Department of Informatics, University of Oslo, Norway E-mail: arild@uio.no Status Engineering practice today is fundamentally dependent on technical information, information that is document-based, fragmented across tools and domains, and tied to siloed organizational structures. While individual disciplines to varying degrees employ formal models like ontologies, there is no shared foundation for structuring system-level knowledge across the engineering lifecycle. As a result, the so- called digital thread — the traceable connection from requirements through design, implementation, and operation — is frequently broken or opaque. At the same time, artificial intelligence, particularly in the form of machine learning and generative models, is rapidly being integrated into engineering workflows. However, these approaches struggle to deliver trustworthy results in the absence of clearly defined objects and relations. Where structure is implicit or missing, AI models become unreliable, and engineers are left without the means to validate or interpret the outputs of AI models. This creates a gap between the promise of AI and the reality of high-stakes engineering practice, where precision, safety, trust, and traceability are imperative.</p></div></details>
         <nav class="section-nav"><a href="14-physics-ml.html">← 上一章</a><a href="16-semantic.html">下一章 →</a></nav>
     </main>
     <script>
@@ -263,7 +262,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -285,22 +290,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

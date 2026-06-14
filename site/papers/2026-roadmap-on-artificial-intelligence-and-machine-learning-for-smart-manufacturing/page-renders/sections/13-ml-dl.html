@@ -95,8 +95,7 @@
 <p>以人为中心的可解释性也须从设计早期阶段便予以纳入。除透明化可视化外，特征重要性高亮、注意力热图及上下文解释等技术应使操作人员能够理解和验证基于人工智能的决策。这将有助于建立信任并提高现场接受度。</p>
 <p>此外，轻量级人工智能模型架构的持续创新至关重要。在需要实时决策的边缘计算环境中，必须开发新型深度学习/机器学习方法，以在准确性与计算效率之间取得平衡。尤其值得关注的是，在保持高性能的同时最大限度降低能耗的模型设计，以及利用本地化现场数据逐步提升模型精度的联邦微调技术。</p>
 <p>最终，人工智能制造系统的成功部署与规模化推广，需要学术界、产业界与政府之间的协调合作。当技术创新通过实证测试验证，并与体制及劳动力战略相契合时，智能制造将超越自动化，成为透明、有韧性、以人为本的智能生产系统。</p>
-<h2>参考文献</h2>
-<p>[1] Rosati, R., Romeo, L., Cecchini, G., Tonetto, F., Viti, P., Mancini, A., &amp; Frontoni, E., From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0. 2023 Journal of Intelligent Manufacturing, 34, 107–121</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Rosati, R., Romeo, L., Cecchini, G., Tonetto, F., Viti, P., Mancini, A., &amp; Frontoni, E., From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0. 2023 Journal of Intelligent Manufacturing, 34, 107–121</p>
 <p>[2] Farahani, B., &amp; Monsefi, A. K., Smart and collaborative industrial IoT: A federated learning and data space approach, 2023 Digital Communications and Networks, 9, 436-447</p>
 <p>[3] Zhang, J., Su, H., Zou, W., Gong, X., Zhang, Z., &amp; Shen, F., CADN: A weakly supervised learning-based category-aware object detection network for surface defect detection, 2020 Pattern Recognition, 109, 107571</p>
 <p>[4] Chen, H., Du, Y., Fu, Y., Zhu, J., &amp; Zeng, H., DCAM-Net: A Rapid Detection Network for Strip Steel Surface Defects Based on Deformable Convolution and Attention Mechanism, 2023 IEEE Transactions on Instrumentation and Measurement, 72, 1- 12</p>
@@ -111,7 +110,7 @@
 <p>[13] Fabiocchi, D., Giulietti, N., Carnevale, M., &amp; Giberti, H. Ai-driven virtual sensors for real-time dynamic analysis of mechanisms: A feasibility study. 2024 Machines, 12, 257.</p>
 <p>[14] Wan, D., Lu, R., Shen, S., Xu, T., Lang, X., &amp; Ren, Z. Mixed local channel attention for object detection. 2023 Engineering Applications of Artificial Intelligence, 123, 106442</p>
 <p>[15] Zhang, X., Song, Y., Song, T., Yang, D., Ye, Y., Zhou, J., &amp; Zhang, L. LDConv: Linear deformable convolution for improving convolutional neural networks. 2024 Image and Vision Computing, 149, 105190.</p>
-<p>[16] Iranshahi, K., Brun, J., Arnold, T., Sergi, T., &amp; Müller, U. C. Digital Twins: Recent Advances and Future Directions in Engineering Fields. 2025 Intelligent Systems with Applications, 200516.</p>
+<p>[16] Iranshahi, K., Brun, J., Arnold, T., Sergi, T., &amp; Müller, U. C. Digital Twins: Recent Advances and Future Directions in Engineering Fields. 2025 Intelligent Systems with Applications, 200516.</p></div></details>
         <nav class="section-nav"><a href="12-sustainable.html">← 上一章</a><a href="14-physics-ml.html">下一章 →</a></nav>
     </main>
     <script>
@@ -217,7 +216,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -239,22 +244,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

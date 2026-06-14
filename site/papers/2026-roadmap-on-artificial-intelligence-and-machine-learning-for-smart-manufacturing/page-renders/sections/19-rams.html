@@ -88,8 +88,7 @@
 <p>智能制造正在进入一个新阶段——由物理、数字与认知系统的融合来定义。RAMS原则继续作为可靠运营的基础，但它们必须演进以应对由AI驱动自动化、信息物理互联性及可持续性要求所塑造的现代工业环境的复杂性。传统的可靠性工具已不足以确保这些智能、动态生态系统的信任、适应性和长期价值。以依赖性为中心的资产管理（DCAM）框架代表了RAMS思维的一次及时且必要的演进。通过将生命周期意识、系统级依赖性及AI保障嵌入资产管理策略，DCAM为管理日益自主化、数据驱动和软件定义的制造系统提供了一种整体性、前瞻性的方法。本章概述了现有RAMS实践在面临新兴技术和组织挑战时的局限性。还重点介绍了科学和技术进展——从混合AI模型和数字孪生到边缘云智能和情境感知维护——这些进展使得新一代依赖性解决方案成为可能。在这些进展的核心是AI，它扮演着双重角色：既是预测和自适应能力的强大推动者，也是新可靠性与安全问题的来源。管理这种双重性需要强有力的AI溯源、情境感知及以人为本整合的机制。随着制造系统持续扩大复杂性和自主性，DCAM提供了一个战略框架，确保智能工厂不仅具有生产性和高效性，而且在整个生命周期中也是可靠的、透明的和可持续的。它弥合了传统可靠性工程与AI集成工业系统不断发展的需求之间的差距——使制造商能够设计韧性、充满信心地运营并负责任地创新。最终，DCAM为制造依赖性的未来提供了一条实践性和适应性强的路线图——植根于工程严谨性，以AI为丰富手段，并以生命周期管理和系统可信性原则为指导。</p>
 <p><strong>致谢</strong></p>
 <p>本研究部分得到了中国国家自然科学基金（NSFC）的资助，项目编号为72471060。</p>
-<h2>参考文献</h2>
-<p>[1] R. Wang, J. Xu, W. Zhang, J. Gao, Y. Li, and F. Chen, Reliability analysis of complex electromechanical systems: State of the art, challenges, and prospects, vol. 38, no. 7. 2022.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] R. Wang, J. Xu, W. Zhang, J. Gao, Y. Li, and F. Chen, Reliability analysis of complex electromechanical systems: State of the art, challenges, and prospects, vol. 38, no. 7. 2022.</p>
 <p>[2] F. Qiu et al., “A Review on Integrating IoT, IIoT, and Industry 4.0: A Pathway to Smart Manufacturing and Digital Transformation,” IET Inf. Secur., vol. 2025, no. 1, p. 9275962, 2025.</p>
 <p>[3] J. Lin, “Dependability-Centered Asset Management(DCAM): Toward Trustworthy and Sustainable Systems in the CPS Era,” IEEE Reliab. Mag., vol. online, pp. 1–7, 2025.</p>
 <p>[4] R. Siraskar, S. Kumar, S. Patil, A. Bongale, and K. Kotecha, Reinforcement learning for predictive maintenance: a systematic technical review, vol. 56, no. 11. Springer Netherlands, 2023.</p>
@@ -105,7 +104,7 @@
 <p>[15] I. Hazra et al., “Prognostics and Health Management of Unmanned Surface Vessels: Past, Present, and Future,” J. Comput. Inf. Sci. Eng., vol. 24, no. 8, p. 080801, 2024.</p>
 <p>[16] J. Perez-Cerrolaza et al., “Artificial Intelligence for Safety-Critical Systems in Industrial and Transportation Domains: A Survey,” ACM Comput. Surv., vol. 56, no. 7, pp. 1–40, 2024.</p>
 <p>[17] M. Molęda, B. Małysiak-Mrozek, W. Ding, V. Sunderam, and D. Mrozek, “From Corrective to Predictive Maintenance—A Review of Maintenance Approaches for the Power Industry,” Sensors, vol. 23, no. 13, p. 5970, 2023.</p>
-<p>[18] M. Rodríguez-Hernández, A. Crespo-Márquez, A. Sánchez-Herguedas, and V. González-Prida, “Digitalization as an Enabler in Railway Maintenance: A Review from ‘The International Union of Railways Asset Management Framework’ Perspective,” Infrastructures, vol. 10, no. 4, p. 96, 2025.</p>
+<p>[18] M. Rodríguez-Hernández, A. Crespo-Márquez, A. Sánchez-Herguedas, and V. González-Prida, “Digitalization as an Enabler in Railway Maintenance: A Review from ‘The International Union of Railways Asset Management Framework’ Perspective,” Infrastructures, vol. 10, no. 4, p. 96, 2025.</p></div></details>
         <nav class="section-nav"><a href="18-trustworthy.html">← 上一章</a><a href="20-metrology.html">下一章 →</a></nav>
     </main>
     <script>
@@ -211,7 +210,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -233,22 +238,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

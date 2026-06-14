@@ -140,8 +140,7 @@
 <h2>致谢</h2>
 <p>本工作由美国教育部通过改善中学后教育基金（FIPSE）资助，资助编号为P116S230014。</p>
 <hr />
-<h2>参考文献</h2>
-<p>[1] Hu Y, Jia Q, Yao Y, Lee Y, Lee M, Wang C et al. 2024 Industrial internet of things intelligence empowering smart manufacturing: a literature review IEEE Internet Things J. 11 19143–67 (doi: 10.1109/JIOT.2024.3367692)</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Hu Y, Jia Q, Yao Y, Lee Y, Lee M, Wang C et al. 2024 Industrial internet of things intelligence empowering smart manufacturing: a literature review IEEE Internet Things J. 11 19143–67 (doi: 10.1109/JIOT.2024.3367692)</p>
 <p>[2] Lee J, Bagheri B and Kao H-A 2015 A cyber-physical systems architecture for Industry 4.0-based manufacturing systems Manuf. Lett. 3 18–23 (doi: 10.1016/j.mfglet.2014.12.001)</p>
 <p>[3] Su H and Lee J 2024 Machine learning approaches for diagnostics and prognostics of industrial systems using open source data from PHM data challenges: a review Int. J. Progn. Health Manag. 15 (2) (doi: 10.36001/ijphm.2024.v15i2.3993)</p>
 <p>[4] Tao F, Zhang H, Liu A and Nee A Y C 2019 Digital twin in industry: state-of-the-art IEEE Trans. Ind. Inform. 15 2405–15 (doi: 10.1109/TII.2018.2873186)</p>
@@ -152,7 +151,7 @@
 <p>[9] Phuyal S, Bista D and Bista R 2020 Challenges, opportunities and future directions of smart manufacturing: a state-of-the-art review Sustain. Futures 2 100023 (doi: 10.1016/j.sftr.2020.100023)</p>
 <p>[10] Lee J and Su H 2025 Rethinking industrial artificial intelligence: a unified foundation framework Int. J. AI Mater. Des. 2 (2):56-68. (doi: 10.36922/ijamd025080006)</p>
 <p>[11] Zhang C, Wang Z, Zhou G, Chang F, Ma D, Jing Y et al. 2023 Towards new-generation human-centric smart manufacturing in Industry 5.0: a systematic review Adv. Eng. Inform. 57 102121 (doi: 10.1016/aei.2023.102121)</p>
-<p>[12] Xu X, Lu Y, Vogel-Heuser B and Wang L 2021 Industry 4.0 and Industry 5.0—inception, conception and perception J. Manuf. Syst. 61 530–5 (doi: 10.1016/j.jmsy.2021.10.006)</p>
+<p>[12] Xu X, Lu Y, Vogel-Heuser B and Wang L 2021 Industry 4.0 and Industry 5.0—inception, conception and perception J. Manuf. Syst. 61 530–5 (doi: 10.1016/j.jmsy.2021.10.006)</p></div></details>
         <nav class="section-nav"><span></span><a href="01-evolution.html">下一章 →</a></nav>
     </main>
     <script>
@@ -258,7 +257,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -280,22 +285,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

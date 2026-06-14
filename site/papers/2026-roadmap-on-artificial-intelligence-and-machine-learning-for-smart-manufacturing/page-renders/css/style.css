@@ -103,8 +103,8 @@ button:focus-visible {
     right: 22px;
     bottom: 22px;
     z-index: 1200;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,13 +112,19 @@ button:focus-visible {
     border-radius: 50%;
     background: var(--gradient-primary);
     color: #fff;
-    font-size: 1.1rem;
     cursor: pointer;
     box-shadow: 0 6px 18px rgba(14, 131, 136, 0.32);
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px) scale(0.9);
-    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s, box-shadow 0.25s var(--ease);
+}
+
+.back-to-top-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: transform 0.2s var(--ease);
 }
 
 .back-to-top.is-visible {
@@ -130,6 +136,10 @@ button:focus-visible {
 .back-to-top:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 10px 24px rgba(14, 131, 136, 0.4);
+}
+
+.back-to-top:hover .back-to-top-icon {
+    transform: translateY(-1px);
 }
 
 /* ── Sidebar ── */
@@ -786,7 +796,87 @@ body.nav-open .sidebar-overlay { display: block; }
     line-height: 1.5;
 }
 
-/* References block (enhanced via JS after the "参考文献" heading) */
+/* References — collapsed by default; title matches h2, content only when open */
+.article .references-panel {
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.article .references-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 1.16rem;
+    font-weight: 600;
+    margin: 2em 0 0.7em;
+    padding: 0 0 6px;
+    color: var(--ink);
+    border-bottom: 2px solid var(--accent-soft);
+    position: relative;
+    line-height: 1.45;
+    scroll-margin-top: 64px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.15s var(--ease);
+}
+
+.article .references-summary::-webkit-details-marker { display: none; }
+
+.article .references-summary::marker {
+    content: "";
+    display: none;
+}
+
+.article .references-summary::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 38px;
+    height: 2px;
+    background: var(--gradient-accent);
+}
+
+.article .references-summary::after {
+    content: "";
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+    margin-top: -3px;
+    transition: transform 0.2s var(--ease);
+}
+
+.article .references-panel[open] .references-summary::after {
+    transform: rotate(-135deg);
+    margin-top: 3px;
+}
+
+.article .references-summary:hover {
+    color: var(--accent-dark);
+}
+
+.article .references-panel .references {
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    counter-reset: ref;
+}
+
+.article .references-panel[open] .references-summary {
+    margin-bottom: 0.7em;
+}
+
 .references {
     margin-top: 1.4em;
     padding: 16px 20px;

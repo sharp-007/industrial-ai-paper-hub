@@ -93,8 +93,7 @@
 <p>计算机视觉系统也可以发展到能够在极端环境中有效运行的程度，包括在光照条件变化和遮挡的情况下无障碍运行。这使得系统能够独立学习工艺行为，从而减少对数据标注的依赖。此外，在工业场景中，系统生成的数据往往是无标注的。在这种情况下，企业可以采用自主学习型数字孪生（DT），具备实时、无监督、不确定性量化且可解释的决策能力。这些数字孪生可以使用IBDA动态监测和优化工艺参数，从而提高生产率、降低能耗并减少碳排放，以实现可持续制造。这些数字孪生还可以足够轻量化，以便在边缘设备而非仅在云端运行。确定每个系统级数字孪生的保真度和刷新率，有助于将其整合，从而在任何时刻对整个制造工厂获得洞察，进而为各系统进一步优化工艺参数。数字孪生还可与轻量化基于物理的模型相结合，以提高其在制造动态特性中的效能。</p>
 <p><strong>结语</strong></p>
 <p>智能制造以IBDA为核心，相较于传统做法具有显著优势，例如降低运营和维护成本、减少碳排放、提高产品质量和资源利用率。这一认识促使了该领域的更大投资。然而，最大化ROI需要克服如图1所示的特定挑战，解决这些挑战需要系统化、同步且多学科的研究方法。尽管应对所有这些挑战需要时间，但创新解决方案可能有助于弥合传统制造系统与现代制造系统之间的差距，使组织能够在最少干预的情况下开始获得智能制造的好处。同时必须指出，无论开发何种技术，保护组织的知识产权都至关重要。此外，在数据的体量、种类和速度都很高的情况下，除非确保数据的真实性，否则IBDA无法从工业数据中提取任何可操作的洞察。应对这些挑战将有助于推动海量异构工业数据的流畅整合，同时保护其知识产权，以提取可操作的洞察。这一路径将使组织能够最大限度地降低成本并最大化生产率。</p>
-<h2>参考文献</h2>
-<p>[1] Huylebrouck D 2008 The ISShango project Journal of Mathematics and the Arts 2 145–52</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Huylebrouck D 2008 The ISShango project Journal of Mathematics and the Arts 2 145–52</p>
 <p>[3] Halevi G and Moed H 2012 The evolution of big data as a research and scientific topic: Overview of the literature Research Trends 1</p>
 <p>[4] Vogel-Heuser B and Hess D 2016 Guest Editorial Industry 4.0–Prerequisites and Visions IEEE Transactions on Automation Science and Engineering 13 411–3</p>
 <p>[5] Kelly J and Floyer D 2013 The industrial internet and big data analytics: Opportunities and challenges 2016-08-02]. http://wikibon. org/wiki/v/The_Industrial_Internet_ and_Big_Data_Analytics: _Opportunities_and_Challenges. Wikibon</p>
@@ -117,7 +116,7 @@
 <p>[3] . The second breakthrough is the marked improvement in robustness and anti-interference capabilities. In robotic object grasping scenarios, even when visual occlusion or blind spots occur, robots can dynamically adjust their actions through tactile and force feedback</p>
 <p>[4] . This adaptability ensures task continuity and accuracy despite environmental perturbations. The third aspect centers on innovations in intelligence and system integration. On one hand, cross-modal semantic alignment is realized through multimodal deep learning, with the incorporation of self-supervised mechanisms to reduce reliance on labeled data. For example, in video data processing, visual, auditory, and motion information are automatically correlated, thereby augmenting the model's generalization capacity</p>
 <p>[5] . On the other hand, edge computing is employed for real-time processing in system integration, mitigating dependence on cloud-based infrastructure. In intelligent logistics, leveraging AGV (Automated Guided Vehicle) navigation and obstacle avoidance technologies, obstacle response times can be minimized to as low as 100 milliseconds</p>
-<p>[6] .</p>
+<p>[6] .</p></div></details>
         <nav class="section-nav"><a href="03-valuechain.html">← 上一章</a><a href="05-sensing.html">下一章 →</a></nav>
     </main>
     <script>
@@ -223,7 +222,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -245,22 +250,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

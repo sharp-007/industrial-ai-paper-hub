@@ -89,8 +89,7 @@
 <p>PHM研究的方向显示出从以算法为中心的探究向HC-CMS系统级智能更广泛重视的明确转变。传统ML方法虽然在受控环境中取得成功，但在分布漂移、数据稀缺和有限可解释性方面仍存在困难。非传统ML技术——用于稳健结构发现的TDA、用于泛化的域适应、用于透明性的相似性推理、用于成本效益优化的代理模型，以及用于企业级集成的ILKM——共同为PHM的下一阶段以及工业人工智能应用的发展提供了一条连贯的路线图。未来工业人工智能中的PHM必须强调适应性、可解释性和可扩展性。为了将预测精度转化为可操作的智能，这些策略——如集成不同专业领域的ILKM框架和基于领域知识的非传统ML方法——将至关重要。更高的正常运行时间、更安全的操作、更低的维护成本和更稳健的生产生态系统是这些进展的预期优势。对该领域而言，主要挑战[20]不是追求算法新颖性，而是成功地将这些技术集成到能够产生持久影响的、企业级的、可审计的可靠工业系统中。</p>
 <h2>致谢</h2>
 <p>本研究由美国教育部通过改善中等后教育基金（FIPSE）资助，资助编号为 P116S230014。</p>
-<h2>参考文献</h2>
-<p>[1] D.-Y. Ji, H. Su, T. Minami, and J. Lee, “Introduction to Industrial Artificial Intelligence,” Advances in Artificial Intelligence Applications in Industrial and Systems Engineering, pp. 1–18, 2025.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] D.-Y. Ji, H. Su, T. Minami, and J. Lee, “Introduction to Industrial Artificial Intelligence,” Advances in Artificial Intelligence Applications in Industrial and Systems Engineering, pp. 1–18, 2025.</p>
 <p>[2] J. Lee, J. Ni, J. Singh, B. Jiang, M. Azamfar, and J. Feng, “Intelligent maintenance systems and predictive manufacturing,” Journal of Manufacturing Science and Engineering, vol. 142, no. 11, p. 110805, 2020.</p>
 <p>[3] S. Ochella, M. Shafiee, and F. Dinmohammadi, “Artificial intelligence in prognostics and health management of engineering systems,” Engineering Applications of Artificial Intelligence, vol. 108, p. 104552, 2022.</p>
 <p>[4] K. T. Nguyen, K. Medjaher, and D. T. Tran, “A review of artificial intelligence methods for engineering prognostics and health management with implementation guidelines,” Artificial Intelligence Review, vol. 56, no. 4, pp. 3659–3709, 2023.</p>
@@ -109,7 +108,7 @@
 <p>[17] W. Li et al., “A novel methodology for lens matching in compact lens module assembly,” IEEE Transactions on Automation Science and Engineering, vol. 20, no. 2, pp. 741–750, 2022.</p>
 <p>[18] Lee J and Su H, A unified industrial large knowledge model framework in Industry 4.0 and smart manufacturing Int. J. AI Mater. Des. 1 (2) 41–47, 2025</p>
 <p>[19] T. Xia, Y. Dong, L. Xiao, S. Du, E. Pan, and L. Xi, “Recent advances in prognostics and health management for advanced manufacturing paradigms,” Reliability Engineering &amp; System Safety, vol. 178, pp. 255–268, 2018.</p>
-<p>[20] P. Kumar, I. Raouf, and H. S. Kim, “Review on prognostics and health management in smart factory: From conventional to deep learning perspectives,” Engineering Applications of Artificial Intelligence, vol. 126, p. 107126, 2023.</p>
+<p>[20] P. Kumar, I. Raouf, and H. S. Kim, “Review on prognostics and health management in smart factory: From conventional to deep learning perspectives,” Engineering Applications of Artificial Intelligence, vol. 126, p. 107126, 2023.</p></div></details>
         <nav class="section-nav"><a href="20-metrology.html">← 上一章</a><span></span></nav>
     </main>
     <script>
@@ -215,7 +214,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -237,22 +242,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

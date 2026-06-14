@@ -85,8 +85,7 @@
 <h2>结语</h2>
 <p>如上所述，机器学习在各种激光制造工艺的工艺监测、控制、零件质量监测和优化方面有着非常广阔的前景。然而，必须克服本文所述的各种挑战，才能使机器学习在工业中得到广泛应用，而且必须有相应的传感技术和传感器的进一步发展。学术界需要共同努力建立数据格式和存储库的标准，以免工作分散化。</p>
 <hr />
-<h2>参考文献</h2>
-<p>[1] Tapia, G., Khairallah, S., Matthews, M., King, W.E., Elwany, A. Gaussian process-based surrogate modeling framework for process planning in laser powder-bed fusion additive manufacturing of 316L stainless steel, Int. J. Adv. Manuf. Technol. 94 (2018) 3591–3603. https://doi.org/10.1007/s00170-017-1045-z.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Tapia, G., Khairallah, S., Matthews, M., King, W.E., Elwany, A. Gaussian process-based surrogate modeling framework for process planning in laser powder-bed fusion additive manufacturing of 316L stainless steel, Int. J. Adv. Manuf. Technol. 94 (2018) 3591–3603. https://doi.org/10.1007/s00170-017-1045-z.</p>
 <p>[2] Jones, K., Yang, Z., Yeung, H., Witherell, P., Lu, Y., Hybrid Modeling of Melt Pool Geometry in Additive Manufacturing Using Neural Networks, in: Vol. 2 41st Comput. Inf. Eng. Conf., American Society of Mechanical Engineers, 2021. https://doi.org/10.1115/DETC2021-71266.</p>
 <p>[3] Porro, M., Zhang, B., Parmar, A. and Shin, Y.C., "Data-driven Modeling of Mechanical Properties for 17-4 PH Stainless Steel Built by Additive Manufacturing", Integrating Materials and Manufacturing Innovation, 2022.</p>
 <p>[4] Luo, M. and Shin, Y.C., "Vision-based Weld Pool Boundary Extraction and Width Measurement during Keyhole Fiber Laser Welding", Optics and Lasers in Engineering, Volume 64, January 2015, Pages 59-70.</p>
@@ -97,7 +96,7 @@
 <p>[9] Park, H.S., Nguyen, D.S., Le-Hong, T. et al. Machine learning-based optimization of process parameters in selective laser melting for biomedical applications. J Intell Manuf 33, 1843–1858 (2022). https://doi.org/10.1007/s10845-021-01773-4</p>
 <p>[10] Barrionuevo, G.O., Walczak, M., Ramos-Grez, J., Sánchez-Sánchez, X., Microhardness and wear resistance in materials manufactured by laser powder bed fusion: Machine learning approach for property prediction, CIRP Journal of Manufacturing Science and Technology, Volume 43, 2023, Pages 106-114. https://doi.org/10.1016/j.cirpj.2023.03.002.</p>
 <p>[11] Wang, C., Zhong, W., Zhao, J., Insights on phase formation from thermodynamic calculations and machine learning of 2436 experimentally measured high entropy alloys, Journal of Alloys and Compounds, Volume 915, 2022, 165173. https://doi.org/10.1016/j.jallcom.2022.165173.</p>
-<p>[12] Zhang, Y., Wen, C., Wang, C., Antonov, S., Xue, D., Bai, Y., Su, Y., Phase prediction in high entropy alloys with a rational selection of materials descriptors and machine learning models, Acta Materialia, Volume 185, 2020, Pages 528-539. https://doi.org/10.1016/j.actamat.2019.11.067.</p>
+<p>[12] Zhang, Y., Wen, C., Wang, C., Antonov, S., Xue, D., Bai, Y., Su, Y., Phase prediction in high entropy alloys with a rational selection of materials descriptors and machine learning models, Acta Materialia, Volume 185, 2020, Pages 528-539. https://doi.org/10.1016/j.actamat.2019.11.067.</p></div></details>
         <nav class="section-nav"><a href="07-additive.html">← 上一章</a><a href="09-digitaltwin.html">下一章 →</a></nav>
     </main>
     <script>
@@ -203,7 +202,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -225,22 +230,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

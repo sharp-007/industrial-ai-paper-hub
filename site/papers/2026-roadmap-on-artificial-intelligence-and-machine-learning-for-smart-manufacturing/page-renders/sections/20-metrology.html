@@ -97,8 +97,7 @@
 <p>数字孪生内的数据采样率应以AI驱动的智能为基础，测量“适量”数据，在保持产品质量的同时最大限度地降低数据采集和存储成本。例如，当实时AI估计的不确定度超过阈值时，可以触发一次测量以获取一个数据点，在降低该时刻不确定度的同时添加额外数据用于模型更新。DCM利用AI的模式学习特性与计量的可信性相结合，创建可信的、同时具有机器独特性的工艺控制模型[18]。定期将实时可溯源测量与模型估计进行对比，将有助于量化AI模型的不确定度。此外，初始模型的挑战可以通过迁移学习[10]得到帮助——最初严重依赖集成计量，随着机器特异性模型随时间学习而逐渐减轻。</p>
 <p><strong>（3）带不确定度量化的数据管理</strong></p>
 <p>需要为所有制造数据建立普遍适用的标准化数据架构，以验证数据质量和溯源性，例如基于OPC-UA并通过数字校准证书实现校准报告的数字化[19]。应开发并在国际上标准化AI算法总输出不确定度的量化方法，包括学习模型的固有不确定度和输入数据的不确定度，类似于GUM[20]的方法。不确定度应被估计出来，以支持动态采样[6]和不确定度的传播，例如使用基于Shapley加性解释（SHAP）的可解释AI框架[15]。具有低计算延迟的全自动化数据流处理是DCM面临的另一重大挑战，需要物联网（IoT）硬件和软硬件优化方面的创新。</p>
-<h2>参考文献</h2>
-<p>[1] Leach RK 2020 Integrated Metrology 10-Year Roadmap for Advanced Manufacturing. High Value Manufacturing Catapult: 1- 38. https://hvm.catapult.org.uk/wp-content/uploads/2022/06/Integrated-Metrology-10-Year-Roadmap.pdf</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Leach RK 2020 Integrated Metrology 10-Year Roadmap for Advanced Manufacturing. High Value Manufacturing Catapult: 1- 38. https://hvm.catapult.org.uk/wp-content/uploads/2022/06/Integrated-Metrology-10-Year-Roadmap.pdf</p>
 <p>[2] Lee J, Kundu P, Gore P 2022 Industrial AI-Augmented Data-Centric Metrology for Highly Connected Production Systems. Smart and Networked Manufacturing: Wiener Produktionstechnik Kongress 2022. Vienna, Austria: new academic press. 20-3. https://www.newacademicpress.at/gesamtverzeichnis/fertigungstechnik/smart-and-networked-manufacturing-ebook/</p>
 <p>[3] Archenti A, Gao W, Donmez A, Savio E, Irino N 2024 Integrated Metrology for Advanced Manufacturing. CIRP Annals 73 639- 65. https://doi.org/10.1016/j.cirp.2024.05.003</p>
 <p>[4] Gunasegaram DR, Barnard AS, Matthews MJ, Jared BH, Andreaco AM, Bartsch K, et al. 2024 Machine Learning-Assisted in-Situ Adaptive Strategies for the Control of Defects and Anomalies in Metal Additive Manufacturing. Additive Manufacturing 81 104013. https://doi.org/10.1016/j.addma.2024.104013</p>
@@ -117,7 +116,7 @@
 <p>[17] Catalucci S, Thompson A, Piano S, Branson DT, Leach R 2022 Optical Metrology for Digital Manufacturing: A Review. The International Journal of Advanced Manufacturing Technology 120 4271-90. https://doi.org/10.1007/s00170-022-09084-5</p>
 <p>[18] Pandhare V, Miller M, Vogl GW, Lee J 2023 Ball Screw Health Monitoring with Inertial Sensors. IEEE Transactions on Industrial Informatics 19 7323-34. https://doi.org/10.1109/TII.2022.3210999</p>
 <p>[19] Grasso Toro F, Lehmann H 2021 Brief Overview of the Future of Metrology. Measurement: Sensors 18 100306. https://doi.org/10.1016/j.measen.2021.100306</p>
-<p>[20] Eichstädt S, Keidel A, Tesch J 2021 Metrology for the Digital Age. Measurement: Sensors 18 100232. https://doi.org/10.1016/j.measen.2021.100232</p>
+<p>[20] Eichstädt S, Keidel A, Tesch J 2021 Metrology for the Digital Age. Measurement: Sensors 18 100232. https://doi.org/10.1016/j.measen.2021.100232</p></div></details>
         <nav class="section-nav"><a href="19-rams.html">← 上一章</a><a href="21-complex.html">下一章 →</a></nav>
     </main>
     <script>
@@ -223,7 +222,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -245,22 +250,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

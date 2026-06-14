@@ -124,8 +124,7 @@
 <p>成功还取决于将AI部署与更广泛的转型目标保持一致，并将人类置于这一转型的核心。数字化、可持续性和韧性的交汇催生了一种新型工业转型模式——由AI赋能并由AI编排的模式。制造商不再将这三者视为三个独立领域，而是将它们统一为一次转型——一种"三重转型"。这一体系有效地创造了"自我修复"的运营——能够在其级联到价值网络之前预测和缓解冲击。在一个以复杂性、波动性和系统性约束为特征的时代，将AI作为转型使能工具加以拥抱的制造商，将成为领导者。</p>
 <p><strong>致谢</strong></p>
 <p>免责声明：本文的原始内容（而非任何被引用或包含的第三方内容）受CC BY 4.0许可证保护。为避免疑义，所表达的观点仅代表作者个人观点，不代表作者雇主的官方立场。</p>
-<h2>参考文献</h2>
-<p>[1] World Economic Forum. (2025). World Economic Forum: Global Lighthouse Network.</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] World Economic Forum. (2025). World Economic Forum: Global Lighthouse Network.</p>
 <p>[2] World Economic Forum. (2025). WEF Global Lighthouse Network: The Mindset Shifts Driving Digital Impact and Scale in Digital Transformation.</p>
 <p>[3] World Economic Forum. (2023). World Economic Forum: A Global Rewiring: Redefining Global Value Chains for the Future.</p>
 <p>[4] World Economic Forum. (2025). Navigating the AI Frontier: A Primer on the Evolution and Impact of AI Agents.</p>
@@ -137,7 +136,7 @@
 <p>[10] Zaika, K. (2024, 09 18). Forbes. Retrieved from Why Choose A Domain-Specific LLM For Your Business?: https://www.forbes.com/councils/forbestechcouncil/2024/09/18/why-choose-a-domain-specific-llm-for-your-business/</p>
 <p>[11] World Economic Forum. (2025). Frontier Technologies in Industrial Operations: The Rise of AI Agents. Geneva/Cologny: World Economic Forum.</p>
 <p>[12] World Economic Forum. (2025). Frontier Technologies in Industrial Operations: The Rise of AI Agents. Geneva/Cologny: World Economic Forum.</p>
-<p>[13] Marco, N. d. (2023, 09 29). Forbes. Retrieved from Building Resilient Organizations With AI: https://www.forbes.com/councils/forbestechcouncil/2023/09/29/building-resilient-organizations-with-ai/</p>
+<p>[13] Marco, N. d. (2023, 09 29). Forbes. Retrieved from Building Resilient Organizations With AI: https://www.forbes.com/councils/forbestechcouncil/2023/09/29/building-resilient-organizations-with-ai/</p></div></details>
         <nav class="section-nav"><a href="02-efficiency.html">← 上一章</a><a href="04-bigdata.html">下一章 →</a></nav>
     </main>
     <script>
@@ -243,7 +242,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -265,22 +270,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

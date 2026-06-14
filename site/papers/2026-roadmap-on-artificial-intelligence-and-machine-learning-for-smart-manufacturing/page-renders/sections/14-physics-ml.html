@@ -111,8 +111,7 @@
 <p>随着智能制造向自主化、赛博物理系统演进，PI-GNN等物理引导学习框架将在构建稳健、可信的人工智能解决方案中发挥日益重要的作用。</p>
 <h3>致谢</h3>
 <p>本工作得到了瑞士国家科学基金会（SNSF）资助200021_200461的支持。</p>
-<h2>参考文献</h2>
-<p>[1] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning Nat. Rev. Phys. 3 422–440 (doi: 10.1038/s42254-021-00314-5) Journal XX (XXXX) XXXXXX A Author et al 65</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning Nat. Rev. Phys. 3 422–440 (doi: 10.1038/s42254-021-00314-5) Journal XX (XXXX) XXXXXX A Author et al 65</p>
 <p>[2] Phuyal S, Bista D and Bista R 2020 Challenges, opportunities and future directions of smart manufacturing: A state-of-the-art review Sustain. Prod. Consump. 23 287–302 (doi: 10.1016/j.spc.2020.06.002)</p>
 <p>[3] Battaglia P W, Hamrick J B, Bapst V, Sanchez-Gonzalez A, Zambaldi V, Malinowski M, Tacchetti A, Raposo D, Santoro A, Faulkner R et al 2018 Relational inductive biases, deep learning, and graph networks arXiv:1806.01261</p>
 <p>[4] Sharma V and Fink O 2025 Dynami-CAL GraphNet: A physics-informed graph neural network conserving linear and angular momentum for dynamical systems arXiv:2501.07373</p>
@@ -128,7 +127,7 @@
 <p>[14] Zhao Y, Li H, Zhou H, Attar H R, Pfaff T and Li N 2024 A review of graph neural network applications in mechanics-related domains Artif. Intell. Rev. 57 315</p>
 <p>[15] Donon B, Clément R, Donnot B, Marot A, Guyon I and Schoenauer M 2020 Neural networks for power flow: Graph neural solver Electr. Power Syst. Res. 189 106547</p>
 <p>[16] Niresi K F, Bissig H, Baumann H and Fink O 2024 Physics-enhanced graph neural networks for soft sensing in industrial internet of things IEEE Internet Things J.</p>
-<p>[17] Satorras V G, Hoogeboom E and Welling M 2021 E(n) equivariant graph neural networks Proc. ICML 9323–9332</p>
+<p>[17] Satorras V G, Hoogeboom E and Welling M 2021 E(n) equivariant graph neural networks Proc. ICML 9323–9332</p></div></details>
         <nav class="section-nav"><a href="13-ml-dl.html">← 上一章</a><a href="15-generative.html">下一章 →</a></nav>
     </main>
     <script>
@@ -234,7 +233,13 @@
     top.className = "back-to-top";
     top.type = "button";
     top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = "\u2191";
+    top.innerHTML = (
+        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
+        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
+        "</svg>"
+    );
     document.body.appendChild(top);
 
     var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
@@ -256,22 +261,6 @@
     top.addEventListener("click", function () {
         (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
     });
-
-    if (article) {
-        var heads = article.querySelectorAll("h2");
-        heads.forEach(function (h) {
-            if (h.textContent.replace(/\s/g, "").indexOf("参考文献") === -1) return;
-            var wrap = document.createElement("div");
-            wrap.className = "references";
-            var node = h.nextElementSibling;
-            while (node && !/^H[1-4]$/.test(node.tagName) && !node.classList.contains("section-nav")) {
-                var next = node.nextElementSibling;
-                wrap.appendChild(node);
-                node = next;
-            }
-            if (wrap.children.length) h.parentNode.insertBefore(wrap, node);
-        });
-    }
 })();
 </script>
 </body>

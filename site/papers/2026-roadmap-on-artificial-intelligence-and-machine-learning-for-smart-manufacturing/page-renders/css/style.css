@@ -312,11 +312,33 @@ body.sidebar-resizing * {
     border-left-color: rgba(94, 234, 212, 0.5);
 }
 
-.sidebar .toc li.nav-l3 > a.is-current {
-    background: rgba(14, 131, 136, 0.14);
+.sidebar .toc li.nav-l1.is-current-part,
+.sidebar .toc li.nav-l2.is-current-part {
     color: #f0f9ff;
+    opacity: 1;
+}
+
+.sidebar .toc li.nav-l3 > a.is-current {
+    background: rgba(14, 131, 136, 0.32);
+    color: #fff;
     border-left-color: var(--sidebar-accent);
-    font-weight: 500;
+    border-left-width: 3px;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 1px rgba(93, 212, 216, 0.18);
+}
+
+.sidebar-header .sidebar-title-link.is-current {
+    color: #fff;
+}
+
+.sidebar-header .sidebar-title-link.is-current::after {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 2px;
+    margin-top: 6px;
+    background: var(--gradient-accent);
+    border-radius: 1px;
 }
 
 /* Legacy class fallback */

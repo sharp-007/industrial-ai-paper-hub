@@ -8,6 +8,13 @@
       "面向工业 AI 研究者、工程师与制造业数智化转型从业者",
       "中立第三方，持续更新，仅供学习参考"
     ],
+    "meta_title": "Industrial AI Paper Hub · 2026",
+    "github_url": "https://github.com/sharp-007/industrial-ai-paper-hub",
+    "wechat": {
+      "label": "微信交流",
+      "qr_image": "assets/wechat-qr.svg",
+      "qr_caption": "扫码添加微信，加入交流群"
+    },
     "features": [
       {
         "icon": "📖",

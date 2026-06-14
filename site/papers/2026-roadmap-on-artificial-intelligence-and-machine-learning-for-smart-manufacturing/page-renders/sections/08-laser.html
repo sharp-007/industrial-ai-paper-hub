@@ -53,10 +53,13 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第8章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第8章</div>
+            <h1 class="chapter-title-zh">激光制造中的机器学习</h1>
+            <p class="chapter-title-en">Machine Learning in Laser-based Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="07-additive.html">← 上一章</a><a href="09-digitaltwin.html">下一章 →</a></nav>
-        <h1>8. 激光制造中的机器学习</h1>
-<p>Yung C Shin</p>
+        <p><strong>Yung C Shin</strong></p>
 <p>普渡大学机械工程系，美国印第安纳州西拉斐特</p>
 <h2>现状</h2>
 <p>机器学习（ML）在各种激光制造领域中的应用日益广泛，包括预测建模、工艺监测、工艺控制、缺陷检测、微观结构和力学性能预测，以及工艺参数优化。激光焊接、增材制造和激光切割等激光制造工艺涉及复杂的物理机制：包括但不限于激光能量吸收、热传递、熔化、流体流动、蒸发、凝固等。获得所需力学性能和微观结构的最佳工艺条件通常需要大量的参数变化实验或多物理场数值模拟——后者计算成本高昂且耗时较长。随着业界努力减少激光加工的实施时间和成本，机器学习已成为一种有前景的方法，用于建立数据驱动或代理模型——这些模型可以显著降低迭代寻找因果关系的高成本，或在某些情况下替代计算成本高得让人难以承受的基于物理的高保真建模。近年来，可以找到许多将机器学习用于工艺监测的例子，特别是使用视觉传感器检测熔池边界、表面缺陷、不完全焊缝和切割、匙孔深度等。一旦开发完成，它已成为自动工艺控制的有用工具，因为机器学习能够实时预测工艺条件。机器学习还可用于根据生成的数据调优工艺参数或优化工艺。它还被用于预测激光加工后的微观组织和硬度。此外，通过增材制造工艺利用机器学习合成新材料也取得了一些成功的尝试。例如，研究人员尝试预测高熵合金的热力学稳定相。正如这些例子所证明的，随着机器学习学科的进一步发展，机器学习的作用和应用只会不断增加。在某种意义上，机器学习可能是实现材料加工中许多激光工艺的优化、工艺控制和稳健实施预测科学的唯一途径，因为摩尔定律表明，即使采用大规模并行处理，计算能力也需要至少再过二十年才能赶上可用于实时设计、优化和控制的高保真建模的计算速度需求。</p>
@@ -69,6 +72,19 @@
 <h2>结语</h2>
 <p>如上所述，机器学习在各种激光制造工艺的工艺监测、控制、零件质量监测和优化方面有着非常广阔的前景。然而，必须克服本文所述的各种挑战，才能使机器学习在工业中得到广泛应用，而且必须有相应的传感技术和传感器的进一步发展。学术界需要共同努力建立数据格式和存储库的标准，以免工作分散化。</p>
 <hr />
+<h2>参考文献</h2>
+<p>[1] Tapia, G., Khairallah, S., Matthews, M., King, W.E., Elwany, A. Gaussian process-based surrogate modeling framework for process planning in laser powder-bed fusion additive manufacturing of 316L stainless steel, Int. J. Adv. Manuf. Technol. 94 (2018) 3591–3603. https://doi.org/10.1007/s00170-017-1045-z.</p>
+<p>[2] Jones, K., Yang, Z., Yeung, H., Witherell, P., Lu, Y., Hybrid Modeling of Melt Pool Geometry in Additive Manufacturing Using Neural Networks, in: Vol. 2 41st Comput. Inf. Eng. Conf., American Society of Mechanical Engineers, 2021. https://doi.org/10.1115/DETC2021-71266.</p>
+<p>[3] Porro, M., Zhang, B., Parmar, A. and Shin, Y.C., "Data-driven Modeling of Mechanical Properties for 17-4 PH Stainless Steel Built by Additive Manufacturing", Integrating Materials and Manufacturing Innovation, 2022.</p>
+<p>[4] Luo, M. and Shin, Y.C., "Vision-based Weld Pool Boundary Extraction and Width Measurement during Keyhole Fiber Laser Welding", Optics and Lasers in Engineering, Volume 64, January 2015, Pages 59-70.</p>
+<p>[5] Zhang, Y., You, D., Gao, X.g, Zhang, N., Gao, P.P., Welding defects detection based on deep learning with multiple optical sensors during disk laser welding of thick plates, Journal of Manufacturing Systems, Volume 51, 2019, Pages 87-94. https://doi.org/10.1016/j.jmsy.2019.02.004.</p>
+<p>[6] Stadter, C., Schmoeller, M., von Rhein, L., Zaeh, M.F., Real-time prediction of quality characteristics in laser beam welding using optical coherence tomography and machine learning, J. Laser Appl. 32, 022046 (2020). https://doi.org/10.2351/7.0000077</p>
+<p>[7] Luo, M. and Shin, Y.C., "Estimation of Keyhole Geometry and Prediction of Welding Defects Based on a Visual System and a Radial Basis Function Neural Network", International Journal of Advanced Manufacturing Technology, Volume 81, Issue 1 (2015), Page 263-276.</p>
+<p>[8] Kershaw, J, Yu, R, Zhang, Y.M., Wang, P., Hybrid machine learning-enabled adaptive welding speed control, Journal of Manufacturing Processes, Volume 71, 2021, Pages 374-383. https://doi.org/10.1016/j.jmapro.2021.09.023.</p>
+<p>[9] Park, H.S., Nguyen, D.S., Le-Hong, T. et al. Machine learning-based optimization of process parameters in selective laser melting for biomedical applications. J Intell Manuf 33, 1843–1858 (2022). https://doi.org/10.1007/s10845-021-01773-4</p>
+<p>[10] Barrionuevo, G.O., Walczak, M., Ramos-Grez, J., Sánchez-Sánchez, X., Microhardness and wear resistance in materials manufactured by laser powder bed fusion: Machine learning approach for property prediction, CIRP Journal of Manufacturing Science and Technology, Volume 43, 2023, Pages 106-114. https://doi.org/10.1016/j.cirpj.2023.03.002.</p>
+<p>[11] Wang, C., Zhong, W., Zhao, J., Insights on phase formation from thermodynamic calculations and machine learning of 2436 experimentally measured high entropy alloys, Journal of Alloys and Compounds, Volume 915, 2022, 165173. https://doi.org/10.1016/j.jallcom.2022.165173.</p>
+<p>[12] Zhang, Y., Wen, C., Wang, C., Antonov, S., Xue, D., Bai, Y., Su, Y., Phase prediction in high entropy alloys with a rational selection of materials descriptors and machine learning models, Acta Materialia, Volume 185, 2020, Pages 528-539. https://doi.org/10.1016/j.actamat.2019.11.067.</p>
         <nav class="section-nav"><a href="07-additive.html">← 上一章</a><a href="09-digitaltwin.html">下一章 →</a></nav>
     </main>
     <script>

@@ -53,13 +53,19 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第9章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第9章</div>
+            <h1 class="chapter-title-zh">智能制造数字孪生</h1>
+            <p class="chapter-title-en">Digital Twin in Smart Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="08-laser.html">← 上一章</a><a href="10-supply.html">下一章 →</a></nav>
-        <h3>9. 智能制造数字孪生</h3>
-<p>He Zhang<sup>1</sup>, Zitong Wang<sup>1</sup>, Fei Tao<sup>1,2</sup>*</p>
-<p><sup>1</sup> Digital Twin International Research Center, International Institute for Interdisciplinary and Frontiers, Beihang University, Beijing, China</p>
-<p><sup>2</sup> School of Automation Science and Electrical Engineering, Beihang University, Beijing, China</p>
-<p>* E-mail: ftao@buaa.edu.cn</p>
+        <p><strong>He Zhang¹, Zitong Wang¹, Fei Tao¹,²</strong>*</p>
+<p>¹ 北京航空航天大学数字孪生国际研究中心、国际交叉学科前沿研究所，中国北京<br />
+² 北京航空航天大学自动化科学与电气工程学院，中国北京</p>
+<ul>
+<li>通讯作者<br />
+E-mail: ftao@buaa.edu.cn</li>
+</ul>
 <p><strong>现状</strong></p>
 <p>数字孪生的理念可追溯至二十世纪六十年代的阿波罗13号任务，当时采用了多个仿真器来评估故障，并训练宇航员和任务控制人员应对氧气罐爆炸事件。经一段沉寂期后，数字孪生于二十一世纪重新崛起并引发广泛关注。Grieves教授提出了数字孪生的三维模型，阐述了其对产品全生命周期管理的价值与意义[1]。美国国家航空航天局（NASA）将其列为未来发展蓝图的关键路径之一[2]。陶飞教授提出了五维数字孪生模型，包含物理实体、虚拟模型、数据、连接和服务，以进一步推动数字孪生的实践应用[3]。迄今为止，数字孪生已被应用于多个领域，智能制造是最具活力的应用领域之一，因其契合工业4.0的核心宗旨——通过数字技术实现供应链与价值链中垂直与水平信息流的无缝整合，构建高度智能化的生产系统<sup>[4,5]</sup>。此外，数字孪生已被应用于智能制造的诸多方面，革新了传统制造模式。</p>
 <p>尽管部分企业或研究人员已在智能制造领域开展数字孪生实践，但由于认知理解与技术水平的局限，数字孪生应用的整体成熟度尚不足以充分发挥其优势与价值。此外，近年来强调以人为中心、可持续性与韧性的工业5.0已被提出，对数字孪生的发展提出了新的要求[6]。而大语言模型（Large Language Model, LLM）等先进技术的飞速发展，也为数字孪生带来了新的机遇[7]。在此背景下，数字孪生仍需进一步发展，以提升其智能化水平、成熟度与应用规模。</p>
@@ -79,27 +85,26 @@
 <p>数字孪生已成为工业4.0与工业5.0的基石，促进了智能制造中物理系统与虚拟系统的融合。尽管数字孪生在实时监测、预测性分析与智能控制方面具有显著优势，但在极端制造环境等复杂场景中的应用、确保数据完整性以及克服计算与互操作性局限等挑战依然存在。跨行业协作创新配合稳健的政策框架，将释放数字孪生的全部潜力，使其从被动工具转变为主动赋能下一代工业智能的核心引擎。</p>
 <p><strong>致谢</strong></p>
 <p>本工作受北京市自然科学基金资助（Grant No. L243009）、国家自然科学基金资助（Grant No. 52120105008）及中国博士后科学基金资助（Grant No. 2024M754054）。</p>
-<p><strong>参考文献</strong></p>
-<p>[1] Grieves M 2014 Digital Twin: Manufacturing Excellence Through Virtual Factory Replication (White Paper) 1–7</p>
+<h2>参考文献</h2>
+<p>[1] Grieves M 2014 Digital Twin: Manufacturing Excellence Through Virtual Factory Replication (White Paper) 1-7</p>
 <p>[2] Glaessgen E and Stargel D 2012 The digital twin paradigm for future NASA and US Air Force vehicles 53rd AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics and Materials Conference 20th AIAA/ASME/AHS Adaptive Structures Conference 14th AIAA 1818 (doi:10.2514/6.2012-1818)</p>
-<p>[3] Tao F, Zhang M, Liu Y et al 2018 Digital twin driven prognostics and health management for complex equipment CIRP Ann. 67 169–172 (doi:10.1016/j.cirp.2018.04.055)</p>
-<p>[4] Tao F and Qi Q 2019 Make more digital twins Nature 573 490–491 (doi:10.1038/d41586-019-02849-1)</p>
-<p>[5] Tao F, Zhang H and Zhang C 2024 Advancements and challenges of digital twins in industry Nat. Comput. Sci. 4 169–177 (doi:10.1038/s43588-024-00603-w)</p>
-<p>[6] Zhang H, Li Y, Zhang S et al 2025 Artificial Intelligence-Enhanced Digital Twin Systems Engineering Towards the Industrial Metaverse in the Era of Industry 5.0 Chin. J. Mech. Eng. 38 40 (doi:10.1186/s10033-025-01210-0)</p>
-<p>[7] Gautam A, Aryal M R, Deshpande S et al 2025 IIoT-enabled digital twin for legacy and smart factory machines with LLM integration J. Manuf. Syst. 80 511–523 (doi:10.1016/j.jmsy.2025.03.022)</p>
+<p>[3] Tao F, Zhang M, Liu Y et al 2018 Digital twin driven prognostics and health management for complex equipment CIRP Ann 67 169-172(doi:10.1016/j.cirp.2018.04.055)</p>
+<p>[4] Tao F and Qi Q 2019 Make more digital twins Nature 573 490-491(doi:10.1038/d41586-019-02849-1)</p>
+<p>[5] Tao F, Zhang H and Zhang C 2024 Advancements and challenges of digital twins in industry Nat. Comput. Sci. 4 169- 177(doi:10.1038/s43588-024-00603-w)</p>
+<p>[6] Zhang H, Li Y, Zhang S et al 2025 Artificial Intelligence-Enhanced Digital Twin Systems Engineering Towards the Industrial Metaverse in the Era of Industry 5.0 Chin. J. Mech. Eng. 38 40(doi:10.1186/s10033-025-01210-0)</p>
+<p>[7] Gautam A, Aryal M R, Deshpande S et al 2025 IIoT-enabled digital twin for legacy and smart factory machines with LLM integration J. Manuf. Syst. 80 511-523(doi:10.1016/j.jmsy.2025.03.022)</p>
 <p>[8] Friederich J, Francis D P, Lazarova-Molnar S et al 2022 A framework for data-driven digital twins of smart manufacturing systems Comput. Ind. 136 103586</p>
 <p>[9] Zhang M, Tao F, Huang B et al 2024 Digital twin data: methods and key technologies Digit. Twin 1 2 (doi:10.12688/digitaltwin.17467.2)</p>
-<p>[10] Kapteyn M G, Pretorius J V R and Willcox K E 2021 A probabilistic graphical model foundation for enabling predictive digital twins at scale Nat. Comput. Sci. 1 337–347 (doi:10.1038/s43588-021-00069-0)</p>
-<p>[11] Tao F, Sun X, Cheng J et al 2024 makeTwin: A reference architecture for digital twin software platform Chin. J. Aeronaut. 37 1–18 (doi:10.1016/j.cja.2023.05.002)</p>
+<p>[10] Kapteyn M G, Pretorius J V R and Willcox K E 2021 A probabilistic graphical model foundation for enabling predictive digital twins at scale Nat. Comput. Sci. 1 337-347(doi:10.1038/s43588-021-00069-0)</p>
+<p>[11] Tao F, Sun X, Cheng J et al 2024 makeTwin: A reference architecture for digital twin software platform Chin. J. Aeronaut. 37 1- 18 (doi:10.1016/j.cja.2023.05.002)</p>
 <p>[12] Grieves M 2024 Intelligent digital twins and the development and management of complex systems Digit. Twin 1 8 (doi:10.12688/digitaltwin.17574.1)</p>
-<p>[13] Alcaraz C and Lopez J 2022 Digital twin: A comprehensive survey of security threats IEEE Commun. Surv. Tutor. 24 1475–1503 (doi:10.1109/COMST.2022.3171465)</p>
-<p>[14] Gyongyosi L and Imre S 2019 A survey on quantum computing technology Comput. Sci. Rev. 31 51–71 (doi:10.1016/cosrev.2018.11.002)</p>
-<p>[15] Kobayashi K and Alam S B 2024 Explainable, interpretable, and trustworthy AI for an intelligent digital twin: A case study on remaining useful life Eng. Appl. Artif. Intell. 129 107620 (doi:10.1016/j.engappai.2023.107620)</p>
-<p>[16] Kim S, Choi J H and Kim N H 2022 Data-driven prognostics with low-fidelity physical information for digital twin: physics-informed neural network Struct. Multidiscip. Optim. 65 255 (doi:10.1007/s00158-022-03348-0)</p>
-<p>[17] Mata O, Ponce P, Perez C et al 2025 Digital twin designs with generative AI: crafting a comprehensive framework for manufacturing systems J. Intell. Manuf. 1 1–24 (doi:10.1007/s10845-025-02583-8)</p>
-<p>[18] Putz B, Dietz M, Empl P et al 2021 Ethertwin: Blockchain-based secure digital twin information management Inf. Process. Manag. 58 102425 (doi:10.1016/j.ipm.2020.102425)</p>
-<p>[19] Yoo S K, Sun K J and Kim S H 2024 Digital Twin Standardization: Trends and Future Prospects Electron. Telecommun. Trends 39 79–86 (doi: 10.22648/ETRI.2024.J.390308)</p>
-<hr />
+<p>[13] Alcaraz C and Lopez J 2022 Digital twin: A comprehensive survey of security threats IEEE Commun. Surv. Tutor. 24 1475- 1503(doi:10.1109/COMST.2022.3171465)</p>
+<p>[14] Gyongyosi L and Imre S 2019 A survey on quantum computing technology Comput. Sci. Rev. 31 51-71 (doi:10.1016/j.cosrev.2018.11.002)</p>
+<p>[15] Kobayashi K and Alam S B 2024 Explainable, interpretable, and trustworthy AI for an intelligent digital twin: A case study on remaining useful life Eng. Appl. Artif. Intell. 129 107620(doi:10.1016/j.engappai.2023.107620)</p>
+<p>[16] Kim S, Choi J H and Kim N H 2022 Data-driven prognostics with low-fidelity physical information for digital twin: physics- informed neural network Struct. Multidiscip. Optim. 65 255(doi:10.1007/s00158-022-03348-0)</p>
+<p>[17] Mata O, Ponce P, Perez C et al 2025 Digital twin designs with generative AI: crafting a comprehensive framework for manufacturing systems J. Intell. Manuf. 1 1-24(doi:10.1007/s10845-025-02583-8)</p>
+<p>[18] Putz B, Dietz M, Empl P et al 2021 Ethertwin: Blockchain-based secure digital twin information management Inf. Process. Manag. 58 102425(doi:10.1016/j.ipm.2020.102425)</p>
+<p>[19] Yoo S K, Sun K J and Kim S H 2024 Digital Twin Standardization: Trends and Future Prospects Electron. Telecommun. Trends 39 79-86(doi: 10.22648/ETRI.2024.J.390308)</p>
         <nav class="section-nav"><a href="08-laser.html">← 上一章</a><a href="10-supply.html">下一章 →</a></nav>
     </main>
     <script>

@@ -53,12 +53,15 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第21章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第21章</div>
+            <h1 class="chapter-title-zh">高度互联复杂制造系统的非传统机器学习</h1>
+            <p class="chapter-title-en">Non-Traditional Machine Learning for Highly Connected and Complex Manufacturing Systems</p>
+        </header>
         <nav class="section-nav"><a href="20-metrology.html">← 上一章</a><span></span></nav>
-        <h3>21. 高度互联复杂制造系统的非传统机器学习</h3>
-<p>Dai-Yan Ji¹, Takanobu Minami¹, Ruoxin Wang¹, Jay Lee¹</p>
-<p>¹马里兰大学机械工程系工业人工智能中心，马里兰州大学公园，邮编 20742，美国</p>
-<p>通讯作者邮箱：leejay@umd.edu</p>
+        <p><strong>Dai-Yan Ji¹, Takanobu Minami¹, Ruoxin Wang¹, Jay Lee¹</strong></p>
+<p>¹ 美国马里兰州大学公园市马里兰大学机械工程系工业人工智能中心</p>
+<p>E-mail: leejay@umd.edu</p>
 <h2>现状</h2>
 <p>故障预测与健康管理（PHM）及其在工业人工智能中的集成已从部件级监测发展至系统级智能[1]、[2]。在早期阶段，PHM依赖于可靠性工程和基于模型的分析，随后逐步演化为融合数据驱动方法与专家知识的混合人工智能框架[3]、[4]。这些进展为预测性维护与监测带来了宝贵成果，然而高度互联复杂制造系统（HC-CMS）日益增长的规模与互联性持续挑战着传统机器学习（ML）方法。如今的工业系统已不再局限于单一部件或独立单元，而是成为基于设备群组的、分布式且跨工厂、供应链和运营域深度互联的系统[5]、[6]。此类系统产生海量传感器数据，且涉及必须协同管理的异构资产。如图1所示，HC-CMS将工业人工智能的多个领域相互连接，包括制造人工智能、新能源人工智能、交通人工智能和医疗人工智能，所有这些领域都共同需要韧性、适应性和智能决策能力。这种系统级复杂性凸显了PHM仍然至关重要的原因。在航空航天、能源、船舶和出行领域，确保正常运行时间、优化维护和延长生命周期仍是可靠性的核心[7]、[8]。随着系统扩展至设备群组和多工厂网络，可扩展PHM的重要性持续增长。进一步的发展有望带来显著收益：提高安全性、减少停机时间、提升效率以及更可靠的决策支持[9]。非传统机器学习日益成为实现这些收益的核心。与其狭隘地关注算法精度，该领域现在强调韧性、可解释性和企业级集成，并得到持续机器学习——质量流（SoQ）、5C级信息物理系统和数字孪生框架等方法论平台的支持。具有代表性的非传统ML方法——用于结构洞察的拓扑数据分析（TDA）、用于设备群组广泛泛化的域适应和迁移学习、用于可解释推理的相似性模型、用于高效优化的代理模型，以及用于知识集成的工业大知识模型（ILKM）——展示了PHM在HC-CMS中如何被重塑和扩展。这些范式表明，PHM不仅仍然重要，而且在工业人工智能持续演进的进程中正占据更有影响力的地位[10]。</p>
 <figure class="paper-figure"><img src="../images/complex-fig1.png" alt="图1. 高度互联的复杂制造系统。" loading="lazy"><figcaption>图1. 高度互联的复杂制造系统。</figcaption></figure>
@@ -74,26 +77,26 @@
 <h2>致谢</h2>
 <p>本研究由美国教育部通过改善中等后教育基金（FIPSE）资助，资助编号为 P116S230014。</p>
 <h2>参考文献</h2>
-<p>[1] D.-Y. Ji, H. Su, T. Minami, and J. Lee, "Introduction to Industrial Artificial Intelligence," Advances in Artificial Intelligence Applications in Industrial and Systems Engineering, pp. 1–18, 2025.</p>
-<p>[2] J. Lee, J. Ni, J. Singh, B. Jiang, M. Azamfar, and J. Feng, "Intelligent maintenance systems and predictive manufacturing," Journal of Manufacturing Science and Engineering, vol. 142, no. 11, p. 110805, 2020.</p>
-<p>[3] S. Ochella, M. Shafiee, and F. Dinmohammadi, "Artificial intelligence in prognostics and health management of engineering systems," Engineering Applications of Artificial Intelligence, vol. 108, p. 104552, 2022.</p>
-<p>[4] K. T. Nguyen, K. Medjaher, and D. T. Tran, "A review of artificial intelligence methods for engineering prognostics and health management with implementation guidelines," Artificial Intelligence Review, vol. 56, no. 4, pp. 3659–3709, 2023.</p>
-<p>[5] V. Atamuradov, K. Medjaher, P. Dersin, B. Lamoureux, and N. Zerhouni, "Prognostics and health management for maintenance practitioners-Review, implementation, and tools evaluation," International Journal of Prognostics and Health Management, vol. 8, no. 3, pp. 1–31, 2017.</p>
-<p>[6] H. Gharib and G. Kovács, "A review of prognostic and health management (PHM) methods and limitations for marine diesel engines: new research directions," Machines, vol. 11, no. 7, p. 695, 2023.</p>
-<p>[7] M. Yan, S. C. Hui, N. Jiang, and N. Li, "A review on data-driven prognostics and health management for wind turbine systems," Engineering Applications of Artificial Intelligence, vol. 159, p. 111484, 2025.</p>
-<p>[8] Y. Alomari, M. Andó, and M. L. Baptista, "Advancing aircraft engine RUL predictions: an interpretable integrated approach of feature engineering and aggregated feature importance," Scientific Reports, vol. 13, no. 1, p. 13466, 2023.</p>
-<p>[9] S. Han, F. Li, X. Han, and S. Zhang, "A novel feature engineering method for network anomaly detection," Computers and Electrical Engineering, vol. 127, p. 110627, 2025.</p>
-<p>[10] C. Huang, S. Bu, H. H. Lee, C. H. Chan, S. W. Kong, and W. K. Yung, "Prognostics and health management for predictive maintenance: A review," Journal of Manufacturing Systems, vol. 75, pp. 78–101, 2024.</p>
-<p>[11] P. Kumar, M. Tanveer, K. Park, I. Raouf, and H. S. Kim, "A Systematic Review of Prognostics and Health Management in Mobility Batteries," International Journal of Precision Engineering and Manufacturing-Green Technology, pp. 1–24, 2025.</p>
-<p>[12] X. Lai, H. Shui, D. Ding, and J. Ni, "Data-driven dynamic bottleneck detection in complex manufacturing systems," Journal of Manufacturing Systems, vol. 60, pp. 662–675, 2021.</p>
-<p>[13] P. Kundu, A. K. Darpe, and M. S. Kulkarni, "Development of data-driven, physics-based, and hybrid prognosis frameworks: a case study for gear remaining useful life prediction," Journal of Intelligent Manufacturing, pp. 1–21, 2024.</p>
-<p>[14] J. Lee, D.-Y. Ji, and Y.-M. Hsu, "Novel topological machine learning methodology for stream-of-quality modeling in smart manufacturing," Manufacturing Letters, vol. 43, pp. 60–63, 2025.</p>
-<p>[15] T. Minami, A. Suer, P. Kundu, S. Siahpour, and J. Lee, "Novel ensemble domain adaptation methodology for enhanced multi-class fault diagnosis of highly-connected fleet of assets," in PHM Society Asia-Pacific Conference, 2023.</p>
-<p>[16] T. Minami, D.-Y. Ji, and J. Lee, "PHM for Spacecraft Propulsion Systems: Developing Resilient Models for Real-World Challenges," in PHM Society European Conference, 2024, pp. 7–7.</p>
-<p>[17] W. Li et al., "A novel methodology for lens matching in compact lens module assembly," IEEE Transactions on Automation Science and Engineering, vol. 20, no. 2, pp. 741–750, 2022.</p>
-<p>[18] Lee J and Su H, "A unified industrial large knowledge model framework in Industry 4.0 and smart manufacturing," Int. J. AI Mater. Des. 1 (2) 41–47, 2025.</p>
-<p>[19] T. Xia, Y. Dong, L. Xiao, S. Du, E. Pan, and L. Xi, "Recent advances in prognostics and health management for advanced manufacturing paradigms," Reliability Engineering &amp; System Safety, vol. 178, pp. 255–268, 2018.</p>
-<p>[20] P. Kumar, I. Raouf, and H. S. Kim, "Review on prognostics and health management in smart factory: From conventional to deep learning perspectives," Engineering Applications of Artificial Intelligence, vol. 126, p. 107126, 2023.</p>
+<p>[1] D.-Y. Ji, H. Su, T. Minami, and J. Lee, “Introduction to Industrial Artificial Intelligence,” Advances in Artificial Intelligence Applications in Industrial and Systems Engineering, pp. 1–18, 2025.</p>
+<p>[2] J. Lee, J. Ni, J. Singh, B. Jiang, M. Azamfar, and J. Feng, “Intelligent maintenance systems and predictive manufacturing,” Journal of Manufacturing Science and Engineering, vol. 142, no. 11, p. 110805, 2020.</p>
+<p>[3] S. Ochella, M. Shafiee, and F. Dinmohammadi, “Artificial intelligence in prognostics and health management of engineering systems,” Engineering Applications of Artificial Intelligence, vol. 108, p. 104552, 2022.</p>
+<p>[4] K. T. Nguyen, K. Medjaher, and D. T. Tran, “A review of artificial intelligence methods for engineering prognostics and health management with implementation guidelines,” Artificial Intelligence Review, vol. 56, no. 4, pp. 3659–3709, 2023.</p>
+<p>[5] V. Atamuradov, K. Medjaher, P. Dersin, B. Lamoureux, and N. Zerhouni, “Prognostics and health management for maintenance practitioners-Review, implementation and tools evaluation.,” International Journal of Prognostics and Health Management, vol. 8, no. 3, pp. 1–31, 2017.</p>
+<p>[6] H. Gharib and G. Kovács, “A review of prognostic and health management (PHM) methods and limitations for marine diesel engines: new research directions,” Machines, vol. 11, no. 7, p. 695, 2023.</p>
+<p>[7] M. Yan, S. C. Hui, N. Jiang, and N. Li, “A review on data-driven prognostics and health management for wind turbine systems,” Engineering Applications of Artificial Intelligence, vol. 159, p. 111484, 2025.</p>
+<p>[8] Y. Alomari, M. Andó, and M. L. Baptista, “Advancing aircraft engine RUL predictions: an interpretable integrated approach of feature engineering and aggregated feature importance,” Scientific Reports, vol. 13, no. 1, p. 13466, 2023.</p>
+<p>[9] S. Han, F. Li, X. Han, and S. Zhang, “A novel feature engineering method for network anomaly detection,” Computers and Electrical Engineering, vol. 127, p. 110627, 2025.</p>
+<p>[10] C. Huang, S. Bu, H. H. Lee, C. H. Chan, S. W. Kong, and W. K. Yung, “Prognostics and health management for predictive maintenance: A review,” Journal of manufacturing systems, vol. 75, pp. 78–101, 2024.</p>
+<p>[11] P. Kumar, M. Tanveer, K. Park, I. Raouf, and H. S. Kim, “A Systematic Review of Prognostics and Health Management in Mobility Batteries,” International Journal of Precision Engineering and Manufacturing-Green Technology, pp. 1–24, 2025.</p>
+<p>[12] X. Lai, H. Shui, D. Ding, and J. Ni, “Data-driven dynamic bottleneck detection in complex manufacturing systems,” Journal of Manufacturing Systems, vol. 60, pp. 662–675, 2021.</p>
+<p>[13] P. Kundu, A. K. Darpe, and M. S. Kulkarni, “Development of data-driven, physics-based, and hybrid prognosis frameworks: a case study for gear remaining useful life prediction,” Journal of Intelligent Manufacturing, pp. 1–21, 2024.</p>
+<p>[14] J. Lee, D.-Y. Ji, and Y.-M. Hsu, “Novel topological machine learning methodology for stream-of-quality modeling in smart manufacturing,” Manufacturing Letters, vol. 43, pp. 60–63, 2025.</p>
+<p>[15] T. Minami, A. Suer, P. Kundu, S. Siahpour, and J. Lee, “Novel ensemble domain adaptation methodology for enhanced multi- class fault diagnosis of highly-connected fleet of assets,” in Phm society asia-pacific conference, 2023.</p>
+<p>[16] T. Minami, D.-Y. Ji, and J. Lee, “PHM for Spacecraft Propulsion Systems: Developing Resilient Models for Real-World Challenges,” in PHM Society European Conference, 2024, pp. 7–7. Journal XX (XXXX) XXXXXX A Author et al 99</p>
+<p>[17] W. Li et al., “A novel methodology for lens matching in compact lens module assembly,” IEEE Transactions on Automation Science and Engineering, vol. 20, no. 2, pp. 741–750, 2022.</p>
+<p>[18] Lee J and Su H, A unified industrial large knowledge model framework in Industry 4.0 and smart manufacturing Int. J. AI Mater. Des. 1 (2) 41–47, 2025</p>
+<p>[19] T. Xia, Y. Dong, L. Xiao, S. Du, E. Pan, and L. Xi, “Recent advances in prognostics and health management for advanced manufacturing paradigms,” Reliability Engineering &amp; System Safety, vol. 178, pp. 255–268, 2018.</p>
+<p>[20] P. Kumar, I. Raouf, and H. S. Kim, “Review on prognostics and health management in smart factory: From conventional to deep learning perspectives,” Engineering Applications of Artificial Intelligence, vol. 126, p. 107126, 2023.</p>
         <nav class="section-nav"><a href="20-metrology.html">← 上一章</a><span></span></nav>
     </main>
     <script>

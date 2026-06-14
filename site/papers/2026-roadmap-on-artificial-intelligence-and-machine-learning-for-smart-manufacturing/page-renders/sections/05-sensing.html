@@ -53,10 +53,13 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第5章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第5章</div>
+            <h1 class="chapter-title-zh">先进传感、感知与分析</h1>
+            <p class="chapter-title-en">Advanced Sensing, Perception, and Analytics for Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="04-bigdata.html">← 上一章</a><a href="06-autonomous.html">下一章 →</a></nav>
-        <h1>先进传感、感知与分析</h1>
-<p><strong>Lingbao Kong*, Qiyuan Wang, Xinlan Tang</strong><br />
+        <p><strong>Lingbao Kong*, Qiyuan Wang, Xinlan Tang</strong><br />
 复旦大学未来信息创新学院，中国上海<br />
 <em>电子邮件：LKong@fudan.edu.cn</em></p>
 <h2>现状</h2>
@@ -79,20 +82,18 @@
 <h2>致谢</h2>
 <p>作者谨对国家自然科学基金（52375414）与上海市科委创新专项（23ZR1404200）的支持表示衷心感谢。</p>
 <h2>参考文献</h2>
-<p>[1] AlMahasneh R, Hollósi G, Ficzere D, Bancsics M, Lukovszki C, Varga P. Uncovering Common AI Challenges Across Industrial Domains in the Transition to Industry 5.0[C]//2024 20th International Conference on Network and Service Management (CNSM). IEEE, 2024: 1-7.</p>
-<p>[2] Liang P P, Zadeh A, Morency L P. Foundations &amp; trends in multimodal machine learning: Principles, challenges, and open questions[J]. ACM Computing Surveys, 2024, 56(10): 1-42.</p>
-<p>[3] Guclu E, Akin E. Enhanced defect detection on steel surfaces using integrated residual refinement module with synthetic data augmentation[J]. Measurement, 2025, 250: 117136.</p>
-<p>[4] Li Y, Zheng L, Wang Y, Dong E, Zhang S. Impedance Learning-based Adaptive Force Tracking for Robot on Unknown Terrains[J]. IEEE Transactions on Robotics, 2025.</p>
-<p>[5] Radford A, Kim J W, Hallacy C, Ramesh A, Goh G, Agarwal S, sastry G, Askell A, Mishkin P, Clark J, Krueger G, Sutskever I. Learning transferable visual models from natural language supervision[C]//International conference on machine learning. PmLR, 2021: 8748-8763.</p>
-<p>[6] Chang Y H, Wu F C, Lin H W. Design and implementation of esp32-based edge computing for object detection[J]. Sensors, 2025, 25(6): 1656.</p>
-<p>[7] Deng F, Huang Y, Lu S, Chen Y, Feng H, Zhang J, Yang Y, Hu J, Lam TL, Xia F. A multi-sensor data fusion system for laser welding process monitoring[J]. IEEE Access, 2020, 8: 147349-147357.</p>
-<p>[8] Harmatos J, Maliosz M. Architecture integration of 5G networks and time-sensitive networking with edge computing for smart manufacturing[J]. Electronics, 2021, 10(24): 3085.</p>
-<p>[9] Sochaniwsky A. A Lightweight Camera-LiDAR Fusion Framework for Traffic Monitoring Applications[D]. 2024.</p>
-<p>[10] Durana P, Krastev V, Buckner K. Digital twin modeling, multi-sensor fusion technology, and data mining algorithms in cloud and edge computing-based smart city environments[J]. Geopolitics, History, and International Relations, 2022, 14(1): 91-106.</p>
-<p>[11] Wang M, Zhang X, Chen S, Li X, Zhang Y. A bidirectional separated distillation-based cross-modal interactive fusion network for skeleton-based action recognition[J]. IEEE Sensors Journal, 2024.</p>
-<p>[12] Guo J, Liu Q, Chen E. A deep reinforcement learning method for multimodal data fusion in action recognition[J]. IEEE Signal Processing Letters, 2021, 29: 120-124.</p>
-<p>[13] Dani A P, Salehi I, Rotithor G, Trombetta D, Ravichandar H. Human-in-the-loop robot control for human-robot collaboration: Human intention estimation and safe trajectory tracking control for collaborative tasks[J]. IEEE Control Systems Magazine, 2020, 40(6): 29-56.</p>
-<hr />
+<p>[1] . By digitizing domain expertise and leveraging large-scale process data, autonomous systems provide scalable and adaptive alternatives. Recent advances in artificial intelligence (AI) have enabled these systems to autonomously incorporate real-time feedback, allowing for predictive quality assurance, anomaly detection, and self-optimization of process parameters. The implementation of AI-driven autonomy has been shown to significantly enhance operational efficiency, reduce overhead costs, and improve system resilience—particularly in globally distributed manufacturing environments where access to expert knowledge is limited. Empirical evidence highlighted the effectiveness of such technologies; for example, the implementation of an autonomous quality management system in the automotive manufacturing sector resulted in a 52% reduction in production costs and a 78% decrease in inspection expenses</p>
+<p>[2] . Moreover, autonomous manufacturing technologies are expected to exhibit broad applicability across diverse operational domains, including quality control, logistics, energy management, equipment maintenance, and comprehensive process optimization. Current and future challenges Achieving truly AI-enabled autonomous manufacturing requires seamless integration of three foundational components—sensing, reasoning, and action—while also establishing a robust platform for managing the integrated autonomous manufacturing system. In the sensing stage, manufacturing systems must establish robust and scalable data pipelines capable of reliably extracting, pre-processing, storing, and managing diverse multimodal sensor data. Despite the abundance of available data, current pipeline architectures are often underdeveloped compared to the overall maturity of production systems. These pipelines are frequently designed without sufficient consideration for downstream reasoning and control tasks. Consequently, the acquired data suffers from data availability issues—such as noise, low resolution, inconsistent sampling, an excessive amount of data and poor synchronization with system context—which hinders the systems’ ability to transmit only relevant, high-quality data necessary for real-time decision-making and autonomous operation</p>
+<p>[3] . The reasoning stage involves deriving actionable insights support process-level decisions. At this stage, two central challenges arise: ensuring the interpretability and generalization of AI models. For AI systems to contribute effectively to manufacturing operations, they must provide structured information across key categories, including current and predicted system states (system assessment), identified operational tasks (problem definition), causal factors (root cause diagnosis), and prescriptive recommendations (decision- making). However, many AI models operate as “black boxes,” hindering engineers' ability to verify or trust the inferred outputs. Generalization also remains problematic, as models often struggle to maintain robust performance under domain shifts, such as variations in operating conditions, product configurations, or factory environments, leading to physically inconsistent or non-representative results</p>
+<p>[4] . The action stage requires translating reasoning outputs into executable operations, such as control commands, optimal setpoint selection, or human-readable decision reports. Despite recent progress in AI, current AI models often produce outputs in abstract or model-centric forms that lack the semantic clarity necessary for effective interpretation and implementation within manufacturing systems. Without additional Journal XX (XXXX) XXXXXX A Author et al 31 contextualization, these outputs are not readily actionable, requiring engineers to manually interpret the reasoning results and determine appropriate interventions, thereby increasing cognitive burden and delaying operational response</p>
+<p>[5] . Lastly, current platforms such as manufacturing execution system (MES), and programmable logic controller (PLC) are hierarchical and lack the flexibility to support autonomous manufacturing operations. Key challenges include poor interoperability across distributed manufacturing components, limited support for real-time self-organization and manufacturing lifecycle integration. Advances in science and technology to meet challenges In the sensing stage, data pipelines integrated with extract-transform-load (ETL) mechanisms are employed to convert raw signals into structured, analysis-ready formats</p>
+<p>[6] . Virtual sensing techniques are utilized to estimate difficult-to-measure variables by leveraging data acquired from the manufacturing process</p>
+<p>[7] . To enhance data quality and contextual fidelity, pre-processing methods such as noise removal, sampling rate alignment, and synchronization of heterogeneous data sources are applied</p>
+<p>[8] . Additionally, ontology-based technologies have been developed to define the identity of collected data and establish contextual relationships among correlated information</p>
+<p>[9] . By enabling context-aware data linkage and semantic interpretation, it facilitates data filtering and selection in subsequent stages, despite the abundance and heterogeneity of manufacturing data. In the reasoning stage, interpretability has been advanced through explainable AI techniques, including pre-modelling strategies such as domain-informed feature extraction, as well as post-modelling tools such as attention mechanism analysis, Shapley additive explanations (SHAP)</p>
+<p>[10] . To improve generalization under domain shifts, lifecycle-aware learning strategies are employed to support data drift detection and continual learning</p>
+<p>[19] . Building on these advances, a decentralized autonomous manufacturing (DAM) platform architecture was introduced to enable autonomous decision-making, decentralized control, and self-organizing production capabilities</p>
+<p>[20] . By utilizing multi-agent systems and secure communication protocols, the platform allows distributed manufacturing nodes to collaborate effectively, respond to disruptions, and execute manufacturing tasks without centralized coordination.</p>
         <nav class="section-nav"><a href="04-bigdata.html">← 上一章</a><a href="06-autonomous.html">下一章 →</a></nav>
     </main>
     <script>

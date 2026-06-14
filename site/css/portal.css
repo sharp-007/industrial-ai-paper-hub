@@ -37,20 +37,18 @@ body {
 }
 
 .site-header h1 {
-    font-size: 2rem;
+    font-size: clamp(1.35rem, 4vw, 2rem);
     font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.site-subtitle {
-    font-size: 1.1rem;
-    color: #94a3b8;
-    margin-bottom: 12px;
+    line-height: 1.35;
+    margin-bottom: 16px;
+    max-width: 720px;
 }
 
 .site-desc {
     color: #cbd5e1;
-    max-width: 640px;
+    font-size: 1.05rem;
+    max-width: 720px;
+    line-height: 1.7;
 }
 
 .paper-list {

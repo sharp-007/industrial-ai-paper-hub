@@ -53,12 +53,15 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第14章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第14章</div>
+            <h1 class="chapter-title-zh">基于归纳偏置的物理信息机器学习</h1>
+            <p class="chapter-title-en">Physics Informed Machine Learning through Inductive Bias</p>
+        </header>
         <nav class="section-nav"><a href="13-ml-dl.html">← 上一章</a><a href="15-generative.html">下一章 →</a></nav>
-        <h3>14. 基于归纳偏置的物理信息机器学习</h3>
-<p><strong>Olga Fink^1^，Vinay Sharma^1^</strong></p>
-<p><strong>^1^ 洛桑联邦理工学院（EPFL）智能维护与运营系统</strong></p>
-<p><strong>电子邮件：olga.fink@epfl.ch</strong></p>
+        <p><strong>Olga Fink¹, Vinay Sharma¹</strong></p>
+<p>¹ 洛桑联邦理工学院（EPFL）智能维护与运营系统，瑞士洛桑</p>
+<p>E-mail: olga.fink@epfl.ch</p>
 <h3>现状</h3>
 <p>在智能制造中，物理信息机器学习（PIML）[1]正成为构建数据高效、物理一致、可解释且可信的人工智能系统的关键推动者。制造环境的特点是流程复杂、系统相互关联，且通常存在稀疏或噪声传感器数据[2]。PIML通过将领域知识——如控制方程、结构约束或物理对称性——直接嵌入学习过程来解决这些挑战。</p>
 <p>PIML引入三类偏置以引导模型获得可泛化且物理合理的解：归纳偏置、观测偏置和学习偏置。归纳偏置是嵌入于模型架构中的先验假设——如空间局部性[3]、守恒定律[4]或时间连续性[5]——它们约束了解空间。观测偏置源于数据的采样或表示方式，而学习偏置则产生于优化策略，如正则化或特定损失函数。</p>
@@ -95,25 +98,24 @@
 <p>随着智能制造向自主化、赛博物理系统演进，PI-GNN等物理引导学习框架将在构建稳健、可信的人工智能解决方案中发挥日益重要的作用。</p>
 <h3>致谢</h3>
 <p>本工作得到了瑞士国家科学基金会（SNSF）资助200021_200461的支持。</p>
-<h3>参考文献</h3>
-<p>[1] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning Nat. Rev. Phys. 3 422–440</p>
-<p>[2] Brunton S L and Kutz J N 2022 Promises and pitfalls of physics-informed machine learning for sensing, imaging, and inference Mech. Syst. Signal Process. 171 108831</p>
-<p>[3] Battaglia P W, Hamrick J B, Bapst V, Sanchez-Gonzalez A, Zambaldi V, Malinowski M et al 2018 Relational inductive biases, deep learning, and graph networks arXiv preprint arXiv:1806.01261</p>
-<p>[4] Sannikov A, Lanusse F and Mandal A 2023 Momentum-preserving equivariant graph neural networks for physical dynamics modeling ICASSP 2023 – 2023 IEEE Int. Conf. Acoust. Speech Signal Process. (IEEE) pp 1–5</p>
-<p>[5] Fink O, Wang Q, Svensson M and Kuznetsov M 2024 Physics-informed neural networks for剩余应力预测 in metal additive manufacturing Proc. Mach. Learn. Res. 220 1–16</p>
-<p>[6] Reich Y, Kimmich A and Svensson M 2023 Incorporating domain knowledge into machine learning for manufacturing applications Adv. Eng. Inform. 56 101905</p>
-<p>[7] Soleimani M and Choudhury M A A 2022 Physics-informed neural networks for predictive digital twins in manufacturing J. Manuf. Syst. 62 453–464</p>
-<p>[8] Zhang H, Wang Q, Svensson M and Kuznetsov M 2024 Surrogate models for smart manufacturing: A review and future directions J. Intell. Manuf. 35 1237–1260</p>
-<p>[9] Wu L, Wang Q, Liu J and Soleimani M 2023 Graph neural networks in smart manufacturing: A review and applications J. Manuf. Syst. 68 234–251</p>
-<p>[10] Shi W, Chen Y, Liu J and Soleimani M 2024 Spatiotemporal graph neural networks for predictive maintenance in industrial IoT sensors 2024 IEEE Trans. Ind. Inform. 20 3345–3356</p>
-<p>[11] Brunton S L, Proctor J L and Kutz J N 2024 Sparse identification of nonlinear dynamics for model predictive control in mechanical systems ASME J. Comput. Nonlinear Dyn. 19 041001</p>
-<p>[12] Sargsyan K, Brunton S L and Kutz J N 2023 Surrogate models for multiscale physics in manufacturing processes AIAA Scitech 2023 Forum (AIAA) pp 1–12</p>
-<p>[13] Reich Y and Kimmich A 2024 Hybrid digital twins: Combining physics-based models and machine learning for smart manufacturing Adv. Eng. Inform. 59 102188</p>
-<p>[14] Mehta N, Chen Y and Shao C 2023 Generalization challenges in surrogate models for smart manufacturing Proc. ASME IDETC/CIE 2023 (ASME) vol DETC2023 pp 1–8</p>
-<p>[15] Ruderman A, Rabinowitz G and Gove R 2022 Physics-informed graph neural networks for electrical circuit modeling IEEE Trans. Neural Netw. Learn. Syst. 33 4521–4532</p>
-<p>[16] Zhao Z, Wang Q and Kuznetsov M 2024 Heat flux-aware graph neural networks for thermal modeling in manufacturing processes Int. J. Heat Mass Transf. 220 124912</p>
-<p>[17] Finzi M, Weller S and Roscher K 2024 Symmetry in graph neural networks for physical systems NeurIPS 2024 (Curran Associates) pp 1–15</p>
-<p>[18] Yang L, Zhang H and Karniadakis G E 2024 Thermodynamics-consistent neural networks for physical systems modeling arXiv preprint arXiv:2401.05873</p>
+<h2>参考文献</h2>
+<p>[1] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning Nat. Rev. Phys. 3 422–440 (doi: 10.1038/s42254-021-00314-5) Journal XX (XXXX) XXXXXX A Author et al 65</p>
+<p>[2] Phuyal S, Bista D and Bista R 2020 Challenges, opportunities and future directions of smart manufacturing: A state-of-the-art review Sustain. Prod. Consump. 23 287–302 (doi: 10.1016/j.spc.2020.06.002)</p>
+<p>[3] Battaglia P W, Hamrick J B, Bapst V, Sanchez-Gonzalez A, Zambaldi V, Malinowski M, Tacchetti A, Raposo D, Santoro A, Faulkner R et al 2018 Relational inductive biases, deep learning, and graph networks arXiv:1806.01261</p>
+<p>[4] Sharma V and Fink O 2025 Dynami-CAL GraphNet: A physics-informed graph neural network conserving linear and angular momentum for dynamical systems arXiv:2501.07373</p>
+<p>[5] Sharma V, Oddon R T, Tesini P, Ravesloot J, Taal C and Fink O 2025 Equi-Euler GraphNet: An equivariant, temporal- dynamics informed graph neural network for dual force and trajectory prediction in multi-body systems arXiv:2504.13768</p>
+<p>[6] Zhu G, Wang S and Wang L 2024 Heterogeneous graph neural network for modeling intelligent manufacturing systems Meas. Sci. Technol. 36 015114</p>
+<p>[7] Peng J-Z, Hua Y, Li Y-B, Chen Z-H, Wu W-T and Aubry N 2023 Physics-informed graph convolutional neural network for modeling fluid flow and heat convection Phys. Fluids 35 085104</p>
+<p>[8] Xue T, Gan Z, Liao S and Cao J 2022 Physics-embedded graph network for accelerating phase-field simulation of microstructure evolution in additive manufacturing npj Comput. Mater. 8 201</p>
+<p>[9] Zhao M, Taal C, Baggerohr S and Fink O 2025 Graph neural networks for virtual sensing in complex systems: Addressing heterogeneous temporal dynamics Mech. Syst. Signal Process. 230 112544</p>
+<p>[10] Yu B, Yin H and Zhu Z 2018 Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting Proc. IJCAI 3634–3640</p>
+<p>[11] Sanchez-Gonzalez A, Godwin J, Pfaff T, Ying R, Leskovec J and Battaglia P 2020 Learning to simulate complex physics with graph networks Proc. ICML 8459–8468</p>
+<p>[12] Shivaditya M V, Alves J, Bugiotti F and Magoulès F 2022 Graph neural network-based surrogate models for finite element analysis Proc. DCABES 54–57</p>
+<p>[13] Maurizi M, Gao C and Berto F 2022 Predicting stress, strain and deformation fields in materials and structures with graph neural networks Sci. Rep. 12 21834</p>
+<p>[14] Zhao Y, Li H, Zhou H, Attar H R, Pfaff T and Li N 2024 A review of graph neural network applications in mechanics-related domains Artif. Intell. Rev. 57 315</p>
+<p>[15] Donon B, Clément R, Donnot B, Marot A, Guyon I and Schoenauer M 2020 Neural networks for power flow: Graph neural solver Electr. Power Syst. Res. 189 106547</p>
+<p>[16] Niresi K F, Bissig H, Baumann H and Fink O 2024 Physics-enhanced graph neural networks for soft sensing in industrial internet of things IEEE Internet Things J.</p>
+<p>[17] Satorras V G, Hoogeboom E and Welling M 2021 E(n) equivariant graph neural networks Proc. ICML 9323–9332</p>
         <nav class="section-nav"><a href="13-ml-dl.html">← 上一章</a><a href="15-generative.html">下一章 →</a></nav>
     </main>
     <script>

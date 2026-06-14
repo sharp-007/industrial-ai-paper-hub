@@ -276,10 +276,30 @@ body.nav-open .sidebar-overlay {
 .article .article-meta {
     font-size: 0.8rem;
     color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.chapter-header {
     margin-bottom: 24px;
     padding: 12px 16px;
     background: var(--part-bg);
     border-radius: 8px;
+}
+
+.chapter-title-zh {
+    font-size: 1.6rem;
+    margin: 4px 0 6px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+    line-height: 1.35;
+}
+
+.chapter-title-en {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .article h2 {

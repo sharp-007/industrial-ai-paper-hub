@@ -53,9 +53,16 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第18章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第18章</div>
+            <h1 class="chapter-title-zh">制造可信AI</h1>
+            <p class="chapter-title-en">Trustworthy AI for Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="17-physics-control.html">← 上一章</a><a href="19-rams.html">下一章 →</a></nav>
-        <h3>18. 制造可信AI</h3>
+        <p><strong>Joseph Cohen¹, Xun Huan²</strong></p>
+<p>¹ 美国新泽西州皮斯卡特维罗格斯大学机械与航空航天工程系<br />
+² 美国密歇根州安娜堡密歇根大学机械工程系</p>
+<p>E-mail: joseph.cohen3@rutgers.edu, xhuan@umich.edu</p>
 <p><strong>现状</strong></p>
 <p>历史表明，人们对新技术的信任并非一蹴而就。工业自动化、航空自动驾驶仪以及自动驾驶汽车最初都面临着质疑，只有在证明了其可靠性、安全性，以及与人类监督和法规的有效整合之后，才逐渐获得广泛认可。制造业中的人工智能（AI）正面临类似的抉择：要想获得信任，AI系统不仅需要表现出色，还必须具备可解释性、可问责性，并能嵌入人类和制度背景之中。</p>
 <p>AI正在快速变革制造业，推动了预测性健康管理与故障诊断[1]、预测性维护[2]、质量控制[3]、工艺优化[4]以及工业数字孪生[5]等领域的发展。这些技术提高了复杂多阶段制造环境中的吞吐量和良率，减少了停机时间，并提升了产品质量。然而，AI固有的不透明性和“黑箱”特性引发了关于透明度、可靠性和安全性的重大关切，尤其是在航空航天和医疗器械制造等高风险领域。这些关切可能导致抵触情绪或过度依赖，最终削弱AI的变革潜力。</p>
@@ -91,6 +98,27 @@
 <p><strong>结语</strong></p>
 <p>可信AI是下一代制造的基本要求。随着AI系统变得越来越强大和普及，其不透明性、错位和失效的风险也随着其潜在收益而一同增长。应对这些挑战需要在计算与建模以及人类与社会基础方面取得协调进展。</p>
 <p>AI的成熟过程与传统工程学科通过严格理论、可验证实践和赢得社区信任的发展历程相似。实现这一愿景需要数学家、计算机科学家、工程师、社会科学家、领域专家和最终用户的共同努力。成功的实现将使制造业中的AI系统不仅强大，而且可理解、可靠并值得信赖。</p>
+<h2>参考文献</h2>
+<p>[1] Ochella, Shafiee and Dinmohammadi 2022 Artificial intelligence in prognostics and health management of engineering systems Engineering Applications of Artificial Intelligence 108 104552</p>
+<p>[2] Ucar Karakose and Kırımça 2024 Artificial intelligence for predictive maintenance applications: Key components, trustworthiness, and future trends Applied Sciences 14(2) 898</p>
+<p>[3] Prezas Michalos Arkouli Katsikarelis and Makris 2022 AI-enhanced vision system for dispensing process monitoring and quality control in manufacturing of large parts Procedia CIRP 107 1275–1280</p>
+<p>[4] Senoner Netland and Feuerriegel 2022 Using explainable artificial intelligence to improve process quality: Evidence from semiconductor manufacturing Management Science 68(8) 5704–5723</p>
+<p>[5] Huang Shen Li Fey and Brecher 2021 A survey on AI-driven digital twins in Industry 4.0: Smart manufacturing and advanced robotics Sensors 21(19) 6340</p>
+<p>[6] Suh and Cheng 2025 A survey on statistical theory of deep learning: Approximation, training dynamics, and generative models. Annual Review of Statistics and Its Application 12(1) 177–207</p>
+<p>[7] Colbrook Antun and Hansen 2022 The difficulty of computing stable and accurate neural networks: On the barriers of deep learning and Smale’s 18th problem Proceedings of the National Academy of Sciences 119(12) e2107151119</p>
+<p>[8] Roy and Oberkampf 2011 A comprehensive framework for verification, validation, and uncertainty quantification in scientific computing Computer Methods in Applied Mechanics and Engineering 200(25–28) 2131–2144</p>
+<p>[9] Biggio and Roli 2018 Wild patterns: Ten years after the rise of adversarial machine learning Pattern Recognition 84 317–331</p>
+<p>[10] Liao and Varshney 2021 Human-centered explainable AI (XAI): From algorithms to user experiences arXiv:2110.10790</p>
+<p>[11] Lundberg and Lee 2017 A unified approach to interpreting model predictions Advances in Neural Information Processing Systems 30 4765–4774</p>
+<p>[12] Mothilal, Sharma and Tan 2020 Explaining machine learning classifiers through diverse counterfactual explanations Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency 607–617</p>
+<p>[13] Adebayo, Gilmer, Muelly, Goodfellow, Hardt and Kim 2018 Sanity checks for saliency maps Advances in Neural Information Processing Systems 31 9505–9515</p>
+<p>[14] Pearl 2009 Causal inference in statistics: An overview Statistics Surveys 3 96–146</p>
+<p>[15] Liu, Kitouni, Nolte, Michaud, Tegmark and Williams 2022 Towards understanding grokking: An effective theory of representation learning Advances in Neural Information Processing Systems 35 34651–34663</p>
+<p>[16] Azizzadenesheli, Kovachki, Li, Liu-Schiaffini, Kossaifi and Anandkumar 2024 Neural operators for accelerating scientific simulations and design Nature Reviews Physics 6(5) 320–328</p>
+<p>[17] Raissi, Perdikaris and Karniadakis 2019 Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations Journal of Computational Physics 378 686–707</p>
+<p>[18] Nemani, Biggio, Huan, Hu, Fink, Tran, Wang, Zhang and Hu 2023 Uncertainty quantification in machine learning for engineering design and health prognostics: A tutorial Mechanical Systems and Signal Processing 205, 110796</p>
+<p>[19] Lu, Liu, Dong, Gu, Gama and Zhang 2018 Learning under concept drift: A review IEEE Transactions on Knowledge and Data Engineering 31(12) 2346–2363</p>
+<p>[20] Dhanda, Rogers, Hall, Dekoninck and Dhokia 2025 Reviewing human-robot collaboration in manufacturing: Opportunities and challenges in the context of industry 5.0 Robotics and Computer-Integrated Manufacturing 93 102937</p>
         <nav class="section-nav"><a href="17-physics-control.html">← 上一章</a><a href="19-rams.html">下一章 →</a></nav>
     </main>
     <script>

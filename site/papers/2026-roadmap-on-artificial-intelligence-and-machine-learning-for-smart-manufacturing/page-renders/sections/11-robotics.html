@@ -53,12 +53,15 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第11章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第11章</div>
+            <h1 class="chapter-title-zh">AI增强机器人与自主系统</h1>
+            <p class="chapter-title-en">AI-Enhanced Robotics and Autonomous Systems</p>
+        </header>
         <nav class="section-nav"><a href="10-supply.html">← 上一章</a><a href="12-sustainable.html">下一章 →</a></nav>
-        <h3>11. AI增强机器人与自主系统</h3>
-<p>Satyandra K. Gupta¹</p>
-<p>¹ 南加州大学先进制造中心，美国加利福尼亚州洛杉矶</p>
-<p>电子邮件：guptask@usc.edu</p>
+        <p><strong>Satyandra K. Gupta¹</strong></p>
+<p>¹ 美国加利福尼亚州洛杉矶南加州大学先进制造中心</p>
+<p>E-mail: guptask@usc.edu</p>
 <p><strong>现状</strong></p>
 <p>过去十年间，人工智能技术取得了显著进展，包括强化学习、深度学习、大语言模型和生成式AI等[2-6, 10]。这些进展赋予了机器人和自主系统新的能力。我们在日常生活中接触到的大多数AI都属于数字AI，例如生成求职申请信、电影观看推荐、创作绘画以及医学影像中肿瘤检测等。而驱动机器人行为则需要另一种类型的AI。例如，在飞机机翼上进行打磨作业的机器人需要AI来实现自主运行，这种AI被称为物理AI。物理AI承担一个或多个目标，利用传感器数据生成机器人执行的动作序列以达成目标。物理AI通过传感器监控任务执行并规划机器人动作以完成任务。物理AI在以下与机器人和自主系统相关的领域得到应用：（1）感知；（2）规划；（3）控制；（4）人机交互；（5）从人类演示中学习；（6）测试用例生成；（7）多机器人协作。</p>
 <p>图1展示了实现AI驱动的机器人工作单元所面临的挑战，同时列出了应对这些挑战所必需的进展。物理AI应用的风险特征通常与数字AI应用有着根本性的不同。风险包含两个维度：（1）发生错误的概率；（2）产生错误的后果。当错误后果不严重时，可以容忍较高的错误概率。因此，在许多数字AI应用中，1%的错误概率是可接受的。相反，许多工业应用要求错误概率低至百万分之一。使用数据驱动方法降低错误概率需要使用海量数据，但在工业应用中获取数据的代价极为高昂。因此，需要将基于模型的方法与数据驱动方法相结合以解决数据规模问题。</p>
@@ -86,11 +89,11 @@
 <p>机器人应用所需的物理AI无法作为运行在云端的单一整体系统来实现。机器人应用中的物理AI应被视为涉及多个AI组件交互的复杂系统。该系统应使用正确的功能分解，以确保能够实现性能和模块化之间的理想权衡。存在许多不同的AI方法，单一方法不太可能足以提供所需的性能。因此，每个功能块都应通过仔细考虑优缺点来选择正确的AI方法。因此，在物理AI系统中拥有正确的系统架构是在工业应用中取得成功的关键。在工业应用中，从时间和成本角度生成大量数据是不可能的。物理AI的设计应使其能够使用由物理实验生成的有限数据进行训练。需要一种结合基于模型和数据驱动方法的方法来成功地将物理AI部署到工业应用中。在复杂应用中部署机器人工作单元目前需要大量的人力工作。完成这项工作所需的人力资源往往成为瓶颈，并可能导致部署延迟。生成式AI正在提供新工具，以减少工业应用部署机器人所需的人类专业知识。AI驱动的数字孪生正在引领智能系统的新时代，通过降低成本、减少错误、提高质量、提升性能并减少环境足迹。人类是工业运营的重要组成部分，因此人机交互问题需要在系统设计过程中积极应对。AI可用于革新人机界面，通过促进更直观的交互来帮助工人。</p>
 <p><strong>致谢</strong></p>
 <p>本工作由南加州大学先进制造中心支持。感谢我的现在和 former学生们对本工作的贡献。作者已确认本研究中的任何可识别参与者均已给予出版同意。</p>
-<p><strong>参考文献</strong></p>
-<p>[1] Al-Hussaini, S.; Guan, Y.; Gregory, J. M.; Pollard, K.; Khooshabeh, P.; and Gupta, S. K. (2024). Assessing the Impact of Alerts on the Human Supervisor's Decision-Making Performance in Multi-Robot Missions. ACM Transactions on Human-Robot Interaction, 14(1): 1–40.</p>
+<h2>参考文献</h2>
+<p>[1] Al-Hussaini, S.; Guan, Y.; Gregory, J. M.; Pollard, K.; Khooshabeh, P.; and Gupta, S. K. (2024). Assessing the Impact of Alerts on the Human Supervisor’s Decision-Making Performance in Multi-Robot Missions. ACM Transactions on Human-Robot Interaction, 14(1): 1–40.</p>
 <p>[2] Chi, C.; Xu, Z.; Feng, S.; Cousineau, E.; Du, Y.; Burchfiel, B.; Tedrake, R.; and Song, S. (2024). Diffusion Policy: Visuomotor Policy Learning via Action Diffusion. The International Journal of Robotics Research.</p>
 <p>[3] Gao J. et al. (2024) Physically Grounded Vision-Language Models for Robotic Manipulation. 2024 IEEE International Conference on Robotics and Automation (ICRA), Yokohama, Japan, pp. 12462-12469.</p>
-<p>[4] Gregory, J. M.; and Gupta, S. K., 2024. Opportunities for Generative Artificial Intelligence to Accelerate Deployment of Human-Supervised Autonomous Robots. Proceedings of the AAAI Symposium Series, 2(1): 177–181.</p>
+<p>[4] Gregory, J. M.; and Gupta, S. K., 2024. Opportunities for Generative Artificial Intelligence to Accelerate Deployment of Human- Supervised Autonomous Robots. Proceedings of the AAAI Symposium Series, 2(1): 177–181.</p>
 <p>[5] Gupta, S.K. (2025). Embodied AI for Smart Robotic Cells in Manufacturing Applications. AAAI Conference, Senior Member Track.</p>
 <p>[6] Huang, W.; Abbeel, P.; Pathak, D.; and Mordatch, I., (2022). Language models as zero-shot planners: Extracting actionable knowledge for embodied agents. In International Conference on Machine Learning, 9118–9147.</p>
 <p>[7] Huang, Z.; Shen, Y; Li, J.; Fey, M.; and Brecher, C. (2021). A Survey on AI-Driven Digital Twins in Industry 4.0: Smart Manufacturing and Advanced Robotics. Sensors, 21(19).</p>

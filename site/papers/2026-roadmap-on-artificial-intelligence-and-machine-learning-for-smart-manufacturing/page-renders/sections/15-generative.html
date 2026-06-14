@@ -53,13 +53,16 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第15章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第15章</div>
+            <h1 class="chapter-title-zh">生成式AI与制造设计</h1>
+            <p class="chapter-title-en">Generative AI for Design and Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="14-physics-ml.html">← 上一章</a><a href="16-semantic.html">下一章 →</a></nav>
-        <h3>15. 生成式AI与制造设计</h3>
-<p>Faez Ahmed¹, Wei "Wayne" Chen², Mark Fuge³</p>
-<p>¹ 马萨诸塞理工学院机械工程系，美国剑桥<br />
-² J. Mike Walker '66 机械工程系，德克萨斯A&amp;M大学，美国大学城<br />
-³ 苏黎世联邦理工学院机械与过程工程系，瑞士</p>
+        <p><strong>Faez Ahmed¹, Wei "Wayne" Chen², Mark Fuge³</strong></p>
+<p>¹ 美国马萨诸塞州剑桥麻省理工学院机械工程系<br />
+² 美国德克萨斯州大学城德克萨斯A&amp;M大学J. Mike Walker '66机械工程系<br />
+³ 瑞士苏黎世联邦理工学院机械与过程工程系</p>
 <p>E-mail: faez@mit.edu</p>
 <p><strong>现状</strong></p>
 <p><strong>机器为何尚不能设计其他机器（yet）？</strong> 工程师们长期想象着一个机器能够设计其他机器的世界 [1,2]，而生成式AI系统（如扩散模型和大语言模型）的最新进展使这一梦想重新焕发生机。这些系统已经能够起草代码、总结文档，甚至提出初步的工程概念。那么，为何航空航天公司没有利用它们从头开始设计和认证整个无人机呢？</p>
@@ -121,33 +124,27 @@
 <p>前进的道路清晰明确：建立与领域相关的基准和数据集；用物理、不确定性和组合推理强化模型；重新设计人机协作的工作流程；将信任和认证流程编纂成法。只有在广度和深度两个维度上同时解决科学和采纳问题，我们才能将AI设计从精巧的演示转化为经过认证的工程实践。</p>
 <p><strong>致谢</strong></p>
 <p>Ahmed PI感谢美国国家科学基金会 CAREER Award No. 2443429 的支持。</p>
-<p><strong>参考文献</strong></p>
-<p>[1] Finger S and Dixon J R 1989 A review of research in mechanical engineering design. Part I: Descriptive, prescriptive, and computer-based models of design processes. Research in engineering design 1 51–67<br />
-[2] Antonsson E K and Cagan J 2001 Formal engineering design synthesis. (Cambridge University Press)<br />
-[3] Antonau I, Warnakulasuriya S, Baars S, Baimuratov I, Wittenborg T, Kreuzeberg L, Attravanam A and Wüchner R 2025 Challenges in realizing 3rd generation multidisciplinary design optimization. Advances in Computational Science and Engineering 5 1–21<br />
-[4] Bordas A, Le Masson P, Thomas M and Weil B 2024 What is generative in generative artificial intelligence? A design-based perspective. Research in Engineering Design 35 427–443<br />
-[5] Ji Z, Lee N, Frieske R, Yu T, Su D, Xu Y, Ishii E, Bang Y J, Madotto A and Fung P 2023 Survey of hallucination in natural language generation. ACM computing surveys 55 1–38<br />
-[6] Ren R, Ma J and Luo J 2025 Large language model for patent concept generation. Advanced Engineering Informatics 65 103301<br />
-[7] Zhang G, Raina A, Cagan J and McComb C 2021 A cautionary tale about the impact of AI on human design teams. Design studies 72 100990<br />
-[8] Zhuang F, Qi Z, Duan K, Xi D, Zhu Y, Zhu H, Xiong H and He Q 2020 A comprehensive survey on transfer learning. Proceedings of the IEEE 109 43–76<br />
-[9] Siau K and Wang W 2018 Building trust in artificial intelligence, machine learning, and robotics. Cutter business technology journal 31 47<br />
-[10] Niresi K F, Bissig H, Baumann H and Fink O 2024 Physics-enhanced graph neural networks for soft sensing in industrial internet of things IEEE Internet Things J.<br />
-[11] Phuyal S, Bista D and Bista R 2020 Challenges, opportunities and future directions of smart manufacturing: A state-of-the-art review Sustain. Prod. Consump. 23 287–302 (doi: 10.1016/j.spc.2020.06.002)<br />
-[12] Battaglia P W, Hamrick J B, Bapst V, Sanchez-Gonzalez A, Zambaldi V, Malinowski M, Tacchetti A, Raposo D, Santoro A, Faulkner R et al 2018 Relational inductive biases, deep learning, and graph networks arXiv:1806.01261<br />
-[13] Sharma V and Fink O 2025 Dynami-CAL GraphNet: A physics-informed graph neural network conserving linear and angular momentum for dynamical systems arXiv:2501.07373<br />
-[14] Sharma V, Oddon R T, Tesini P, Ravesloot J, Taal C and Fink O 2025 Equi-Euler GraphNet: An equivariant, temporal-dynamics informed graph neural network for dual force and trajectory prediction in multi-body systems arXiv:2504.13768<br />
-[15] Zhu G, Wang S and Wang L 2024 Heterogeneous graph neural network for modeling intelligent manufacturing systems Meas. Sci. Technol. 36 015114<br />
-[16] Peng J-Z, Hua Y, Li Y-B, Chen Z-H, Wu W-T and Aubry N 2023 Physics-informed graph convolutional neural network for modeling fluid flow and heat convection Phys. Fluids 35 085104<br />
-[17] Xue T, Gan Z, Liao S and Cao J 2022 Physics-embedded graph network for accelerating phase-field simulation of microstructure evolution in additive manufacturing npj Comput. Mater. 8 201<br />
-[18] Zhao M, Taal C, Baggerohr S and Fink O 2025 Graph neural networks for virtual sensing in complex systems: Addressing heterogeneous temporal dynamics Mech. Syst. Signal Process. 230 112544<br />
-[19] Yu B, Yin H and Zhu Z 2018 Spatio-temporal graph convolutional networks: A deep learning framework for traffic forecasting Proc. IJCAI 3634–3640<br />
-[20] Sanchez-Gonzalez A, Godwin J, Pfaff T, Ying R, Leskovec J and Battaglia P 2020 Learning to simulate complex physics with graph networks Proc. ICML 8459–8468<br />
-[21] Shivaditya M V, Alves J, Bugiotti F and Magoulès F 2022 Graph neural network-based surrogate models for finite element analysis Proc. DCABES 54–57<br />
-[22] Maurizi M, Gao C and Berto F 2022 Predicting stress, strain and deformation fields in materials and structures with graph neural networks Sci. Rep. 12 21834<br />
-[23] Zhao Y, Li H, Zhou H, Attar H R, Pfaff T and Li N 2024 A review of graph neural network applications in mechanics-related domains Artif. Intell. Rev. 57 315<br />
-[24] Donon B, Clément R, Donnot B, Marot A, Guyon I and Schoenauer M 2020 Neural networks for power flow: Graph neural solver Electr. Power Syst. Res. 189 106547<br />
-[25] Satorras V G, Hoogeboom E and Welling M 2021 E(n) equivariant graph neural networks Proc. ICML 9323–9332<br />
-[26] Tierz A, Alfaro I, González D, Chinesta F and Cueto E 2025 Graph neural networks informed locally by thermodynamics Eng. Appl. Artif. Intell. 144 110108</p>
+<h2>参考文献</h2>
+<p>[1] Finger S and Dixon J R 1989 A review of research in mechanical engineering design. Part I: Descriptive, prescriptive, and computer-based models of design processes. Research in engineering design 1 51–67</p>
+<p>[2] Antonsson E K and Cagan J 2001 Formal engineering design synthesis. (Cambridge University Press)</p>
+<p>[3] Antonau I, Warnakulasuriya S, Baars S, Baimuratov I, Wittenborg T, Kreuzeberg L, Attravanam A and W¨uchner R 2025 Challenges in realizing 3rd generation multidisciplinary design optimization. Advances in Computational Science and Engineering 5 1–21</p>
+<p>[4] Bordas A, Le Masson P, Thomas M and Weil B 2024 What is generative in generative artificial intelligence? A design-based perspective. Research in Engineering Design 35 427–443</p>
+<p>[5] Ji Z, Lee N, Frieske R, Yu T, Su D, Xu Y, Ishii E, Bang Y J, Madotto A and Fung P 2023 Survey of hallucination in natural language generation. ACM computing surveys 55 1–38</p>
+<p>[6] Ren R, Ma J and Luo J 2025 Large language model for patent concept generation. Advanced Engineering Informatics 65 103301</p>
+<p>[7] Zhang G, Raina A, Cagan J and McComb C 2021 A cautionary tale about the impact of AI on human design teams. Design studies 72 100990</p>
+<p>[8] Zhuang F, Qi Z, Duan K, Xi D, Zhu Y, Zhu H, Xiong H and He Q 2020 A comprehensive survey on transfer learning. Proceedings of the IEEE 109 43–76</p>
+<p>[9] Siau K and Wang W 2018 Building trust in artificial intelligence, machine learning, and robotics. Cutter business technology journal 31 47 Journal XX (XXXX) XXXXXX A Author et al 71</p>
+<p>[10] Li B, Qi P, Liu B, Di S, Liu J, Pei J, Yi J and Zhou B 2023 Trustworthy AI: From principles to practices. ACM Computing Surveys 55 1–46</p>
+<p>[11] Ahmed F, Picard C, Chen W, McComb C, Wang P, Lee I, Stankovic T, Allaire D and Menzel S 2025 Design by Data: Cultivating Datasets for Engineering Design. Journal of Mechanical Design 147 040301</p>
+<p>[12] Briard T, Jean C, Aoussat A and V´eron P 2023 Challenges for data-driven design in early physical product design: A scientific and industrial perspective. Computers in Industry 145 103814</p>
+<p>[13] Karniadakis G E, Kevrekidis I G, Lu L, Perdikaris P, Wang S and Yang L 2021 Physics-informed machine learning. Nature Reviews Physics 3 422–440</p>
+<p>[14] Liu C, Sun X, Wang J, Tang H, Li T, Qin T, Chen W and Liu T Y 2021 Learning causal semantic representation for out-of- distribution prediction. Advances in Neural Information Processing Systems 34 6155–6170</p>
+<p>[15] Serles P, Yeo J, Hach´e M, Demingos P G, Kong J, Kiefer P, Dhulipala S, Kumral B, Jia K, Yang S et al. 2025 Ultrahigh specific strength by Bayesian optimization of carbon nanolattices. Advanced Materials 37 2410651</p>
+<p>[16] Hollmann N, M¨uller S, Purucker L, Krishnakumar A, K¨orfer M, Hoo S B, Schirrmeister R T and Hutter F 2025 Accurate predictions on small data with a tabular foundation model. Nature 637 319–326</p>
+<p>[17] Edgecomb I M, Brisco R, Gunn K et al. 2025 Artificial Intelligence in engineering design: an industry perspective. Proceedings of the Design Society 5 641–650</p>
+<p>[18] Hoffman R R, Johnson M, Bradshaw J M and Underbrink A 2013 Trust in automation. IEEE Intelligent Systems 28 84–88</p>
+<p>[19] Felten F, Apaza G, Baunlich G, Diniz C, Dong X, Drake A, Habibi M, Hoffman N J, Keeler M, Massoudi S, VanGessel F G and Fuge M 2025 EngiBench: A Framework for Data-Driven Engineering Design Research URL http://arxiv.org/abs/2508.00831</p>
+<p>[20] Clark P, Cowhey I, Etzioni O, Khot T, Sabharwal A, Schoenick C and Tafjord O 2018 Think you have solved question answering? try arc, the ai2 reasoning challenge (Preprint 1803.05457) URL https://arxiv.org/abs/1803.05457 Semantic Framework Enabling Machine Learning in Manufacturing Arild Waaler1, Martin G. Skjæ veland1 and Dimitris Kyritsis1 1 Department of Informatics, University of Oslo, Norway E-mail: arild@uio.no Status Engineering practice today is fundamentally dependent on technical information, information that is document-based, fragmented across tools and domains, and tied to siloed organizational structures. While individual disciplines to varying degrees employ formal models like ontologies, there is no shared foundation for structuring system-level knowledge across the engineering lifecycle. As a result, the so- called digital thread — the traceable connection from requirements through design, implementation, and operation — is frequently broken or opaque. At the same time, artificial intelligence, particularly in the form of machine learning and generative models, is rapidly being integrated into engineering workflows. However, these approaches struggle to deliver trustworthy results in the absence of clearly defined objects and relations. Where structure is implicit or missing, AI models become unreliable, and engineers are left without the means to validate or interpret the outputs of AI models. This creates a gap between the promise of AI and the reality of high-stakes engineering practice, where precision, safety, trust, and traceability are imperative.</p>
         <nav class="section-nav"><a href="14-physics-ml.html">← 上一章</a><a href="16-semantic.html">下一章 →</a></nav>
     </main>
     <script>

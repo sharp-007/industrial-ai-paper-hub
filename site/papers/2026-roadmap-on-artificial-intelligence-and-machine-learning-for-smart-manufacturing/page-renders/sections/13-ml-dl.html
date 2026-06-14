@@ -53,9 +53,15 @@
     </nav>
     <main class="content article">
         <div class="content-topbar" aria-hidden="true"></div>
-        <div class="article-meta">第13章</div>
+        <header class="chapter-header">
+            <div class="article-meta">第13章</div>
+            <h1 class="chapter-title-zh">机器学习与深度学习</h1>
+            <p class="chapter-title-en">Machine Learning and Deep Learning for Manufacturing</p>
+        </header>
         <nav class="section-nav"><a href="12-sustainable.html">← 上一章</a><a href="14-physics-ml.html">下一章 →</a></nav>
-        <h3>13. 机器学习与深度学习</h3>
+        <p><strong>Sang Won Lee¹</strong></p>
+<p>¹ 韩国水原市成均馆大学机械工程学院</p>
+<p>E-mail: sangwonl@skku.edu</p>
 <p><strong>当前及未来挑战</strong></p>
 <p>基于机器学习/深度学习的智能制造所面临的最严峻挑战在于高质量标注数据的匮乏。由于工业环境中的安全性、成本及操作复杂性，收集足够的标注数据集——尤其是针对罕见故障场景的数据——极度困难。尽管部分研究已尝试利用生成对抗网络（GAN）生成合成故障数据，并采用长短期记忆网络（LSTM）进行时序建模[5]，但这些方法并非总能适用于那些无法收集真实故障数据的制造现场。</p>
 <p>其次，泛化能力有限及可解释性不足仍是关键问题。例如，针对特定刀具优化的预测模型往往难以推广到不同的机器或操作条件。为解决这一问题，可解释人工智能（XAI）技术正被越来越多地引入，以提高人工智能模型的可解释性[6]。</p>
@@ -76,26 +82,23 @@
 <p>以人为中心的可解释性也须从设计早期阶段便予以纳入。除透明化可视化外，特征重要性高亮、注意力热图及上下文解释等技术应使操作人员能够理解和验证基于人工智能的决策。这将有助于建立信任并提高现场接受度。</p>
 <p>此外，轻量级人工智能模型架构的持续创新至关重要。在需要实时决策的边缘计算环境中，必须开发新型深度学习/机器学习方法，以在准确性与计算效率之间取得平衡。尤其值得关注的是，在保持高性能的同时最大限度降低能耗的模型设计，以及利用本地化现场数据逐步提升模型精度的联邦微调技术。</p>
 <p>最终，人工智能制造系统的成功部署与规模化推广，需要学术界、产业界与政府之间的协调合作。当技术创新通过实证测试验证，并与体制及劳动力战略相契合时，智能制造将超越自动化，成为透明、有韧性、以人为本的智能生产系统。</p>
-<p><strong>参考文献</strong></p>
-<p>[1] Rosati R, Romeo L, Cecchini G, Tonetto F, Viti P, Mancini A and Frontoni E 2023 From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0 J. Intell. Manuf. 34 107–121</p>
-<p>[2] Farahani B and Monsefi A K 2023 Smart and collaborative industrial IoT: A federated learning and data space approach Digit. Commun. Netw. 9 436–447</p>
-<p>[3] Zhang J, Su H, Zou W, Gong X, Zhang Z and Shen F 2020 CADN: A weakly supervised learning-based category-aware object detection network for surface defect detection Pattern Recognit. 109 107571</p>
-<p>[4] Chen H, Du Y, Fu Y, Zhu J and Zeng H 2023 DCAM-Net: A rapid detection network for strip steel surface defects based on deformable convolution and attention mechanism IEEE Trans. Instrum. Meas. 72 1–12</p>
-<p>[5] Alzubaidi L, Bai J, Al-Sabaawi A, Santamaría J, Albahri A S, Al-Dabbagh B S N et al 2023 A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications J. Big Data 10 46</p>
-<p>[6] Lei Y, Yang B, Jiang X, Jia F, Li N and Nandi A K 2020 Applications of machine learning to machine fault diagnosis: A review and roadmap Mech. Syst. Signal Process. 138 106587</p>
-<p>[7] Zhang H, Semujju S D, Wang Z, Lv X, Xu K, Wu L et al 2025 Large scale foundation models for intelligent manufacturing applications: a survey J. Intell. Manuf. 1–52</p>
-<p>[8] Pfeifer M R 2021 SMEs in failed transition towards Industry 4.0: A case study of a Czech SME J. Innov. Bus. Best Pract. 1–16</p>
-<p>[9] Jain S, Seth G, Paruthi A, Soni U and Kumar G 2023 Synthetic data augmentation for surface defect detection and classification using deep learning J. Intell. Manuf. 1–14</p>
-<p>[10] Zhong H, Yu S, Trinh H, Yuan R, Lv Y and Wang Y 2025 A time-saving fault diagnosis using simplified fast GAN and triple-type data transfer learning Struct. Health Monit. 24 869–882</p>
-<p>[11] Mehta M, Chen S, Tang H and Shao C 2023 A federated learning approach to mixed fault diagnosis in rotating machinery J. Manuf. Syst. 68 687–694</p>
-<p>[12] Bordekar H, Cersullo N, Brysch M, Philipp J and Hühne C 2025 eXplainable artificial intelligence for automatic defect detection in additively manufactured parts using CT scan analysis J. Intell. Manuf. 36 957–974</p>
-<p>[13] Fabiocchi D, Giulietti N, Carnevale M and Giberti H 2024 AI-driven virtual sensors for real-time dynamic analysis of mechanisms: A feasibility study Machines 12 257</p>
-<p>[14] Wan D, Lu R, Shen S, Xu T, Lang X and Ren Z 2023 Mixed local channel attention for object detection Eng. Appl. Artif. Intell. 123 106442</p>
-<p>[15] Zhang X, Song Y, Song T, Yang D, Ye Y, Zhou J and Zhang L 2024 LDConv: Linear deformable convolution for improving convolutional neural networks Image Vis. Comput. 149 105190</p>
-<p>[16] Iranshahi K, Brun J, Arnold T, Sergi T and Müller U C 2025 Digital twins: Recent advances and future directions in engineering fields Intell. Syst. Appl. 200516</p>
-<p>[17] Sahin T, Wolff D, von Danwitz M and Popp A 2024 Towards a hybrid digital twin: Physics-informed neural networks as surrogate model of a reinforced concrete beam arXiv preprint arXiv:2405.08406</p>
-<p>[18] Piran F J, Chen Z, Imani M and Imani F 2025 Privacy-preserving federated learning with differentially private hyperdimensional computing Comput. Electr. Eng. 123 110261</p>
-<hr />
+<h2>参考文献</h2>
+<p>[1] Rosati, R., Romeo, L., Cecchini, G., Tonetto, F., Viti, P., Mancini, A., &amp; Frontoni, E., From knowledge-based to big data analytic model: a novel IoT and machine learning based decision support system for predictive maintenance in Industry 4.0. 2023 Journal of Intelligent Manufacturing, 34, 107–121</p>
+<p>[2] Farahani, B., &amp; Monsefi, A. K., Smart and collaborative industrial IoT: A federated learning and data space approach, 2023 Digital Communications and Networks, 9, 436-447</p>
+<p>[3] Zhang, J., Su, H., Zou, W., Gong, X., Zhang, Z., &amp; Shen, F., CADN: A weakly supervised learning-based category-aware object detection network for surface defect detection, 2020 Pattern Recognition, 109, 107571</p>
+<p>[4] Chen, H., Du, Y., Fu, Y., Zhu, J., &amp; Zeng, H., DCAM-Net: A Rapid Detection Network for Strip Steel Surface Defects Based on Deformable Convolution and Attention Mechanism, 2023 IEEE Transactions on Instrumentation and Measurement, 72, 1- 12</p>
+<p>[5] Alzubaidi, L., Bai, J., Al-Sabaawi, A., Santamaría, J., Albahri, A. S., Al-Dabbagh, B. S. N., ... &amp; Gu, Y., A survey on deep learning tools dealing with data scarcity: definitions, challenges, solutions, tips, and applications, 2023 Journal of Big Data, 10, 46</p>
+<p>[6] Lei, Y., Yang, B., Jiang, X., Jia, F., Li, N., &amp; Nandi, A. K., Applications of machine learning to machine fault diagnosis: A review and roadmap, 2020 Mechanical systems and signal processing, 138, 106587</p>
+<p>[7] Zhang, H., Semujju, S. D., Wang, Z., Lv, X., Xu, K., Wu, L., ... &amp; Ma, X., Large scale foundation models for intelligent manufacturing applications: a survey, 2025 Journal of Intelligent Manufacturing, 1-52</p>
+<p>[8] Pfeifer, M. R., SMEs in Failed Transition Towards Industry 4.0: A case study of a Czech SME , 2021 Journal of Innovation &amp; Business Best Practice, 1-16</p>
+<p>[9] Jain, S., Seth, G., Paruthi, A., Soni, U., &amp; Kumar, G., Synthetic data augmentation for surface defect detection and classification using deep learning. Journal of Intelligent Manufacturing, 1-14</p>
+<p>[10] Zhong, H., Yu, S., Trinh, H., Yuan, R., Lv, Y., &amp; Wang, Y. A time-saving fault diagnosis using simplified fast GAN and triple- type data transfer learning. 2025 Structural Health Monitoring, 24, 869-882</p>
+<p>[11] Mehta, M., Chen, S., Tang, H., &amp; Shao, C. A federated learning approach to mixed fault diagnosis in rotating machinery. 2023 Journal of Manufacturing Systems, 68, 687-694</p>
+<p>[12] Bordekar, H., Cersullo, N., Brysch, M., Philipp, J., &amp; Hühne, C. eXplainable artificial intelligence for automatic defect detection in additively manufactured parts using CT scan analysis. 2025 Journal of Intelligent Manufacturing, 36, 957-974.</p>
+<p>[13] Fabiocchi, D., Giulietti, N., Carnevale, M., &amp; Giberti, H. Ai-driven virtual sensors for real-time dynamic analysis of mechanisms: A feasibility study. 2024 Machines, 12, 257.</p>
+<p>[14] Wan, D., Lu, R., Shen, S., Xu, T., Lang, X., &amp; Ren, Z. Mixed local channel attention for object detection. 2023 Engineering Applications of Artificial Intelligence, 123, 106442</p>
+<p>[15] Zhang, X., Song, Y., Song, T., Yang, D., Ye, Y., Zhou, J., &amp; Zhang, L. LDConv: Linear deformable convolution for improving convolutional neural networks. 2024 Image and Vision Computing, 149, 105190.</p>
+<p>[16] Iranshahi, K., Brun, J., Arnold, T., Sergi, T., &amp; Müller, U. C. Digital Twins: Recent Advances and Future Directions in Engineering Fields. 2025 Intelligent Systems with Applications, 200516.</p>
         <nav class="section-nav"><a href="12-sustainable.html">← 上一章</a><a href="14-physics-ml.html">下一章 →</a></nav>
     </main>
     <script>

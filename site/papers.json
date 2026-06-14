@@ -2,8 +2,31 @@
   "site": {
     "title": "工业AI文献速递",
     "subtitle": "Industrial AI Paper Hub",
-    "description": "工业与制造业数智化转型学习社区 | 精选 Industrial AI 重要文献中文翻译",
-    "author_line": "中立第三方 · 中译整理"
+    "tagline": "精选 Industrial AI 重要文献中文翻译",
+    "description": "面向工业 AI 研究者、工程师与制造业数智化转型从业者，提供工业AI领域重要英文文献的完整中文翻译与结构化网页阅读",
+    "value_proposition": [
+      "面向工业 AI 研究者、工程师与制造业数智化转型从业者",
+      "提供工业AI领域重要英文文献的完整中文翻译与结构化网页阅读",
+      "中立第三方，持续更新"
+    ],
+    "author_line": "中立第三方 · 重要文献中译整理 · 仅供学习参考",
+    "features": [
+      {
+        "icon": "📖",
+        "title": "完整中译",
+        "description": "AI 初稿 + 人工审校，结构化网页阅读，非链接合集"
+      },
+      {
+        "icon": "📑",
+        "title": "分章阅读",
+        "description": "按章节拆分，便于检索、深读与分享具体段落"
+      },
+      {
+        "icon": "🔗",
+        "title": "原文可溯源",
+        "description": "保留 arXiv、DOI 与 PDF，随时对照原文核实"
+      }
+    ]
   },
   "papers": [
     {

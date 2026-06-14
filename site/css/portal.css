@@ -699,10 +699,11 @@ body.modal-open { overflow: hidden; }
 
 .footer-brand {
     font-family: var(--font-serif);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--ink-muted);
     letter-spacing: 0.02em;
+    margin-top: 2px;
 }
 
 .footer-social {
@@ -711,7 +712,7 @@ body.modal-open { overflow: hidden; }
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 6px;
+    margin-top: 0;
 }
 
 .footer-social-link {

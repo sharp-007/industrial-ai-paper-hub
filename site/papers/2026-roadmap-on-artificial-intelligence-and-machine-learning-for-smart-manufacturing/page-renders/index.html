@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="sidebar">
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+    <nav class="sidebar" id="sidebar-nav">
         <div class="sidebar-header">
             <h1>人工智能与机器学习智能制造路线图 2026</h1>
             <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
@@ -48,6 +52,7 @@
         </div>
     </nav>
     <main class="content">
+        <div class="content-topbar" aria-hidden="true"></div>
         <div class="welcome">
             <h2>人工智能与机器学习智能制造路线图 2026</h2>
             <h3>2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</h3>
@@ -74,5 +79,31 @@
             <p class="note">左侧导航栏选择章节阅读。完整文档见 <a href="full-translation.html">全文</a>，<a href="source/2026%20Roadmap%20on%20Artificial%20Intelligence%20and%20Machine%20Learning%20for%20Smart%20Manufacturing.pdf" target="_blank" rel="noopener">原文 PDF</a> 亦可在本站下载。</p>
         </div>
     </main>
+    <script>
+    (function () {
+        var btn = document.querySelector(".nav-toggle");
+        var sidebar = document.getElementById("sidebar-nav");
+        var overlay = document.querySelector(".sidebar-overlay");
+        if (!btn || !sidebar) return;
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    })();
+    </script>
 </body>
 </html>

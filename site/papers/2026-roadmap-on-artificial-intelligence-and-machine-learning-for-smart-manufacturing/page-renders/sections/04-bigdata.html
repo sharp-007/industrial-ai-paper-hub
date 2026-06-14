@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <nav class="sidebar">
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+    <nav class="sidebar" id="sidebar-nav">
         <div class="sidebar-header">
             <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
             <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
@@ -48,6 +52,7 @@
         </div>
     </nav>
     <main class="content article">
+        <div class="content-topbar" aria-hidden="true"></div>
         <div class="article-meta">第4章</div>
         <nav class="section-nav"><a href="03-valuechain.html">← 上一章</a><a href="05-sensing.html">下一章 →</a></nav>
         <h3>4. 工业大数据分析</h3>
@@ -70,5 +75,31 @@
 <p>智能制造以IBDA为核心，相较于传统做法具有显著优势，例如降低运营和维护成本、减少碳排放、提高产品质量和资源利用率。这一认识促使了该领域的更大投资。然而，最大化ROI需要克服如图1所示的特定挑战，解决这些挑战需要系统化、同步且多学科的研究方法。尽管应对所有这些挑战需要时间，但创新解决方案可能有助于弥合传统制造系统与现代制造系统之间的差距，使组织能够在最少干预的情况下开始获得智能制造的好处。同时必须指出，无论开发何种技术，保护组织的知识产权都至关重要。此外，在数据的体量、种类和速度都很高的情况下，除非确保数据的真实性，否则IBDA无法从工业数据中提取任何可操作的洞察。应对这些挑战将有助于推动海量异构工业数据的流畅整合，同时保护其知识产权，以提取可操作的洞察。这一路径将使组织能够最大限度地降低成本并最大化生产率。</p>
         <nav class="section-nav"><a href="03-valuechain.html">← 上一章</a><a href="05-sensing.html">下一章 →</a></nav>
     </main>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (!btn || !sidebar) return;
+    function setOpen(open) {
+        document.body.classList.toggle("nav-open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+        if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+    }
+    btn.addEventListener("click", function () {
+        setOpen(!document.body.classList.contains("nav-open"));
+    });
+    if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+    sidebar.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+        });
+    });
+    window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+    });
+})();
+</script>
 </body>
 </html>

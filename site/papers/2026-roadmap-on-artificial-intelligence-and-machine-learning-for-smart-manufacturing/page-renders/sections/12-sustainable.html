@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <nav class="sidebar">
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+    <nav class="sidebar" id="sidebar-nav">
         <div class="sidebar-header">
             <h1><a href="../index.html" style="color:#fff;text-decoration:none;">人工智能与机器学习智能制造路线图 2026</a></h1>
             <p class="subtitle">2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing</p>
@@ -48,6 +52,7 @@
         </div>
     </nav>
     <main class="content article">
+        <div class="content-topbar" aria-hidden="true"></div>
         <div class="article-meta">第12章</div>
         <nav class="section-nav"><a href="11-robotics.html">← 上一章</a><a href="13-ml-dl.html">下一章 →</a></nav>
         <h3>12. AI赋能可持续制造</h3>
@@ -181,5 +186,31 @@ iii）供应链优化[7]、[8]：AI预测需求、管理库存并优化运输路
 [20] Srivastava PR, Mangla SK, Eachempati P, Tiwari AK. An explainable artificial intelligence approach to understanding drivers of economic energy consumption and sustainability. Energy Economics. 2023 Sep 1;125:106868. doi: https://doi.org/10.1016/j.eneco.2023.106868.</p>
         <nav class="section-nav"><a href="11-robotics.html">← 上一章</a><a href="13-ml-dl.html">下一章 →</a></nav>
     </main>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (!btn || !sidebar) return;
+    function setOpen(open) {
+        document.body.classList.toggle("nav-open", open);
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+        if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+    }
+    btn.addEventListener("click", function () {
+        setOpen(!document.body.classList.contains("nav-open"));
+    });
+    if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+    sidebar.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+        });
+    });
+    window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+    });
+})();
+</script>
 </body>
 </html>

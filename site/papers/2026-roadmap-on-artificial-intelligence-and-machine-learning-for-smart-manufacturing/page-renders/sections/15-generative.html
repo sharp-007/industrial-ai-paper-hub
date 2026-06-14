@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生成式AI与制造设计 · 人工智能与机器学习智能制造路线图 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -171,6 +173,14 @@
     window.addEventListener("resize", function () {
         if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
     });
+    (function highlightCurrent() {
+        var here = location.pathname.split("/").pop() || "index.html";
+        sidebar.querySelectorAll(".toc a").forEach(function (link) {
+            var href = link.getAttribute("href");
+            if (!href) return;
+            if (href.split("/").pop() === here) link.classList.add("is-current");
+        });
+    })();
 })();
 </script>
 </body>

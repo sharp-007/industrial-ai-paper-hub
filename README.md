@@ -1,10 +1,6 @@
 # 工业AI文献速递 · Industrial AI Paper Hub
 
-[GitHub stars](https://github.com/sharp-007/industrial-ai-paper-hub)
-
-*Industrial AI Paper Hub*
-
-**精选 Industrial AI 重要文献中文翻译**
+精选 Industrial AI 重要文献中文翻译
 
 面向工业 AI 研究者、工程师与制造业数智化转型从业者
 

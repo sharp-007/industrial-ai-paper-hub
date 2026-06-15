@@ -653,7 +653,8 @@ body.modal-open { overflow: hidden; }
     transition: transform 0.25s var(--ease), background 0.25s var(--ease);
 }
 
-.paper-card-link-arrow svg {
+.paper-card-link-arrow svg,
+.paper-card-link-icon {
     width: 18px;
     height: 18px;
     display: block;

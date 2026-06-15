@@ -1,10 +1,13 @@
-# GitHub Pages 发布目录
+# 站点目录 · site/
 
-本目录为「**工业AI文献速递 · Industrial AI Paper Hub**」静态站点根目录，由 GitHub Actions 自动部署。
+本目录为 **papers.hitai.space** 的静态阅读站点，随 Git push 由 EdgeOne Pages 自动部署。
 
-**工业与制造业数智化转型学习社区 | 精选 Industrial AI 重要文献中文翻译**
+| 路径 | 说明 |
+| --- | --- |
+| `index.html` | 门户首页 |
+| `papers.json` | 文献元数据 |
+| `css/` | 门户样式 |
+| `assets/` | 公众号 / 社群等资源 |
+| `papers/<文献名>/page-renders/` | 单篇文献阅读页、分章、PDF、插图 |
 
-- `index.html` — 门户首页（展示文献中英文全名与元信息）
-- `papers/<文献文件夹名>/page-renders/` — 每篇文献的页面渲染产物
-
-文献文件夹名采用英文全名 kebab-case，与 `workflow/registry.yaml` 中 `folder` 字段一致。
+内容生产工具链不在本仓库公开，维护者于本地构建后仅提交本目录变更。

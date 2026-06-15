@@ -1,4 +1,4 @@
-# 工业AI文献速递 · Industrial AI Paper Hub
+# 工业AI文献合集 · Industrial AI Paper Hub
 
 精选 Industrial AI 重要文献中文翻译
 

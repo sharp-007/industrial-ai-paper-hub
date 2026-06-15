@@ -53,7 +53,7 @@
 
 | **微信公众号 · 失控的智能** | **微信视频号 · AIPanda007** | **个人微信 · 工业 AI 交流群** |
 | --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/sharp-007/joyce.github.io/main/images/uploads/qrcodes/wechat-oa.jpg" width="180" alt="微信公众号 · 失控的智能"> | <img src="https://raw.githubusercontent.com/sharp-007/joyce.github.io/main/images/uploads/qrcodes/wechat-channel.jpg" width="180" alt="微信视频号 · AIPanda007"> | <img src="site/assets/wechat-qr.jpg" width="180" alt="个人微信 · 工业 AI 交流群"> |
+| <img src="site/assets/wechat-oa.jpg" width="180" alt="微信公众号 · 失控的智能"> | <img src="site/assets/wechat-channel.jpg" width="180" alt="微信视频号 · AIPanda007"> | <img src="site/assets/wechat-qr.jpg" width="180" alt="个人微信 · 工业 AI 交流群"> |
 
 
 扫码添加个人微信，加入工业 AI 交流群；阅读站点 [papers.hitai.space](https://papers.hitai.space) 页脚也可打开二维码。

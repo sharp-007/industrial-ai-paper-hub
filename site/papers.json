@@ -13,7 +13,7 @@
     "wechat": {
       "label": "微信交流",
       "qr_image": "assets/wechat-qr.jpg",
-      "qr_caption": "扫码添加微信，加入交流群"
+      "qr_caption": "扫码添加微信，加入工业AI交流群"
     },
     "features": [
       {

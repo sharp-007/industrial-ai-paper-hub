@@ -71,13 +71,13 @@ a:focus-visible, button:focus-visible {
 }
 
 .container {
-    max-width: 1120px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 32px;
     width: 100%;
 }
 
-.container-narrow { max-width: 760px; }
+.container-narrow { max-width: 880px; }
 
 /* ════════ HERO ════════ */
 .site-header {

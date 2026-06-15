@@ -58,7 +58,7 @@
     </nav>
         <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
     </div>
-    <main class="content article">
+    <main class="content">
         <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
             <span class="back-to-hub-arrow" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,6 +67,7 @@
         </span>
             <span>返回文献集</span>
         </a></div>
+        <div class="content-pane article">
         <header class="chapter-header">
             <div class="article-meta">第20章</div>
             <h1 class="chapter-title-zh">未来制造中的数据驱动计量</h1>
@@ -118,7 +119,17 @@
 <p>[19] Grasso Toro F, Lehmann H 2021 Brief Overview of the Future of Metrology. Measurement: Sensors 18 100306. https://doi.org/10.1016/j.measen.2021.100306</p>
 <p>[20] Eichstädt S, Keidel A, Tesch J 2021 Metrology for the Digital Age. Measurement: Sensors 18 100232. https://doi.org/10.1016/j.measen.2021.100232</p></div></details>
         <nav class="section-nav"><a href="19-rams.html#sidebar-current-chapter">← 上一章</a><a href="21-complex.html#sidebar-current-chapter">下一章 →</a></nav>
+        </div>
     </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor"
+                stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
     <script>
 (function () {
     var btn = document.querySelector(".nav-toggle");
@@ -153,12 +164,15 @@
     var mq = window.matchMedia("(min-width: 961px)");
     var KEY = "paper-hub-sidebar-width";
     var MIN = 180, MAX = 420;
+    var dragging = false;
 
     function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
 
     function apply(w) {
-        document.documentElement.style.setProperty("--sidebar-width", clamp(w) + "px");
-        try { localStorage.setItem(KEY, String(Math.round(clamp(w)))); } catch (e) {}
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
     }
 
     try {
@@ -167,30 +181,56 @@
     } catch (e) {}
 
     function startDrag(clientX) {
-        if (!mq.matches) return;
+        if (!mq.matches || dragging) return;
+        dragging = true;
         resizer.classList.add("is-dragging");
         document.body.classList.add("sidebar-resizing");
         var startX = clientX;
         var startW = shell.getBoundingClientRect().width;
 
         function onMove(ev) {
+            ev.preventDefault();
             apply(startW + (ev.clientX - startX));
         }
-        function onUp() {
+        function onUp(ev) {
+            dragging = false;
             resizer.classList.remove("is-dragging");
             document.body.classList.remove("sidebar-resizing");
-            window.removeEventListener("pointermove", onMove);
-            window.removeEventListener("pointerup", onUp);
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
         }
-        window.addEventListener("pointermove", onMove);
-        window.addEventListener("pointerup", onUp);
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
     }
 
-    resizer.addEventListener("pointerdown", function (e) {
-        if (!mq.matches) return;
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
         e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
         startDrag(e.clientX);
-    });
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
 
     resizer.addEventListener("keydown", function (e) {
         if (!mq.matches) return;
@@ -267,44 +307,65 @@
     }
 })();
 (function () {
-    var article = document.querySelector(".content.article");
+    var content = document.querySelector("main.content");
+    if (!content) return;
 
-    var bar = document.createElement("div");
-    bar.className = "read-progress";
-    document.body.appendChild(bar);
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
 
-    var top = document.createElement("button");
-    top.className = "back-to-top";
-    top.type = "button";
-    top.setAttribute("aria-label", "返回顶部");
-    top.innerHTML = (
-        '<svg class="back-to-top-icon" viewBox="0 0 20 20" fill="none" '
-        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
-        '<path d="M10 16V5M6 10.5 10 6l4 4.5" stroke="currentColor" '
-        'stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>'
-        "</svg>"
-    );
-    document.body.appendChild(top);
-
-    var scroller = article && article.scrollHeight > article.clientHeight + 40 ? article : window;
-    function metrics() {
-        if (scroller === window) {
-            var d = document.documentElement;
-            return { y: d.scrollTop || document.body.scrollTop, max: d.scrollHeight - d.clientHeight };
-        }
-        return { y: scroller.scrollTop, max: scroller.scrollHeight - scroller.clientHeight };
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
     }
-    function onScroll() {
-        var m = metrics();
-        var pct = m.max > 0 ? (m.y / m.max) * 100 : 0;
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
         bar.style.width = pct + "%";
-        top.classList.toggle("is-visible", m.y > 320);
     }
-    (scroller === window ? window : scroller).addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    top.addEventListener("click", function () {
-        (scroller === window ? window : scroller).scrollTo({ top: 0, behavior: "smooth" });
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    refresh();
+    requestAnimationFrame(refresh);
 })();
 </script>
 </body>

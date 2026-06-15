@@ -68,7 +68,9 @@ body {
     background: var(--paper);
     line-height: 1.55;
     display: flex;
+    height: 100vh;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 ::selection {
@@ -100,9 +102,9 @@ button:focus-visible {
 /* Back to top */
 .back-to-top {
     position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 1200;
+    right: max(22px, env(safe-area-inset-right, 0px));
+    bottom: max(22px, env(safe-area-inset-bottom, 0px));
+    z-index: 1500;
     width: 44px;
     height: 44px;
     display: flex;
@@ -116,6 +118,7 @@ button:focus-visible {
     box-shadow: 0 6px 18px rgba(14, 131, 136, 0.32);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transform: translateY(12px) scale(0.9);
     transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s, box-shadow 0.25s var(--ease);
 }
@@ -130,6 +133,7 @@ button:focus-visible {
 .back-to-top.is-visible {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
     transform: translateY(0) scale(1);
 }
 
@@ -152,18 +156,15 @@ button:focus-visible {
     min-width: var(--sidebar-min-width);
     max-width: var(--sidebar-max-width);
     flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    z-index: 100;
+    z-index: 200;
+    overflow: visible;
 }
 
 .sidebar {
     width: 100%;
-    min-width: 0;
-    flex: 1;
+    height: 100vh;
     background: var(--gradient-sidebar);
     color: var(--sidebar-text);
-    height: 100vh;
     overflow-y: auto;
     overflow-anchor: none;
     display: flex;
@@ -173,13 +174,16 @@ button:focus-visible {
 }
 
 .sidebar-resizer {
-    flex-shrink: 0;
-    width: 6px;
+    position: absolute;
+    top: 0;
+    right: -7px;
+    width: 14px;
+    height: 100%;
     cursor: col-resize;
     touch-action: none;
+    z-index: 5;
     background: transparent;
     transition: background 0.15s var(--ease);
-    position: relative;
 }
 
 .sidebar-resizer::after {
@@ -191,8 +195,9 @@ button:focus-visible {
     width: 2px;
     transform: translateX(-50%);
     border-radius: 1px;
-    background: rgba(14, 131, 136, 0.2);
+    background: rgba(14, 131, 136, 0.25);
     transition: background 0.15s var(--ease), width 0.15s var(--ease);
+    pointer-events: none;
 }
 
 .sidebar-resizer:hover::after,
@@ -430,17 +435,42 @@ body.sidebar-resizing * {
 .content {
     flex: 1;
     min-width: 0;
-    width: 100%;
-    padding: 20px 24px 32px;
-    overflow: auto;
+    min-height: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(14, 131, 136, 0.28) transparent;
     background:
         radial-gradient(ellipse 60% 40% at 50% 0%, rgba(14, 131, 136, 0.04), transparent),
         var(--paper);
 }
 
-.content.article {
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: rgba(14, 131, 136, 0.18);
+    border-radius: 999px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: rgba(14, 131, 136, 0.32);
+}
+
+.content:hover::-webkit-scrollbar-thumb {
+    background: rgba(14, 131, 136, 0.26);
+}
+
+.content-pane {
     max-width: calc(var(--reading-width) + 88px);
     margin: 0 auto;
+    padding: 20px 24px 32px;
 }
 
 /* ── Mobile nav ── */
@@ -1106,11 +1136,13 @@ body.nav-open .sidebar-overlay { display: block; }
     body.nav-open { overflow: hidden; }
 
     .content {
-        padding: 14px 16px 24px;
         padding-top: 56px;
     }
 
-    .content.article { max-width: none; }
+    .content-pane {
+        max-width: none;
+        padding: 0 16px 24px;
+    }
 
     .section-nav { flex-wrap: wrap; gap: 8px; }
     .section-nav a { flex: 1 1 auto; text-align: center; min-width: 100px; }
@@ -1128,16 +1160,16 @@ body.nav-open .sidebar-overlay { display: block; }
 @media (max-width: 640px) {
     .sidebar-header { padding: 14px 12px 10px; }
     .sidebar .toc li.nav-l3 > a { padding: 6px 12px 6px 18px; }
-    .content { padding: 12px 14px 20px; padding-top: 52px; }
+    .content { padding-top: 52px; }
+    .content-pane { padding: 0 14px 20px; }
     .welcome h2 { font-size: 1.2rem; }
     .toc-grid { grid-template-columns: 1fr; }
     .paper-figure { margin: 14px 0; padding: 8px; }
 }
 
 @media (min-width: 1400px) {
-    .content.article {
+    .content-pane {
         max-width: calc(var(--reading-width) + 100px);
-        margin: 0 auto;
     }
 }
 

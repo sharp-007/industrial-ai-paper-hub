@@ -8,7 +8,10 @@
 
 ## 在线阅读
 
-**[https://papers.hitai.space](https://papers.hitai.space)**
+| 站点 | 地址 |
+| --- | --- |
+| **正式站点** | **[https://papers.hitai.space](https://papers.hitai.space)** |
+| **GitHub Pages** | **[https://sharp-007.github.io/industrial-ai-paper-hub/](https://sharp-007.github.io/industrial-ai-paper-hub/)** |
 
 ## 项目特色
 
@@ -32,7 +35,7 @@
 
 ---
 
-本仓库为项目说明与更新入口；阅读站点托管于 [papers.hitai.space](https://papers.hitai.space)
+本仓库为项目说明与更新入口；阅读站点托管于 [papers.hitai.space](https://papers.hitai.space)，[GitHub Pages 镜像](https://sharp-007.github.io/industrial-ai-paper-hub/) 同步更新。
 
 ## 许可与声明
 

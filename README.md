@@ -6,17 +6,11 @@
 
 中立第三方，持续更新，仅供学习参考
 
-
-| 已收录文献 | 累计章节 | 原文页数 |
-| ----- | ---- | ---- |
-| 1     | 21   | 99   |
-
-
 ## 在线阅读
 
 **[https://papers.hitai.space](https://papers.hitai.space)**
 
-## 特色
+## 项目特色
 
 
 |          |                            |
@@ -36,11 +30,9 @@
 | 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
 
 
-
-
 ---
 
-本仓库为项目说明与更新入口；阅读站点托管于 [papers.hitai.space](https://papers.hitai.space)。公开内容仅含本说明与 `site/` 阅读站点；内容生产工具链为私有，不在此仓库维护。
+本仓库为项目说明与更新入口；阅读站点托管于 [papers.hitai.space](https://papers.hitai.space)
 
 ## 联系与合作
 
@@ -49,14 +41,13 @@
 - ⭐ [Star 本仓库](https://github.com/sharp-007/industrial-ai-paper-hub)，支持持续更新
 - 👤 [关注 @sharp-007](https://github.com/sharp-007)，获取新文献上线动态
 - 🌐 [个人作品集](https://sharp-007.github.io/joyce.github.io/)
+- 扫码添加个人微信，加入工业 AI 交流群
 
 
 | **微信公众号 · 失控的智能** | **微信视频号 · AIPanda007** | **个人微信 · 工业 AI 交流群** |
-| --- | --- | --- |
-| <img src="site/assets/wechat-oa.jpg" width="180" alt="微信公众号 · 失控的智能"> | <img src="site/assets/wechat-channel.jpg" width="180" alt="微信视频号 · AIPanda007"> | <img src="site/assets/wechat-qr.jpg" width="180" alt="个人微信 · 工业 AI 交流群"> |
+| ----------------- | ---------------------- | -------------------- |
+|                   |                        |                      |
 
-
-扫码添加个人微信，加入工业 AI 交流群；阅读站点 [papers.hitai.space](https://papers.hitai.space) 页脚也可打开二维码。
 
 ## 许可与声明
 

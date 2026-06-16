@@ -32,9 +32,9 @@
 **1 篇** 收录
 
 
-| 文献                                                                                                          | 年份   | 章节  | 页数  | 阅读                                                                                                                                             | 出处                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------- | ---- | --- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
+| 文献                                                         | 年份 | 章节 | 页数 | 阅读                                                         | 出处                                                         |
+| ------------------------------------------------------------ | ---- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 人工智能与机器学习智能制造路线图 2026<br />2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21   | 99   | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
 
 
 ---
@@ -59,5 +59,4 @@
 | **微信公众号 · 失控的智能** | **微信视频号 · AIPanda007** | **个人微信 · 工业 AI 交流群** |
 | ----------------- | ---------------------- | -------------------- |
 |                   |                        |                      |
-
 

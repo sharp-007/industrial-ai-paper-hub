@@ -6,7 +6,7 @@ workflow/
 .venv/
 
 # PDF 原文（工作流内，体积大）
-workflow/projects/*/source/paper.pdf
+workflow/projects/*/source/*.pdf
 workflow/projects/*/source/debug-*.png
 
 # Python

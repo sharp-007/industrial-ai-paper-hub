@@ -10,7 +10,7 @@
 
 | 站点 | 地址 |
 | --- | --- |
-| **正式站点** | **[https://papers.hitai.space](https://papers.hitai.space)** |
+| **正式站点** | **[https://www.papers.hitai.space](https://www.papers.hitai.space)** |
 | **GitHub Pages** | **[https://sharp-007.github.io/industrial-ai-paper-hub/](https://sharp-007.github.io/industrial-ai-paper-hub/)** |
 
 ## 项目特色
@@ -30,12 +30,12 @@
 
 | 文献                                                                                                         | 年份   | 章节  | 页数  | 阅读                                                                                                                                         | 出处                                                                                                     |
 | ---------------------------------------------------------------------------------------------------------- | ---- | --- | --- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
+| 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
 
 
 ---
 
-本仓库为项目说明与更新入口；阅读站点托管于 [papers.hitai.space](https://papers.hitai.space)，[GitHub Pages 镜像](https://sharp-007.github.io/industrial-ai-paper-hub/) 同步更新。
+本仓库为项目说明与更新入口；阅读站点托管于 [www.papers.hitai.space](https://www.papers.hitai.space)，[GitHub Pages 镜像](https://sharp-007.github.io/industrial-ai-paper-hub/) 同步更新。
 
 ## 许可与声明
 

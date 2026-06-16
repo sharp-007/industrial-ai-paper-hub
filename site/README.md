@@ -1,6 +1,6 @@
 # 站点目录 · site/
 
-本目录为 **papers.hitai.space** 的静态阅读站点，随 Git push 由 EdgeOne Pages 自动部署。
+本目录为 **www.papers.hitai.space** 的静态阅读站点，随 Git push 由 EdgeOne Pages 自动部署。
 
 | 路径 | 说明 |
 | --- | --- |

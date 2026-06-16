@@ -1,4 +1,6 @@
-
+<p align="center">
+  <img src="./site/assets/cover.png" alt="工业AI文献合集 · Industrial AI Paper Hub" width="960">
+</p>
 
 # 工业AI文献合集 · Industrial AI Paper Hub
 
@@ -58,5 +60,5 @@
 
 | **微信公众号 · 失控的智能** | **微信视频号 · AIPanda007** | **个人微信 · 工业 AI 交流群** |
 | ----------------- | ---------------------- | -------------------- |
-|                   |                        |                      |
+| <img src="./site/assets/wechat-oa.jpg" width="180" alt="微信公众号 · 失控的智能"> | <img src="./site/assets/wechat-channel.jpg" width="180" alt="微信视频号 · AIPanda007"> | <img src="./site/assets/wechat-qr.jpg" width="180" alt="个人微信 · 工业 AI 交流群"> |
 

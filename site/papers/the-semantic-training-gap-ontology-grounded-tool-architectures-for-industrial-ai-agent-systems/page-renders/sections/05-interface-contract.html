@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>本体 grounding 工具执行的接口契约 · 语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</a></h1>
+            <p class="subtitle">The Semantic Training Gap: Ontology-Grounded Tool Architectures for Industrial AI Agent Systems</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言、摘要与目录">前言、摘要与目录</a></li>
+            <li class="nav-l1">第一部分：理论基础与失效模式</li>
+            <li class="nav-l3"><a href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-related-work.html#sidebar-current-chapter" title="2. 相关工作">2. 相关工作</a></li>
+            <li class="nav-l3"><a href="../sections/03-foundation.html#sidebar-current-chapter" title="3. 理论基础：标签、分类法与本体">3. 理论基础：标签、分类法与本体</a></li>
+            <li class="nav-l3"><a href="../sections/04-failure-modes.html#sidebar-current-chapter" title="4. 观察到的失效模式">4. 观察到的失效模式</a></li>
+            <li class="nav-l1 is-current-part">第二部分：接口契约与 AIOps 架构</li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/05-interface-contract.html#sidebar-current-chapter" title="5. 本体 grounding 工具执行的接口契约" aria-current="page">5. 本体 grounding 工具执行的接口契约</a></li>
+            <li class="nav-l3"><a href="../sections/06-aiops.html#sidebar-current-chapter" title="6. AIOps 强制架构">6. AIOps 强制架构</a></li>
+            <li class="nav-l1">第三部分：实验评估与讨论</li>
+            <li class="nav-l3"><a href="../sections/07-experiment.html#sidebar-current-chapter" title="7. 实验评估">7. 实验评估</a></li>
+            <li class="nav-l3"><a href="../sections/08-discussion.html#sidebar-current-chapter" title="8. 讨论">8. 讨论</a></li>
+            <li class="nav-l3"><a href="../sections/09-conclusion.html#sidebar-current-chapter" title="9. 结论">9. 结论</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第5章</div>
+            <h1 class="chapter-title-zh">本体 grounding 工具执行的接口契约</h1>
+            <p class="chapter-title-en">The Interface Contract for Ontology-Grounded Tool Execution</p>
+        </header>
+        <h3>5.1 本体配置规范</h3>
+<p>本体实现为<strong>类型化关系配置</strong>，即导出 45 个命名常量的 Python 模块，定义制造垂直领域的完整领域语义。每个模块 700–770 行纯数据结构（字典、列表、常量），无逻辑、无控制流、无外部依赖。模块在加载时验证：每个必需导出必须存在，否则系统失败并列出缺失项。</p>
+<p><strong>Listing 1.</strong> 45 导出接口，加载时验证。省略任何导出的配置模块将立即失败并给出清晰错误。导出组织为十类功能：工厂配置（代码、名称、班次、运营日）、设备层次（工位、工作中心、单元）、产品（料号、产量、工艺路线）、物料（原材料与成品、BOM）、质量（故障代码、检验计划、NCR 处置）、工艺参数（周期时间、FPY、换型时间）、人力（操作员、认证、技能）、工装（工具定义、工位分配）、工步模板、变更管理参数。</p>
+<h4>5.1.1 设备层次</h4>
+<p><code>STATIONS</code> 字典定义设备层次。每项含工位名称、工作中心映射、周期时间范围、换型时间范围、一次通过率及质量门标志。结构跨垂直领域相同；值携带领域特定语义：</p>
+<p><strong>Listing 2.</strong> 相同字典结构、不同领域语义。航空航天 S1 为 CNC 铣床，周期 2–8 小时，FPY 95%；制药 S1 为配料站，周期 20–45 分钟，FPY 99%。</p>
+<h4>5.1.2 领域词汇与监管上下文</h4>
+<p>故障代码、检验计划、认证和监管映射按工位绑定。<code>STATION_FAILURE_CODES</code> 将各工位 ID 映射到其有效缺陷类型集；<code>STATION_CERTIFICATIONS</code> 映射工位到所需操作员认证；<code>INSPECTION_PLANS</code> 定义各操作的抽样策略和 GD&amp;T 特征。这些非扁平列表，而是工具层在调用时消费的类型化集合。</p>
+<h4>5.1.3 本体复杂度指标</h4>
+<p><strong>表 1.</strong> 各行业配置的本体复杂度。每行代表完整配置模块（700–770 行，45 导出）。六种配置中五种结构复杂度相同（6 工位、4 产品）；配置差异在语义内容（不同故障代码、监管机构、工艺参数）而非结构深度。结构异质本体（如 50+ 工位、层次化子区域）的验证列为第 8.2 节未来工作。</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>工位</th>
+<th>产品</th>
+<th>故障代码</th>
+<th>认证</th>
+<th>检验计划</th>
+<th>工具定义</th>
+<th>监管机构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>航空航天</td>
+<td>6</td>
+<td>4</td>
+<td>24</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>FAA / NADCAP</td>
+</tr>
+<tr>
+<td>制药</td>
+<td>6</td>
+<td>4</td>
+<td>27</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>FDA / 21 CFR 11</td>
+</tr>
+<tr>
+<td>汽车</td>
+<td>6</td>
+<td>4</td>
+<td>28</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>IATF 16949</td>
+</tr>
+<tr>
+<td>电子</td>
+<td>6</td>
+<td>4</td>
+<td>27</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>IPC</td>
+</tr>
+<tr>
+<td>食品饮料</td>
+<td>14</td>
+<td>4</td>
+<td>28</td>
+<td>6</td>
+<td>14</td>
+<td>8</td>
+<td>FDA / FSMA</td>
+</tr>
+<tr>
+<td>仓储†</td>
+<td>6</td>
+<td>4</td>
+<td>26</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>OSHA / SEMI</td>
+</tr>
+</tbody>
+</table>
+<p>† 仓储配置测试 MES 形态实体模型能否表示非制造运营（订单履行、分区处理），将可移植性声明扩展至离散制造以外的 JMS 制造系统与供应链运营相邻领域。</p>
+<h4>5.1.4 跨域实体解析</h4>
+<p>配置提供声明跨命名系统身份的映射。需做范围决策：实体解析可为<strong>站点本地</strong>（各工厂维护自身映射，反映站点特定标签命名）或<strong>企业全局</strong>（跨站点共享单一规范映射）。多站点部署中，站点本地解析作为起点更实用，跨站点分析需要时再在其上构建企业全局解析。在既有工厂环境，这些映射可来自现有系统：OPC UA 地址空间提供设备层次和标签-实体映射 [15]，AutomationML 项目文件提供工厂拓扑和信号定义 [16]。</p>
+<h3>5.2 设计理由：类型化关系配置与形式公理化</h3>
+<p>本文中"本体"指第 5.1 节类型化关系配置，而非 OWL/描述逻辑意义下的形式公理化 [33]。该设计决策需论证，因其决定系统可支持的自动推理范围。形式 OWL 公理化可启用下位继承（subsumption）推理（键合工位是否为加工工位子类？）、一致性检查（配置是否内部矛盾？）和蕴含（entailment）（若 S4 需 NADCAP 认证而操作员 X 无，X 能否在 S4 工作？）。这些能力对设计时验证和知识工程有价值。然而，本架构中主要<strong>运行时</strong>操作是参数解析，工具调用参数是否映射到当前加载本体的节点，需要集合成员判定，非逻辑推理。resolve/contextualize/annotate 契约（第 5.3 节）基于字典查找和关系连接，非描述逻辑推理。权衡明确：牺牲自动推理能力（有益于设计时本体验证和跨本体一致性检查），换取运行时性能（工具调用时字典查找）和编写可及性（领域工程师可写 Python 字典；OWL 公理化需专门知识工程）。形式化路径可用：45 导出结构可序列化为 OWL 个体与属性，使设计时验证工具检查跨模板一致性，同时保留 Python 配置供运行时消费。该路径已规划，尚未实现。</p>
+<h3>5.3 形式化规范</h3>
+<p>本体层、工具层和编排层通过三操作契约交互。</p>
+<p><strong>本体层要求。</strong> 本体须提供四类语义结构：(1) <strong>设备层次</strong>：带稳定标识符和上下游依赖的可识别实体树，对齐 ISA-95/IEC 62264；(2) <strong>领域词汇</strong>：故障代码、工艺参数、产品族、认证要求的类型化集合，按实体绑定；(3) <strong>监管上下文</strong>：实体到监管标准（NADCAP [31]、21 CFR Part 11 [34]、IPC-A-610 [35]、IATF 16949 [36]）的按实体映射；(4) <strong>跨域实体解析</strong>：跨命名系统的身份映射。</p>
+<p><strong>工具层要求。</strong> 工具层须以三种方式消费本体上下文：(1) <strong>参数解析</strong>：每个领域实体参数在调用时针对本体解析，非模式定义时；(2) <strong>查询构建上下文</strong>：本体语义上下文塑造查询（航空航天 S4 的产能查询连接 NADCAP 认证表；制药 S4 同一查询连接批次谱系表）；(3) <strong>响应标注</strong>：工具结果携带产生它的本体上下文。</p>
+<p><strong>编排器不变量。</strong> 强制执行四项不变量：(1) <strong>执行前</strong>：带领域实体参数的工具调用，仅当该参数解析到当前加载本体节点时才到达数据库；(2) <strong>版本一致性</strong>：会话内所有工具调用针对同一本体版本解析（需不可变、带时间戳快照及可计算 diff）；(3) <strong>熔断器</strong>：每问题最大工具调用轮次，防止无界递归分解；(4) <strong>跨智能体一致性</strong>：同会话所有智能体共享同一本体版本和工具联邦。契约简化为三类型化操作：</p>
+<ul>
+<li>
+<p><strong>resolve(param, ontology_version) → Node | Error(valid_set)</strong><br />
+  每个领域实体参数须解析到已加载本体的节点。否则返回含有效集合的错误。Error 时不继续工具调用。</p>
+</li>
+<li>
+<p><strong>contextualize(node, ontology_version) → DomainContext</strong><br />
+  已解析节点产生领域上下文：适用故障代码、监管标准、工艺参数、依赖和连接逻辑。上下文是节点与本体版本的函数。</p>
+</li>
+<li>
+<p><strong>annotate(result, domain_context, ontology_version) → AnnotatedResult</strong><br />
+  每个工具结果携带产生它的领域上下文和本体版本。下游消费者可验证来源并检测陈旧性。前置条件：resolve 返回 Node 而非 Error。后置条件：每个结果经 annotate 包装。会话不变量：ontology_version 在单次对话的三操作间恒定。这些条件为非形式化 pre/post-condition；Z 记号或类型规范语言的形式化列为未来工作。</p>
+</li>
+</ul>
+<figure class="paper-figure"><img src="../images/contract-fig2.png" alt="图2. 带本体流与拒绝路径的系统架构。本体配置贯穿各层（左）。当智能体生成无效标识符（下）时，编排器在查询执行前拒绝并返回有效集合，实现自我纠正。" loading="lazy"><figcaption>图2. 带本体流与拒绝路径的系统架构。本体配置贯穿各层（左）。当智能体生成无效标识符（下）时，编排器在查询执行前拒绝并返回有效集合，实现自我纠正。</figcaption></figure>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="04-failure-modes.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><a class="section-nav-link section-nav-link--next" href="06-aiops.html#sidebar-current-chapter"><span>下一章</span><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.25 4.5 15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

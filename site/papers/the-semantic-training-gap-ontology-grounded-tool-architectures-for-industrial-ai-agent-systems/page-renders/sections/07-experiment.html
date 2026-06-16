@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>实验评估 · 语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</a></h1>
+            <p class="subtitle">The Semantic Training Gap: Ontology-Grounded Tool Architectures for Industrial AI Agent Systems</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言、摘要与目录">前言、摘要与目录</a></li>
+            <li class="nav-l1">第一部分：理论基础与失效模式</li>
+            <li class="nav-l3"><a href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-related-work.html#sidebar-current-chapter" title="2. 相关工作">2. 相关工作</a></li>
+            <li class="nav-l3"><a href="../sections/03-foundation.html#sidebar-current-chapter" title="3. 理论基础：标签、分类法与本体">3. 理论基础：标签、分类法与本体</a></li>
+            <li class="nav-l3"><a href="../sections/04-failure-modes.html#sidebar-current-chapter" title="4. 观察到的失效模式">4. 观察到的失效模式</a></li>
+            <li class="nav-l1">第二部分：接口契约与 AIOps 架构</li>
+            <li class="nav-l3"><a href="../sections/05-interface-contract.html#sidebar-current-chapter" title="5. 本体 grounding 工具执行的接口契约">5. 本体 grounding 工具执行的接口契约</a></li>
+            <li class="nav-l3"><a href="../sections/06-aiops.html#sidebar-current-chapter" title="6. AIOps 强制架构">6. AIOps 强制架构</a></li>
+            <li class="nav-l1 is-current-part">第三部分：实验评估与讨论</li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/07-experiment.html#sidebar-current-chapter" title="7. 实验评估" aria-current="page">7. 实验评估</a></li>
+            <li class="nav-l3"><a href="../sections/08-discussion.html#sidebar-current-chapter" title="8. 讨论">8. 讨论</a></li>
+            <li class="nav-l3"><a href="../sections/09-conclusion.html#sidebar-current-chapter" title="9. 结论">9. 结论</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第7章</div>
+            <h1 class="chapter-title-zh">实验评估</h1>
+            <p class="chapter-title-en">Experimental Evaluation</p>
+        </header>
+        <h3>7.1 实验设置</h3>
+<p>为量化语义训练鸿沟并评估本体约束架构，本文在全部六种行业配置下进行对照幻觉实验。</p>
+<p><strong>仿真框架。</strong> 数字孪生仿真引擎从第 5.1 节本体配置模块生成因果一致、MES 形态数据。引擎为 1 分钟 tick 分辨率的离散事件循环（634 行）。每 tick 推进仿真时钟并评估优先序列：干扰处理、日订单创建、工序推进、设备状态、质量检验、计划修订。引擎尊重各模板配置的工厂日历（班次、运营日、休息时段），并强制因果事件链：工单创建工序；每工序须通过四道调度门（设备可用、无供应延迟、上游完成、认证操作员可用）才能启动；工序完成触发由工位 FPY 治理的质量检验；检验失败生成 NCR，故障代码取自工位本体配置。框架还含种子数据生成器（1363 行），从同一配置创建 30+ 参考实体类型；CDC 管道馈送 PostgreSQL 运营表；星型模式构建器（23 个分析表：14 维、8 事实、1 桥），SQL 从已加载配置动态生成；12 个参数化分析工具经 MCP 服务器暴露。总代码约 6750 行 Python。单独出版物 [29] 详述仿真架构、校准方法论和 Template-as-Ontology 设计原则。</p>
+<p><strong>数据生成。</strong> 对六种行业配置各运行 30 天仿真，稳定干扰配置（无注入干扰），随机种子 42 保证可复现。每次仿真约产生 15000–18000 行 PostgreSQL 数据，跨 40+ 运营表。</p>
+<p><strong>模型。</strong> Qwen3-32B（32K 上下文，函数调用模式），部署于企业 AI 平台（Fuse）。温度设为 0（贪心解码）保证确定性输出。条件间无重试或提示工程。</p>
+<p><strong>查询集。</strong> 72 条自然语言查询（每模板 12 条，每工具 1 条），按领域用户会问的方式表述："键合工位主要故障模式是什么？""显示 CNC 周期时间分析""主要铝供应商的供应商绩效如何？"查询代表典型制造分析用例（golden-path），非对抗性。每条使用自然领域语言（如"键合工位"而非标识符"S4"），要求模型将自然语言引用解析为工具参数，幻觉发生于此步骤。查询集不含故意歧义查询（如"第三个工位"）或旨在触发特定失效的查询；代表质量工程师或生产经理日常会问的基线问题。两条件使用相同 72 条查询。</p>
+<p><strong>条件。</strong> 比较两条件：</p>
+<ul>
+<li><strong>本体约束条件：</strong> 工具参数类型为从已加载本体投影的枚举（如 <code>station_id: enum [S1, S2, S3, S4, S5, S6]</code>，附语义上下文）。</li>
+<li><strong>无约束条件（自由文本）：</strong> 工具参数类型为字符串，无约束。其余方面相同。</li>
+</ul>
+<h3>7.2 结果</h3>
+<p><strong>表 2.</strong> 工具调用幻觉实验：72 次查询（12 工具 × 6 配置）下 本体约束与无约束参数，Qwen3-32B，温度 0。</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>查询数</th>
+<th>幻觉 ID</th>
+<th>空结果（有效查询）</th>
+<th>正确结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有本体约束</td>
+<td>72</td>
+<td>0 (0%)</td>
+<td>0 (0%)</td>
+<td>72 (100%)</td>
+</tr>
+<tr>
+<td>无约束（自由文本）</td>
+<td>72</td>
+<td>31 (43%)</td>
+<td>27 (38%)</td>
+<td>14 (19%)</td>
+</tr>
+</tbody>
+</table>
+<p>无约束条件下，模型产生语言上看似合理且领域适当的标识符，键合工位 "BOND-1"、CNC 加工 "CNC-BAY-A"、制药压片 "TABLET-PRESS-1"，但数据库中不存在。31 个幻觉标识符中，27 个产生空结果集，智能体误读为"无数据"或"无问题"。4 个因无效连接条件产生 SQL 错误。72 次中仅 14 次模型碰巧猜中匹配实际模式的标识符，其中 3 次对错误模板用了正确值。</p>
+<p><strong>表 3.</strong> 各行业配置幻觉率（仅无约束条件）</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>查询</th>
+<th>幻觉</th>
+<th>率</th>
+<th>最常见伪造</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>航空航天</td>
+<td>12</td>
+<td>5</td>
+<td>42%</td>
+<td>BOND-1, CNC-BAY-A, NDT-INSPECT</td>
+</tr>
+<tr>
+<td>制药</td>
+<td>12</td>
+<td>6</td>
+<td>50%</td>
+<td>TABLET-PRESS-1, COATING-LINE, GRANULATOR-A</td>
+</tr>
+<tr>
+<td>汽车</td>
+<td>12</td>
+<td>5</td>
+<td>42%</td>
+<td>CASTING-1, HEAT-TREAT-A, MACHINING-BAY</td>
+</tr>
+<tr>
+<td>电子</td>
+<td>12</td>
+<td>5</td>
+<td>42%</td>
+<td>SMT-LINE-1, REFLOW-OVEN, AOI-STATION</td>
+</tr>
+<tr>
+<td>食品饮料</td>
+<td>12</td>
+<td>6</td>
+<td>50%</td>
+<td>FILLER-1, CARBONATION-UNIT, BOTTLING-LINE</td>
+</tr>
+<tr>
+<td>仓储</td>
+<td>12</td>
+<td>4</td>
+<td>33%</td>
+<td>PICK-ZONE-A, SORTER-1, RECEIVING-DOCK</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 4.</strong> 各工具域幻觉率（仅无约束条件）</p>
+<table>
+<thead>
+<tr>
+<th>工具域</th>
+<th>工具数</th>
+<th>幻觉（各 6 次运行）</th>
+<th>率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生产（3 工具）</td>
+<td>cycle_time, first_pass_yield, oee_decomposition</td>
+<td>8/18</td>
+<td>44%</td>
+</tr>
+<tr>
+<td>质量（3 工具）</td>
+<td>ncr_pareto, spc_violation, quality_action</td>
+<td>9/18</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>物料（2 工具）</td>
+<td>material_genealogy, supplier_performance</td>
+<td>6/12</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>工程变更（2 工具）</td>
+<td>change_impact, change_velocity</td>
+<td>3/12</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>运营（2 工具）</td>
+<td>equipment_downtime, production_status</td>
+<td>5/12</td>
+<td>42%</td>
+</tr>
+</tbody>
+</table>
+<p>各配置范围 33–50%，各工具域 25–50%。无单一配置或工具域为离群值，确认标识符伪造是系统性现象，非特定领域或工具类型的偶发结果。质量与物料工具幻觉率最高（50%），可能因其参数（故障代码、供应商代码）领域词汇更专，LLM 试图从训练数据而非工具模式生成。</p>
+<h3>7.3 语法-语义约束区别</h3>
+<p>须区分<strong>语法约束</strong>（枚举限制）与<strong>语义约束</strong>（本体上下文）。标准函数调用框架可声明 <code>station_id</code> 须为 [S1, S2, S3, S4, S5, S6] 之一，模型会遵守，防止幻觉 "BOND-1"。本系统中，S4 不仅是有效字符串，它是关系本体中的节点：S4 是键合工位，受 NADCAP 特殊工艺认证约束，有定义故障代码集（键合线空洞、胶粘剂固化偏差、表面污染），位于六工位 ISA-95 设备层次第四站，产出零件需在下一站 NDT 检验。工具收到 S4 时，该语义上下文塑造查询构建、有效故障代码过滤和监管标准引用。本体从航空航天换到制药，同一标识符 S4 携带完全不同语义（压片、GMP 合规、不同故障代码）。枚举值相同；其含义一切改变。实验测量语法与语义约束组合效果对比最弱基线（完全无约束），得 0% 与 43%。设计未隔离各约束类型的边际贡献。仅标准枚举约束（仅语法、无关系上下文）可能消除大部分 43% 幻觉率，因主要失效机制是标识符伪造，枚举限制直接防止。语义约束的附加价值，正确查询构建、适当监管引用、领域适当响应合成，在不同轴上运作：不仅是检索正确数据，更是正确解释和上下文化。该语义贡献由作者对照各查询已知基准真值定性评估；未进行正式人工评估协议。实验亦未与 RAG 加领域文档、few-shot 有效标识符示例、领域特定工具模式微调等中间语义锚定方法比较。这些基线代表制造团队会考虑的实用替代，与之测试可更完整呈现本体方法的边际价值。这些比较列为后续工作。</p>
+<h3>7.4 仿真校准</h3>
+<p>为验证实验底层合成数据参数稳健性，对六种配置各用 10 个不同随机种子运行 30 天仿真（共 60 次运行）。表 5 报告配置目标 KPI 与 观测均值及 95% 置信区间（t 分布，df=9）。</p>
+<p><strong>表 5.</strong> 仿真校准结果：配置目标与观测值（每配置 n=10 种子，30 天运行，稳定干扰配置）</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>KPI</th>
+<th>配置目标</th>
+<th>观测（均值 ± σ）</th>
+<th>95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>航空航天</td>
+<td>各工位 FPY</td>
+<td>0.94–0.97</td>
+<td>0.949 ± 0.008</td>
+<td>[0.943, 0.955]</td>
+</tr>
+<tr>
+<td></td>
+<td>日产能</td>
+<td>8 订单/天</td>
+<td>8.0 ± 0.3</td>
+<td>[7.79, 8.21]</td>
+</tr>
+<tr>
+<td></td>
+<td>NCR 率</td>
+<td>~5% 工序</td>
+<td>5.1% ± 0.7%</td>
+<td>[4.60%, 5.60%]</td>
+</tr>
+<tr>
+<td>制药</td>
+<td>各工位 FPY</td>
+<td>0.96–0.99</td>
+<td>0.974 ± 0.005</td>
+<td>[0.970, 0.978]</td>
+</tr>
+<tr>
+<td></td>
+<td>日产能</td>
+<td>12 订单/天</td>
+<td>12.1 ± 0.4</td>
+<td>[11.81, 12.39]</td>
+</tr>
+<tr>
+<td></td>
+<td>NCR 率</td>
+<td>~2.5% 工序</td>
+<td>2.6% ± 0.4%</td>
+<td>[2.31%, 2.89%]</td>
+</tr>
+<tr>
+<td>汽车</td>
+<td>各工位 FPY</td>
+<td>0.95–0.98</td>
+<td>0.963 ± 0.006</td>
+<td>[0.959, 0.967]</td>
+</tr>
+<tr>
+<td></td>
+<td>日产能</td>
+<td>16 订单/天</td>
+<td>16.0 ± 0.5</td>
+<td>[15.64, 16.36]</td>
+</tr>
+<tr>
+<td></td>
+<td>NCR 率</td>
+<td>~3.5% 工序</td>
+<td>3.7% ± 0.5%</td>
+<td>[3.34%, 4.06%]</td>
+</tr>
+<tr>
+<td>电子</td>
+<td>各工位 FPY</td>
+<td>0.96–0.99</td>
+<td>0.976 ± 0.004</td>
+<td>[0.973, 0.979]</td>
+</tr>
+<tr>
+<td></td>
+<td>日产能</td>
+<td>20 订单/天</td>
+<td>20.1 ± 0.6</td>
+<td>[19.67, 20.53]</td>
+</tr>
+<tr>
+<td></td>
+<td>NCR 率</td>
+<td>~2.5% 工序</td>
+<td>2.4% ± 0.3%</td>
+<td>[2.19%, 2.61%]</td>
+</tr>
+</tbody>
+</table>
+<p>所有置信区间落在或重叠配置目标范围，确认参数可控性：仿真器产生尊重配置 KPI 的数据，为评估 AI 工具正确性提供受控环境。本文不断言对任何特定产线的统计保真度；本文断言给定已知 KPI 目标，工具应正确报告这些值，仿真器提供验证的受控数据。</p>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="06-aiops.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><a class="section-nav-link section-nav-link--next" href="08-discussion.html#sidebar-current-chapter"><span>下一章</span><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.25 4.5 15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

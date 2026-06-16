@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>引言 · 语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</a></h1>
+            <p class="subtitle">The Semantic Training Gap: Ontology-Grounded Tool Architectures for Industrial AI Agent Systems</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言、摘要与目录">前言、摘要与目录</a></li>
+            <li class="nav-l1 is-current-part">第一部分：理论基础与失效模式</li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言" aria-current="page">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-related-work.html#sidebar-current-chapter" title="2. 相关工作">2. 相关工作</a></li>
+            <li class="nav-l3"><a href="../sections/03-foundation.html#sidebar-current-chapter" title="3. 理论基础：标签、分类法与本体">3. 理论基础：标签、分类法与本体</a></li>
+            <li class="nav-l3"><a href="../sections/04-failure-modes.html#sidebar-current-chapter" title="4. 观察到的失效模式">4. 观察到的失效模式</a></li>
+            <li class="nav-l1">第二部分：接口契约与 AIOps 架构</li>
+            <li class="nav-l3"><a href="../sections/05-interface-contract.html#sidebar-current-chapter" title="5. 本体 grounding 工具执行的接口契约">5. 本体 grounding 工具执行的接口契约</a></li>
+            <li class="nav-l3"><a href="../sections/06-aiops.html#sidebar-current-chapter" title="6. AIOps 强制架构">6. AIOps 强制架构</a></li>
+            <li class="nav-l1">第三部分：实验评估与讨论</li>
+            <li class="nav-l3"><a href="../sections/07-experiment.html#sidebar-current-chapter" title="7. 实验评估">7. 实验评估</a></li>
+            <li class="nav-l3"><a href="../sections/08-discussion.html#sidebar-current-chapter" title="8. 讨论">8. 讨论</a></li>
+            <li class="nav-l3"><a href="../sections/09-conclusion.html#sidebar-current-chapter" title="9. 结论">9. 结论</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第1章</div>
+            <h1 class="chapter-title-zh">引言</h1>
+            <p class="chapter-title-en">Introduction</p>
+        </header>
+        <p>回流焊产线上有一台温度变送器。在工艺工程师的世界里，它是仪器 <strong>TT-4201</strong>，按 ISA-5.1 [1] 标注。在可编程逻辑控制器（PLC）程序中，它是 <strong>%IW64</strong>，按 IEC 61131-3 [2] 寻址。在制造执行系统（MES）中，它是 <strong>"ReflowZone4"</strong>，一个按 IPC-9850 限值 [3] 监控的统计过程控制（SPC）参数。三个名字，同一物理设备，三个从不共享模式的工程团队。当这三条数据流被提交给一个基于 LLM 的 AI 智能体，并询问"该工位是否在规格内运行？"时，智能体会流畅作答。它知道设备综合效率（OEE）的含义、SPC 代表什么、IPC-9850 规范什么。然而，它不知道 TT-4201、%IW64 和 ReflowZone4 指向同一传感器。它把它们当作三个独立数据点，分别推理，给出语言精确、操作错误的答案。这一失效不能归因于模型质量。它代表 AI 系统训练方式、企业定义操作现实方式，以及自主智能体在运行时作用于该现实方式之间的结构性断裂。本文将这一断裂称为<strong>语义训练鸿沟</strong>，不是因为模型训练有误，而是因为仅靠训练无法弥合统计流畅性与操作含义之间的鸿沟。多智能体 AI 系统 [4,5] 的出现引入了一种复合失效模式。当多个专用智能体在没有共享本体基础的情况下操作共享制造数据时，每个智能体都会嵌入自己对领域概念的解释，这些解释随时间发散。本文将这种复合发散称为<strong>语义漂移</strong>，一种区别于单个模型错误的系统性状况。本文贡献如下：</p>
+<ol>
+<li><strong>识别并形式化语义训练鸿沟</strong>，将其作为工业 AI 系统中独立的失效类别，区别于模型幻觉、数据质量和提示工程不足；并识别<strong>工具参数伪造</strong>作为特定幻觉类别，区别于事实性幻觉，并在六个制造领域量化其发生率（第 3、7 节）。</li>
+<li><strong>三操作接口契约</strong>（resolve、contextualize、annotate），形式化制造 AI 系统中本体约束的工具执行的要求，含会话一致性、版本不可变性和熔断等不变量（第 5 节）。</li>
+<li><strong>AIOps 强制架构</strong>，通过执行前验证、执行中熔断器和执行后结构化，使本体约束在运行时成为可执行约束（第 6 节）。</li>
+<li><strong>对照幻觉实验</strong>，证明本体约束的工具参数消除工具调用幻觉（72 次查询、六种行业配置、Qwen3-32B：0% 与 43%）（第 7 节）。本文其余部分组织如下：第 2 节回顾相关工作；第 3 节给出理论基础；第 4 节描述观察到的失效模式；第 5 节形式化接口契约并规定本体配置结构；第 6 节描述 AIOps 强制架构；第 7 节呈现实验评估；第 8 节讨论局限性、可扩展性与现有制造标准的集成；第 9 节总结。</li>
+</ol>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="00-intro.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><a class="section-nav-link section-nav-link--next" href="02-related-work.html#sidebar-current-chapter"><span>下一章</span><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.25 4.5 15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

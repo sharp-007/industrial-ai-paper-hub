@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>结论 · 语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构</a></h1>
+            <p class="subtitle">The Semantic Training Gap: Ontology-Grounded Tool Architectures for Industrial AI Agent Systems</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言、摘要与目录">前言、摘要与目录</a></li>
+            <li class="nav-l1">第一部分：理论基础与失效模式</li>
+            <li class="nav-l3"><a href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-related-work.html#sidebar-current-chapter" title="2. 相关工作">2. 相关工作</a></li>
+            <li class="nav-l3"><a href="../sections/03-foundation.html#sidebar-current-chapter" title="3. 理论基础：标签、分类法与本体">3. 理论基础：标签、分类法与本体</a></li>
+            <li class="nav-l3"><a href="../sections/04-failure-modes.html#sidebar-current-chapter" title="4. 观察到的失效模式">4. 观察到的失效模式</a></li>
+            <li class="nav-l1">第二部分：接口契约与 AIOps 架构</li>
+            <li class="nav-l3"><a href="../sections/05-interface-contract.html#sidebar-current-chapter" title="5. 本体 grounding 工具执行的接口契约">5. 本体 grounding 工具执行的接口契约</a></li>
+            <li class="nav-l3"><a href="../sections/06-aiops.html#sidebar-current-chapter" title="6. AIOps 强制架构">6. AIOps 强制架构</a></li>
+            <li class="nav-l1 is-current-part">第三部分：实验评估与讨论</li>
+            <li class="nav-l3"><a href="../sections/07-experiment.html#sidebar-current-chapter" title="7. 实验评估">7. 实验评估</a></li>
+            <li class="nav-l3"><a href="../sections/08-discussion.html#sidebar-current-chapter" title="8. 讨论">8. 讨论</a></li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/09-conclusion.html#sidebar-current-chapter" title="9. 结论" aria-current="page">9. 结论</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第9章</div>
+            <h1 class="chapter-title-zh">结论</h1>
+            <p class="chapter-title-en">Conclusion</p>
+        </header>
+        <p>本文将语义训练鸿沟识别为工业 AI 智能体系统中的结构性失效类别。鸿沟源于统计语言模型通过训练获取领域词汇，但不学习赋予该词汇操作含义的关系本体结构。本文演示两种失效模式：单智能体系统中的工具调用幻觉（对照实验 72 次查询、六种行业配置中 43% 无约束工具调用参数为伪造标识符），以及多智能体系统中的语义漂移（无共享本体约束的智能体渐进发散）。为应对这些失效模式，本文提出基于本体约束的工具架构：类型化关系配置（每领域 45 导出、700–770 行），运行时由三操作接口契约（resolve、contextualize、annotate）消费，不变量由 AIOps 编排层强制。本体约束的工具参数消除工具调用幻觉（0% 与 43%），覆盖全部六种行业配置和全部 12 个分析工具。架构在数字孪生仿真环境中验证，演示跨领域可配置性：单一应用代码库配合领域特定本体配置，在航空航天、制药、汽车、电子、食品饮料和仓储自动化配置中产生正确、语义锚定的结果。未来工作包括与 OPC UA 和 AutomationML 集成以实现自动本体填充、配置接口形式公理化以进行设计时一致性检查、多模型幻觉基准测试，以及对照既有工厂制造环境生产 MES 数据的验证。</p>
+<hr />
+<h3>利益冲突声明</h3>
+<p>作者受雇于西门子数字工业软件。研究作为作者职责的一部分进行。雇主未参与研究设计、数据分析或投稿决定。</p>
+<h3>生成式 AI 与 AI 辅助技术声明</h3>
+<p>在本文准备过程中，作者使用 Claude（Anthropic）进行起草、编辑和文稿结构化。使用该工具后，作者按需审阅和编辑内容，并对发表文章的全部内容承担完整责任。</p>
+<h3>CRediT 作者贡献</h3>
+<p>Grama Chethan：概念化、方法论、软件、验证、调查、数据管理、撰写—原稿、撰写—审阅与编辑、可视化。</p>
+<h3>数据可用性</h3>
+<p>六种本体配置模块、72 查询幻觉实验数据集（两条件下查询文本、工具调用参数和结果）及校准结果（60 次仿真运行）可向通讯作者索取。仿真框架源代码维护于西门子私有仓库，审阅人可应要求获取。</p>
+<h3>致谢</h3>
+<p>本工作于西门子数字工业软件完成。作者感谢平台工程团队在多智能体平台验证期间提供的基础设施支持。</p>
+<details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><ol>
+<li>ISA. ANSI/ISA-5.1-2022: Instrumentation symbols and identification. International Society of Automation; 2022.</li>
+<li>IEC. IEC 61131-3:2013: Programmable controllers – Part 3: Programming languages. International Electrotechnical Commission; 2013.</li>
+<li>IPC. IPC-9850: Surface mount placement equipment characterization. Association Connecting Electronics Industries; 2020.</li>
+<li>Wang L, Ma C, Feng X, Zhang Z, Yang H, Zhang J, et al. A survey on large language model based autonomous agents. Front Comput Sci 2024;18(6):186345.</li>
+<li>Xi Z, Chen W, Guo X, He W, Ding Y, Hong B, et al. The rise and potential of large language model based agents: a survey. arXiv:2309.07864; 2023.</li>
+<li>Gruber TR. Toward principles for the design of ontologies used for knowledge sharing. Int J Hum-Comput Stud 1995;43(5–6):907–28.</li>
+<li>Guarino N, Oberle D, Staab S. What is an ontology? In: Handbook on ontologies. Springer; 2009.</li>
+<li>Lemaignan S, Siadat A, Dantan JY, Semenenko A. MASON: a proposal for an ontology of manufacturing domain. Proc IEEE Workshop on Distributed Intelligent Systems. 2006.</li>
+<li>Usman Z, Young RIM, Chungoora N, Palmer C, Case K, Harding JA. Towards a formal manufacturing reference ontology. Int J Prod Res 2013;51(22):6553–72.</li>
+<li>Biffl S, Lüder A, Gerhard D, editors. Multi-disciplinary engineering for cyber-physical production systems. Springer; 2017.</li>
+<li>ISA. ANSI/ISA-95 (IEC 62264): Enterprise-control system integration. International Society of Automation; 2010.</li>
+<li>MESA International. B2MML: Business to Manufacturing Markup Language, Version 7.0. 2018.</li>
+<li>Scholten B. The road to integration: a guide to applying the ISA-95 standard in manufacturing. ISA; 2007.</li>
+<li>Vegetti M, Leone HP, Henning GP. PRONTO: an ontology for comprehensive and consistent representation of product information. Eng Appl Artif Intell 2011;24(8):1305–27.</li>
+<li>IEC. IEC 62541: OPC Unified Architecture. International Electrotechnical Commission; 2020.</li>
+<li>IEC. IEC 62714: AutomationML – Engineering data exchange format. International Electrotechnical Commission; 2018.</li>
+<li>Li X, Liu H, Wang W, Zheng Y, Lv H, Lv Z. Big data analysis of the internet of things in the digital twins of smart city based on deep learning. Future Gener Comput Syst 2022;128:167–77.</li>
+<li>Zhou B, Bao J, Li J, Lu Y, Liu T, Zhang Q. A novel knowledge graph-based optimization approach for resource allocation in discrete manufacturing workshops. Robot Comput-Integr Manuf 2022;71:102160.</li>
+<li>Pan S, Luo L, Wang Y, Chen C, Wang J, Wu X. Unifying large language models and knowledge graphs: a roadmap. IEEE Trans Knowl Data Eng 2024;36(7):3580–99.</li>
+<li>Schick T, Dwivedi-Yu J, Dessì R, Raileanu R, Lomeli M, Hambro E, et al. Toolformer: language models can teach themselves to use tools. Adv Neural Inf Process Syst 2023;36.</li>
+<li>Patil SG, Zhang T, Wang X, Gonzalez JE. Gorilla: large language model connected with massive APIs. arXiv:2305.15334; 2023.</li>
+<li>Anthropic. Tool use (function calling) with Claude. Anthropic Documentation; 2024.</li>
+<li>Rebedea T, Dinu R, Sreedhar M, Parisien C, Cohen J. NeMo Guardrails: a toolkit for controllable and safe LLM applications with programmable rails. EMNLP System Demonstrations. 2023.</li>
+<li>Ji Z, Lee N, Frieske R, Yu T, Su D, Xu Y, et al. Survey of hallucination in natural language generation. ACM Comput Surv 2023;55(12):1–38.</li>
+<li>Huang L, Yu W, Ma W, Zhong W, Feng Z, Wang H, et al. A survey on hallucination in large language models. arXiv:2311.05232; 2023.</li>
+<li>Negri E, Fumagalli L, Macchi M. A review of the roles of digital twin in CPS-based production systems. Procedia Manuf 2017;11:939–48.</li>
+<li>Riddick F, Lee YT. Representing layout information in the CMSD specification. Proc Winter Simulation Conference. 2011.</li>
+<li>Patki N, Wedge R, Veeramachaneni K. The Synthetic Data Vault. Proc IEEE DSAA. 2016.</li>
+<li>Chethan G. The data layer nobody builds: how template-as-ontology alignment enables cross-domain synthetic data for industrial AI validation. Manuscript in preparation; 2025.</li>
+<li>Hodge G. Systems of knowledge organization for digital libraries. CLIR; 2000.</li>
+<li>PRI. NADCAP: National Aerospace and Defense Contractors Accreditation Program. Performance Review Institute; 2024.</li>
+<li>Sculley D, Holt G, Golovin D, Davydov E, Phillips T, Ebner D, et al. Hidden technical debt in machine learning systems. Adv Neural Inf Process Syst 2015;28:2503–11.</li>
+<li>Noy NF, McGuinness DL. Ontology development 101. Stanford KSL Technical Report KSL-01-05; 2001.</li>
+<li>FDA. 21 CFR Part 11: Electronic records; electronic signatures. U.S. FDA; 2003.</li>
+<li>IPC. IPC-A-610: Acceptability of electronic assemblies. 2021.</li>
+<li>IATF. IATF 16949:2016: Quality management system requirements for automotive production. 2016.</li>
+<li>Dang Y, Lin Q, Huang P. AIOps: real-world challenges and research innovations. Proc ICSE-SEIP. 2019.</li>
+<li>Notaro P, Cardoso J, Gerndt M. A systematic mapping study in AIOps. Proc ICSOC. 2020.</li>
+<li>Anthropic. Model Context Protocol specification. 2024.</li>
+<li>Bender EM, Gebru T, McMillan-Major A, Shmitchell S. On the dangers of stochastic parrots. Proc ACM FAccT. 2021.</li>
+</ol></div></details>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="08-discussion.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><span class="section-nav-spacer" aria-hidden="true"></span></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

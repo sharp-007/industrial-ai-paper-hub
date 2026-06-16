@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./site/assets/cover.png" alt="工业AI文献合集 · Industrial AI Paper Hub" width="960">
+</p>
+
 # 工业AI文献合集 · Industrial AI Paper Hub
 
 精选 Industrial AI 重要文献中文翻译

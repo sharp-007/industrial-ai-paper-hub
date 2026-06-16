@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="./site/assets/cover.png" alt="工业AI文献合集 · Industrial AI Paper Hub" width="960">
-</p>
+
 
 # 工业AI文献合集 · Industrial AI Paper Hub
 
@@ -12,10 +10,12 @@
 
 ## 在线阅读
 
-| 站点 | 地址 |
-| --- | --- |
-| **正式站点** | **[https://www.papers.hitai.space](https://www.papers.hitai.space)** |
+
+| 站点               | 地址                                                                                                               |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **正式站点**         | **[https://www.papers.hitai.space](https://www.papers.hitai.space)**                                             |
 | **GitHub Pages** | **[https://sharp-007.github.io/industrial-ai-paper-hub/](https://sharp-007.github.io/industrial-ai-paper-hub/)** |
+
 
 ## 项目特色
 
@@ -32,9 +32,9 @@
 **1 篇** 收录
 
 
-| 文献                                                                                                         | 年份   | 章节  | 页数  | 阅读                                                                                                                                         | 出处                                                                                                     |
-| ---------------------------------------------------------------------------------------------------------- | ---- | --- | --- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
+| 文献                                                                                                          | 年份   | 章节  | 页数  | 阅读                                                                                                                                             | 出处                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------- | ---- | --- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 人工智能与机器学习智能制造路线图 2026 2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21  | 99  | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
 
 
 ---
@@ -55,6 +55,9 @@
 - 💬 扫码添加个人微信，加入工业 AI 交流群
 - 🤝 欢迎合作共创与提交反馈建议
 
+
 | **微信公众号 · 失控的智能** | **微信视频号 · AIPanda007** | **个人微信 · 工业 AI 交流群** |
-| --- | --- | --- |
-| <img src="./site/assets/wechat-oa.jpg" width="180" alt="微信公众号 · 失控的智能"> | <img src="./site/assets/wechat-channel.jpg" width="180" alt="微信视频号 · AIPanda007"> | <img src="./site/assets/wechat-qr.jpg" width="180" alt="个人微信 · 工业 AI 交流群"> |
+| ----------------- | ---------------------- | -------------------- |
+|                   |                        |                      |
+
+

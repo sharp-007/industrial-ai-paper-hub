@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>引言 · 通过迭代实验反馈实现石墨基负极的AI引导设计与优化</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">通过迭代实验反馈实现石墨基负极的AI引导设计与优化</a></h1>
+            <p class="subtitle">AI-Guided Design and Optimization of Graphite-Based Anodes via Iterative Experimental Feedback</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2 is-current-part">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言与摘要">前言与摘要</a></li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言" aria-current="page">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-doe.html#sidebar-current-chapter" title="2. 实验设计">2. 实验设计</a></li>
+            <li class="nav-l3"><a href="../sections/03-iteration.html#sidebar-current-chapter" title="3. 迭代式AI引导实验">3. 迭代式AI引导实验</a></li>
+            <li class="nav-l3"><a href="../sections/04-methods.html#sidebar-current-chapter" title="4. 材料与方法">4. 材料与方法</a></li>
+            <li class="nav-l3"><a href="../sections/05-conclusions.html#sidebar-current-chapter" title="5. 结论">5. 结论</a></li>
+            <li class="nav-l3"><a href="../sections/06-outlook.html#sidebar-current-chapter" title="6. 展望">6. 展望</a></li>
+            <li class="nav-l3"><a href="../sections/99-references.html#sidebar-current-chapter" title="参考文献">参考文献</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第1章</div>
+            <h1 class="chapter-title-zh">引言</h1>
+            <p class="chapter-title-en">Introduction</p>
+        </header>
+        <p>电池技术是现代能源系统的基石，支撑着电动汽车的推广、可再生能源的整合以及便携式电子设备的广泛应用。在各类电池技术中，锂离子电池（LIBs）凭借其高能量密度、良好的效率以及成熟的商业化水平，已成为主导方案。<sup class="cite-ref"><a href="99-references.html#ref-1">1</a></sup> 随着全球能源需求持续增长以及脱碳目标日益严格，进一步提升电池性能、安全性和可持续性仍然至关重要。<sup class="cite-ref"><a href="99-references.html#ref-2">2</a></sup> 应对这些挑战需要持续创新，同时需要对电池材料、配方和制造工艺建立更深入、更系统化的认识。<sup class="cite-ref"><a href="99-references.html#ref-3">3</a></sup> 因此，加速电池研发不再是可选项，而是技术进步和环境影响缓解的先决条件。<sup class="cite-ref"><a href="99-references.html#ref-1">1</a></sup></p>
+<p>传统电池研究工作流程通常依赖序贯实验法，即在保持其他变量不变的情况下逐个改变单一变量。<sup class="cite-ref"><a href="99-references.html#ref-3">3–5</a></sup> 尽管这种方法能够实现可控的假设检验，但将其应用于电池电极等复杂多参数系统时存在固有局限。成分、工艺与微观结构之间的相互作用往往是非线性的且相互耦合，这使得识别主要性能驱动因素或在小范围实验窗口之外进行推论变得困难。因此，在此类范式下取得的进展通常是渐进式的。<sup class="cite-ref"><a href="99-references.html#ref-3">3,4</a></sup></p>
+<p>为克服这些局限，两种方法学进展在电池研究中获得了越来越多的关注：高通量实验（HTE）和人工智能/机器学习（AI/ML）。<sup class="cite-ref"><a href="99-references.html#ref-6">6–9</a></sup> HTE能够以规模化方式并行、可重复地产生实验数据，显著提高实验通量，同时降低每个数据点的材料和时间消耗。与此同时，材料信息学平台中的AI/ML提供了从大规模复杂数据集中提取工艺-结构-性能关系、探索高维设计空间以及以自适应、数据驱动的方式指导实验决策的能力。<sup class="cite-ref"><a href="99-references.html#ref-4">4,7,8</a></sup> 通过用可处理的代理模型表示复杂物理系统，该方法能够以更高的效率和可扩展性对关键性能指标进行系统化预测和优化。当HTE与AI/ML相结合时，能够推动电池研究工作流程实现根本性转变——从线性、人工指导的实验转向闭环、反馈丰富且日益自主的研究策略。<sup class="cite-ref"><a href="99-references.html#ref-10">10</a></sup></p>
+<p>在这些方法中，序贯学习（SL）（亦称主动学习）为高维设计空间中的迭代和数据高效优化提供了特别有效的策略。本研究中，我们采用了基于"具有不确定性估计的序贯学习随机森林"（FUELS）框架<sup class="cite-ref"><a href="99-references.html#ref-11">11</a></sup>的序贯学习，并借助Citrine平台实施。FUELS框架基于随机森林决策树集成<sup class="cite-ref"><a href="99-references.html#ref-12">12,13</a></sup>，并通过无穷小刀切法<sup class="cite-ref"><a href="99-references.html#ref-14">14</a></sup>纳入不确定性估计，使在有限且有噪声的数据条件下进行知情决策成为可能。研究表明，该框架能够以相当的理论性能、更高的计算效率识别高性能材料，优于贝叶斯优化方法；在多种材料系统中，其表现也显著优于随机搜索基准。<sup class="cite-ref"><a href="99-references.html#ref-11">11,15–20</a></sup></p>
+<p>序贯学习过程是迭代的，包含以下步骤：（1）训练机器学习模型以预测相关性能并给出相应不确定性；（2）使用适当的选择策略（获取函数）识别有前景的候选方案；（3）通过实验和/或模拟评估所选候选方案；（4）将结果纳入数据集并重新训练模型。这些步骤重复进行，直至识别出一种或多种高性能材料或达成优化目标。</p>
+<p>在此背景下，石墨基负极配方代表了一个特别具挑战性和高维的设计空间。电化学性能受活性材料、非活性组分与电极制备参数之间耦合相互作用的支配，导致大量权衡关系的存在，而通过传统实验方法在组合层面难以处理。<sup class="cite-ref"><a href="99-references.html#ref-8">8,10,21</a></sup> 这种复杂性使负极配方优化非常适合AI/ML指导的方法。本研究中，我们应用Citrine平台指导石墨基负极配方，利用其识别潜在规律并生成数据驱动实验建议的能力。</p>
+<p>本工作的目标是分享在电池材料研究中实施AI赋能工作流程的实践经验，以负极配方优化作为一个具有工业相关性的代表性案例。本研究目前侧重于AI指导的实验，未来工作将探索AI与高通量实验平台的更紧密整合，以进一步加速创新。</p>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="00-intro.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><a class="section-nav-link section-nav-link--next" href="02-doe.html#sidebar-current-chapter"><span>下一章</span><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.25 4.5 15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../assets/favicon.svg" type="image/svg+xml">
+    <title>迭代式AI引导实验 · 通过迭代实验反馈实现石墨基负极的AI引导设计与优化</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <button class="nav-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="sidebar-overlay" aria-hidden="true"></div>
+        <div class="sidebar-shell" id="sidebar-shell">
+    <nav class="sidebar" id="sidebar-nav">
+        <a class="back-to-hub" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a>
+        <div class="sidebar-header">
+            <h1><a class="sidebar-title-link" href="../index.html">通过迭代实验反馈实现石墨基负极的AI引导设计与优化</a></h1>
+            <p class="subtitle">AI-Guided Design and Optimization of Graphite-Based Anodes via Iterative Experimental Feedback</p>
+        </div>
+        <ul class="toc">
+            <li class="nav-l2 is-current-part">前言</li>
+            <li class="nav-l3"><a href="../sections/00-intro.html#sidebar-current-chapter" title="前言与摘要">前言与摘要</a></li>
+            <li class="nav-l3"><a href="../sections/01-introduction.html#sidebar-current-chapter" title="1. 引言">1. 引言</a></li>
+            <li class="nav-l3"><a href="../sections/02-doe.html#sidebar-current-chapter" title="2. 实验设计">2. 实验设计</a></li>
+            <li class="nav-l3"><a class="is-current" id="sidebar-current-chapter" href="../sections/03-iteration.html#sidebar-current-chapter" title="3. 迭代式AI引导实验" aria-current="page">3. 迭代式AI引导实验</a></li>
+            <li class="nav-l3"><a href="../sections/04-methods.html#sidebar-current-chapter" title="4. 材料与方法">4. 材料与方法</a></li>
+            <li class="nav-l3"><a href="../sections/05-conclusions.html#sidebar-current-chapter" title="5. 结论">5. 结论</a></li>
+            <li class="nav-l3"><a href="../sections/06-outlook.html#sidebar-current-chapter" title="6. 展望">6. 展望</a></li>
+            <li class="nav-l3"><a href="../sections/99-references.html#sidebar-current-chapter" title="参考文献">参考文献</a></li>
+        </ul>
+    </nav>
+        <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="调节侧栏宽度" tabindex="0"></div>
+    </div>
+    <main class="content">
+        <div class="content-topbar"><a class="back-to-hub back-to-hub--mobile" href="../../../../index.html">
+            <span class="back-to-hub-arrow" aria-hidden="true">
+            <svg class="back-to-hub-arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+            <span>返回文献集</span>
+        </a></div>
+        <div class="content-pane article">
+        <header class="chapter-header">
+            <div class="article-meta">第3章</div>
+            <h1 class="chapter-title-zh">迭代式AI引导实验</h1>
+            <p class="chapter-title-en">Iterative AI-Guided Experimentation</p>
+        </header>
+        <p>本节介绍应用于石墨基负极配方优化的迭代式AI引导实验工作流程。我们在此重点展示序贯学习的过程，而非单一成功优化结果，包括失败的实验、数据重构、约束细化以及模型与实验的协同演化。这反映了早期材料开发的实际情况：学习效率和知识编码与绝对性能提升同样重要。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig3.png" alt="图3：本研究采用的AI引导实验工作流程概览，展示实验数据、模型开发、候选配方生成与实验验证之间的迭代关联。" loading="lazy"><figcaption>图3：本研究采用的AI引导实验工作流程概览，展示实验数据、模型开发、候选配方生成与实验验证之间的迭代关联。</figcaption></figure>
+
+<h3>第0次迭代：基线建模与诊断评估</h3>
+<p>与AI平台的首次交互始于通过完整的建模周期处理基线数据集（如图3所示），包括：(i) 训练数据集准备，(ii) AI模型训练，(iii) 配方与工艺搜索空间定义，以及(iv) 候选配方生成与排序（整个四步过程约需30至60分钟）。</p>
+<p>基线数据集源自先前以粘结剂为重点的研究，在所有电化学关键绩效指标上表现出显著差异，包括放电容量、库仑效率和循环稳定性。如图4所示，绝对性能和电池间重复性均较差。重要的是，该数据集有意保留，未经过人工筛选或排除低质量数据点。本阶段的目标不是最大化预测精度，而是评估AI框架如何解读和应对现实的、有噪声的实验起点——这种情况在早期配方开发或技术转移场景中经常遇到。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig4.png" alt="图4：基线扣式半电池数据集的电化学关键绩效指标分布图，包括首次放电容量、第五圈库仑效率、30圈后的容量保持率和循环寿命。红色虚线垂直参考线表示在候选筛选过程中作为决策阈值的预定义关键绩效指标(KPI)。" loading="lazy"><figcaption>图4：基线扣式半电池数据集的电化学关键绩效指标分布图，包括首次放电容量、第五圈库仑效率、30圈后的容量保持率和循环寿命。红色虚线垂直参考线表示在候选筛选过程中作为决策阈值的预定义关键绩效指标(KPI)。</figcaption></figure>
+
+<p>尽管数据质量有限，AI模型仍能够推断出配方变量（如粘结剂类型、溶剂组成和固含量）与电化学性能之间的初步关系（如图5所示）。所得到的候选配方展现出约0.16量级的改进可能性(LoI)分数<sup class="cite-ref"><a href="99-references.html#ref-11">11</a></sup>。改进可能性是一个代表性指标，可理解为实现所有目标指标和约束条件的概率。任何正的改进可能性值都意味着在感兴趣的方向上改进材料和模型预测是可行的，分数越接近1表示实现所有目标的的可能性越高。该单一指标综合考虑了所有目标、约束条件、这些指标预测的相关不确定性以及用户指定的性能指标基准。</p>
+<p>该结果表明，鉴于当前数据集的高不确定性和广泛定义的搜索空间，在这一阶段识别出能同时满足所有四个关键绩效指标(KPI)并带来显著改进的配方的概率较低。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig5.png" alt="图5：Citrine平台内AI模型构建与评估示意图。上部面板概述了本研究实现的模型生命周期，包括模型构建、训练与验证、评估和候选配方探索。左下方面板展示了所构建AI模型的代表性视图，连接配方成分、工艺参数与电化学性能目标。右下方面板展示了模型评估输出，包括预测值-实验值对比图和各输入变量对模型预测相对贡献的特征重要性排序。所有可视化均基于指定模型配置由Citrine Platform直接生成。" loading="lazy"><figcaption>图5：Citrine平台内AI模型构建与评估示意图。上部面板概述了本研究实现的模型生命周期，包括模型构建、训练与验证、评估和候选配方探索。左下方面板展示了所构建AI模型的代表性视图，连接配方成分、工艺参数与电化学性能目标。右下方面板展示了模型评估输出，包括预测值-实验值对比图和各输入变量对模型预测相对贡献的特征重要性排序。所有可视化均基于指定模型配置由Citrine Platform直接生成。</figcaption></figure>
+
+<p>在初始建模阶段（第0次迭代），工作流程输出主要被解读为诊断指标而非可靠预测。高不确定性反映了数据覆盖的空白、领域知识在模型架构和特征工程中的缺失，以及配方空间和约束定义方式的局限性。因此，使用初步模型的第一次迭代有助于确定在哪些地方需要额外的描述符、领域知识或更精细的边界，以更好地代表石墨负极系统。这一阶段也反映了早期研发项目的常见现实：工作往往从非理想或不完整的数据集开始。本阶段的目的不是提供最优配方，而是建立一个结构化的基线，使实验学习能够在此基础上推进。因此，关键目标不是将模型准确性作为成功的最终衡量标准，而是利用预测结果和量化不确定性来确定哪些新实验将提供最具信息量的数据。</p>
+<h3>第1次迭代：首次AI建议实验与失败驱动学习</h3>
+<p>根据初始AI建议，我们手动选择了五个候选配方进行实验验证（表1）。这一选择过程涉及专家干预，以领域知识的形式编码到平台的搜索空间中，以排除不可行的配方，例如实践中无法实现的粘结剂溶液浓度（如过高无法形成均匀浆料的CMC浓度）。所选候选配方经过合成和实验评估，并施加了额外的压延压力以增加数据密度。</p>
+<div class="table-heading"><p class="table-heading-zh">表1　第1次迭代评估的AI建议候选配方组成</p><p class="table-heading-en">Table 1　AI-Recommended Candidate Formulation Composition for Iteration 1</p></div>
+<div class="table-wrap"><table><thead><tr><th>配方</th><th>C45</th><th>石墨</th><th>SBR</th><th>CMC</th><th>蒸馏水</th><th>乙醇</th><th>固含量比</th></tr><tr><th class="en"><em>Formulation</em></th><th class="en"><em>C45</em></th><th class="en"><em>Graphite</em></th><th class="en"><em>SBR</em></th><th class="en"><em>CMC</em></th><th class="en"><em>Distilled_water</em></th><th class="en"><em>Ethanol</em></th><th class="en"><em>Solid ratio</em></th></tr></thead><tbody><tr><td>V1_Candidate 1</td><td>1.22</td><td>98.30</td><td>0.00</td><td>0.48</td><td>100.00</td><td>0.00</td><td>0.57</td></tr><tr><td>V1_Candidate 2</td><td>1.36</td><td>95.15</td><td>3.49</td><td>0.00</td><td>100.00</td><td>0.00</td><td>0.50</td></tr><tr><td>V1_Candidate 3</td><td>11.68</td><td>83.81</td><td>4.49</td><td>0.00</td><td>0.00</td><td>100.00</td><td>0.61</td></tr><tr><td>V1_Candidate 4</td><td>0.80</td><td>95.15</td><td>3.97</td><td>0.08</td><td>50.02</td><td>49.98</td><td>0.40</td></tr><tr><td>V1_Candidate 5</td><td>0.60</td><td>95.38</td><td>4.02</td><td>0.04</td><td>50.10</td><td>49.90</td><td>0.40</td></tr></tbody></table></div>
+
+<p>如图6所示，五个候选材料中有四个在制造过程的不同阶段失败，导致这些材料几乎没有可用的数据。这一迭代中观察到的异常高失败率表明，用于预测的基线数据对实际制造约束的代表性不足。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig6.png" alt="图6：第1次迭代中AI建议候选配方在制备工作流程各阶段的实验结果。" loading="lazy"><figcaption>图6：第1次迭代中AI建议候选配方在制备工作流程各阶段的实验结果。</figcaption></figure>
+
+<h3>第2次迭代：数据结构增强与约束细化</h3>
+<p>针对第1次迭代中获得的洞察，数据集和建模框架进行了重大修订。引入了新的工艺级标签，以明确捕获实验可行性和质量，包括浆料均匀性、涂层成功、压延完整性和整体制造通过/失败状态指标（图1）。这些标签在传统电池研究论文中很少报道，但它们编码了决定实验成功的关键实践知识。</p>
+<p>在数据集重构之后，AI工作流程（图3）使用细化的搜索空间约束再次执行，包括粘结剂溶液浓度和固液比的明确限制。关键绩效指标(KPI)集合从六个指标简化至四个核心指标，以降低这一学习阶段的目标复杂度（如图4所示）。</p>
+<p>因此，本次第2次迭代中新生成的候选配方展现出新的分数，最高可达约0.33。尽管预测不确定性仍然较高——反映了仍然有限的数据集规模——但候选配方在加工方面明显更加现实，五位候选配方如表2所示被选中进行实验验证。值得注意的是，当底层目标和约束条件不同且统计ML模型随着额外训练数据的更新而变化时，LoI分数不能直接比较。在后续的实验迭代中，当关键绩效指标和约束定义保持固定时，LoI值可以进行有意义的比较，并用于评估候选配方之间的相对改进。</p>
+<div class="table-heading"><p class="table-heading-zh">表2　第2次迭代评估的AI建议候选配方组成</p><p class="table-heading-en">Table 2　AI-Recommended Candidate Formulation Composition for Iteration 2</p></div>
+<div class="table-wrap"><table><thead><tr><th>配方</th><th>C45</th><th>石墨</th><th>SBR</th><th>CMC</th><th>蒸馏水</th><th>乙醇</th><th>固含量比</th></tr><tr><th class="en"><em>Formulation</em></th><th class="en"><em>C45</em></th><th class="en"><em>Graphite</em></th><th class="en"><em>SBR</em></th><th class="en"><em>CMC</em></th><th class="en"><em>Distilled_water</em></th><th class="en"><em>Ethanol</em></th><th class="en"><em>Solid ratio</em></th></tr></thead><tbody><tr><td>V2_Candidate 1</td><td>1.164</td><td>93.76</td><td>3.039</td><td>2.037</td><td>80.54</td><td>19.46</td><td>0.30</td></tr><tr><td>V2_Candidate 2</td><td>1.578</td><td>93.367</td><td>3.026</td><td>2.028</td><td>88.47</td><td>11.53</td><td>0.30</td></tr><tr><td>V2_Candidate 3</td><td>4.561</td><td>91.21</td><td>2.578</td><td>1.646</td><td>100.0</td><td>0.00</td><td>0.50</td></tr><tr><td>V2_Candidate 4</td><td>1.024</td><td>91.88</td><td>4.200</td><td>2.890</td><td>100.0</td><td>0.00</td><td>0.30</td></tr><tr><td>V2_Candidate 5</td><td>7.188</td><td>86.68</td><td>3.594</td><td>2.537</td><td>68.92</td><td>31.079</td><td>0.46</td></tr></tbody></table></div>
+
+<p>在第二次实验迭代中，所有AI选择的配方都成功制成纽扣电池，没有工艺失败。这本身就是一个重要里程碑，表明以可行性标签和细化约束形式纳入专家领域知识有效地将模型建议与实验室实际相结合。</p>
+<p>电化学测试表明，与基线数据集和早期迭代相比，性能和重复性都有明显改善（如图7所示）。经过两轮主动学习/机器学习反馈循环后，满足定义的关键绩效指标(KPI)的候选比例大幅提高：84.8%的电池首次放电容量达到350 mAh g<sup>−1</sup>，而基线数据集中仅有28.4%（如图7a）。容量保持性能同样提高；最初，42.1%的基线材料超过基线关键绩效指标表现，而第2次迭代候选配方中有97.3%超过关键绩效指标基线（如图7b）。相比之下，循环寿命和第五圈库仑效率在这一阶段贡献的诊断价值较低，因为它们的基线值已经较高且变化有限。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig7.png" alt="图7：基线扣式半电池数据集与第2次迭代结果的电化学关键绩效指标分布图，包括首次放电容量、第五圈库仑效率、30圈后的容量保持率和循环寿命。红色虚线垂直参考线表示在候选筛选过程中作为决策阈值的预定义关键绩效指标(KPI)。蓝色代表第0次迭代（基线数据集），橙色代表第2次迭代结果。" loading="lazy"><figcaption>图7：基线扣式半电池数据集与第2次迭代结果的电化学关键绩效指标分布图，包括首次放电容量、第五圈库仑效率、30圈后的容量保持率和循环寿命。红色虚线垂直参考线表示在候选筛选过程中作为决策阈值的预定义关键绩效指标(KPI)。蓝色代表第0次迭代（基线数据集），橙色代表第2次迭代结果。</figcaption></figure>
+
+<p>图8呈现了V2_candidates 5在不同压延压力下的电化学结果。如图8所示，对在同一 Tape 上制作的复制电池的电化学性能进行平均，能够更清晰地评估压延压力的影响。这一观察突出了生成高质量和可重复数据集的重要性，这对于可靠地分析各个工艺参数的影响并指导后续研究方向至关重要。值得注意的是，压延压力的影响——之前通过AI模型在早期迭代中隐式推断——在这一迭代中变得可通过实验观察。模型引导的洞察与实验结果之间的一致性为所学习的工艺-结构-性质关系提供了支持性证据。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig8.png" alt="图8：第2次实验中AI选择的V2_Candidate 5在不同压延压力（5、20、40、61 N/mm）下的电化学性能。图中绘制了代表性Tape上平均放电容量随循环圈数的变化；每个数据点反映同一Tape、同一压延条件下多个电池的均值，突出电化学行为对压延压力的系统性依赖。" loading="lazy"><figcaption>图8：第2次实验中AI选择的V2_Candidate 5在不同压延压力（5、20、40、61 N/mm）下的电化学性能。图中绘制了代表性Tape上平均放电容量随循环圈数的变化；每个数据点反映同一Tape、同一压延条件下多个电池的均值，突出电化学行为对压延压力的系统性依赖。</figcaption></figure>
+
+<h3>第3次迭代：向可行和可重复配方的收敛</h3>
+<p>在纳入第2次迭代新生成的实验数据后，AI引导的工作流程重新执行，导致改进可能性(LoI)分数显著提高至0.83，而前一次迭代具有相同性能目标和约束的LoI分数约为0.33（如图9所示）。关键的是，这种改进不仅限于数值优化指标，还通过实验可重复的电化学行为和明确的工艺依赖趋势得以实现。与早期迭代相比（如图10所示），第3次迭代生成的候选配方能够满足所有定义的关键绩效指标(KPI)，尽管存在残余不确定性，提供了清晰而稳健的优化成功信号。因此，候选选择变得明显更加直接，并得到更多定量证据的支持。在这一阶段，模型输出得到了通过高效AI/ML引导的候选样本选择收集的更强的实验基础的支持，使我们对推断的工艺-性能关系更有信心。</p>
+<figure class="paper-figure"><img src="../images/iteration-fig9.png" alt="图9：第3次迭代中Citrine平台AI引导的候选配方建议。" loading="lazy"><figcaption>图9：第3次迭代中Citrine平台AI引导的候选配方建议。</figcaption></figure>
+
+<figure class="paper-figure"><img src="../images/iteration-fig10.png" alt="图10：第2与第3次迭代中AI识别的最优候选配方在关键电化学指标上的对比。" loading="lazy"><figcaption>图10：第2与第3次迭代中AI识别的最优候选配方在关键电化学指标上的对比。</figcaption></figure>
+
+<p>总体而言，这一进展说明了迭代式AI/ML引导的、专家驱动的数据富集如何将直觉驱动或简单统计的实验设计方法转变为更可靠、系统化和信息丰富 framework，用于高效改进理解和优化电池制造工艺。</p>
+        <nav class="section-nav"><a class="section-nav-link section-nav-link--prev" href="02-doe.html#sidebar-current-chapter"><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>上一章</span></a><a class="section-nav-link section-nav-link--next" href="04-methods.html#sidebar-current-chapter"><span>下一章</span><svg class="section-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8.25 4.5 15.75 12l-7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></nav>
+        </div>
+    </main>
+    
+    <div class="read-progress" aria-hidden="true"></div>
+    <button class="back-to-top" type="button" aria-label="返回顶部">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4.5 15.75 12 8.25l7.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <script>
+(function () {
+    var btn = document.querySelector(".nav-toggle");
+    var sidebar = document.getElementById("sidebar-nav");
+    var overlay = document.querySelector(".sidebar-overlay");
+    if (btn && sidebar) {
+        function setOpen(open) {
+            document.body.classList.toggle("nav-open", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+            btn.setAttribute("aria-label", open ? "关闭目录" : "打开目录");
+            if (overlay) overlay.setAttribute("aria-hidden", open ? "false" : "true");
+        }
+        btn.addEventListener("click", function () {
+            setOpen(!document.body.classList.contains("nav-open"));
+        });
+        if (overlay) overlay.addEventListener("click", function () { setOpen(false); });
+        sidebar.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 960px)").matches) setOpen(false);
+            });
+        });
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(min-width: 961px)").matches) setOpen(false);
+        });
+    }
+})();
+/* sidebar-resize */
+(function () {
+    var shell = document.getElementById("sidebar-shell");
+    var resizer = document.getElementById("sidebar-resizer");
+    if (!shell || !resizer) return;
+    var mq = window.matchMedia("(min-width: 961px)");
+    var KEY = "paper-hub-sidebar-width";
+    var MIN = 180, MAX = 420;
+    var dragging = false;
+
+    function clamp(w) { return Math.max(MIN, Math.min(MAX, w)); }
+
+    function apply(w) {
+        w = clamp(w);
+        document.documentElement.style.setProperty("--sidebar-width", w + "px");
+        shell.style.width = w + "px";
+        try { localStorage.setItem(KEY, String(Math.round(w))); } catch (e) {}
+    }
+
+    try {
+        var saved = parseInt(localStorage.getItem(KEY), 10);
+        if (!isNaN(saved)) apply(saved);
+    } catch (e) {}
+
+    function startDrag(clientX) {
+        if (!mq.matches || dragging) return;
+        dragging = true;
+        resizer.classList.add("is-dragging");
+        document.body.classList.add("sidebar-resizing");
+        var startX = clientX;
+        var startW = shell.getBoundingClientRect().width;
+
+        function onMove(ev) {
+            ev.preventDefault();
+            apply(startW + (ev.clientX - startX));
+        }
+        function onUp(ev) {
+            dragging = false;
+            resizer.classList.remove("is-dragging");
+            document.body.classList.remove("sidebar-resizing");
+            window.removeEventListener("mousemove", onMove, true);
+            window.removeEventListener("mouseup", onUp, true);
+            window.removeEventListener("pointermove", onMove, true);
+            window.removeEventListener("pointerup", onUp, true);
+            try {
+                if (ev && ev.pointerId !== undefined) {
+                    resizer.releasePointerCapture(ev.pointerId);
+                }
+            } catch (err) {}
+        }
+        window.addEventListener("mousemove", onMove, true);
+        window.addEventListener("mouseup", onUp, true);
+        window.addEventListener("pointermove", onMove, true);
+        window.addEventListener("pointerup", onUp, true);
+    }
+
+    function onResizeDown(e) {
+        if (!mq.matches || e.button !== 0) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { resizer.setPointerCapture(e.pointerId); } catch (err) {}
+        startDrag(e.clientX);
+    }
+
+    resizer.addEventListener("mousedown", onResizeDown);
+
+    document.addEventListener("mousedown", function (e) {
+        if (!mq.matches || e.button !== 0 || dragging) return;
+        if (e.target === resizer || resizer.contains(e.target)) return;
+        var rect = shell.getBoundingClientRect();
+        if (e.clientX >= rect.right - 8 && e.clientX <= rect.right + 10) {
+            e.preventDefault();
+            startDrag(e.clientX);
+        }
+    }, true);
+
+    resizer.addEventListener("keydown", function (e) {
+        if (!mq.matches) return;
+        var step = e.shiftKey ? 24 : 12;
+        var w = shell.getBoundingClientRect().width;
+        if (e.key === "ArrowLeft") { e.preventDefault(); apply(w - step); }
+        if (e.key === "ArrowRight") { e.preventDefault(); apply(w + step); }
+        if (e.key === "Home") { e.preventDefault(); apply(MIN); }
+        if (e.key === "End") { e.preventDefault(); apply(MAX); }
+    });
+})();
+(function () {
+    var ANCHOR = "sidebar-current-chapter";
+
+    function sidebarNav() {
+        return document.getElementById("sidebar-nav");
+    }
+
+    function currentChapterEl(nav) {
+        return document.getElementById(ANCHOR)
+            || (nav && nav.querySelector(".toc a.is-current, .sidebar-title-link.is-current"));
+    }
+
+    function isVisibleInNav(nav, el) {
+        var nr = nav.getBoundingClientRect();
+        var er = el.getBoundingClientRect();
+        var pad = 12;
+        return er.top >= nr.top + pad && er.bottom <= nr.bottom - pad;
+    }
+
+    function scrollSidebarToCurrent() {
+        var nav = sidebarNav();
+        if (!nav) return;
+        var current = currentChapterEl(nav);
+        if (!current) return;
+        if (isVisibleInNav(nav, current)) return;
+
+        var navRect = nav.getBoundingClientRect();
+        var elRect = current.getBoundingClientRect();
+        var elHeight = elRect.bottom - elRect.top;
+        var targetTop = nav.scrollTop + (elRect.top - navRect.top)
+            - (nav.clientHeight - elHeight) / 2;
+        var maxScroll = Math.max(0, nav.scrollHeight - nav.clientHeight);
+        nav.scrollTop = Math.min(maxScroll, Math.max(0, targetTop));
+
+        if (current.focus) {
+            try {
+                current.focus({ preventScroll: true });
+            } catch (e) {
+                try { current.focus(); } catch (e2) {}
+            }
+        }
+    }
+
+    function boot() {
+        scrollSidebarToCurrent();
+        requestAnimationFrame(scrollSidebarToCurrent);
+        setTimeout(scrollSidebarToCurrent, 0);
+        setTimeout(scrollSidebarToCurrent, 120);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scrollSidebarToCurrent);
+        }
+    }
+
+    window.addEventListener("hashchange", boot);
+    window.addEventListener("load", boot);
+    window.addEventListener("pageshow", function (e) {
+        if (e.persisted) boot();
+    });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+    } else {
+        boot();
+    }
+})();
+(function () {
+    var content = document.querySelector("main.content");
+    if (!content) return;
+
+    var bar = document.querySelector(".read-progress");
+    var topBtn = document.querySelector(".back-to-top");
+    if (!bar || !topBtn) return;
+
+    function scrollState() {
+        var y = content.scrollTop;
+        var max = Math.max(0, content.scrollHeight - content.clientHeight);
+        return { y: y, max: max, scrollable: max > 24 };
+    }
+
+    function updateProgress() {
+        var s = scrollState();
+        var pct = s.max > 0 ? (s.y / s.max) * 100 : 0;
+        bar.style.width = pct + "%";
+    }
+
+    function setTopVisible(show) {
+        topBtn.classList.toggle("is-visible", show);
+    }
+
+    function updateTopButton() {
+        var s = scrollState();
+        setTopVisible(s.scrollable && s.y > 80);
+    }
+
+    function refresh() {
+        updateProgress();
+        updateTopButton();
+    }
+
+    content.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh, { passive: true });
+    window.addEventListener("load", refresh);
+
+    if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(refresh).observe(content);
+    }
+
+    var anchor = content.querySelector(".chapter-header, .welcome, h1, h2");
+    if (anchor && typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver(function (entries) {
+            var s = scrollState();
+            if (!s.scrollable) {
+                setTopVisible(false);
+                return;
+            }
+            setTopVisible(!entries[0].isIntersecting || s.y > 80);
+        }, { root: content, threshold: 0, rootMargin: "-8px 0px 0px 0px" }).observe(anchor);
+    }
+
+    topBtn.addEventListener("click", function () {
+        content.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    refresh();
+    requestAnimationFrame(refresh);
+})();
+</script>
+</body>
+</html>

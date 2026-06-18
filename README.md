@@ -31,13 +31,14 @@
 
 ## 文献库
 
-**2 篇** 收录
+**3 篇** 收录
 
 
 | 文献                                                         | 年份 | 章节 | 页数 | 阅读                                                         | 出处                                                         |
 | ------------------------------------------------------------ | ---- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 人工智能与机器学习智能制造路线图 2026<br />2026 Roadmap on Artificial Intelligence and Machine Learning for Smart Manufacturing | 2026 | 21   | 99   | [中译](https://www.papers.hitai.space/papers/2026-roadmap-on-artificial-intelligence-and-machine-learning-for-smart-manufacturing/page-renders/) | [arXiv:2605.00839](https://arxiv.org/abs/2605.00839) · [DOI](https://doi.org/10.1088/3049-4761/ae5967) |
 | 语义训练鸿沟：面向工业 AI 智能体系统的本体论工具架构<br />The Semantic Training Gap: Ontology-Grounded Tool Architectures for Industrial AI Agent Systems | 2026 | 9    | 29   | [中译](https://www.papers.hitai.space/papers/the-semantic-training-gap-ontology-grounded-tool-architectures-for-industrial-ai-agent-systems/page-renders/) | [arXiv:2605.11234](https://arxiv.org/abs/2605.11234) |
+| 通过迭代实验反馈实现石墨基负极的 AI 引导设计与优化<br />AI-Guided Design and Optimization of Graphite-Based Anodes via Iterative Experimental Feedback | 2026 | 6    | 12   | [中译](https://www.papers.hitai.space/papers/ai-guided-design-and-optimization-of-graphite-based-anodes-via-iterative-experimental-feedback/page-renders/) | [arXiv:2606.00187](https://arxiv.org/abs/2606.00187) |
 
 
 ---

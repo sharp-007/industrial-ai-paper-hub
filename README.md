@@ -55,7 +55,7 @@
 
 - ⭐ [Star 本仓库](https://github.com/sharp-007/industrial-ai-paper-hub)，支持持续更新
 - 👤 [关注 @sharp-007](https://github.com/sharp-007)，获取新文献上线动态
-- 🌐 [个人作品集](https://sharp-007.github.io/joyce.github.io/)
+- 🌐 [个人作品集](https://joyce.hitai.space/)
 - 💬 扫码添加个人微信，加入工业 AI 交流群
 - 🤝 欢迎合作共创与提交反馈建议
 

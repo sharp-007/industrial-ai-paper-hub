@@ -14,6 +14,8 @@
   var originalUrlEl = document.getElementById("share-card-url-original");
   var originalRowEl = document.getElementById("share-card-original-row");
   var qrcodeEl = document.getElementById("share-qrcode");
+  var qrcodeWrap = document.getElementById("share-qrcode-wrap");
+  var showQrcodeBtn = document.getElementById("share-show-qrcode");
   var copyLinkBtn = document.getElementById("share-copy-link");
   var copyCardBtn = document.getElementById("share-copy-card");
   var toastEl = document.querySelector(".share-toast");
@@ -149,6 +151,31 @@
     }
   }
 
+  function resetQrcodeSection() {
+    if (qrcodeWrap) qrcodeWrap.hidden = true;
+    if (showQrcodeBtn) showQrcodeBtn.hidden = false;
+    if (qrcodeEl) qrcodeEl.innerHTML = "";
+    qrcodeInstance = null;
+  }
+
+  function revealQrcode() {
+    if (!current.url) {
+      toast("无法生成二维码：缺少链接");
+      return;
+    }
+    renderQrcode(current.url);
+    if (qrcodeEl && !qrcodeEl.querySelector("canvas, img, table, svg")) {
+      if (!qrcodeEl.textContent) qrcodeEl.textContent = "二维码生成失败";
+      toast("二维码生成失败，请尝试复制链接");
+    }
+    if (qrcodeWrap) {
+      qrcodeWrap.hidden = false;
+      qrcodeWrap.removeAttribute("hidden");
+    }
+    if (showQrcodeBtn) showQrcodeBtn.hidden = true;
+    recordShare();
+  }
+
   function openModal(btn) {
     shareSourceBtn = btn;
     current.title = btn.getAttribute("data-share-title") || "";
@@ -166,7 +193,7 @@
     setLinkEl(translationUrlEl, current.url);
     setLinkEl(originalUrlEl, current.originalUrl);
     if (originalRowEl) originalRowEl.hidden = !current.originalUrl;
-    renderQrcode(current.url);
+    resetQrcodeSection();
 
     var kickerEl = modal.querySelector(".share-card-kicker");
     if (kickerEl) kickerEl.textContent = cfg.siteName || "Industrial AI Paper Hub";
@@ -196,6 +223,13 @@
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  modal.addEventListener("click", function (e) {
+    if (e.target.closest("#share-show-qrcode")) {
+      e.preventDefault();
+      revealQrcode();
+    }
   });
 
   if (copyLinkBtn) {

@@ -989,9 +989,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .paper-card-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    width: 100%;
     white-space: nowrap;
     color: #fff;
     background: var(--gradient);
@@ -1000,7 +1001,7 @@ body.modal-open { overflow: hidden; }
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.02em;
-    padding: 13px 14px 13px 22px;
+    padding: 13px 20px;
     border-radius: var(--radius-pill);
     box-shadow:
         0 6px 20px rgba(13, 124, 150, 0.38),
@@ -1015,31 +1016,6 @@ body.modal-open { overflow: hidden; }
     box-shadow:
         0 12px 28px rgba(13, 124, 150, 0.48),
         0 4px 10px rgba(13, 124, 150, 0.22);
-}
-
-.paper-card-link-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.22);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    transition: transform 0.25s var(--ease), background 0.25s var(--ease);
-}
-
-.paper-card-link-arrow svg,
-.paper-card-link-icon {
-    width: 18px;
-    height: 18px;
-    display: block;
-}
-
-.paper-card-link:hover .paper-card-link-arrow {
-    background: rgba(255, 255, 255, 0.32);
-    transform: translateX(3px);
 }
 
 .empty {
@@ -1369,16 +1345,26 @@ button.footer-social-link {
     border-bottom-color: var(--blue);
 }
 
+.share-qrcode-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
 .share-qrcode-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
     padding: 14px 12px 10px;
     border-radius: var(--radius-sm);
     background: #fff;
     border: 1px solid var(--hairline-soft);
+}
+
+.share-qrcode-wrap[hidden] {
+    display: none;
 }
 
 .share-qrcode {
@@ -1496,7 +1482,6 @@ body.modal-open {
         flex-direction: row;
         justify-content: center;
     }
-    .paper-card-link { width: 100%; justify-content: center; }
     .section-header { flex-direction: column; align-items: flex-start; }
     .hero-stat { padding: 0 20px; }
 }

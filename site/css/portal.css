@@ -982,8 +982,8 @@ body.modal-open { overflow: hidden; }
     align-items: stretch;
     justify-content: center;
     gap: 14px;
-    padding: 22px 20px;
-    min-width: 118px;
+    padding: 22px 16px;
+    min-width: 168px;
     border-left: 1px solid var(--hairline-soft);
     background: linear-gradient(180deg, #e6f3f8 0%, #f1f6fa 100%);
 }
@@ -1479,8 +1479,8 @@ body.modal-open {
         background: linear-gradient(180deg, #e6f3f8 0%, transparent 100%);
     }
     .paper-engagement {
-        flex-direction: row;
-        justify-content: center;
+        max-width: 280px;
+        margin: 0 auto;
     }
     .section-header { flex-direction: column; align-items: flex-start; }
     .hero-stat { padding: 0 20px; }

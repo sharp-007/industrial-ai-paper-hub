@@ -95,10 +95,9 @@
 
   function showBar() {
     var bar = $("community-bar");
-    if (bar) {
-      bar.hidden = false;
-      bar.classList.remove("community-bar--hidden");
-    }
+    if (!bar || bar.getAttribute("data-portal") !== "true") return;
+    bar.hidden = false;
+    bar.classList.remove("community-bar--hidden");
   }
 
   function setBarStatus(text, isError) {
@@ -165,8 +164,82 @@
     });
   }
 
+  function trackView(paperFolder) {
+    if (!client || !paperFolder) return Promise.resolve();
+    var row = {
+      event_name: "view",
+      paper_folder: paperFolder,
+      meta: {},
+    };
+    if (session && session.user) row.user_id = session.user.id;
+    return client.from("events").insert(row).then(function (res) {
+      if (res.error) return;
+      statsMap[paperFolder] = statsMap[paperFolder] || {};
+      statsMap[paperFolder].view_count = (statsMap[paperFolder].view_count || 0) + 1;
+      applyStatsToDom();
+    });
+  }
+
   window.IAIPH = window.IAIPH || {};
   window.IAIPH.trackShare = trackShare;
+  window.IAIPH.trackView = trackView;
+
+  function paperFolderFromContext() {
+    var bar = $("community-bar");
+    if (bar) {
+      var folder = bar.getAttribute("data-paper-folder");
+      if (folder) return folder;
+    }
+    var m = location.pathname.match(/\/papers\/([^/]+)\/page-renders\//);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function isReadingPage() {
+    return !!paperFolderFromContext() && !($("community-bar") && $("community-bar").getAttribute("data-portal") === "true");
+  }
+
+  function viewStorageKey(folder) {
+    return "iaiph_view_v2_" + folder;
+  }
+
+  function markViewTracked(folder) {
+    try {
+      sessionStorage.setItem(viewStorageKey(folder), "1");
+    } catch (e) {}
+  }
+
+  function maybeTrackReadingView() {
+    if (!isReadingPage()) return;
+    var folder = paperFolderFromContext();
+    if (!folder) return;
+    try {
+      if (sessionStorage.getItem(viewStorageKey(folder))) return;
+    } catch (e) {}
+    trackView(folder).then(function () {
+      markViewTracked(folder);
+    });
+  }
+
+  function formatCount(value) {
+    var n = Number(value) || 0;
+    if (n < 10000) return String(n);
+    if (n < 100000000) {
+      var wan = n / 10000;
+      var wanText = wan >= 100 ? String(Math.round(wan)) : wan.toFixed(1).replace(/\.0$/, "");
+      return wanText + "万";
+    }
+    var yi = n / 100000000;
+    var yiText = yi >= 100 ? String(Math.round(yi)) : yi.toFixed(1).replace(/\.0$/, "");
+    return yiText + "亿";
+  }
+
+  function setCountNode(node, value) {
+    var n = Number(value) || 0;
+    var text = formatCount(n);
+    node.textContent = text;
+    if (text !== String(n)) node.setAttribute("title", String(n));
+    else node.removeAttribute("title");
+  }
 
   function paperHotScore(stat) {
     if (!stat) return 0;
@@ -176,7 +249,7 @@
   function fetchStats() {
     return client
       .from("paper_stats")
-      .select("paper_folder,like_count,favorite_count,share_count")
+      .select("paper_folder,view_count,like_count,favorite_count,share_count")
       .then(function (res) {
         if (res.error) throw res.error;
         statsMap = Object.create(null);
@@ -194,7 +267,7 @@
       el.querySelectorAll("[data-stat]").forEach(function (node) {
         var key = node.getAttribute("data-stat");
         var val = stat[key];
-        node.textContent = val != null ? String(val) : "0";
+        setCountNode(node, val != null ? val : 0);
       });
     });
 
@@ -422,6 +495,13 @@
       .then(function () {
         ready = true;
         setBarStatus("");
+        maybeTrackReadingView();
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "visible" && ready && client) fetchStats();
+        });
+        window.addEventListener("pageshow", function () {
+          if (ready && client) fetchStats();
+        });
       })
       .catch(function (err) {
         console.warn("[IAIPH community]", err);

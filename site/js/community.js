@@ -149,6 +149,25 @@
       .then(function () {});
   }
 
+  function trackShare(paperFolder) {
+    if (!client || !paperFolder) return Promise.resolve();
+    var row = {
+      event_name: "share",
+      paper_folder: paperFolder,
+      meta: {},
+    };
+    if (session && session.user) row.user_id = session.user.id;
+    return client.from("events").insert(row).then(function (res) {
+      if (res.error) return;
+      statsMap[paperFolder] = statsMap[paperFolder] || {};
+      statsMap[paperFolder].share_count = (statsMap[paperFolder].share_count || 0) + 1;
+      applyStatsToDom();
+    });
+  }
+
+  window.IAIPH = window.IAIPH || {};
+  window.IAIPH.trackShare = trackShare;
+
   function paperHotScore(stat) {
     if (!stat) return 0;
     return (stat.like_count || 0) + (stat.favorite_count || 0);
@@ -157,7 +176,7 @@
   function fetchStats() {
     return client
       .from("paper_stats")
-      .select("paper_folder,like_count,favorite_count")
+      .select("paper_folder,like_count,favorite_count,share_count")
       .then(function (res) {
         if (res.error) throw res.error;
         statsMap = Object.create(null);

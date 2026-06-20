@@ -138,7 +138,19 @@
     document.body.removeChild(ta);
   }
 
+  var shareSourceBtn = null;
+
+  function recordShare() {
+    if (!shareSourceBtn) return;
+    var eng = shareSourceBtn.closest(".paper-engagement[data-paper-folder]");
+    var folder = eng && eng.getAttribute("data-paper-folder");
+    if (folder && window.IAIPH && window.IAIPH.trackShare) {
+      window.IAIPH.trackShare(folder);
+    }
+  }
+
   function openModal(btn) {
+    shareSourceBtn = btn;
     current.title = btn.getAttribute("data-share-title") || "";
     current.titleEn = btn.getAttribute("data-share-title-en") || "";
     current.desc = btn.getAttribute("data-share-desc") || "";
@@ -189,12 +201,14 @@
   if (copyLinkBtn) {
     copyLinkBtn.addEventListener("click", function () {
       copyText(current.url, "译文链接已复制");
+      recordShare();
     });
   }
 
   if (copyCardBtn) {
     copyCardBtn.addEventListener("click", function () {
       copyText(cardText(), "分享卡片已复制");
+      recordShare();
     });
   }
 })();

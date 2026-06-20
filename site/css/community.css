@@ -127,9 +127,14 @@
 }
 
 /* 文献卡片右侧互动区 */
+.paper-card-tools {
+  width: 100%;
+}
+
 .paper-engagement {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: stretch;
   gap: 8px;
   width: 100%;
 }
@@ -139,11 +144,13 @@
   -webkit-appearance: none;
   font-family: var(--font-ui, sans-serif);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  width: 100%;
-  padding: 8px 10px 8px 8px;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 6px;
   border-radius: 14px;
   cursor: pointer;
   border: 1px solid rgba(13, 124, 150, 0.16);
@@ -168,8 +175,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: linear-gradient(180deg, #f3f9fc 0%, var(--paper, #f1f6fa) 100%);
   border: 1px solid rgba(13, 124, 150, 0.1);
@@ -188,14 +195,23 @@
 }
 
 .community-count {
-  min-width: 1.6em;
-  padding-right: 4px;
-  font-size: 0.95rem;
+  min-width: 1em;
+  padding-right: 0;
+  font-size: 0.78rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   line-height: 1;
   color: var(--ink-soft, #3c4b57);
-  text-align: right;
+  text-align: center;
+}
+
+.paper-share-btn.community-action:hover:not(:disabled) {
+  color: var(--accent-dark, #0a5c72);
+}
+
+.paper-share-btn.community-action:hover:not(:disabled) .community-action-icon-wrap {
+  background: var(--accent-soft, #e6f3f8);
+  border-color: rgba(13, 124, 150, 0.28);
 }
 
 /* 点赞 · 大拇指 */
@@ -322,15 +338,5 @@
   }
   .community-login-name {
     max-width: 88px;
-  }
-  .paper-engagement {
-    flex-direction: row;
-    gap: 10px;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-  .community-action {
-    flex: 1;
-    min-width: 0;
   }
 }

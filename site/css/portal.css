@@ -1210,54 +1210,7 @@ button.footer-social-link {
     white-space: nowrap;
 }
 
-/* ════════ PAPER SHARE ════════ */
-.paper-share-btn {
-    appearance: none;
-    -webkit-appearance: none;
-    font-family: var(--font-ui);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-    padding: 8px 12px;
-    margin-top: 2px;
-    font-size: 0.76rem;
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--ink-muted);
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px dashed rgba(13, 124, 150, 0.22);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s var(--ease), border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
-}
-
-.paper-share-btn:hover {
-    color: var(--accent-dark);
-    background: #fff;
-    border-color: rgba(13, 124, 150, 0.35);
-    border-style: solid;
-    box-shadow: 0 3px 12px rgba(13, 124, 150, 0.1);
-    transform: translateY(-1px);
-}
-
-.paper-share-icon {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-}
-
-.paper-card--featured .paper-share-btn {
-    border-color: rgba(196, 30, 58, 0.2);
-}
-
-.paper-card--featured .paper-share-btn:hover {
-    color: var(--featured-dark);
-    border-color: rgba(196, 30, 58, 0.35);
-    box-shadow: 0 3px 12px rgba(196, 30, 58, 0.1);
-}
-
+/* ════════ PAPER SHARE (modal only; card buttons use community-action) ════════ */
 .share-modal[hidden] {
     display: none;
 }

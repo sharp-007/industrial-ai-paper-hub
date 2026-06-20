@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录中… · Industrial AI Paper Hub</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <style>
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f1f6fa;
+      color: #0f2230;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .panel {
+      text-align: center;
+      padding: 32px 28px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #d1e2ec;
+      box-shadow: 0 12px 32px -8px rgba(15, 34, 48, 0.14);
+      max-width: 360px;
+    }
+    .panel p { margin: 0; line-height: 1.6; font-size: 0.95rem; }
+    .panel .err { color: #b91c1c; margin-top: 12px; font-size: 0.85rem; }
+    a { color: #0a6885; }
+  </style>
+  <script src="../js/community-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+  <div class="panel">
+    <p id="status">正在完成 GitHub 登录…</p>
+    <p class="err" id="error" hidden></p>
+  </div>
+  <script>
+(function () {
+  var cfg = window.IAIPH_COMMUNITY || {};
+  var statusEl = document.getElementById("status");
+  var errorEl = document.getElementById("error");
+
+  function showError(msg) {
+    statusEl.textContent = "登录未完成";
+    errorEl.hidden = false;
+    errorEl.textContent = msg;
+  }
+
+  if (!cfg.enabled || !cfg.supabaseUrl || !cfg.supabaseAnonKey) {
+    showError("社区功能未配置 Supabase。");
+    return;
+  }
+  if (!window.supabase) {
+    showError("无法加载 Supabase SDK。");
+    return;
+  }
+
+  var client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+  var returnTo = "";
+  try {
+    returnTo = sessionStorage.getItem("iaiph_auth_return") || "";
+  } catch (e) {}
+
+  client.auth.getSession().then(function (res) {
+    if (res.data && res.data.session) {
+      window.location.replace(returnTo || "../index.html");
+      return;
+    }
+    return client.auth.exchangeCodeForSession(window.location.href);
+  }).then(function (res) {
+    if (!res) return;
+    if (res.error) {
+      showError(res.error.message);
+      return;
+    }
+    statusEl.textContent = "登录成功，正在跳转…";
+    window.location.replace(returnTo || "../index.html");
+  }).catch(function (err) {
+    showError(err && err.message ? err.message : String(err));
+  });
+})();
+  </script>
+</body>
+</html>

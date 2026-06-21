@@ -38,6 +38,16 @@
     }, 2800);
   }
 
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function normalizeEmail(email) {
+    return String(email || "")
+      .trim()
+      .toLowerCase();
+  }
+
   function siteBasePath() {
     if (
       cfg.githubPagesBase &&
@@ -108,12 +118,49 @@
     el.classList.toggle("is-error", !!isError);
   }
 
+  function setLoginModalMsg(text, isError) {
+    var el = $("community-login-modal-msg");
+    if (!el) return;
+    el.textContent = text || "";
+    el.hidden = !text;
+    el.classList.toggle("is-error", !!isError);
+  }
+
+  function setSubscribeMsg(text, isError) {
+    var el = $("email-subscribe-msg");
+    if (!el) return;
+    el.textContent = text || "";
+    el.hidden = !text;
+    el.classList.toggle("is-error", !!isError);
+  }
+
+  function openLoginModal() {
+    var modal = $("community-login-modal");
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    setLoginModalMsg("");
+    var input = $("community-login-email-input");
+    if (input) {
+      if (session && session.user && session.user.email) input.value = session.user.email;
+      input.focus();
+    }
+  }
+
+  function closeLoginModal() {
+    var modal = $("community-login-modal");
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+    setLoginModalMsg("");
+  }
+
   function setLoggedIn(user) {
-    var loginBtn = $("community-login");
+    var loginActions = $("community-login-actions");
     var userBox = $("community-user");
     var avatar = $("community-avatar");
     var nameEl = $("community-login-name");
-    if (loginBtn) loginBtn.hidden = true;
+    if (loginActions) loginActions.hidden = true;
     if (userBox) userBox.hidden = false;
     var meta = user.user_metadata || {};
     var name = meta.user_name || meta.full_name || user.email || "用户";
@@ -123,15 +170,49 @@
       avatar.hidden = !meta.avatar_url;
     }
     setBarStatus("");
+    closeLoginModal();
+    prefillSubscribeEmail(user.email);
+    linkEmailSubscription(user);
   }
 
   function setLoggedOut() {
-    var loginBtn = $("community-login");
+    var loginActions = $("community-login-actions");
     var userBox = $("community-user");
-    if (loginBtn) loginBtn.hidden = false;
+    if (loginActions) loginActions.hidden = false;
     if (userBox) userBox.hidden = true;
     userReactions = Object.create(null);
     updateReactionButtons();
+  }
+
+  function prefillSubscribeEmail(email) {
+    var input = $("email-subscribe-input");
+    if (input && email && !input.value) input.value = email;
+  }
+
+  function linkEmailSubscription(user) {
+    if (!client || !user || !user.email) return;
+    client
+      .from("email_subscriptions")
+      .update({ user_id: user.id, active: true })
+      .eq("email", normalizeEmail(user.email))
+      .then(function () {});
+  }
+
+  function subscribeEmail(rawEmail) {
+    if (!client) return Promise.reject(new Error("社区服务未就绪"));
+    var email = normalizeEmail(rawEmail);
+    if (!isValidEmail(email)) return Promise.reject(new Error("请输入有效邮箱"));
+    var row = { email: email, source: "portal", active: true };
+    if (session && session.user) row.user_id = session.user.id;
+    return client.from("email_subscriptions").insert(row).then(function (res) {
+      if (!res.error) return;
+      var code = res.error.code || "";
+      var msg = res.error.message || "";
+      if (code === "23505" || /duplicate|unique/i.test(msg)) {
+        throw new Error("该邮箱已订阅，感谢关注");
+      }
+      throw res.error;
+    });
   }
 
   function trackEvent(name, meta) {
@@ -309,13 +390,13 @@
   }
 
   function promptLogin() {
-    toast("请先点击上方 GitHub 登录");
-    var loginBtn = $("community-login");
-    if (loginBtn) {
-      loginBtn.focus();
-      loginBtn.classList.add("community-btn--pulse");
+    toast("请先登录（GitHub 或邮箱）");
+    openLoginModal();
+    var btn = $("community-login-open");
+    if (btn) {
+      btn.classList.add("community-btn--pulse");
       setTimeout(function () {
-        loginBtn.classList.remove("community-btn--pulse");
+        btn.classList.remove("community-btn--pulse");
       }, 1200);
     }
   }
@@ -390,30 +471,124 @@
     });
   }
 
-  function bindUi() {
-    var loginBtn = $("community-login");
-    var logoutBtn = $("community-logout");
-    var sortBtn = $("community-sort-hot");
+  function signInWithGithub() {
+    if (!client) {
+      toast("正在连接 Supabase…");
+      return;
+    }
+    try {
+      sessionStorage.setItem(STORAGE_RETURN, location.href);
+    } catch (e) {}
+    client.auth
+      .signInWithOAuth({
+        provider: "github",
+        options: { redirectTo: authCallbackUrl() },
+      })
+      .then(function (res) {
+        if (res.error) setLoginModalMsg(res.error.message, true);
+      });
+  }
 
-    if (loginBtn) {
-      loginBtn.addEventListener("click", function () {
-        if (!client) {
-          toast("正在连接 Supabase…");
-          return;
-        }
-        try {
-          sessionStorage.setItem(STORAGE_RETURN, location.href);
-        } catch (e) {}
-        client.auth
-          .signInWithOAuth({
-            provider: "github",
-            options: { redirectTo: authCallbackUrl() },
+  function signInWithEmail(rawEmail) {
+    if (!client) return Promise.reject(new Error("社区服务未就绪"));
+    var email = normalizeEmail(rawEmail);
+    if (!isValidEmail(email)) return Promise.reject(new Error("请输入有效邮箱"));
+    try {
+      sessionStorage.setItem(STORAGE_RETURN, location.href);
+    } catch (e) {}
+    return client.auth
+      .signInWithOtp({
+        email: email,
+        options: { emailRedirectTo: authCallbackUrl() },
+      })
+      .then(function (res) {
+        if (res.error) throw res.error;
+      });
+  }
+
+  function bindLoginModal() {
+    var openBtn = $("community-login-open");
+    var modal = $("community-login-modal");
+    var githubBtn = $("community-login-github");
+    var emailForm = $("community-login-email-form");
+
+    if (openBtn) {
+      openBtn.addEventListener("click", openLoginModal);
+    }
+
+    if (modal) {
+      modal.querySelectorAll("[data-login-close]").forEach(function (el) {
+        el.addEventListener("click", closeLoginModal);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal && !modal.hidden) closeLoginModal();
+      });
+    }
+
+    if (githubBtn) {
+      githubBtn.addEventListener("click", signInWithGithub);
+    }
+
+    if (emailForm) {
+      emailForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var input = $("community-login-email-input");
+        var submitBtn = $("community-login-email-submit");
+        if (!input || !submitBtn) return;
+        submitBtn.disabled = true;
+        signInWithEmail(input.value)
+          .then(function () {
+            setLoginModalMsg("登录链接已发送，请查收邮件并点击链接完成登录。", false);
+            toast("请查收邮件中的登录链接");
           })
-          .then(function (res) {
-            if (res.error) toast(res.error.message);
+          .catch(function (err) {
+            var msg = (err && err.message) || "发送失败，请稍后重试";
+            setLoginModalMsg(msg, true);
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
           });
       });
     }
+  }
+
+  function bindSubscribeForm() {
+    var form = $("email-subscribe-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = $("email-subscribe-input");
+      var btn = $("email-subscribe-btn");
+      if (!input || !btn) return;
+      btn.disabled = true;
+      setSubscribeMsg("");
+      subscribeEmail(input.value)
+        .then(function () {
+          setSubscribeMsg("订阅成功！新文献上线时我们会邮件通知您。", false);
+          toast("订阅成功");
+          if (client) {
+            var row = { event_name: "subscribe", meta: { email: normalizeEmail(input.value) } };
+            if (session && session.user) row.user_id = session.user.id;
+            client.from("events").insert(row);
+          }
+        })
+        .catch(function (err) {
+          var msg = (err && err.message) || "订阅失败，请稍后重试";
+          setSubscribeMsg(msg, /已订阅/.test(msg) ? false : true);
+          if (/已订阅/.test(msg)) toast(msg);
+        })
+        .finally(function () {
+          btn.disabled = false;
+        });
+    });
+  }
+
+  function bindUi() {
+    var logoutBtn = $("community-logout");
+    var sortBtn = $("community-sort-hot");
+
+    bindLoginModal();
+    bindSubscribeForm();
 
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {

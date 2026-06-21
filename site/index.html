@@ -21,7 +21,9 @@
     <div class="community-bar" id="community-bar" data-portal="true">
   <div class="community-bar-inner">
     <span class="community-bar-status" id="community-bar-status" hidden></span>
-    <button type="button" class="community-btn community-btn--primary" id="community-login"><svg class="community-github-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg><span>GitHub 登录</span></button>
+    <div class="community-login-actions" id="community-login-actions">
+      <button type="button" class="community-btn community-btn--primary" id="community-login-open">登录</button>
+    </div>
     <div class="community-user" id="community-user" hidden>
       <img class="community-avatar" id="community-avatar" alt="" width="28" height="28">
       <span class="community-login-name" id="community-login-name"></span>
@@ -204,6 +206,21 @@
         </div>
     </main>
 
+    <section class="email-subscribe" id="email-subscribe" aria-labelledby="email-subscribe-title">
+  <div class="container email-subscribe-inner">
+    <div class="email-subscribe-copy">
+      <h2 class="email-subscribe-title" id="email-subscribe-title">订阅更新</h2>
+      <p class="email-subscribe-desc">新文献上线时，我们会通过邮件通知您。无需登录即可订阅。</p>
+    </div>
+    <form class="email-subscribe-form" id="email-subscribe-form" novalidate>
+      <label class="visually-hidden" for="email-subscribe-input">邮箱</label>
+      <input type="email" class="email-subscribe-input" id="email-subscribe-input" name="email" placeholder="your@email.com" autocomplete="email" required>
+      <button type="submit" class="community-btn community-btn--primary" id="email-subscribe-btn">订阅</button>
+    </form>
+    <p class="email-subscribe-msg" id="email-subscribe-msg" hidden role="status"></p>
+  </div>
+</section>
+
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand-row">
@@ -214,6 +231,22 @@
             
         </div>
     </footer>
+    <div class="community-login-modal" id="community-login-modal" hidden role="dialog" aria-modal="true" aria-labelledby="community-login-modal-title">
+  <div class="community-login-modal-backdrop" data-login-close="true"></div>
+  <div class="community-login-modal-panel">
+    <button type="button" class="community-login-modal-close" data-login-close="true" aria-label="关闭">&times;</button>
+    <h2 class="community-login-modal-title" id="community-login-modal-title">登录</h2>
+    <p class="community-login-modal-desc">登录后可点赞、收藏；标亮与笔记功能即将上线。</p>
+    <button type="button" class="community-btn community-btn--github community-btn--block" id="community-login-github"><svg class="community-github-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg><span>使用 GitHub 登录</span></button>
+    <div class="community-login-divider" aria-hidden="true"><span>或</span></div>
+    <form class="community-login-email-form" id="community-login-email-form" novalidate>
+      <label class="visually-hidden" for="community-login-email-input">邮箱</label>
+      <input type="email" class="community-login-email-input" id="community-login-email-input" placeholder="your@email.com" autocomplete="email" required>
+      <button type="submit" class="community-btn community-btn--primary community-btn--block" id="community-login-email-submit">发送邮箱登录链接</button>
+    </form>
+    <p class="community-login-modal-msg" id="community-login-modal-msg" hidden role="status"></p>
+  </div>
+</div>
     <div class="wechat-modal" id="wechat-modal" hidden role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title">
     <div class="wechat-modal-backdrop" data-close="true"></div>
     <div class="wechat-modal-panel">

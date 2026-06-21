@@ -992,19 +992,9 @@ body.modal-open { overflow: hidden; }
     margin-top: auto;
     height: 40px;
     padding: 0;
-    background: linear-gradient(180deg, #eaf3f8 0%, var(--paper) 100%);
+    background: rgba(255, 255, 255, 0.97);
     border-top: 1px solid var(--hairline);
-}
-
-.site-footer::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), var(--teal), transparent);
-    opacity: 0.55;
+    box-shadow: var(--shadow-xs);
 }
 
 .footer-inner {

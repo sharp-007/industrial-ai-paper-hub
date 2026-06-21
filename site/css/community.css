@@ -311,27 +311,6 @@
   color: #b45309;
 }
 
-/* 精选文献卡片 */
-.paper-card--featured .community-action {
-  border-color: rgba(196, 30, 58, 0.14);
-  background: rgba(255, 255, 255, 0.94);
-}
-
-.paper-card--featured .community-action:hover:not(:disabled) {
-  border-color: rgba(196, 30, 58, 0.28);
-  box-shadow: 0 4px 14px rgba(196, 30, 58, 0.1);
-}
-
-.paper-card--featured .community-like[aria-pressed="true"] {
-  border-color: rgba(13, 124, 150, 0.35);
-  background: linear-gradient(180deg, #eef8fb 0%, #e6f3f8 100%);
-}
-
-.paper-card--featured .community-favorite[aria-pressed="true"] {
-  border-color: rgba(245, 158, 11, 0.35);
-  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
-}
-
 .paper-list.is-sorted-hot {
   display: flex;
   flex-direction: column;

@@ -14,6 +14,7 @@
   var STORAGE_UNSUBSCRIBED = "iaiph_unsubscribed_email";
   var statsMap = Object.create(null);
   var userReactions = Object.create(null);
+  var readCompletions = Object.create(null);
   var client = null;
   var session = null;
   var hotSortOn = false;
@@ -256,7 +257,9 @@
       fallback.textContent = "";
     }
     userReactions = Object.create(null);
+    readCompletions = Object.create(null);
     updateReactionButtons();
+    updateReadBadges();
     if (options.resetSubscription) {
       clearSubscribeCache();
       setSubscribeUiInactive();
@@ -744,6 +747,55 @@
     });
   }
 
+  function ensureReadStamp(card) {
+    var stamp = card.querySelector(".paper-read-stamp");
+    if (stamp) return stamp;
+    var body = card.querySelector(".paper-card-body");
+    if (!body) return null;
+    stamp = document.createElement("span");
+    stamp.className = "paper-read-stamp";
+    stamp.hidden = true;
+    stamp.setAttribute("aria-label", "已读完");
+    stamp.textContent = "已读";
+    body.appendChild(stamp);
+    return stamp;
+  }
+
+  function updateReadBadges() {
+    document.querySelectorAll(".paper-card[data-paper-folder]").forEach(function (card) {
+      var folder = card.getAttribute("data-paper-folder");
+      var stamp = ensureReadStamp(card);
+      if (!stamp) return;
+      var show = !!(session && readCompletions[folder]);
+      stamp.hidden = !show;
+      card.classList.toggle("paper-card--read", show);
+    });
+  }
+
+  function fetchReadCompletions() {
+    if (!session) {
+      readCompletions = Object.create(null);
+      updateReadBadges();
+      return Promise.resolve();
+    }
+    return client
+      .from("paper_read_completions")
+      .select("paper_folder")
+      .eq("user_id", session.user.id)
+      .then(function (res) {
+        if (res.error) throw res.error;
+        readCompletions = Object.create(null);
+        (res.data || []).forEach(function (row) {
+          readCompletions[row.paper_folder] = true;
+        });
+        updateReadBadges();
+      })
+      .catch(function () {
+        readCompletions = Object.create(null);
+        updateReadBadges();
+      });
+  }
+
   function promptLogin() {
     toast("请先登录（GitHub 或邮箱）");
     openLoginModal();
@@ -1036,7 +1088,7 @@
       } else if (!session) {
         setLoggedOut({ resetSubscription: false });
       }
-      return fetchUserReactions();
+      return Promise.all([fetchUserReactions(), fetchReadCompletions()]);
     });
   }
 
@@ -1052,6 +1104,7 @@
           if (newSession && newSession.user) {
             setLoggedIn(newSession.user);
             fetchUserReactions();
+            fetchReadCompletions();
             if (event === "SIGNED_IN") trackEvent("login", {});
           } else if (event === "SIGNED_OUT") {
             setLoggedOut({ resetSubscription: true });
@@ -1071,10 +1124,16 @@
         setBarStatus("");
         maybeTrackReadingView();
         document.addEventListener("visibilitychange", function () {
-          if (document.visibilityState === "visible" && ready && client) fetchStats();
+          if (document.visibilityState === "visible" && ready && client) {
+            fetchStats();
+            fetchReadCompletions();
+          }
         });
         window.addEventListener("pageshow", function () {
-          if (ready && client) fetchStats();
+          if (ready && client) {
+            fetchStats();
+            fetchReadCompletions();
+          }
         });
       })
       .catch(function (err) {

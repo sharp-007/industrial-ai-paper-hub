@@ -431,6 +431,17 @@
       .then(function () {});
   }
 
+  function checkSubscriptionActive(email) {
+    return client.rpc("is_email_subscribed", { p_email: normalizeEmail(email) }).then(function (res) {
+      if (res.error) {
+        var msg = (res.error.message || "") + " " + (res.error.code || "");
+        if (/is_email_subscribed|PGRST202|42883|does not exist/i.test(msg)) return false;
+        throw res.error;
+      }
+      return !!res.data;
+    });
+  }
+
   function confirmSubscriptionActive(email) {
     return client.rpc("is_email_subscribed", { p_email: normalizeEmail(email) }).then(function (res) {
       if (res.error) throw res.error;
@@ -493,15 +504,24 @@
     var payload = { p_email: email };
     if (session && session.user && session.user.id) payload.p_user_id = session.user.id;
 
-    return client.rpc("upsert_email_subscription", payload).then(function (res) {
-      if (res.error) {
-        var msg = (res.error.message || "") + " " + (res.error.code || "");
-        if (/upsert_email_subscription|PGRST202|42883|does not exist/i.test(msg)) {
-          throw new Error("请先在 Supabase SQL Editor 执行 migrate_subscribe_rpc.sql");
+    function finishSubscribe(alreadySubscribed) {
+      return confirmSubscriptionActive(email).then(function () {
+        return { email: email, alreadySubscribed: !!alreadySubscribed };
+      });
+    }
+
+    return checkSubscriptionActive(email).then(function (already) {
+      if (already) return finishSubscribe(true);
+      return client.rpc("upsert_email_subscription", payload).then(function (res) {
+        if (res.error) {
+          var msg = (res.error.message || "") + " " + (res.error.code || "");
+          if (/upsert_email_subscription|PGRST202|42883|does not exist/i.test(msg)) {
+            throw new Error("请先在 Supabase SQL Editor 执行 migrate_subscribe_rpc.sql");
+          }
+          throw res.error;
         }
-        throw res.error;
-      }
-      return confirmSubscriptionActive(email);
+        return finishSubscribe(false);
+      });
     });
   }
 
@@ -898,13 +918,14 @@
       btn.disabled = true;
       setSubscribeMsg("");
       subscribeEmail(input.value)
-        .then(function () {
-          var email = normalizeEmail(input.value);
+        .then(function (result) {
+          var email = (result && result.email) || normalizeEmail(input.value);
+          var already = result && result.alreadySubscribed;
           subscribedEmailCache = email;
           clearUnsubscribed(email);
           setSubscribeUiActive(email);
-          toast("订阅成功");
-          trackSubscribeEvent("subscribe", email);
+          toast(already ? "该邮箱已订阅，无需重复操作" : "订阅成功");
+          if (!already) trackSubscribeEvent("subscribe", email);
           scheduleSubscriptionRefresh();
         })
         .catch(function (err) {

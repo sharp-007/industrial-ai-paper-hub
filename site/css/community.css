@@ -95,7 +95,7 @@
   transform: translateY(-1px);
 }
 
-.community-btn--primary .community-github-mark {
+.community-github-mark {
   width: 16px;
   height: 16px;
   fill: currentColor;

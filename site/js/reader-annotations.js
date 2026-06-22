@@ -8,7 +8,7 @@
   if (!pathMatch) return;
 
   var PAPER_FOLDER = decodeURIComponent(pathMatch[1]);
-  var SECTION_FILE = decodeURIComponent(pathMatch[2].split("?")[0] || "index.html");
+  var SECTION_FILE = normalizeSectionFile(pathMatch[2].split("?")[0] || "index.html");
   var UNDERLINE_COLOR = "underline";
   var COLORS = ["yellow", "green", "blue", "pink"];
   var SUPABASE_CDNS = [
@@ -37,6 +37,108 @@
 
   function $(id) {
     return document.getElementById(id);
+  }
+
+  function normalizeSectionFile(path) {
+    if (!path) return "";
+    var value = decodeURIComponent(String(path)).split("?")[0].replace(/\\/g, "/").replace(/^\/+/, "");
+    var match = value.match(/page-renders\/(.+)$/i);
+    if (match) value = match[1];
+    value = value.replace(/^(\.\/)+/, "");
+    return value || "";
+  }
+
+  function sectionBasename(path) {
+    var normalized = normalizeSectionFile(path);
+    if (!normalized) return "";
+    var parts = normalized.split("/");
+    return parts[parts.length - 1] || normalized;
+  }
+
+  function sectionFileMatches(stored, current) {
+    if (!stored || !current) return false;
+    var a = normalizeSectionFile(stored);
+    var b = normalizeSectionFile(current);
+    if (!a || !b) return false;
+    if (a === b) return true;
+    if (a.replace(/^sections\//, "") === b.replace(/^sections\//, "")) return true;
+    if (sectionBasename(a) === sectionBasename(b)) return true;
+    return false;
+  }
+
+  function highlightById(rows, id) {
+    if (!id || !rows) return null;
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].id === id) return rows[i];
+    }
+    return null;
+  }
+
+  function partitionAnnotations(allHighlights, allNotes) {
+    var sectionHighlights = [];
+    var sectionNotes = [];
+    var highlightIds = {};
+    var i;
+
+    for (i = 0; i < (allHighlights || []).length; i++) {
+      var h = allHighlights[i];
+      if (sectionFileMatches(h.section_file, SECTION_FILE)) {
+        sectionHighlights.push(h);
+        highlightIds[h.id] = true;
+      }
+    }
+
+    for (i = 0; i < (allNotes || []).length; i++) {
+      var n = allNotes[i];
+      if (sectionFileMatches(n.section_file, SECTION_FILE)) {
+        sectionNotes.push(n);
+        continue;
+      }
+      if (n.highlight_id) {
+        var linked = highlightById(allHighlights, n.highlight_id);
+        if (linked && sectionFileMatches(linked.section_file, SECTION_FILE)) {
+          sectionNotes.push(n);
+        }
+      }
+    }
+
+    for (i = 0; i < sectionNotes.length; i++) {
+      var note = sectionNotes[i];
+      if (note.highlight_id && !highlightIds[note.highlight_id]) {
+        var hl = highlightById(allHighlights, note.highlight_id);
+        if (hl) {
+          sectionHighlights.push(hl);
+          highlightIds[hl.id] = true;
+        }
+      }
+    }
+
+    return { highlights: sectionHighlights, notes: sectionNotes };
+  }
+
+  function findQuoteOffsets(quote, hintStart) {
+    if (!quote || !articleEl) return null;
+    var text = articleEl.textContent;
+    var hint = Math.max(0, (hintStart || 0) - 300);
+    var candidates = [quote, quote.replace(/\s+/g, " ").trim()];
+    var i;
+    for (i = 0; i < candidates.length; i++) {
+      var q = candidates[i];
+      if (!q || q.length < 2) continue;
+      var idx = text.indexOf(q, hint);
+      if (idx < 0) idx = text.indexOf(q);
+      if (idx >= 0) return { start: idx, end: idx + q.length };
+    }
+    if (quote.length > 10) {
+      var head = quote.slice(0, Math.min(28, quote.length));
+      var headIdx = text.indexOf(head, hint);
+      if (headIdx < 0) headIdx = text.indexOf(head);
+      if (headIdx >= 0) {
+        var end = headIdx + quote.length;
+        if (end <= text.length) return { start: headIdx, end: end };
+      }
+    }
+    return null;
   }
 
   function toast(msg) {
@@ -502,14 +604,14 @@
     var text = container.textContent;
     if (start >= 0 && end > start && end <= text.length) {
       var slice = text.substring(start, end);
-      if (!quote || slice.replace(/\s+/g, " ").trim() === quote) {
+      if (!quote || slice.replace(/\s+/g, " ").trim() === quote.replace(/\s+/g, " ").trim()) {
         return { start: start, end: end };
       }
     }
-    if (!quote) return null;
-    var idx = text.indexOf(quote, Math.max(0, start - 200));
-    if (idx < 0) idx = text.indexOf(quote);
-    if (idx >= 0) return { start: idx, end: idx + quote.length };
+    if (quote) {
+      var found = findQuoteOffsets(quote, start);
+      if (found) return found;
+    }
     return null;
   }
 
@@ -519,6 +621,9 @@
     var range = liveRange;
     if (!range || range.collapsed) {
       var offsets = resolveOffsets(articleEl, record.start_offset, record.end_offset, record.quote);
+      if (!offsets && record.quote) {
+        offsets = findQuoteOffsets(record.quote, record.start_offset);
+      }
       if (!offsets) return false;
       range = rangeFromOffsets(articleEl, offsets.start, offsets.end);
     }
@@ -551,14 +656,25 @@
     articleEl.querySelectorAll("p.iaiph-has-annotation").forEach(function (p) {
       p.classList.remove("iaiph-has-annotation");
     });
+    var failed = 0;
     highlights
       .slice()
       .sort(function (a, b) {
         return (b.start_offset || 0) - (a.start_offset || 0);
       })
       .forEach(function (h) {
-        applyHighlightRecord(h);
+        if (!applyHighlightRecord(h)) failed++;
       });
+    if (failed > 0 && highlights.length) {
+      console.warn(
+        "[IAIPH reader-annotations] " +
+          failed +
+          "/" +
+          highlights.length +
+          " 条标亮未能渲染（正文可能已更新），章节=" +
+          SECTION_FILE
+      );
+    }
     refreshParagraphAnnotationClasses();
   }
 
@@ -634,20 +750,21 @@
         .select("*")
         .eq("user_id", session.user.id)
         .eq("paper_folder", PAPER_FOLDER)
-        .eq("section_file", SECTION_FILE)
         .order("created_at", { ascending: true }),
       client
         .from("notes")
         .select("*")
         .eq("user_id", session.user.id)
         .eq("paper_folder", PAPER_FOLDER)
-        .eq("section_file", SECTION_FILE)
         .order("updated_at", { ascending: false }),
     ]).then(function (results) {
       if (results[0].error) throw results[0].error;
       if (results[1].error) throw results[1].error;
-      highlights = results[0].data || [];
-      notes = results[1].data || [];
+      var allHighlights = results[0].data || [];
+      var allNotes = results[1].data || [];
+      var partitioned = partitionAnnotations(allHighlights, allNotes);
+      highlights = partitioned.highlights;
+      notes = partitioned.notes;
       renderAllAnnotations();
       renderNotesList();
     });
@@ -849,13 +966,82 @@
     noteEditorContext = null;
   }
 
+  function getScrollContainer() {
+    if (!articleEl) return null;
+    return articleEl.closest(".content");
+  }
+
+  function flashAnnotationJump(highlightId) {
+    if (!highlightId) return;
+    getAnnotationElements(highlightId).forEach(function (el) {
+      el.classList.remove("is-jump-target");
+      void el.offsetWidth;
+      el.classList.add("is-jump-target");
+      setTimeout(function () {
+        el.classList.remove("is-jump-target");
+      }, 1400);
+    });
+  }
+
+  function scrollToHighlight(highlightId, noteId) {
+    if (!highlightId || !articleEl) return false;
+
+    var elements = getAnnotationElements(highlightId);
+    if (!elements.length) {
+      var record = findHighlight(highlightId);
+      if (record) {
+        applyHighlightRecord(record);
+        elements = getAnnotationElements(highlightId);
+      }
+    }
+    if (!elements.length) {
+      toast("无法定位到正文位置");
+      return false;
+    }
+
+    hideToolbar();
+    hideAllPopovers();
+    window.getSelection().removeAllRanges();
+    clearActiveAnnotations();
+    setAnnotationGroupActive(highlightId, true);
+    if (noteId) focusNoteInPanel(noteId);
+
+    var target = elements[0];
+    var container = getScrollContainer();
+    var topOffset = 72;
+
+    if (container) {
+      var containerRect = container.getBoundingClientRect();
+      var targetRect = target.getBoundingClientRect();
+      var nextTop = targetRect.top - containerRect.top + container.scrollTop - topOffset;
+      container.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+    } else {
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+
+    flashAnnotationJump(highlightId);
+    return true;
+  }
+
+  function scrollToNoteAnchor(note) {
+    if (!note || !note.highlight_id) {
+      toast("该笔记未关联正文位置");
+      return;
+    }
+    scrollToHighlight(note.highlight_id, note.id);
+  }
+
   function renderNotesList() {
     if (!notesListEl) return;
     notesListEl.innerHTML = "";
     if (!notes.length) {
       var empty = document.createElement("p");
       empty.className = "iaiph-notes-empty";
-      empty.textContent = session ? "本章暂无笔记，选中文字后可添加。" : "登录后可在此查看本章笔记。";
+      if (!session) {
+        empty.textContent = "登录后可在此查看本章笔记。";
+      } else {
+        empty.textContent = "本章暂无笔记，选中文字后可添加。";
+      }
       notesListEl.appendChild(empty);
       return;
     }
@@ -863,7 +1049,15 @@
     notes.forEach(function (note) {
       var card = document.createElement("article");
       card.className = "iaiph-note-card";
+      if (note.highlight_id) card.classList.add("iaiph-note-card--linked");
       card.setAttribute("data-note-id", note.id);
+      if (note.highlight_id) {
+        card.setAttribute("title", "点击跳转到正文");
+        card.addEventListener("click", function (e) {
+          if (e.target.closest(".iaiph-note-actions")) return;
+          scrollToNoteAnchor(note);
+        });
+      }
 
       var hl = note.highlight_id ? findHighlight(note.highlight_id) : null;
       if (hl && hl.quote) {
@@ -892,7 +1086,8 @@
       var editBtn = document.createElement("button");
       editBtn.type = "button";
       editBtn.textContent = "编辑";
-      editBtn.addEventListener("click", function () {
+      editBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
         if (!requireSession()) return;
         openNoteEditor({
           noteId: note.id,
@@ -906,7 +1101,8 @@
       delBtn.type = "button";
       delBtn.className = "iaiph-note-delete";
       delBtn.textContent = "删除";
-      delBtn.addEventListener("click", function () {
+      delBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
         if (!requireSession()) return;
         deleteNote(note.id).catch(function (err) {
           toast((err && err.message) || "删除失败");
@@ -1361,11 +1557,11 @@
       .then(function (res) {
         if (res.error) throw res.error;
         session = res.data.session;
-        ready = true;
         if (session && session.user) return fetchAnnotations();
       })
       .catch(function (err) {
         console.warn("[IAIPH reader-annotations]", err);
+        if (session) toast("笔记与标亮加载失败，请确认已登录并刷新页面");
       });
   }
 

@@ -270,6 +270,30 @@ span.iaiph-ul.is-active {
   background: #f5f9fd;
 }
 
+.iaiph-note-card--linked {
+  cursor: pointer;
+}
+
+.iaiph-note-card--linked:hover {
+  border-color: #b0c9d8;
+  background: #f8fbfd;
+}
+
+span.iaiph-ul.is-jump-target,
+mark.iaiph-hl.is-jump-target {
+  animation: iaiph-jump-flash 1.4s ease;
+}
+
+@keyframes iaiph-jump-flash {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+  35% {
+    box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.35);
+  }
+}
+
 .iaiph-note-quote {
   margin: 0 0 8px;
   font-size: 0.76rem;

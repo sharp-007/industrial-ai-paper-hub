@@ -18,14 +18,17 @@
     <script src="js/community.js" defer></script>
 </head>
 <body>
-    <div class="community-bar" id="community-bar" data-portal="true">
+    <div class="community-bar community-bar--logged-out" id="community-bar" data-portal="true">
   <div class="community-bar-inner">
     <span class="community-bar-status" id="community-bar-status" hidden></span>
     <div class="community-login-actions" id="community-login-actions">
       <button type="button" class="community-btn community-btn--primary" id="community-login-open">登录</button>
     </div>
     <div class="community-user" id="community-user" hidden>
-      <img class="community-avatar" id="community-avatar" alt="" width="28" height="28">
+      <span class="community-avatar-slot" id="community-avatar-slot">
+        <img class="community-avatar" id="community-avatar" alt="" width="28" height="28" hidden>
+        <span class="community-avatar-fallback" id="community-avatar-fallback" hidden aria-hidden="true"></span>
+      </span>
       <span class="community-login-name" id="community-login-name"></span>
       <button type="button" class="community-btn community-btn--ghost" id="community-logout">退出</button>
     </div>

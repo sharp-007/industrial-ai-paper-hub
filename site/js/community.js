@@ -155,20 +155,82 @@
     setLoginModalMsg("");
   }
 
-  function setLoggedIn(user) {
+  function userDisplayName(user) {
+    var meta = (user && user.user_metadata) || {};
+    return meta.user_name || meta.full_name || meta.name || meta.preferred_username || (user && user.email) || "用户";
+  }
+
+  function userAvatarUrl(user) {
+    var meta = (user && user.user_metadata) || {};
+    if (meta.avatar_url) return meta.avatar_url;
+    if (meta.picture) return meta.picture;
+    var identities = (user && user.identities) || [];
+    for (var i = 0; i < identities.length; i++) {
+      var data = identities[i].identity_data || {};
+      if (data.avatar_url) return data.avatar_url;
+      if (data.picture) return data.picture;
+    }
+    return "";
+  }
+
+  function userInitials(name) {
+    var text = String(name || "用户").trim();
+    if (!text) return "U";
+    if (text.indexOf("@") > 0) return text.charAt(0).toUpperCase();
+    return text.charAt(0).toUpperCase();
+  }
+
+  function showAvatarFallback(name) {
+    var avatar = $("community-avatar");
+    var fallback = $("community-avatar-fallback");
+    if (avatar) {
+      avatar.hidden = true;
+      avatar.removeAttribute("src");
+      avatar.onerror = null;
+    }
+    if (fallback) {
+      fallback.textContent = userInitials(name);
+      fallback.hidden = false;
+    }
+  }
+
+  function updateUserAvatar(user, name) {
+    var avatar = $("community-avatar");
+    var fallback = $("community-avatar-fallback");
+    var url = userAvatarUrl(user);
+    if (!avatar && !fallback) return;
+    if (url && avatar) {
+      avatar.onerror = function () {
+        avatar.onerror = null;
+        showAvatarFallback(name);
+      };
+      avatar.hidden = false;
+      avatar.alt = name;
+      avatar.src = url;
+      if (fallback) fallback.hidden = true;
+      return;
+    }
+    showAvatarFallback(name);
+  }
+
+  function syncAuthBarState(loggedIn) {
+    var bar = $("community-bar");
     var loginActions = $("community-login-actions");
     var userBox = $("community-user");
-    var avatar = $("community-avatar");
-    var nameEl = $("community-login-name");
-    if (loginActions) loginActions.hidden = true;
-    if (userBox) userBox.hidden = false;
-    var meta = user.user_metadata || {};
-    var name = meta.user_name || meta.full_name || user.email || "用户";
-    if (nameEl) nameEl.textContent = name;
-    if (avatar) {
-      avatar.src = meta.avatar_url || "";
-      avatar.hidden = !meta.avatar_url;
+    if (bar) {
+      bar.classList.toggle("community-bar--logged-in", !!loggedIn);
+      bar.classList.toggle("community-bar--logged-out", !loggedIn);
     }
+    if (loginActions) loginActions.hidden = !!loggedIn;
+    if (userBox) userBox.hidden = !loggedIn;
+  }
+
+  function setLoggedIn(user) {
+    var nameEl = $("community-login-name");
+    var name = userDisplayName(user);
+    syncAuthBarState(true);
+    if (nameEl) nameEl.textContent = name;
+    updateUserAvatar(user, name);
     setBarStatus("");
     closeLoginModal();
     prefillSubscribeEmail(user.email);
@@ -176,10 +238,18 @@
   }
 
   function setLoggedOut() {
-    var loginActions = $("community-login-actions");
-    var userBox = $("community-user");
-    if (loginActions) loginActions.hidden = false;
-    if (userBox) userBox.hidden = true;
+    var avatar = $("community-avatar");
+    var fallback = $("community-avatar-fallback");
+    syncAuthBarState(false);
+    if (avatar) {
+      avatar.hidden = true;
+      avatar.removeAttribute("src");
+      avatar.onerror = null;
+    }
+    if (fallback) {
+      fallback.hidden = true;
+      fallback.textContent = "";
+    }
     userReactions = Object.create(null);
     updateReactionButtons();
   }

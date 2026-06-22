@@ -81,7 +81,27 @@
     return "/";
   }
 
+  function escapeAttr(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;");
+  }
+
   function paperShareMeta() {
+    var fromRegistry =
+      window.IAIPH_PAPER_SHARE && window.IAIPH_PAPER_SHARE[PAPER_FOLDER];
+    if (fromRegistry) {
+      return {
+        title: fromRegistry.title || "",
+        titleEn: fromRegistry.titleEn || "",
+        desc: fromRegistry.desc || "",
+        path: fromRegistry.path || "",
+        url: fromRegistry.url || "",
+        originalUrl: fromRegistry.originalUrl || "",
+      };
+    }
+
     var header = document.querySelector(".sidebar-header");
     var titleEl = header && header.querySelector(".sidebar-title-link");
     var subtitleEl = header && header.querySelector(".subtitle");
@@ -92,7 +112,7 @@
       .replace(/^https?:\/\//, "")
       .replace(/\/$/, "");
     var url = host ? "https://" + host + "/" + relPath : location.origin + siteBasePath() + relPath;
-    return { title: title, titleEn: titleEn, desc: "", path: relPath, url: url };
+    return { title: title, titleEn: titleEn, desc: "", path: relPath, url: url, originalUrl: "" };
   }
 
   function promptLogin() {
@@ -217,18 +237,24 @@
       engagementButton("favorite", "收藏", ICON_FAV_OUTLINE + ICON_FAV_FILLED) +
       '<button type="button" class="community-action paper-share-btn" aria-label="分享"' +
       ' data-share-title="' +
-      meta.title.replace(/"/g, "&quot;") +
+      escapeAttr(meta.title) +
       '"' +
       ' data-share-title-en="' +
-      meta.titleEn.replace(/"/g, "&quot;") +
+      escapeAttr(meta.titleEn) +
       '"' +
-      ' data-share-desc=""' +
+      ' data-share-desc="' +
+      escapeAttr(meta.desc) +
+      '"' +
       ' data-share-path="' +
-      meta.path +
+      escapeAttr(meta.path) +
       '"' +
       ' data-share-url="' +
-      meta.url +
-      '">' +
+      escapeAttr(meta.url) +
+      '"' +
+      (meta.originalUrl
+        ? ' data-share-original-url="' + escapeAttr(meta.originalUrl) + '"'
+        : "") +
+      '>' +
       '<span class="community-action-icon-wrap" aria-hidden="true">' +
       ICON_SHARE +
       "</span>" +

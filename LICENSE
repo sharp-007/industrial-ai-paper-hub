@@ -1,0 +1,65 @@
+Industrial AI Paper Hub — 非商业使用许可
+Non-Commercial License
+
+Copyright (c) 2025–2026 sharp-007. All rights reserved.
+版权所有 © 2025–2026 sharp-007。保留一切权利。
+
+================================================================================
+
+一、权利归属
+
+本仓库全部内容（包括但不限于网站代码、样式与脚本、构建工作流、文档，
+以及各文献之中文译文与排版）之著作权均归属于版权所有人。
+
+除本许可明示授予之有限权利外，未以任何方式授予其他权利。
+
+二、允许的使用（仅限非商业）
+
+在不违反本许可及原文版权要求的前提下，您可为个人学习、研究及
+非商业性质之参考而：
+
+  • 在线阅读或本地浏览本站内容；
+  • Fork 本仓库用于个人学习（不得用于商业目的）；
+  • 注明出处后分享本站链接或引用有限摘录。
+
+上述使用须保留本版权声明，并注明来源：
+Industrial AI Paper Hub · https://www.papers.hitai.space
+
+三、禁止的行为
+
+未经版权所有人事先书面许可，不得：
+
+  • 将本仓库或其中任何部分用于任何商业目的；
+  • 出售、收费订阅、广告变现或以其他方式直接或间接营利；
+  • 将译文、编译产物或站点内容作为商业产品、服务、培训、数据集等
+    的一部分提供；
+  • 去除、隐匿或篡改版权声明与出处说明；
+  • 暗示版权所有人或本项目对您的商业用途予以背书或授权。
+
+四、原文与第三方内容
+
+各文献中文翻译所依据之原文，其著作权分别归属于原作者及 arXiv、
+期刊等出版方。本站翻译仅供学习参考；引用或转载时须同时遵守原文
+之许可、引用规范及学术惯例。
+
+五、免责声明
+
+本内容按「现状（AS IS）」提供，不提供任何明示或默示之保证。
+版权所有人不对因使用本内容而产生的任何损失承担责任。
+
+六、商业授权
+
+如需商业使用、批量转载、白标部署或其他超出本许可之用途，
+请通过本仓库 README 中的联系方式与版权所有人洽询书面授权。
+
+================================================================================
+
+English Summary (not a separate license; the Chinese terms above prevail
+for interpretation by the copyright holder):
+
+You may use this project for personal, non-commercial learning and reference
+with attribution. Commercial use, sale, paid distribution, or incorporation
+into commercial products/services is prohibited without prior written
+permission. The copyright holder retains all rights not expressly granted.
+
+For commercial licensing: see contact information in README.md.

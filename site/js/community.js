@@ -11,13 +11,15 @@
     "https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js",
   ];
   var STORAGE_RETURN = "iaiph_auth_return";
-  var STORAGE_SUBSCRIBED = "iaiph_subscribed_email";
+  var STORAGE_UNSUBSCRIBED = "iaiph_unsubscribed_email";
   var statsMap = Object.create(null);
   var userReactions = Object.create(null);
   var client = null;
   var session = null;
   var hotSortOn = false;
   var ready = false;
+  var subscribedEmailCache = "";
+  var subscriptionRefreshTimer = null;
 
   function $(id) {
     return document.getElementById(id);
@@ -236,7 +238,7 @@
     setBarStatus("");
     closeLoginModal();
     linkEmailSubscription(user);
-    refreshSubscriptionUi();
+    scheduleSubscriptionRefresh();
   }
 
   function setLoggedOut(options) {
@@ -256,12 +258,12 @@
     userReactions = Object.create(null);
     updateReactionButtons();
     if (options.resetSubscription) {
-      clearSubscribedLocal();
+      clearSubscribeCache();
       setSubscribeUiInactive();
       var input = $("email-subscribe-input");
       if (input) input.value = "";
     } else {
-      refreshSubscriptionUi();
+      scheduleSubscriptionRefresh();
     }
   }
 
@@ -270,35 +272,54 @@
     if (input && email && !input.value) input.value = email;
   }
 
-  function markSubscribedLocal(email) {
+  function markUnsubscribed(email) {
     try {
-      sessionStorage.setItem(STORAGE_SUBSCRIBED, normalizeEmail(email));
+      localStorage.setItem(STORAGE_UNSUBSCRIBED, normalizeEmail(email));
     } catch (e) {}
   }
 
-  function clearSubscribedLocal() {
+  function clearUnsubscribed(email) {
     try {
-      sessionStorage.removeItem(STORAGE_SUBSCRIBED);
+      var saved = localStorage.getItem(STORAGE_UNSUBSCRIBED) || "";
+      if (!email || saved === normalizeEmail(email)) {
+        localStorage.removeItem(STORAGE_UNSUBSCRIBED);
+      }
     } catch (e) {}
   }
 
-  function getSubscribedLocal() {
+  function isUnsubscribed(email) {
+    if (!email) return false;
     try {
-      return sessionStorage.getItem(STORAGE_SUBSCRIBED) || "";
+      return localStorage.getItem(STORAGE_UNSUBSCRIBED) === normalizeEmail(email);
     } catch (e) {
-      return "";
+      return false;
     }
+  }
+
+  function clearSubscribeCache() {
+    subscribedEmailCache = "";
+    try {
+      sessionStorage.removeItem("iaiph_subscribed_email");
+    } catch (e) {}
+  }
+
+  function scheduleSubscriptionRefresh() {
+    if (subscriptionRefreshTimer) clearTimeout(subscriptionRefreshTimer);
+    subscriptionRefreshTimer = setTimeout(function () {
+      subscriptionRefreshTimer = null;
+      refreshSubscriptionUi();
+    }, 0);
   }
 
   function setSubscribeUiActive(email) {
     var modal = $("community-subscribe-modal");
     var form = $("email-subscribe-form");
-    var status = $("email-subscribe-status");
+    var active = $("email-subscribe-active");
     var statusEmail = $("email-subscribe-status-email");
     var desc = document.querySelector(".community-subscribe-modal-desc");
     if (form) form.hidden = true;
     setSubscribeMsg("");
-    if (status) status.hidden = false;
+    if (active) active.hidden = false;
     if (statusEmail) statusEmail.textContent = email || "";
     if (modal) modal.classList.add("community-subscribe-modal--active");
     if (desc) desc.hidden = true;
@@ -308,10 +329,10 @@
   function setSubscribeUiInactive() {
     var modal = $("community-subscribe-modal");
     var form = $("email-subscribe-form");
-    var status = $("email-subscribe-status");
+    var active = $("email-subscribe-active");
     var desc = document.querySelector(".community-subscribe-modal-desc");
     if (form) form.hidden = false;
-    if (status) status.hidden = true;
+    if (active) active.hidden = true;
     if (modal) modal.classList.remove("community-subscribe-modal--active");
     if (desc) desc.hidden = false;
     updateSubscribeTrigger(false);
@@ -374,100 +395,158 @@
     }
   }
 
-  function fetchSubscriptionStatus(user) {
-    if (!client || !user) return Promise.resolve(null);
-    function byUserId() {
-      if (!user.id) return Promise.resolve(null);
-      return client
-        .from("email_subscriptions")
-        .select("email, active")
-        .eq("user_id", user.id)
-        .eq("active", true)
-        .limit(1)
-        .maybeSingle()
-        .then(function (res) {
-          if (res.error) throw res.error;
-          return res.data;
-        });
-    }
-    function byEmail() {
-      var email = user.email ? normalizeEmail(user.email) : "";
-      if (!email) return Promise.resolve(null);
-      return client
-        .from("email_subscriptions")
-        .select("email, active")
-        .eq("email", email)
-        .eq("active", true)
-        .limit(1)
-        .maybeSingle()
-        .then(function (res) {
-          if (res.error) throw res.error;
-          return res.data;
-        });
-    }
-    return byUserId().then(function (row) {
-      if (row && row.email) return row;
-      return byEmail();
-    });
+  function isActiveSubscription(row) {
+    return !!(row && row.email && row.active === true);
   }
 
-  function refreshSubscriptionUi() {
-    if (!client) {
-      var localOnly = getSubscribedLocal();
-      if (localOnly) setSubscribeUiActive(localOnly);
-      return Promise.resolve();
-    }
-    if (session && session.user) {
-      return fetchSubscriptionStatus(session.user)
-        .then(function (row) {
-          if (row && row.email) {
-            markSubscribedLocal(row.email);
-            setSubscribeUiActive(row.email);
-            return;
-          }
-          var local = getSubscribedLocal();
-          var userEmail = session.user.email ? normalizeEmail(session.user.email) : "";
-          if (local && userEmail && local === userEmail) {
-            setSubscribeUiActive(local);
-            return;
-          }
-          setSubscribeUiInactive();
-        })
-        .catch(function () {
-          var fallback = getSubscribedLocal();
-          if (fallback) setSubscribeUiActive(fallback);
-        });
-    }
-    var local = getSubscribedLocal();
-    if (local) setSubscribeUiActive(local);
-    else setSubscribeUiInactive();
-    return Promise.resolve();
+  function authUserEmail(user) {
+    if (!user) return "";
+    if (user.email) return normalizeEmail(user.email);
+    var meta = user.user_metadata || {};
+    if (meta.email) return normalizeEmail(meta.email);
+    return "";
+  }
+
+  function fetchActiveSubscription(email) {
+    if (!client || !email) return Promise.resolve(null);
+    return client
+      .from("email_subscriptions")
+      .select("email, active")
+      .eq("email", normalizeEmail(email))
+      .eq("active", true)
+      .maybeSingle()
+      .then(function (res) {
+        if (res.error) throw res.error;
+        return isActiveSubscription(res.data) ? res.data : null;
+      });
   }
 
   function linkEmailSubscription(user) {
     if (!client || !user || !user.email) return;
     client
       .from("email_subscriptions")
-      .update({ user_id: user.id, active: true })
+      .update({ user_id: user.id })
       .eq("email", normalizeEmail(user.email))
+      .eq("active", true)
       .then(function () {});
+  }
+
+  function confirmSubscriptionActive(email) {
+    return client.rpc("is_email_subscribed", { p_email: normalizeEmail(email) }).then(function (res) {
+      if (res.error) throw res.error;
+      if (!res.data) {
+        throw new Error("订阅未写入数据库，请在 Supabase 重新执行 migrate_subscribe_rpc.sql");
+      }
+    });
+  }
+
+  function refreshSubscriptionUi() {
+    if (!client) {
+      if (subscribedEmailCache && !isUnsubscribed(subscribedEmailCache)) {
+        setSubscribeUiActive(subscribedEmailCache);
+      } else {
+        setSubscribeUiInactive();
+      }
+      return Promise.resolve();
+    }
+
+    if (!session || !session.user) {
+      if (subscribedEmailCache && !isUnsubscribed(subscribedEmailCache)) {
+        setSubscribeUiActive(subscribedEmailCache);
+      } else {
+        clearSubscribeCache();
+        setSubscribeUiInactive();
+      }
+      return Promise.resolve();
+    }
+
+    var email = authUserEmail(session.user);
+    if (!email || isUnsubscribed(email)) {
+      clearSubscribeCache();
+      setSubscribeUiInactive();
+      return Promise.resolve();
+    }
+
+    return fetchActiveSubscription(email)
+      .then(function (row) {
+        if (row && row.email) {
+          subscribedEmailCache = row.email;
+          clearUnsubscribed(row.email);
+          setSubscribeUiActive(row.email);
+          return;
+        }
+        clearSubscribeCache();
+        setSubscribeUiInactive();
+      })
+      .catch(function () {
+        clearSubscribeCache();
+        setSubscribeUiInactive();
+      });
   }
 
   function subscribeEmail(rawEmail) {
     if (!client) return Promise.reject(new Error("社区服务未就绪"));
     var email = normalizeEmail(rawEmail);
     if (!isValidEmail(email)) return Promise.reject(new Error("请输入有效邮箱"));
-    var row = { email: email, source: "portal", active: true };
-    if (session && session.user) row.user_id = session.user.id;
-    return client.from("email_subscriptions").insert(row).then(function (res) {
-      if (!res.error) return;
-      var code = res.error.code || "";
-      var msg = res.error.message || "";
-      if (code === "23505" || /duplicate|unique/i.test(msg)) {
-        throw new Error("该邮箱已订阅，感谢关注");
+    clearUnsubscribed(email);
+
+    var payload = { p_email: email };
+    if (session && session.user && session.user.id) payload.p_user_id = session.user.id;
+
+    return client.rpc("upsert_email_subscription", payload).then(function (res) {
+      if (res.error) {
+        var msg = (res.error.message || "") + " " + (res.error.code || "");
+        if (/upsert_email_subscription|PGRST202|42883|does not exist/i.test(msg)) {
+          throw new Error("请先在 Supabase SQL Editor 执行 migrate_subscribe_rpc.sql");
+        }
+        throw res.error;
+      }
+      return confirmSubscriptionActive(email);
+    });
+  }
+
+  function getActiveSubscriptionEmail() {
+    var statusEmail = $("email-subscribe-status-email");
+    if (statusEmail && statusEmail.textContent) return normalizeEmail(statusEmail.textContent);
+    if (subscribedEmailCache) return subscribedEmailCache;
+    if (session && session.user) return authUserEmail(session.user);
+    return "";
+  }
+
+  function unsubscribeEmail(rawEmail) {
+    if (!client) return Promise.reject(new Error("社区服务未就绪"));
+    var email = normalizeEmail(rawEmail);
+    if (!isValidEmail(email)) return Promise.reject(new Error("无法确认订阅邮箱"));
+
+    return client.rpc("deactivate_email_subscription", { p_email: email }).then(function (res) {
+      if (!res.error) {
+        if (res.data === false) throw new Error("未找到有效订阅，可能已取消");
+        return;
+      }
+      var msg = (res.error.message || "") + " " + (res.error.code || "");
+      if (/deactivate_email_subscription|PGRST202|42883|does not exist/i.test(msg)) {
+        return client
+          .from("email_subscriptions")
+          .update({ active: false })
+          .eq("email", email)
+          .eq("active", true)
+          .select("email")
+          .then(function (legacy) {
+            if (legacy.error) throw legacy.error;
+            if (!legacy.data || !legacy.data.length) {
+              throw new Error("未找到有效订阅，可能已取消");
+            }
+          });
       }
       throw res.error;
     });
+  }
+
+  function trackSubscribeEvent(name, email) {
+    if (!client) return;
+    var row = { event_name: name, meta: { email: email } };
+    if (session && session.user) row.user_id = session.user.id;
+    client.from("events").insert(row);
   }
 
   function trackEvent(name, meta) {
@@ -519,6 +598,7 @@
   window.IAIPH = window.IAIPH || {};
   window.IAIPH.trackShare = trackShare;
   window.IAIPH.trackView = trackView;
+  window.IAIPH.refreshSubscription = refreshSubscriptionUi;
 
   function paperFolderFromContext() {
     var bar = $("community-bar");
@@ -820,30 +900,59 @@
       subscribeEmail(input.value)
         .then(function () {
           var email = normalizeEmail(input.value);
-          markSubscribedLocal(email);
+          subscribedEmailCache = email;
+          clearUnsubscribed(email);
           setSubscribeUiActive(email);
           toast("订阅成功");
-          if (client) {
-            var row = { event_name: "subscribe", meta: { email: email } };
-            if (session && session.user) row.user_id = session.user.id;
-            client.from("events").insert(row);
-          }
+          trackSubscribeEvent("subscribe", email);
+          scheduleSubscriptionRefresh();
         })
         .catch(function (err) {
           var msg = (err && err.message) || "订阅失败，请稍后重试";
-          var email = normalizeEmail(input.value);
-          if (/已订阅/.test(msg)) {
-            markSubscribedLocal(email);
-            setSubscribeUiActive(email);
-            toast(msg);
-            return;
-          }
           setSubscribeMsg(msg, true);
         })
         .finally(function () {
           btn.disabled = false;
         });
     });
+
+    var unsubscribeBtn = $("email-subscribe-unsubscribe");
+    if (unsubscribeBtn) {
+      unsubscribeBtn.addEventListener("click", function () {
+        var email = getActiveSubscriptionEmail();
+        if (!email) {
+          setSubscribeMsg("无法确认订阅邮箱", true);
+          return;
+        }
+        if (!window.confirm("确定取消订阅？取消后将不再收到新文献邮件通知。")) return;
+        unsubscribeBtn.disabled = true;
+        setSubscribeMsg("");
+        unsubscribeEmail(email)
+          .then(function () {
+            markUnsubscribed(email);
+            clearSubscribeCache();
+            setSubscribeUiInactive();
+            var input = $("email-subscribe-input");
+            if (input) input.value = "";
+            toast("已取消订阅");
+            trackSubscribeEvent("unsubscribe", email);
+          })
+          .catch(function (err) {
+            var msg = (err && err.message) || "取消订阅失败，请稍后重试";
+            if (/未找到有效订阅|已取消/.test(msg)) {
+              markUnsubscribed(email);
+              clearSubscribeCache();
+              setSubscribeUiInactive();
+              toast("已取消订阅");
+              return;
+            }
+            setSubscribeMsg(msg, true);
+          })
+          .finally(function () {
+            unsubscribeBtn.disabled = false;
+          });
+      });
+    }
   }
 
   function bindUi() {
@@ -900,9 +1009,12 @@
   function initSession() {
     return client.auth.getSession().then(function (res) {
       if (res.error) throw res.error;
-      session = res.data.session;
-      if (session && session.user) setLoggedIn(session.user);
-      else setLoggedOut({ resetSubscription: false });
+      if (res.data.session && res.data.session.user) {
+        session = res.data.session;
+        setLoggedIn(res.data.session.user);
+      } else if (!session) {
+        setLoggedOut({ resetSubscription: false });
+      }
       return fetchUserReactions();
     });
   }
@@ -922,12 +1034,13 @@
             if (event === "SIGNED_IN") trackEvent("login", {});
           } else if (event === "SIGNED_OUT") {
             setLoggedOut({ resetSubscription: true });
-          } else {
-            setLoggedOut({ resetSubscription: false });
           }
         });
         bindUi();
-        return initSession();
+        setSubscribeUiInactive();
+        return initSession().then(function () {
+          return refreshSubscriptionUi();
+        });
       })
       .then(function () {
         return fetchStats();

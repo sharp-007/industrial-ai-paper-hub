@@ -255,9 +255,14 @@
       <input type="email" class="email-subscribe-input" id="email-subscribe-input" name="email" placeholder="your@email.com" autocomplete="email" required>
       <button type="submit" class="community-btn community-btn--primary community-btn--block" id="email-subscribe-btn">订阅</button>
     </form>
-    <div class="email-subscribe-status" id="email-subscribe-status" hidden role="status">
-      <span class="email-subscribe-status-icon" aria-hidden="true">✓</span>
-      <p class="email-subscribe-status-text">您已订阅，新文献上线时将通知 <strong id="email-subscribe-status-email"></strong></p>
+    <div class="email-subscribe-active" id="email-subscribe-active" hidden>
+      <div class="email-subscribe-status" id="email-subscribe-status" role="status">
+        <div class="email-subscribe-status-main">
+          <span class="email-subscribe-status-icon" aria-hidden="true">✓</span>
+          <p class="email-subscribe-status-text">您已订阅，新文献上线时将通知 <strong id="email-subscribe-status-email"></strong></p>
+        </div>
+      </div>
+      <button type="button" class="email-subscribe-unsubscribe" id="email-subscribe-unsubscribe">取消订阅</button>
     </div>
     <p class="email-subscribe-msg" id="email-subscribe-msg" hidden role="status"></p>
   </div>

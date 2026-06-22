@@ -986,28 +986,36 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ════════ FOOTER ════════ */
-.site-footer {
-    position: relative;
-    flex-shrink: 0;
+.page-bottom {
     margin-top: auto;
-    height: 40px;
-    padding: 0;
-    background: rgba(255, 255, 255, 0.97);
+    flex-shrink: 0;
+    width: 100%;
+    background: linear-gradient(180deg, #f8fbfd 0%, #eef6fa 100%);
     border-top: 1px solid var(--hairline);
-    box-shadow: var(--shadow-xs);
+    padding: 14px 0 16px;
+}
+
+.page-bottom-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 16px;
+    padding: 0;
+    background: none;
+    border-top: none;
+    box-shadow: none;
 }
 
 .footer-inner {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 6px 12px;
-    height: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    text-align: center;
+    display: contents;
 }
 
 .footer-brand-row {
@@ -1057,7 +1065,7 @@ body.modal-open { overflow: hidden; }
 .footer-social {
     display: inline-flex;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 6px;
     margin: 0;
     flex-shrink: 0;
@@ -1069,20 +1077,20 @@ body.modal-open { overflow: hidden; }
     justify-content: center;
     gap: 4px;
     min-height: 24px;
-    padding: 0 8px;
-    border-radius: var(--radius-pill);
+    padding: 0;
+    border: none;
+    border-radius: 0;
     font-family: var(--font-ui);
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     line-height: 1;
     text-decoration: none;
-    border: 1px solid var(--hairline);
-    background: var(--paper);
+    background: transparent;
     color: var(--ink-soft);
     cursor: pointer;
     white-space: nowrap;
-    transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+    transition: color 0.2s var(--ease);
 }
 
 .footer-social-link:visited {
@@ -1090,10 +1098,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .footer-social-link:hover {
-    background: var(--accent-soft);
-    border-color: rgba(13, 124, 150, 0.35);
+    background: transparent;
+    border: none;
     color: var(--accent-dark);
-    box-shadow: var(--shadow-xs);
+    box-shadow: none;
 }
 
 button.footer-social-link {

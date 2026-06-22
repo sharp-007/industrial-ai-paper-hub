@@ -11,6 +11,7 @@
     "https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js",
   ];
   var STORAGE_RETURN = "iaiph_auth_return";
+  var STORAGE_SUBSCRIBED = "iaiph_subscribed_email";
   var statsMap = Object.create(null);
   var userReactions = Object.create(null);
   var client = null;
@@ -151,7 +152,10 @@
     var modal = $("community-login-modal");
     if (!modal) return;
     modal.hidden = true;
-    document.body.classList.remove("modal-open");
+    var subscribeModal = $("community-subscribe-modal");
+    if (!subscribeModal || subscribeModal.hidden) {
+      document.body.classList.remove("modal-open");
+    }
     setLoginModalMsg("");
   }
 
@@ -216,13 +220,11 @@
   function syncAuthBarState(loggedIn) {
     var bar = $("community-bar");
     var loginActions = $("community-login-actions");
-    var userBox = $("community-user");
     if (bar) {
       bar.classList.toggle("community-bar--logged-in", !!loggedIn);
       bar.classList.toggle("community-bar--logged-out", !loggedIn);
     }
     if (loginActions) loginActions.hidden = !!loggedIn;
-    if (userBox) userBox.hidden = !loggedIn;
   }
 
   function setLoggedIn(user) {
@@ -233,11 +235,12 @@
     updateUserAvatar(user, name);
     setBarStatus("");
     closeLoginModal();
-    prefillSubscribeEmail(user.email);
     linkEmailSubscription(user);
+    refreshSubscriptionUi();
   }
 
-  function setLoggedOut() {
+  function setLoggedOut(options) {
+    options = options || {};
     var avatar = $("community-avatar");
     var fallback = $("community-avatar-fallback");
     syncAuthBarState(false);
@@ -252,11 +255,193 @@
     }
     userReactions = Object.create(null);
     updateReactionButtons();
+    if (options.resetSubscription) {
+      clearSubscribedLocal();
+      setSubscribeUiInactive();
+      var input = $("email-subscribe-input");
+      if (input) input.value = "";
+    } else {
+      refreshSubscriptionUi();
+    }
   }
 
   function prefillSubscribeEmail(email) {
     var input = $("email-subscribe-input");
     if (input && email && !input.value) input.value = email;
+  }
+
+  function markSubscribedLocal(email) {
+    try {
+      sessionStorage.setItem(STORAGE_SUBSCRIBED, normalizeEmail(email));
+    } catch (e) {}
+  }
+
+  function clearSubscribedLocal() {
+    try {
+      sessionStorage.removeItem(STORAGE_SUBSCRIBED);
+    } catch (e) {}
+  }
+
+  function getSubscribedLocal() {
+    try {
+      return sessionStorage.getItem(STORAGE_SUBSCRIBED) || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function setSubscribeUiActive(email) {
+    var modal = $("community-subscribe-modal");
+    var form = $("email-subscribe-form");
+    var status = $("email-subscribe-status");
+    var statusEmail = $("email-subscribe-status-email");
+    var desc = document.querySelector(".community-subscribe-modal-desc");
+    if (form) form.hidden = true;
+    setSubscribeMsg("");
+    if (status) status.hidden = false;
+    if (statusEmail) statusEmail.textContent = email || "";
+    if (modal) modal.classList.add("community-subscribe-modal--active");
+    if (desc) desc.hidden = true;
+    updateSubscribeTrigger(true);
+  }
+
+  function setSubscribeUiInactive() {
+    var modal = $("community-subscribe-modal");
+    var form = $("email-subscribe-form");
+    var status = $("email-subscribe-status");
+    var desc = document.querySelector(".community-subscribe-modal-desc");
+    if (form) form.hidden = false;
+    if (status) status.hidden = true;
+    if (modal) modal.classList.remove("community-subscribe-modal--active");
+    if (desc) desc.hidden = false;
+    updateSubscribeTrigger(false);
+    if (session && session.user) prefillSubscribeEmail(session.user.email);
+  }
+
+  function updateSubscribeTrigger(subscribed) {
+    var btn = $("community-subscribe-open");
+    if (!btn) return;
+    btn.classList.toggle("is-subscribed", !!subscribed);
+    btn.setAttribute("aria-pressed", subscribed ? "true" : "false");
+    btn.setAttribute("title", subscribed ? "已订阅 · 点击查看" : "订阅更新");
+    btn.setAttribute("aria-label", subscribed ? "查看邮件订阅状态" : "订阅文献更新");
+    var label = btn.querySelector(".community-subscribe-label");
+    if (label) label.textContent = subscribed ? "已订阅" : "订阅";
+  }
+
+  function openSubscribeModal() {
+    var modal = $("community-subscribe-modal");
+    if (!modal) return;
+    closeLoginModal();
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    setSubscribeMsg("");
+    var subscribed = modal.classList.contains("community-subscribe-modal--active");
+    var input = $("email-subscribe-input");
+    if (!subscribed && input) {
+      if (session && session.user && session.user.email && !input.value) {
+        input.value = session.user.email;
+      }
+      input.focus();
+    }
+  }
+
+  function closeSubscribeModal() {
+    var modal = $("community-subscribe-modal");
+    if (!modal) return;
+    modal.hidden = true;
+    if (!$("community-login-modal") || $("community-login-modal").hidden) {
+      document.body.classList.remove("modal-open");
+    }
+    setSubscribeMsg("");
+  }
+
+  function bindSubscribeModal() {
+    var openBtn = $("community-subscribe-open");
+    var modal = $("community-subscribe-modal");
+
+    if (openBtn) {
+      openBtn.addEventListener("click", openSubscribeModal);
+    }
+
+    if (modal) {
+      modal.querySelectorAll("[data-subscribe-close]").forEach(function (el) {
+        el.addEventListener("click", closeSubscribeModal);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal && !modal.hidden) closeSubscribeModal();
+      });
+    }
+  }
+
+  function fetchSubscriptionStatus(user) {
+    if (!client || !user) return Promise.resolve(null);
+    function byUserId() {
+      if (!user.id) return Promise.resolve(null);
+      return client
+        .from("email_subscriptions")
+        .select("email, active")
+        .eq("user_id", user.id)
+        .eq("active", true)
+        .limit(1)
+        .maybeSingle()
+        .then(function (res) {
+          if (res.error) throw res.error;
+          return res.data;
+        });
+    }
+    function byEmail() {
+      var email = user.email ? normalizeEmail(user.email) : "";
+      if (!email) return Promise.resolve(null);
+      return client
+        .from("email_subscriptions")
+        .select("email, active")
+        .eq("email", email)
+        .eq("active", true)
+        .limit(1)
+        .maybeSingle()
+        .then(function (res) {
+          if (res.error) throw res.error;
+          return res.data;
+        });
+    }
+    return byUserId().then(function (row) {
+      if (row && row.email) return row;
+      return byEmail();
+    });
+  }
+
+  function refreshSubscriptionUi() {
+    if (!client) {
+      var localOnly = getSubscribedLocal();
+      if (localOnly) setSubscribeUiActive(localOnly);
+      return Promise.resolve();
+    }
+    if (session && session.user) {
+      return fetchSubscriptionStatus(session.user)
+        .then(function (row) {
+          if (row && row.email) {
+            markSubscribedLocal(row.email);
+            setSubscribeUiActive(row.email);
+            return;
+          }
+          var local = getSubscribedLocal();
+          var userEmail = session.user.email ? normalizeEmail(session.user.email) : "";
+          if (local && userEmail && local === userEmail) {
+            setSubscribeUiActive(local);
+            return;
+          }
+          setSubscribeUiInactive();
+        })
+        .catch(function () {
+          var fallback = getSubscribedLocal();
+          if (fallback) setSubscribeUiActive(fallback);
+        });
+    }
+    var local = getSubscribedLocal();
+    if (local) setSubscribeUiActive(local);
+    else setSubscribeUiInactive();
+    return Promise.resolve();
   }
 
   function linkEmailSubscription(user) {
@@ -634,18 +819,26 @@
       setSubscribeMsg("");
       subscribeEmail(input.value)
         .then(function () {
-          setSubscribeMsg("订阅成功！新文献上线时我们会邮件通知您。", false);
+          var email = normalizeEmail(input.value);
+          markSubscribedLocal(email);
+          setSubscribeUiActive(email);
           toast("订阅成功");
           if (client) {
-            var row = { event_name: "subscribe", meta: { email: normalizeEmail(input.value) } };
+            var row = { event_name: "subscribe", meta: { email: email } };
             if (session && session.user) row.user_id = session.user.id;
             client.from("events").insert(row);
           }
         })
         .catch(function (err) {
           var msg = (err && err.message) || "订阅失败，请稍后重试";
-          setSubscribeMsg(msg, /已订阅/.test(msg) ? false : true);
-          if (/已订阅/.test(msg)) toast(msg);
+          var email = normalizeEmail(input.value);
+          if (/已订阅/.test(msg)) {
+            markSubscribedLocal(email);
+            setSubscribeUiActive(email);
+            toast(msg);
+            return;
+          }
+          setSubscribeMsg(msg, true);
         })
         .finally(function () {
           btn.disabled = false;
@@ -658,12 +851,12 @@
     var sortBtn = $("community-sort-hot");
 
     bindLoginModal();
+    bindSubscribeModal();
     bindSubscribeForm();
 
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
         client.auth.signOut().then(function () {
-          setLoggedOut();
           toast("已退出登录");
         });
       });
@@ -709,7 +902,7 @@
       if (res.error) throw res.error;
       session = res.data.session;
       if (session && session.user) setLoggedIn(session.user);
-      else setLoggedOut();
+      else setLoggedOut({ resetSubscription: false });
       return fetchUserReactions();
     });
   }
@@ -721,14 +914,16 @@
     loadSupabaseSdk()
       .then(function () {
         client = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
-        client.auth.onAuthStateChange(function (_event, newSession) {
+        client.auth.onAuthStateChange(function (event, newSession) {
           session = newSession;
           if (newSession && newSession.user) {
             setLoggedIn(newSession.user);
             fetchUserReactions();
-            trackEvent("login", {});
+            if (event === "SIGNED_IN") trackEvent("login", {});
+          } else if (event === "SIGNED_OUT") {
+            setLoggedOut({ resetSubscription: true });
           } else {
-            setLoggedOut();
+            setLoggedOut({ resetSubscription: false });
           }
         });
         bindUi();

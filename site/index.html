@@ -21,16 +21,24 @@
     <div class="community-bar community-bar--logged-out" id="community-bar" data-portal="true">
   <div class="community-bar-inner">
     <span class="community-bar-status" id="community-bar-status" hidden></span>
-    <div class="community-login-actions" id="community-login-actions">
-      <button type="button" class="community-btn community-btn--primary" id="community-login-open">登录</button>
-    </div>
-    <div class="community-user" id="community-user" hidden>
-      <span class="community-avatar-slot" id="community-avatar-slot">
-        <img class="community-avatar" id="community-avatar" alt="" width="28" height="28" hidden>
-        <span class="community-avatar-fallback" id="community-avatar-fallback" hidden aria-hidden="true"></span>
-      </span>
-      <span class="community-login-name" id="community-login-name"></span>
-      <button type="button" class="community-btn community-btn--ghost" id="community-logout">退出</button>
+    <div class="community-bar-controls">
+      <div class="community-login-actions" id="community-login-actions">
+        <button type="button" class="community-btn community-btn--primary" id="community-login-open">登录</button>
+      </div>
+      <div class="community-user" id="community-user">
+        <span class="community-user-meta" id="community-user-meta">
+          <span class="community-avatar-slot" id="community-avatar-slot">
+            <img class="community-avatar" id="community-avatar" alt="" width="28" height="28" hidden>
+            <span class="community-avatar-fallback" id="community-avatar-fallback" hidden aria-hidden="true"></span>
+          </span>
+          <span class="community-login-name" id="community-login-name"></span>
+        </span>
+        <button type="button" class="community-btn community-btn--ghost" id="community-logout">退出</button>
+      </div>
+      <button type="button" class="community-btn community-btn--ghost community-subscribe-trigger" id="community-subscribe-open" aria-label="订阅文献更新" aria-haspopup="dialog" aria-controls="community-subscribe-modal" title="订阅更新">
+        <svg class="community-subscribe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="community-subscribe-label">订阅</span>
+      </button>
     </div>
   </div>
 </div>
@@ -209,31 +217,17 @@
         </div>
     </main>
 
-    <section class="email-subscribe" id="email-subscribe" aria-labelledby="email-subscribe-title">
-  <div class="container email-subscribe-inner">
-    <div class="email-subscribe-copy">
-      <h2 class="email-subscribe-title" id="email-subscribe-title">订阅更新</h2>
-      <p class="email-subscribe-desc">新文献上线时，我们会通过邮件通知您。无需登录即可订阅。</p>
-    </div>
-    <form class="email-subscribe-form" id="email-subscribe-form" novalidate>
-      <label class="visually-hidden" for="email-subscribe-input">邮箱</label>
-      <input type="email" class="email-subscribe-input" id="email-subscribe-input" name="email" placeholder="your@email.com" autocomplete="email" required>
-      <button type="submit" class="community-btn community-btn--primary" id="email-subscribe-btn">订阅</button>
-    </form>
-    <p class="email-subscribe-msg" id="email-subscribe-msg" hidden role="status"></p>
-  </div>
-</section>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-brand-row">
+    <div class="page-bottom">
+      <div class="container page-bottom-inner">
+        <footer class="site-footer">
+          <div class="footer-brand-row">
             <img class="footer-mark" src="assets/favicon.svg" alt="" width="20" height="20" decoding="async">
             <span class="footer-brand-en">Industrial AI Paper Hub (IAIPH)</span>
-        </div>
-            <div class="footer-social"><a class="footer-social-link footer-social-link--github" href="https://github.com/sharp-007/industrial-ai-paper-hub" target="_blank" rel="noopener noreferrer"><svg class="footer-social-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg><span>GitHub</span></a><button class="footer-social-link footer-social-link--wechat" type="button" id="wechat-open" aria-haspopup="dialog" aria-controls="wechat-modal"><svg class="footer-social-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg><span>微信交流</span></button></div>
-            
-        </div>
-    </footer>
+          </div>
+          <div class="footer-social"><a class="footer-social-link footer-social-link--github" href="https://github.com/sharp-007/industrial-ai-paper-hub" target="_blank" rel="noopener noreferrer"><svg class="footer-social-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg><span>GitHub</span></a><button class="footer-social-link footer-social-link--wechat" type="button" id="wechat-open" aria-haspopup="dialog" aria-controls="wechat-modal"><svg class="footer-social-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg><span>微信交流</span></button></div>
+        </footer>
+      </div>
+    </div>
     <div class="community-login-modal" id="community-login-modal" hidden role="dialog" aria-modal="true" aria-labelledby="community-login-modal-title">
   <div class="community-login-modal-backdrop" data-login-close="true"></div>
   <div class="community-login-modal-panel">
@@ -248,6 +242,24 @@
       <button type="submit" class="community-btn community-btn--primary community-btn--block" id="community-login-email-submit">发送邮箱登录链接</button>
     </form>
     <p class="community-login-modal-msg" id="community-login-modal-msg" hidden role="status"></p>
+  </div>
+</div>
+    <div class="community-subscribe-modal" id="community-subscribe-modal" hidden role="dialog" aria-modal="true" aria-labelledby="community-subscribe-modal-title">
+  <div class="community-subscribe-modal-backdrop" data-subscribe-close="true"></div>
+  <div class="community-subscribe-modal-panel">
+    <button type="button" class="community-subscribe-modal-close" data-subscribe-close="true" aria-label="关闭">&times;</button>
+    <h2 class="community-subscribe-modal-title" id="community-subscribe-modal-title">订阅更新</h2>
+    <p class="community-subscribe-modal-desc">新文献上线时，我们会通过邮件通知您。无需登录即可订阅。</p>
+    <form class="email-subscribe-form" id="email-subscribe-form" novalidate>
+      <label class="visually-hidden" for="email-subscribe-input">邮箱</label>
+      <input type="email" class="email-subscribe-input" id="email-subscribe-input" name="email" placeholder="your@email.com" autocomplete="email" required>
+      <button type="submit" class="community-btn community-btn--primary community-btn--block" id="email-subscribe-btn">订阅</button>
+    </form>
+    <div class="email-subscribe-status" id="email-subscribe-status" hidden role="status">
+      <span class="email-subscribe-status-icon" aria-hidden="true">✓</span>
+      <p class="email-subscribe-status-text">您已订阅，新文献上线时将通知 <strong id="email-subscribe-status-email"></strong></p>
+    </div>
+    <p class="email-subscribe-msg" id="email-subscribe-msg" hidden role="status"></p>
   </div>
 </div>
     <div class="wechat-modal" id="wechat-modal" hidden role="dialog" aria-modal="true" aria-labelledby="wechat-modal-title">

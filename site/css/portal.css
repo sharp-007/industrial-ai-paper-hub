@@ -152,8 +152,8 @@ a:focus-visible, button:focus-visible {
 .wechat-modal-panel {
     position: relative;
     z-index: 1;
-    width: min(100%, 320px);
-    padding: 24px 24px 20px;
+    width: min(100%, 340px);
+    padding: 44px 20px 20px;
     border-radius: var(--radius);
     background: var(--surface);
     box-shadow: var(--shadow-lg);
@@ -177,10 +177,18 @@ a:focus-visible, button:focus-visible {
 
 .wechat-modal-title {
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     color: var(--ink);
-    margin-bottom: 16px;
+    margin: 0 0 16px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+    .wechat-modal-title {
+        font-size: 0.8125rem;
+    }
 }
 
 .wechat-modal-qr {

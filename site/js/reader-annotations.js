@@ -48,6 +48,24 @@
     return value || "";
   }
 
+  function isPaperHomePage() {
+    var section = SECTION_FILE || "";
+    return section === "index.html" || /(^|\/)index\.html$/i.test(section);
+  }
+
+  function notesScopeNoun() {
+    return isPaperHomePage() ? "本页" : "本章";
+  }
+
+  function resolveArticleRoot() {
+    return (
+      document.querySelector(".content-pane.article") ||
+      document.querySelector("main .article") ||
+      document.querySelector(".content-pane .welcome") ||
+      document.querySelector(".welcome")
+    );
+  }
+
   function sectionBasename(path) {
     var normalized = normalizeSectionFile(path);
     if (!normalized) return "";
@@ -1038,9 +1056,9 @@
       var empty = document.createElement("p");
       empty.className = "iaiph-notes-empty";
       if (!session) {
-        empty.textContent = "登录后可在此查看本章笔记。";
+        empty.textContent = "登录后可在此查看" + notesScopeNoun() + "笔记。";
       } else {
-        empty.textContent = "本章暂无笔记，选中文字后可添加。";
+        empty.textContent = notesScopeNoun() + "暂无笔记，选中文字后可添加。";
       }
       notesListEl.appendChild(empty);
       return;
@@ -1411,12 +1429,12 @@
     notesPanelEl.hidden = true;
     notesPanelEl.innerHTML =
       '<div class="iaiph-notes-panel-header">' +
-      '  <h2 class="iaiph-notes-panel-title">本章笔记</h2>' +
+      '  <h2 class="iaiph-notes-panel-title">' + notesScopeNoun() + "笔记</h2>" +
       '  <button type="button" class="iaiph-notes-panel-close" aria-label="关闭">&times;</button>' +
       "</div>" +
       '<div class="iaiph-notes-list"></div>' +
       '<div class="iaiph-notes-panel-footer">' +
-      '  <button type="button" class="iaiph-notes-add-btn">添加章节笔记</button>' +
+      '  <button type="button" class="iaiph-notes-add-btn">添加' + notesScopeNoun() + "笔记</button>" +
       "</div>";
     notesListEl = notesPanelEl.querySelector(".iaiph-notes-list");
     notesPanelEl.querySelector(".iaiph-notes-panel-close").addEventListener("click", closeNotesPanel);
@@ -1527,7 +1545,7 @@
   }
 
   function boot() {
-    articleEl = document.querySelector(".content-pane.article") || document.querySelector("main .article");
+    articleEl = resolveArticleRoot();
     if (!articleEl) return;
 
     buildUi();

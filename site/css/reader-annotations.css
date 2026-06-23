@@ -78,7 +78,9 @@ mark.iaiph-hl {
 
 /* 含标亮/笔记的段落关闭逐字对齐，避免换行背景错位 */
 .content-pane.article p.iaiph-has-annotation,
-.article p.iaiph-has-annotation {
+.article p.iaiph-has-annotation,
+.content-pane .welcome p.iaiph-has-annotation,
+.welcome p.iaiph-has-annotation {
   text-justify: auto;
 }
 

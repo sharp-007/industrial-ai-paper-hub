@@ -823,6 +823,23 @@ body.nav-open .sidebar-overlay { display: block; }
 .article tr:last-child td { border-bottom: none; }
 .article tr:hover td { background: var(--paper); }
 
+.article table.table-grouped td,
+.article table.table-grouped th {
+    vertical-align: top;
+    line-height: 1.55;
+}
+.article table.table-grouped tbody td:first-child {
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    width: 3.5rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 100%);
+    color: var(--accent-dark);
+}
+.article table.table-grouped tbody td {
+    white-space: normal;
+}
+
 .article code {
     font-family: var(--font-mono);
     background: var(--code-bg);

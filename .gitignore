@@ -21,3 +21,6 @@ site/papers/*/page-renders/images/figures.json
 .DS_Store
 Thumbs.db
 *.swp
+
+# logo
+assets/IAI Community/

@@ -1170,14 +1170,14 @@ Table 1. Evolution of Asset Management Paradigms Toward Smart Manufacturing Depe
 <p>[16] J. Perez-Cerrolaza et al., “Artificial Intelligence for Safety-Critical Systems in Industrial and Transportation Domains: A Survey,” ACM Comput. Surv., vol. 56, no. 7, pp. 1–40, 2024.</p>
 <p>[17] M. Molęda, B. Małysiak-Mrozek, W. Ding, V. Sunderam, and D. Mrozek, “From Corrective to Predictive Maintenance—A Review of Maintenance Approaches for the Power Industry,” Sensors, vol. 23, no. 13, p. 5970, 2023.</p>
 <p>[18] M. Rodríguez-Hernández, A. Crespo-Márquez, A. Sánchez-Herguedas, and V. González-Prida, “Digitalization as an Enabler in Railway Maintenance: A Review from ‘The International Union of Railways Asset Management Framework’ Perspective,” Infrastructures, vol. 10, no. 4, p. 96, 2025.</p></div></details></section><hr>
-<section id="20-metrology"><h1>面向未来制造的数据驱动计量</h1><p><strong>Gregory W. Vogl¹, Aaron W. Cornelius¹, Xiaodong Jia²</strong></p>
-<p>¹ 美国马里兰州盖瑟斯堡国家标准与技术研究院工程实验室<br>
-² 美国俄亥俄州辛辛那提大学机械与材料工程系</p>
+<section id="20-metrology"><h1>面向未来制造的数据驱动计量</h1><p>Gregory W. Vogl¹, Aaron W. Cornelius¹, Xiaodong Jia²</p>
+<p>¹ 美国马里兰州盖瑟斯堡，国家标准与技术研究院工程实验室<br>
+² 美国俄亥俄州辛辛那提，辛辛那提大学机械与材料工程系</p>
 <p>E-mail: gregory.vogl@nist.gov</p>
 <p><b>状态</b></p><p>在现代智能工厂中，整个制造过程中都会收集和记录过程数据[1]。这创建了庞大的数据集，其中包括机器设置和过程参数、设备传感器数据、计量结果和维护日志。以数据为中心的计量（DcM）旨在利用收集到的数据，为零件质量提供更准确的估计，降低整体测量成本，并提供优化制造所需的信息[2]。虽然外部信息长期以来一直被用于提高基本水平的测量质量（例如，补偿温度变化的测量），但DCM将根据需要积极监测、优化和调整测量。随着机器人技术和自动化的进步，DCM有望成为未来智能计量技术的关键推动者，具有（半）自动化决策能力，以提高精度和效率。</p><p>DCM结合了独立研究的三大支柱：</p><p>（1）集成计量是在制造系统中整合和利用计量可追溯数据[3]。这些机上测量不仅包括零件特征，还包括机器性能，提供有关零件质量和工艺健康的实时反馈[4]。</p><p>（2）虚拟计量用于估算那些无法在现场直接测量的零件质量特征或工艺参数。这一过程借助数字孪生和模型来实现——模型整合可用的工艺数据和计量数据，以估算缺失的参数[5]。</p>
 <p>（3）数据管理系统收集所有可用的计量信息，用于追踪零件质量、提供测量值和系统行为的实时不确定度估计，并提出改进测量性能的建议，例如当虚拟计量不确定度过高时安排额外的测量周期，或标记不可靠的传感器进行维护[6]。</p>
 <p>上述三个领域通过基于人工智能（AI）的模型进行统一，以帮助解析和处理所采集的海量数据。半导体行业或许为数据驱动计量（DCM）的未来潜力提供了最佳视角。工艺数据被用于生成实时缺陷估计，并筛选晶圆以进行进一步检测[6]。随后，机器学习（ML）工具对工艺数据进行收集和分析，以帮助操作人员理解和改进工艺。然而，向智能制造的转型并非均匀推进：许多行业落后于时代，尚未做好实施DCM的准备[7]。要使DCM得到广泛应用并赢得信任，仍有许多关键技术缺口亟需填补。</p>
-<p><strong>当前与未来的挑战</strong></p>
+<p><strong>当前及未来挑战</strong></p>
 <p>计量对于生产至关重要——它是工艺控制和质量控制的关键，新技术必须经过充分验证，才能提高制造商对数据驱动计量的信心并推动其应用。以下挑战目前制约着DCM的可行性：</p>
 <p><strong>（1）集成计量</strong></p>
 <p>集成计量和原位测量难以实施。在工艺过程中进行的测量不能干扰制造流程，但与此同时，由于测量发生在相同的工作区域内，测量结果可能受到工艺过程的影响[1]，并可能遭遇各种不可控的变化[8]。测量还必须跟上制造工艺的节奏，这进一步限制了哪些测量可以在现场进行。因此，在一项调查中仅有38%的企业进行了原位测量[1]。亟需新的发展来开发能够在各种环境条件下以可接受的节奏提供低不确定度结果的传感器。</p>
@@ -1194,14 +1194,14 @@ Table 1. Evolution of Asset Management Paradigms Toward Smart Manufacturing Depe
 <p><strong>（2）虚拟计量</strong></p>
 <p>数字孪生内的数据采样率应以AI驱动的智能为基础，测量“适量”数据，在保持产品质量的同时最大限度地降低数据采集和存储成本。例如，当实时AI估计的不确定度超过阈值时，可以触发一次测量以获取一个数据点，在降低该时刻不确定度的同时添加额外数据用于模型更新。DCM利用AI的模式学习特性与计量的可信性相结合，创建可信的、同时具有机器独特性的工艺控制模型[18]。定期将实时可溯源测量与模型估计进行对比，将有助于量化AI模型的不确定度。此外，初始模型的挑战可以通过迁移学习[10]得到帮助——最初严重依赖集成计量，随着机器特异性模型随时间学习而逐渐减轻。</p>
 <p><strong>（3）带不确定度量化的数据管理</strong></p>
-<p>需要为所有制造数据建立普遍适用的标准化数据架构，以验证数据质量和溯源性，例如基于OPC-UA并通过数字校准证书实现校准报告的数字化[19]。应开发并在国际上标准化AI算法总输出不确定度的量化方法，包括学习模型的固有不确定度和输入数据的不确定度，类似于GUM[20]的方法。不确定度应被估计出来，以支持动态采样[6]和不确定度的传播，例如使用基于Shapley加性解释（SHAP）的可解释AI框架[15]。具有低计算延迟的全自动化数据流处理是DCM面临的另一重大挑战，需要物联网（IoT）硬件和软硬件优化方面的创新。</p>
+<p>需要为所有制造数据建立普遍适用的标准化数据架构，以验证数据质量和溯源性，例如基于OPC-UA并通过数字校准证书实现校准报告的数字化[19]。应开发并在国际上标准化AI算法总输出不确定度的量化方法，包括学习模型的固有不确定度和输入数据的不确定度，类似于GUM[20]的方法。不确定度应被估计出来，以支持动态采样[6]和不确定度的传播，例如使用基于Shapley加性解释（SHAP）的可解释AI框架[15]。具有低计算延迟的全自动化数据流处理是DCM面临的另一重大挑战，需要物联网（IoT）硬件和软硬件优化方面的创新。</p><p><b>结语</b></p><p data-start="8" data-end="215">以数据为中心的计量（Data-Centric Metrology, DCM）可以通过降低测量成本以及增加用于过程优化的信息量来提升制造业水平。集成计量（Integrated Metrology）用于在制造过程中于设备内部进行测量；虚拟计量（Virtual Metrology）利用人工智能基于过程中无法直接测量的信息来估计零件质量；而数据管理平台则利用所有记录的数据和信息，对零件质量进行追踪，并提供不确定度估计。未来，制造业中的数据中心计量将通过解决所有相关挑战来进一步发展，例如建立标准化的数据架构，以及基于不确定度确定采样频率。最终，以数据为中心的计量将使人工智能成为制造业中值得信赖的人类智能扩展。</p>
 <details class="references-panel"><summary class="references-summary">参考文献</summary><div class="references"><p>[1] Leach RK 2020 Integrated Metrology 10-Year Roadmap for Advanced Manufacturing. High Value Manufacturing Catapult: 1- 38. https://hvm.catapult.org.uk/wp-content/uploads/2022/06/Integrated-Metrology-10-Year-Roadmap.pdf</p>
 <p>[2] Lee J, Kundu P, Gore P 2022 Industrial AI-Augmented Data-Centric Metrology for Highly Connected Production Systems. Smart and Networked Manufacturing: Wiener Produktionstechnik Kongress 2022. Vienna, Austria: new academic press. 20-3. https://www.newacademicpress.at/gesamtverzeichnis/fertigungstechnik/smart-and-networked-manufacturing-ebook/</p>
 <p>[3] Archenti A, Gao W, Donmez A, Savio E, Irino N 2024 Integrated Metrology for Advanced Manufacturing. CIRP Annals 73 639- 65. https://doi.org/10.1016/j.cirp.2024.05.003</p>
 <p>[4] Gunasegaram DR, Barnard AS, Matthews MJ, Jared BH, Andreaco AM, Bartsch K, et al. 2024 Machine Learning-Assisted in-Situ Adaptive Strategies for the Control of Defects and Anomalies in Metal Additive Manufacturing. Additive Manufacturing 81 104013. https://doi.org/10.1016/j.addma.2024.104013</p>
 <p>[5] Zhang Y, Li L, Yu Q 2024 Virtual Metrology for Enabling Zero-Defect Manufacturing: A Review and Prospects. The International Journal of Advanced Manufacturing Technology 130 3211-27. https://doi.org/10.1007/s00170-023-12726-x</p>
 <p>[6] Han X, Miller M, Moyne J, Vogl GW, Penkova A, Jia X 2025 A Comparative Study of Semiconductor Virtual Metrology Methods and Novel Algorithmic Framework for Dynamic Sampling. IEEE Transactions on Semiconductor Manufacturing 38 232-9. https://doi.org/10.1109/TSM.2025.3531920</p>
-<p>[7] World Economic Forum 2022 The Global Smart Industry Readiness Index Initiative: Manufacturing Transformation Insights Report 2022. World Economic Forum: 1-38. https://www3.weforum.org/docs/WEF_The_Global_Smart_Industry_Readiness_Index_Initiative_2022.pdf Figure 1. Roadmap for data-centric metrology (DCM) in future manufacturing based on the three main pillars of DCM: (1) integrated metrology, (2) virtual metrology, and (3) data management with uncertainty quantification. Journal XX (XXXX) XXXXXX A Author et al 94</p>
+<p>[7] World Economic Forum 2022 The Global Smart Industry Readiness Index Initiative: Manufacturing Transformation Insights Report 2022. World Economic Forum: 1-38. https://www3.weforum.org/docs/WEF_The_Global_Smart_Industry_Readiness_Index_Initiative_2022.pdf Figure 1. Roadmap for data-centric metrology (DCM) in future manufacturing based on the three main pillars of DCM: (1) integrated metrology, (2) virtual metrology, and (3) data management with uncertainty quantification.</p>
 <p>[8] IEEE 2023 International Roadmap for Devices and Systems™: 2023 Update - Metrology. Institute of Electrical and Electronics Engineers (IEEE): 1-67. https://irds.ieee.org/images/files/pdf/2023/2023IRDS_MET.pdf</p>
 <p>[9] Filz M-A, Bosse JP, Herrmann C 2024 Digitalization Platform for Data-Driven Quality Management in Multi-Stage Manufacturing Systems. Journal of Intelligent Manufacturing 35 2699-718. https://doi.org/10.1007/s10845-023-02162-9</p>
 <p>[10] Hsieh YM, Wang TJ, Lin CY, Tsai YF, Cheng FT 2022 Convolutional Autoencoder and Transfer Learning for Automatic Virtual Metrology. IEEE Robotics and Automation Letters 7 8423-30. https://doi.org/10.1109/LRA.2022.3187617</p>
@@ -1215,20 +1215,20 @@ Table 1. Evolution of Asset Management Paradigms Toward Smart Manufacturing Depe
 <p>[18] Pandhare V, Miller M, Vogl GW, Lee J 2023 Ball Screw Health Monitoring with Inertial Sensors. IEEE Transactions on Industrial Informatics 19 7323-34. https://doi.org/10.1109/TII.2022.3210999</p>
 <p>[19] Grasso Toro F, Lehmann H 2021 Brief Overview of the Future of Metrology. Measurement: Sensors 18 100306. https://doi.org/10.1016/j.measen.2021.100306</p>
 <p>[20] Eichstädt S, Keidel A, Tesch J 2021 Metrology for the Digital Age. Measurement: Sensors 18 100232. https://doi.org/10.1016/j.measen.2021.100232</p></div></details></section><hr>
-<section id="21-complex"><h1>面向高度连接和复杂制造系统的非传统机器学习</h1><p><strong>Dai-Yan Ji¹, Takanobu Minami¹, Ruoxin Wang¹, Jay Lee¹</strong></p>
-<p>¹ 美国马里兰州大学公园市马里兰大学机械工程系工业人工智能中心</p>
+<section id="21-complex"><h1>面向高度连接和复杂制造系统的非传统机器学习</h1><p>Dai-Yan Ji¹, Takanobu Minami¹, Ruoxin Wang¹, Jay Lee¹</p>
+<p>¹ 美国马里兰大学帕克分校，机械工程系，工业人工智能中心，美国马里兰州</p>
 <p>E-mail: leejay@umd.edu</p>
 <h2>现状</h2>
 <p>故障预测与健康管理（PHM）及其在工业人工智能中的集成已从部件级监测发展至系统级智能[1]、[2]。在早期阶段，PHM依赖于可靠性工程和基于模型的分析，随后逐步演化为融合数据驱动方法与专家知识的混合人工智能框架[3]、[4]。这些进展为预测性维护与监测带来了宝贵成果，然而高度互联复杂制造系统（HC-CMS）日益增长的规模与互联性持续挑战着传统机器学习（ML）方法。如今的工业系统已不再局限于单一部件或独立单元，而是成为基于设备群组的、分布式且跨工厂、供应链和运营域深度互联的系统[5]、[6]。此类系统产生海量传感器数据，且涉及必须协同管理的异构资产。如图1所示，HC-CMS将工业人工智能的多个领域相互连接，包括制造人工智能、新能源人工智能、交通人工智能和医疗人工智能，所有这些领域都共同需要韧性、适应性和智能决策能力。这种系统级复杂性凸显了PHM仍然至关重要的原因。在航空航天、能源、船舶和出行领域，确保正常运行时间、优化维护和延长生命周期仍是可靠性的核心[7]、[8]。随着系统扩展至设备群组和多工厂网络，可扩展PHM的重要性持续增长。进一步的发展有望带来显著收益：提高安全性、减少停机时间、提升效率以及更可靠的决策支持[9]。非传统机器学习日益成为实现这些收益的核心。与其狭隘地关注算法精度，该领域现在强调韧性、可解释性和企业级集成，并得到持续机器学习——质量流（SoQ）、5C级信息物理系统和数字孪生框架等方法论平台的支持。具有代表性的非传统ML方法——用于结构洞察的拓扑数据分析（TDA）、用于设备群组广泛泛化的域适应和迁移学习、用于可解释推理的相似性模型、用于高效优化的代理模型，以及用于知识集成的工业大知识模型（ILKM）——展示了PHM在HC-CMS中如何被重塑和扩展。这些范式表明，PHM不仅仍然重要，而且在工业人工智能持续演进的进程中正占据更有影响力的地位[10]。</p>
 <figure class="paper-figure"><img src="images/complex-fig1.png" alt="图1. 高度互联的复杂制造系统。" loading="lazy" draggable="false"><figcaption>图1. 高度互联的复杂制造系统。</figcaption></figure>
 
-<h2>当前与未来挑战</h2>
+<h2>当前及未来挑战</h2>
 <p>尽管工业人工智能取得进展，但在HC-CMS中扩展PHM仍面临巨大障碍。跨域变异性仍是一个关键障碍：在一条生产线上训练的模型在部署到不同工厂或设备群组时，往往会因操作条件下的域迁移而性能下降。这一问题在风能、出行电池和船舶发动机等行业中被进一步放大，这些行业的运营环境变化迅速，传感器分布也不一致[11]。标签稀缺和数据不平衡问题同样持续存在，因为故障事件稀少、获取成本高昂且往往缺乏记录，限制了监督式深度学习方法的适用性[12]。系统互联性同样是不可忽视的挑战。可重构和可持续生产范式引入了非线性耦合、动态瓶颈转移和复杂调度动力学，这些都无法简化为孤立设备分析。可解释性进一步增加了采纳难度：从业者通常拒绝没有透明推理过程的黑盒模型。航空发动机预测研究强调，聚合特征重要性和可解释的降维方法在建立对PHM预测信任方面发挥着重要作用[8]。混合模型本身也存在局限性。数据驱动框架在有丰富信号时表现出色，但在分布漂移条件下则表现艰难。基于物理的模型是透明的，但需要详细的故障物理知识，而这些知识并非总是可获取的。混合模型试图结合这些优势，但参数校准和模型更新仍然复杂[13]。从组织角度来看，知识碎片化是一个系统性问题。PHM工作往往依赖于手册、报告和个人经验中的专业知识，使得向PHM的一致集成变得困难。智能工厂环境增加了更多约束，包括网络安全、CPS/IoT集成和异构大数据的治理。最近的综述强调，算法进展与实际实施之间持续存在的差距继续阻碍着PHM的采纳。基于上述描述，这些问题凸显了嵌入韧性、适应性和可解释性的非传统ML技术的紧迫性。如果不解决数据稀缺、跨域适应性和可解释性问题，PHM系统将仍然脆弱，难以在企业范围内提供价值。</p>
-<h2>应对挑战的科学与技术进展</h2>
+<h2>应对挑战的科技进展</h2>
 <p>应对这些挑战需要一系列集中的科学与技术进展。在此基础上，TDA作为一种流式兼容工具获得了突出地位。基于持久性的描述符能够检测生产数据中的细微分布变化，即使在噪声和高维条件下也能提供稳健的健康指标[14]。TDA对于HC-CMS中的长期监测特别有用，因为它不仅使异常检测成为可能，还能对操作状态进行聚类，并使系统转换的识别变得更加容易。与此同时，域适应和迁移学习已通过集成、元学习和持续策略得到扩展，使模型能够适应设备群组（如风电场和船舶系统）中不断变化的条件[15]。这些方法不仅降低了再训练成本，还在目标标注数据稀缺时支持快速部署，确保在多样的工业场景中获得更好的泛化能力。在此基础上，相似性模型作为一种关键的非传统方法应运而生。通过利用案例库和距离度量，相似性方法提供透明推理，使从业者能够针对历史先例验证可解释的剩余使用寿命（RUL）估计和诊断[16]。通过检索增强嵌入的丰富化，这些模型提高了效率和可解释性，支持复杂操作环境中的决策。此外，相似性推理促进跨资产的知识复用，使工程师能够用具体的历史参考来论证决策。代理模型的使用快速增长。从能源系统到紧凑型镜头组件，神经算子、贝叶斯代理模型和可微分模拟器正越来越多地用于工业设计和优化，以提供带有量化不确定性的实时决策支持[17]。代理模型不仅加快了计算成本高昂的模拟速度，还提供了一种将物理信息约束与机器学习模型相结合的方法，从而产生在可解释性和准确性之间保持平衡的混合解决方案。最具变革性的发展是ILKM框架。通过构建结构化知识库，将其与工业工作流程对齐，并将其与指令调优的大模型耦合，ILKM能够在智能工厂中实现检索增强的、可审计的决策[18]。这种方法使PHM系统能够将人类专业知识、领域知识和大尺度分析集成在统一平台上，直接解决专业知识碎片化的问题。ILKM还为跨域推理创造了机会，将维护记录、质量数据和运营最佳实践链接成一个集成的知识生态系统。最近关于工业人工智能应用的综述一致强调可解释人工智能、不确定性量化和企业级集成的重要性[19]，凸显了非传统ML的关键作用。最近在基础模型方面的进展进一步将这些非传统方法扩展至系统级工业智能。在SoQ范式下（图2），基于基础模型的SoQ可以构建为四个研究方向：表示、高效适应、动态学习和认知推理。这一新兴框架支持跨阶段质量传播的持续建模、分布式环境中的可扩展部署、对演化过程的实时适应，以及生命周期感知的知识驱动推理。这些发展标志着从以数据为中心的预测性维护向综合工业认知的转变。</p>
 <figure class="paper-figure"><img src="images/complex-fig2.png" alt="图2. 面向高互联复杂制造系统（HC-CMS）的、基于基础模型的质量系统（SoQ）。" loading="lazy" draggable="false"><figcaption>图2. 面向高互联复杂制造系统（HC-CMS）的、基于基础模型的质量系统（SoQ）。</figcaption></figure>
 
-<h2>结论</h2>
+<h2>结语</h2>
 <p>PHM研究的方向显示出从以算法为中心的探究向HC-CMS系统级智能更广泛重视的明确转变。传统ML方法虽然在受控环境中取得成功，但在分布漂移、数据稀缺和有限可解释性方面仍存在困难。非传统ML技术——用于稳健结构发现的TDA、用于泛化的域适应、用于透明性的相似性推理、用于成本效益优化的代理模型，以及用于企业级集成的ILKM——共同为PHM的下一阶段以及工业人工智能应用的发展提供了一条连贯的路线图。未来工业人工智能中的PHM必须强调适应性、可解释性和可扩展性。为了将预测精度转化为可操作的智能，这些策略——如集成不同专业领域的ILKM框架和基于领域知识的非传统ML方法——将至关重要。更高的正常运行时间、更安全的操作、更低的维护成本和更稳健的生产生态系统是这些进展的预期优势。对该领域而言，主要挑战[20]不是追求算法新颖性，而是成功地将这些技术集成到能够产生持久影响的、企业级的、可审计的可靠工业系统中。</p>
 <h2>致谢</h2>
 <p>本研究由美国教育部通过改善中等后教育基金（FIPSE）资助，资助编号为 P116S230014。</p>
@@ -1247,7 +1247,7 @@ Table 1. Evolution of Asset Management Paradigms Toward Smart Manufacturing Depe
 <p>[13] P. Kundu, A. K. Darpe, and M. S. Kulkarni, “Development of data-driven, physics-based, and hybrid prognosis frameworks: a case study for gear remaining useful life prediction,” Journal of Intelligent Manufacturing, pp. 1–21, 2024.</p>
 <p>[14] J. Lee, D.-Y. Ji, and Y.-M. Hsu, “Novel topological machine learning methodology for stream-of-quality modeling in smart manufacturing,” Manufacturing Letters, vol. 43, pp. 60–63, 2025.</p>
 <p>[15] T. Minami, A. Suer, P. Kundu, S. Siahpour, and J. Lee, “Novel ensemble domain adaptation methodology for enhanced multi- class fault diagnosis of highly-connected fleet of assets,” in Phm society asia-pacific conference, 2023.</p>
-<p>[16] T. Minami, D.-Y. Ji, and J. Lee, “PHM for Spacecraft Propulsion Systems: Developing Resilient Models for Real-World Challenges,” in PHM Society European Conference, 2024, pp. 7–7. Journal XX (XXXX) XXXXXX A Author et al 99</p>
+<p>[16] T. Minami, D.-Y. Ji, and J. Lee, “PHM for Spacecraft Propulsion Systems: Developing Resilient Models for Real-World Challenges,” in PHM Society European Conference, 2024, pp. 7–7.&nbsp;</p>
 <p>[17] W. Li et al., “A novel methodology for lens matching in compact lens module assembly,” IEEE Transactions on Automation Science and Engineering, vol. 20, no. 2, pp. 741–750, 2022.</p>
 <p>[18] Lee J and Su H, A unified industrial large knowledge model framework in Industry 4.0 and smart manufacturing Int. J. AI Mater. Des. 1 (2) 41–47, 2025</p>
 <p>[19] T. Xia, Y. Dong, L. Xiao, S. Du, E. Pan, and L. Xi, “Recent advances in prognostics and health management for advanced manufacturing paradigms,” Reliability Engineering &amp; System Safety, vol. 178, pp. 255–268, 2018.</p>

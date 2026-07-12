@@ -17,3 +17,5 @@ sections:
   14-physics-ml.html: true
   15-generative.html: true
   16-semantic.html: true
+  17-physics-control.html: true
+  18-trustworthy.html: true
